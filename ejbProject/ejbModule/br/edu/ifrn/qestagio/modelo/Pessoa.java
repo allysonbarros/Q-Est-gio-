@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 public class Pessoa {
 	@Id
 	public Long id;
+	public Long matricula;
 	public String cpf;
 	public String rg;
 	public String nome;
