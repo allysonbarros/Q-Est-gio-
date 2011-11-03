@@ -22,6 +22,8 @@ public class Pessoa {
 	public String nomePai;
 	public String nomeMae;
 	
+	public int tipoPessoa;
+	
 	@OneToOne
 	@JoinColumn(name="endereco_id")
 	public Endereco endereco;
