@@ -3,13 +3,15 @@ package br.edu.ifrn.qestagio.modelo;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Pessoa {
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	public Long id;
 	public Long matricula;
 	public String cpf;

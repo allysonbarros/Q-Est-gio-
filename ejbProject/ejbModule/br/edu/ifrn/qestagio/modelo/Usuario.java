@@ -3,7 +3,7 @@ package br.edu.ifrn.qestagio.modelo;
 import javax.persistence.*;
 
 public class Usuario {
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	public Long id;
 	
 	@OneToOne(mappedBy="usuario")

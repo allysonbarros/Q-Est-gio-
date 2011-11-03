@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 public class Endereco {
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	public Long id;
 	public String logradouro;
 	public String complemento;
