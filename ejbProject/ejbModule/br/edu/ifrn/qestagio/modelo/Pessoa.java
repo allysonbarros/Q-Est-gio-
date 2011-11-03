@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Pessoa {
@@ -16,5 +18,12 @@ public class Pessoa {
 	public String email;
 	public String nomePai;
 	public String nomeMae;
+	
+	@OneToOne
+	@JoinColumn(name="endereco_id")
 	public Endereco endereco;
+	
+	@OneToOne
+	@JoinColumn(name="usuario_id")
+	public Usuario usuario;
 }
