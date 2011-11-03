@@ -20,7 +20,14 @@ public class Usuario {
 	public String senha;
 	public boolean ativado;
 	
-	private void criptografarSenha() throws NoSuchAlgorithmException {
+	public Usuario(Pessoa pessoa, String login, String senha, boolean ativado) throws NoSuchAlgorithmException {
+		this.pessoa = pessoa;
+		this.login = login;
+		this.criptografarSenha(senha);
+		this.ativado = ativado;
+	}
+
+	private void criptografarSenha(String senha) throws NoSuchAlgorithmException {
 		MessageDigest digest = MessageDigest.getInstance("MD5");
 	    digest.update(senha.getBytes(), 0, senha.length());
 	    this.senha = new BigInteger(1, digest.digest()).toString(16);
