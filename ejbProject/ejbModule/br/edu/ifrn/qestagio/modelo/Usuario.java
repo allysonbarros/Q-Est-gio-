@@ -1,5 +1,6 @@
 package br.edu.ifrn.qestagio.modelo;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -11,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Usuario {
+public class Usuario implements Serializable {
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	public Long id;
 	

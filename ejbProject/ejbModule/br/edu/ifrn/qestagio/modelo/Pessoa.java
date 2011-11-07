@@ -1,5 +1,6 @@
 package br.edu.ifrn.qestagio.modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -10,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Pessoa {
+public class Pessoa implements Serializable {
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	public Long id;
 	public Long matricula;
