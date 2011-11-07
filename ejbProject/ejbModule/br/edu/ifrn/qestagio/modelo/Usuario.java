@@ -4,11 +4,13 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+@Entity
 public class Usuario {
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	public Long id;
@@ -32,4 +34,5 @@ public class Usuario {
 	    digest.update(senha.getBytes(), 0, senha.length());
 	    this.senha = new BigInteger(1, digest.digest()).toString(16);
 	}
+	
 }
