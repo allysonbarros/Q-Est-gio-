@@ -1,0 +1,185 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/49/trunk/Core/WebContent/WEB-INF/lib
+END
+postgresql-8.4-701.jdbc4.jar
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/postgresql-8.4-701.jdbc4.jar
+END
+axis.jar
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/49/trunk/Core/WebContent/WEB-INF/lib/axis.jar
+END
+wsdl4j.jar
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/49/trunk/Core/WebContent/WEB-INF/lib/wsdl4j.jar
+END
+dom4j.jar
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/dom4j.jar
+END
+commons-discovery-0.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/49/trunk/Core/WebContent/WEB-INF/lib/commons-discovery-0.2.jar
+END
+dom4j-1.6.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/dom4j-1.6.1.jar
+END
+ant-junit-1.6.5.jar
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/ant-junit-1.6.5.jar
+END
+jaxrpc.jar
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/49/trunk/Core/WebContent/WEB-INF/lib/jaxrpc.jar
+END
+jboss-archive-browsing.jar
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/jboss-archive-browsing.jar
+END
+hibernate-annotations.jar
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/hibernate-annotations.jar
+END
+javassist-3.9.0.GA.jar
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/javassist-3.9.0.GA.jar
+END
+ejb3-persistence.jar
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/ejb3-persistence.jar
+END
+hibernate-commons-annotations.jar
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/hibernate-commons-annotations.jar
+END
+jta-1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/jta-1.1.jar
+END
+hibernate-testing.jar
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/hibernate-testing.jar
+END
+saaj.jar
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/49/trunk/Core/WebContent/WEB-INF/lib/saaj.jar
+END
+validation-api-1.0.0.GA.jar
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/validation-api-1.0.0.GA.jar
+END
+slf4j-nop-1.5.8.jar
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/slf4j-nop-1.5.8.jar
+END
+hibernate3.jar
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/hibernate3.jar
+END
+commons-collections-3.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/commons-collections-3.1.jar
+END
+hibernate-core.jar
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/hibernate-core.jar
+END
+antlr-2.7.6.jar
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/antlr-2.7.6.jar
+END
+slf4j-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/slf4j-api.jar
+END
+hibernate-entitymanager-3.2.1.GA.jar
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/hibernate-entitymanager-3.2.1.GA.jar
+END
+junit-3.8.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/junit-3.8.1.jar
+END
+commons-logging.jar
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/49/trunk/Core/WebContent/WEB-INF/lib/commons-logging.jar
+END
+hibernate-jpa-2.0-api-1.0.0.Final.jar
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/hibernate-jpa-2.0-api-1.0.0.Final.jar
+END
+ant-contrib-1.0b2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/ant-contrib-1.0b2.jar
+END
+slf4j-api-1.5.8.jar
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/slf4j-api-1.5.8.jar
+END
+postgresql-9.0-801.jdbc4.jar
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/42/trunk/Core/WebContent/WEB-INF/lib/postgresql-9.0-801.jdbc4.jar
+END

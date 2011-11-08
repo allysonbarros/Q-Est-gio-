@@ -2,7 +2,6 @@ package br.edu.ifrn.qestagio.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +21,6 @@ public class Pessoa implements Serializable {
 	public String email;
 	public String nomePai;
 	public String nomeMae;
-	
 	public int tipoPessoa;
 	
 	@OneToOne

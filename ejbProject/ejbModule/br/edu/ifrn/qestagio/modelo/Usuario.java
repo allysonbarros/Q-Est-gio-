@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-@Entity
+@org.hibernate.annotations.Entity
 public class Usuario implements Serializable {
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	public Long id;
