@@ -16,6 +16,9 @@ public class Teste {
 		for(int i=0; i<enderecos.size(); i++){
 			System.out.println(enderecos.get(i).getCidade());
 		}
+		
+		Endereco e = dao.findById(1);
+		System.out.println("e >>  "+e.getBairro());
 	}
 
 }

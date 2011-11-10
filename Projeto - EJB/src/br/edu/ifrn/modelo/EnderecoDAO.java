@@ -13,4 +13,8 @@ public class EnderecoDAO extends DAO {
 	public List <Endereco> listarTodosEnderecos(){
 		return this.findAll(Endereco.class);
 	}
+	
+	public Endereco findById(long id){
+		return this.findById(Endereco.class, id);
+	}
 }

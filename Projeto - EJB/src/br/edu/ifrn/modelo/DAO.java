@@ -2,7 +2,6 @@ package br.edu.ifrn.modelo;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -60,5 +59,23 @@ public class DAO {
 			session.close();
 		}
 		return lista;
+	}
+	
+	public <T> T findById(Class classe, long id){
+		Object objeto =null;
+		
+		Session session = sf.openSession();
+		try {
+			Query query = session.createQuery("from "+ classe.getName() + " where id = :id");
+			query.setParameter("id", id);
+		    objeto = query.list().get(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return (T) objeto;
+		
 	}
 }
