@@ -13,5 +13,7 @@
         <property name="hbm2ddl.auto">update</property>
         
         <mapping class="br.edu.ifrn.negocio.Endereco" />
+        <mapping class="br.edu.ifrn.negocio.Pessoa" />
+        <mapping class="br.edu.ifrn.negocio.Usuario" />
     </session-factory>
 </hibernate-configuration>

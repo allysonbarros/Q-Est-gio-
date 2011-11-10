@@ -9,7 +9,7 @@ import br.edu.ifrn.negocio.Endereco;
  * Session Bean implementation class EnderecoBean
  */
 @Stateless
-public class EnderecoBean implements EnderecoBeanLocal {
+public class EnderecoBean implements EnderecoBeanRemote, EnderecoBeanLocal {
 	
     public EnderecoBean() {
         // TODO Auto-generated constructor stub
