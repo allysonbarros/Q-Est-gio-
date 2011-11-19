@@ -12,13 +12,16 @@ import javax.naming.NamingException;
 public class Application extends Controller {
 
     public static void index() throws NamingException                                                                                                                                                           {
-    	                                             
-    	Properties env = new Properties();
-		env.put(Context.SECURITY_PRINCIPAL, "guest" );
-		env.put(Context.SECURITY_CREDENTIALS, "guest" );
-		env.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.security.jndi.JndiLoginInitialContextFactory");
-		env.put(Context.PROVIDER_URL, "jnp://localhost:1099");
-		Context ctx = new InitialContext(env);
+    	InitialContext  jndi = getInitialContext();
     }
-
+    
+    private static InitialContext getInitialContext() throws NamingException {
+	       Properties env = new Properties();
+	       env.put(Context.SECURITY_PRINCIPAL, "guest" );
+	       env.put(Context.SECURITY_CREDENTIALS, "guest" );
+	       env.put(Context.INITIAL_CONTEXT_FACTORY,    
+	"org.jboss.security.jndi.JndiLoginInitialContextFactory");
+	       env.put(Context.PROVIDER_URL, "jnp://localhost:1099");
+	      return new InitialContext(env);
+	}
 }
