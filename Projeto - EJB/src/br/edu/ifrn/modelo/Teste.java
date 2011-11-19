@@ -17,7 +17,7 @@ public class Teste {
 		p.setEmail("@monte");
 		p.setNome("Dani");
 		
-		//dao.save(p);
+		dao.save(p);
 		
 		List<Pessoa> lista = dao.findAll(Pessoa.class);
 		

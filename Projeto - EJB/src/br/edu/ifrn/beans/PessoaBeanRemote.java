@@ -12,7 +12,7 @@ public interface PessoaBeanRemote {
 	public void cadastrarPessoa(Pessoa p);
 	public void editarPessoa(Pessoa p);
 	public void deletarPessoa(Pessoa p);
-	public Endereco getPessoa(Long id);
+	public Pessoa getPessoa(Long id);
 	public List<Pessoa> getTodasPessoas();
 	
 	

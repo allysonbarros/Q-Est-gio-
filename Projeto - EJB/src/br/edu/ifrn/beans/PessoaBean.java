@@ -37,7 +37,7 @@ public class PessoaBean implements PessoaBeanRemote, PessoaBeanLocal {
 	}
 
 	@Override
-	public Endereco getPessoa(Long id) {
+	public Pessoa getPessoa(Long id) {
 		// TODO Auto-generated method stub
 		return dao.findById(Pessoa.class, id);
 	}

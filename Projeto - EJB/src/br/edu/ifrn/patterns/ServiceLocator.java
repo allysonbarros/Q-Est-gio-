@@ -10,6 +10,7 @@ import javax.naming.NamingException;
 import javax.rmi.PortableRemoteObject;
 
 import br.edu.ifrn.beans.EnderecoBeanRemote;
+import br.edu.ifrn.beans.PessoaBeanRemote;
 
 public class ServiceLocator {
 
@@ -44,6 +45,12 @@ public class ServiceLocator {
 	public EnderecoBeanRemote getEnderecoBean(){
 		Object ref = getService("EnderecoBean/remote");
 		EnderecoBeanRemote beanRemote = (EnderecoBeanRemote) PortableRemoteObject.narrow(ref, EnderecoBeanRemote.class);
+		return beanRemote;
+	}
+	
+	public PessoaBeanRemote getPessoaBean(){
+		Object ref = getService("PessoaBean/remote");
+		PessoaBeanRemote beanRemote = (PessoaBeanRemote) PortableRemoteObject.narrow(ref, PessoaBeanRemote.class);
 		return beanRemote;
 	}
 	
