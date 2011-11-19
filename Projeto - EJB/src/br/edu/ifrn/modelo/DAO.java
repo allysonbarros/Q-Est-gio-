@@ -33,6 +33,22 @@ public class DAO {
 		}
 	}
 	
+	public <T> void update(T object) {
+		Session session = sf.openSession();
+		try {
+			
+			session.getTransaction().begin();
+			session.merge(object);  
+			session.getTransaction().commit();
+		
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+	
 	public <T> void delete(T object) {
 		Session session = sf.openSession();
 		try {
