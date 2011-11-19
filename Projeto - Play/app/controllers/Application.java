@@ -11,10 +11,18 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import br.edu.ifrn.patterns.EnderecoDelegate;
+
 public class Application extends Controller {
 
-    public static void index() throws NamingException                                                                                                                                                           {
-    	InitialContext jndi = Contexto.getInitialContext();
+    public static void index() throws NamingException {
+    	EnderecoDelegate enderecoBean;
+		try {
+			enderecoBean = new EnderecoDelegate();
+			System.out.println(enderecoBean.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     }
     
 }
