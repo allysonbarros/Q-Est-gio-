@@ -5,7 +5,6 @@
 	
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/Developer/play/framework/play-1.2.4-RC1.jar" sourcepath="/Developer/play/framework/src" />
-	<classpathentry kind="lib" path="/Users/sedir/Desenvolvimento/Q-Est-gio-/Projeto - Play/lib/jbossall-client.jar"/>
 	<classpathentry kind="lib" path="/Developer/play/framework/lib/activation-1.1.1.jar"/>
 	<classpathentry kind="lib" path="/Developer/play/framework/lib/antlr-2.7.6.jar"/>
 	<classpathentry kind="lib" path="/Developer/play/framework/lib/asm-all-3.3.1.jar"/>
