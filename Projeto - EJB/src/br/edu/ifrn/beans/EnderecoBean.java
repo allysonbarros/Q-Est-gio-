@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 
-import br.edu.ifrn.modelo.EnderecoDAO;
+import br.edu.ifrn.modelo.DAO;
 import br.edu.ifrn.negocio.Endereco;
 
 /**
@@ -12,10 +12,10 @@ import br.edu.ifrn.negocio.Endereco;
  */
 @Stateless
 public class EnderecoBean implements EnderecoBeanRemote, EnderecoBeanLocal {
-	EnderecoDAO dao;
+	DAO dao;
 	
     public EnderecoBean() {
-		dao = new EnderecoDAO();
+		dao = new DAO();
     }
 
 	@Override
