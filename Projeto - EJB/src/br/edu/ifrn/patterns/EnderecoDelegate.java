@@ -1,6 +1,9 @@
 package br.edu.ifrn.patterns;
 
+import java.util.List;
+
 import br.edu.ifrn.beans.EnderecoBeanRemote;
+import br.edu.ifrn.negocio.Endereco;
 
 
 public class EnderecoDelegate {
@@ -12,4 +15,24 @@ public class EnderecoDelegate {
 		locator = ServiceLocator.getInstace(); 
 		bean = locator.getEnderecoBean();
 	} 
+
+	public void cadastrarEndereco(Endereco e) {
+		bean.cadastrarEndereco(e);
+	}
+
+	public void editarEndereco(Endereco e) {
+		bean.editarEndereco(e);
+	}
+
+	public void deletarEndereco(Endereco e) {
+		bean.deletarEndereco(e);
+	}
+
+	public Endereco getEndereco(Long id) {
+		return bean.getEndereco(id);
+	}
+
+	public List<Endereco> getTodosEnderecos() {
+		return bean.getTodosEnderecos();
+	}
 }
