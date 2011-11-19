@@ -5,6 +5,7 @@
         <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/style.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         <script src="@{'/public/javascripts/jquery-1.5.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
@@ -14,13 +15,34 @@
     <body>
     	<div id="container">
     		<div id="container-topo">
-    			<div id="barra-governo">
-    				<div><a title="Portal Brasil" href="http://www.brasil.gov.br">Brasil &ndash; Governo Federal &ndash; Ministério da Educação</a></div>
-    			</div>
     			<div id="header-topo">
-    				<h1 id="qestagio-logo">
-    					<a title="Q-Estágio!" href="http://portal.ifrn.edu.br" accesskey="3">Q-Estágio</a>
-    				</h1>
+					<div id="logomarca">
+	    				<h1 id="qestagio-logo">
+	    					<a title="Q-Estágio!" href="http://portal.ifrn.edu.br" accesskey="3">Q-Estágio</a>
+	    				</h1>
+					</div>
+					
+					<div id="box-login">
+						#{form @Application.index()}
+							<div class="formEl_b">
+								<div class="sepH_b">
+									<input type="text" name="login" class="inpt_b" value="" placeholder="Matrícula" id="login">
+								</div>
+								<div class="sepH_b">
+									<input type="password" name="senha" class="inpt_b" value="" placeholder="Senha" id="senha">
+								</div>
+							</div>
+							<div id="esqueciSenha-submit">
+								<div class="esqueciSenha">
+									
+								</div>
+								<div class="submit">
+									<input type="submit" name="enviar" class="btn btn_aS fl sepV_a" value="Acessar" id="enviar">
+								</div>
+							</div>
+							
+						#{/form}
+					</div>
     			</div>
     		</div>
     		
@@ -32,21 +54,12 @@
     			<div class="cell width-full position-0">
 					<div id="portal-footer">
 						<div class="places"> 
-							<span class="campus_name">Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte | Reitoria</span><br>
-							Rua Dr. Nilo Bezerra Ramalho, 1692, Tirol<br>
-							CEP: 59015-300 <br>
-							Email: comunicacao.reitoria@ifrn.edu.br <br>
-							Telefone: 4005-0757 <br>
+							<span class="campus_name">Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte | Coordenadoria de Estágios e Egressos</span><br>
+							<br><br>
+							Copyright &copy; 2011 - Q-Estágio! - Sistema de Gerênciamento do departamento de Estágios do IFRN.
 						</div>
 					</div>
 				</div>
-    		</div>
-    		<div class="row">
-    			<div class="cell width-full position-0">
-    				<div id="doormat-container" class="columns-5">
-    					Copyright &copy; 2011 - Q-Estágio! - Sistema de Gerênciamento do departamento de Estágios do IFRN.
-    				</div>
-    			</div>
     		</div>
     	</div>
         #{doLayout /}
