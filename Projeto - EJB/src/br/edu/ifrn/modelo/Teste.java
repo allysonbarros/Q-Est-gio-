@@ -11,14 +11,22 @@ public class Teste {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		EnderecoDAO dao = new EnderecoDAO();
-		List<Endereco> enderecos = dao.listarTodosEnderecos();
-		for(int i=0; i<enderecos.size(); i++){
-			System.out.println(enderecos.get(i).getCidade());
+		
+		EnderecoDAO daoe = new EnderecoDAO();
+		PessoaDAO dao = new PessoaDAO();
+		Endereco e = daoe.findById(10);
+		Pessoa e1 = new Pessoa();
+		e1.setCpf("01316292479");
+		e1.setNome("Sedir");
+		e1.setEndereco(e);
+		
+		dao.cadastrarPessoa(e1);
+		
+		List<Pessoa> pessoas = dao.listarTodosPessoas();
+		for (Pessoa p : pessoas) {
+			System.out.println(p.getNome()+" - "+p.getEndereco().getBairro());
 		}
 		
-		Endereco e = dao.findById(1);
-		System.out.println("e >>  "+e.getBairro());
+	
 	}
-
 }

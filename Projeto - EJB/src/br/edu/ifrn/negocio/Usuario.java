@@ -34,4 +34,7 @@ public class Usuario {
 	    digest.update(senha.getBytes(), 0, senha.length());
 	    this.senha = new BigInteger(1, digest.digest()).toString(16);
 	}
+	
+	
+	
 }
