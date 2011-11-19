@@ -3,6 +3,7 @@ conf/application.conf
 .DS_Store
 .project
 .settings
+.class
 tmp/**/*
 eclipse/**/*
 modules/**/*

@@ -18,7 +18,7 @@
     			<div id="header-topo">
 					<div id="logomarca">
 	    				<h1 id="qestagio-logo">
-	    					<a title="Q-Estágio!" href="http://portal.ifrn.edu.br" accesskey="3">Q-Estágio</a>
+	    					<a title="Q-Estágio!" href="@{Application.index}" accesskey="3">Q-Estágio</a>
 	    				</h1>
 					</div>
 					
@@ -47,7 +47,12 @@
     		</div>
     		
     		<div id="container-conteudo">
-    			
+    			<div id="portal-columns" class="sl">
+					<div id="portal-column-content">
+						#{doLayout /}
+					</div>
+					<div id="portal-column-one"></div>
+				</div>
     		</div>
     		
     		<div class="row">
@@ -62,6 +67,5 @@
 				</div>
     		</div>
     	</div>
-        #{doLayout /}
     </body>
 </html>
