@@ -2,8 +2,6 @@ package br.edu.ifrn.beans;
 import java.util.List;
 
 import javax.ejb.Remote;
-
-import br.edu.ifrn.negocio.Endereco;
 import br.edu.ifrn.negocio.Pessoa;
 
 @Remote

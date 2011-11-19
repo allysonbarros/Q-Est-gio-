@@ -1,7 +1,6 @@
 package br.edu.ifrn.beans;
 import java.util.List;
 import javax.ejb.Local;
-import br.edu.ifrn.negocio.Endereco;
 import br.edu.ifrn.negocio.Pessoa;
 
 @Local

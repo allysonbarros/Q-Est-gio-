@@ -5,7 +5,6 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import br.edu.ifrn.modelo.DAO;
-import br.edu.ifrn.negocio.Endereco;
 import br.edu.ifrn.negocio.Pessoa;
 /**
  * Session Bean implementation class PessoaBean
