@@ -26,11 +26,7 @@
 	h4{font-size:16px}
 	h5{font-size:14px}
 	h6{font-size:11px;text-transform:uppercase}
-
-	a {text-decoration:none;color:#21759B}
-	a:hover {text-decoration:underline}
-
-
+	
 /* structure */
 
 	.fixed .wrapper {width:960px;margin:0 auto}
