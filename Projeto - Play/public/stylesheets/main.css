@@ -1,140 +1,142 @@
 * {
-    border: 0 none;
-    font-family: Arial,sans-serif;
-    margin: 0;
-    outline: 0 none;
-    padding: 0;
+	border: 0 none;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	outline: 0 none;
+	padding: 0;
 }
 
 body {
-	background: url("http://portal.ifrn.edu.br/++resource++ifrn.tema2011.images/bg.jpg") no-repeat scroll center 15px #FFFFFF;
-    color: #333333;
-    font-size: 100%;
+	background: url("/public/images/bg.jpg") no-repeat scroll center 0 #FFFFFF;
+	color: #333333;
+	font-size: 100%;
 }
+
+a { text-decoration:none;}
 
 #container {
 	margin: auto;
-    width: 100%;
+	width: 100%;
 }
 
 #container-topo {
-	height: 180px;
-    width: 100%;
-}
-
-#barra-governo {
-    background: url("http://portal.ifrn.edu.br/++resource++ifrn.tema2011.images/barra-brasil-bottom.png") repeat-x left bottom #00500F;
-    height: 28px;
-    width: 100%;
-}
-
-#barra-governo div {
-    background: url("http://portal.ifrn.edu.br/++resource++ifrn.tema2011.images/barra-brasil.gif") no-repeat scroll right bottom transparent;
-    height: 28px;
-    margin: 0 auto;
-}
-
-#barra-governo a {
-    display: block;
-    float: right;
-    height: 24px;
-    padding: 4px 0 0;
-    text-indent: -9999px;
-    width: 90px;
+	height: 160px;
+	width: 100%;
 }
 
 #header-topo {
 	display: table;
-    height: 145px;
-    margin: 0 auto;
-    width: 1000px;
-    z-index: 2;
+	height: 100px;
+	margin: 0 auto;
+	width: 1000px;
+	z-index: 2;
 }
 
 #qestagio-logo {
-    float: left;
-    height: 105px;
-    margin: 20px 0 20px 10px;
-    width: 278px;
+	float: left;
+	height: 105px;
+	margin: 20px 0 20px 10px;
+	width: 278px;
 }
 
 #qestagio-logo a {
-    background: url("/public/images/logo.png") no-repeat scroll 0 0 transparent;
-    display: block;
-    height: 105px;
-    text-indent: -9000px;
-    width: 287px;
+	background: url("/public/images/logo.png") no-repeat scroll 0 0
+		transparent;
+	display: block;
+	height: 105px;
+	text-indent: -9000px;
+	width: 287px;
 }
+
+#box-login {
+	float: right;
+	margin: 30px 0 20px 10px;
+}
+
+#box-login #esqueciSenha-submit {
+	overflow:hidden;
+}
+
+#box-login #esqueciSenha-submit .esqueciSenha {
+	float:left;
+}
+
+#box-login #esqueciSenha-submit .esqueciSenha a{
+	color:#fff;
+	font-size:12px;
+}
+
+#box-login #esqueciSenha-submit .submit {
+	float:right;
+}
+
+
 
 #container-conteudo {
-    background: none repeat scroll 0 0 #FFFFFF;
-    border-radius: 20px 20px 0 0;
-    box-shadow: 0 0 40px #444444;
-    display: table;
-    margin: 0 auto;
-    width: 1000px;
-    min-height:600px;
-    height:1000px;
+	background: none repeat scroll 0 0 #FFFFFF;
+	border-radius: 20px 20px 0 0;
+	box-shadow: 0 0 40px #555;
+	margin: 0 auto;
+	width: 1000px;
+	height:auto;
+	min-height: 800px;
+	overflow:hidden;
 }
 
-div.row, div.row a {
-    color: #FFFFFF;
-    text-shadow: 1px 1px 1px #000000;
+div.row,div.row a {
+	color: #FFFFFF;
+	text-shadow: 1px 1px 1px #000000;
 }
 
 div.row {
-    background: none repeat scroll 0 0 #1E7133;
-    display: block;
-    float: left;
-    width: 100%;
+	background: none repeat scroll 0 0 #000;
+	display: block;
+	float: left;
+	width: 100%;
+	border-top:5px solid #cc0000;
 }
 
 div.width-full {
-    margin: 0 auto;
-    width: 100%;
+	margin: 0 auto;
+	width: 100%;
 }
 
 div.cell {
-    float: left;
-    left: 100%;
+	float: left;
+	left: 100%;
 }
 
 #portal-footer {
-    display: table;
-    line-height: 2em;
-    margin: 1em auto;
-    padding: 20px;
-    width: 960px;
+	display: table;
+	line-height: 2em;
+	margin: 1em auto;
+	padding: 20px;
+	width: 960px;
 }
 
 #portal-footer .places {
-    color: #DDDDDD;
-    float: left;
-    font-size: 80%;
-    line-height: 1.4em;
+	color: #FFFFFF;
+	float: left;
+	font-size: 80%;
+	line-height: 1.4em;
 }
 
 #portal-footer .campus_name {
-    color: #FFFFFF;
-    font-size: 105%;
-    font-weight: bold;
-}
-
-div.row:last-child {
-    background: none repeat scroll 0 0 #FFFFFF;
-    box-shadow: 0 -10px 40px #555555;
+	color: #FFFFFF;
+	font-size: 105%;
+	font-weight: bold;
 }
 
 #doormat-container {
-    background: none repeat scroll 0 0 #FFFFFF;
-    display: table;
-    float: none;
-    line-height: 1.5em;
-    margin: 0px auto;
-    padding: 10px 20px;
-    width: 960px;
-    font-size:12px;
-    color:#000;
-    text-shadow:none;
-    text-align:left;
+	background: none repeat scroll 0 0 #FFFFFF;
+	display: table;
+	float: none;
+	line-height: 1.5em;
+	margin: 0px auto;
+	padding: 10px 20px;
+	width: 960px;
+	font-size: 12px;
+	color: #000;
+	text-shadow: none;
+	text-align: left;
 }
