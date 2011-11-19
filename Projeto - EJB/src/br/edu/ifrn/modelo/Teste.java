@@ -3,30 +3,31 @@ package br.edu.ifrn.modelo;
 import java.util.List;
 
 import br.edu.ifrn.negocio.*;
+import br.edu.ifrn.patterns.EnderecoDelegate;
 public class Teste {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		// TODO Auto-generated method stub
-//		
-//		
-//		EnderecoDAO daoe = new EnderecoDAO();
-//		PessoaDAO dao = new PessoaDAO();
-//		Endereco e = daoe.findById(10);
-//		Pessoa e1 = new Pessoa();
-//		e1.setCpf("01316292479");
-//		e1.setNome("Sedir");
-//		e1.setEndereco(e);
-//		
-//		dao.cadastrarPessoa(e1);
-//		
-//		List<Pessoa> pessoas = dao.listarTodosPessoas();
-//		for (Pessoa p : pessoas) {
-//			System.out.println(p.getNome()+" - "+p.getEndereco().getBairro());
-//		}
-//		
-	
+		EnderecoDelegate enderecoBean;
+
+		try {
+			enderecoBean = new EnderecoDelegate();
+			System.out.println(enderecoBean.toString());
+
+			Endereco e = new Endereco();
+			e.setLogradouro("Rua Santa Luzia");
+			e.setNumero("101");
+			e.setBairro("Quintas");
+			e.setCidade("Natal");
+			e.setUf("RN");
+			e.setCep("59035-186");
+
+			enderecoBean.cadastrarEndereco(e);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
