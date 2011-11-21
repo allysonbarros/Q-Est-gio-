@@ -7,7 +7,7 @@ import br.edu.ifrn.negocio.Usuario;
 
 @Local
 public interface UsuarioBeanLocal {
-	public void cadastrarUsuario(Usuario p);
+	public Usuario cadastrarUsuario(Usuario p);
 	public void editarUsuario(Usuario p);
 	public void deletarUsuario(Usuario p);
 	public Usuario getUsuario(Long id);

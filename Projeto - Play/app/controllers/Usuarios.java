@@ -1,5 +1,7 @@
 package controllers;
 
+import java.security.NoSuchAlgorithmException;
+
 import helpers.Contexto;
 
 import javax.naming.InitialContext;
@@ -23,8 +25,7 @@ public class Usuarios extends Controller {
     }
     
     public static void cadastrar() throws Exception {
-    	PessoaDelegate pessoaDel = new PessoaDelegate();
-    	EnderecoDelegate enderecoDel = new EnderecoDelegate();
+    	PessoaDelegate del = new PessoaDelegate();
     	
     	Endereco e = new Endereco();
 		e.setLogradouro("Rua Santa Luzia");
@@ -33,15 +34,26 @@ public class Usuarios extends Controller {
 		e.setCidade("Natal");
 		e.setUf("RN");
 		e.setCep("59035-186");
-
-		Endereco e2 = enderecoDel.cadastrarEndereco(e);
-    	
+		
 		Pessoa p = new Pessoa();
 		p.nome = "Allyson Barros";
-		p.endereco = e2;
+		p.endereco = e;
+		try {
+			p.usuario = new Usuario(p, "allysonbarros", "1234", true);
+		} catch (NoSuchAlgorithmException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
-		pessoaDel.cadastrarPessoa(p);
-    	//formCadastro();
+		del.cadastrarPessoa(p);
     }
+    
+//    public static void cadastrar(Pessoa p, Usuario u, Endereco e) throws Exception {
+//    	p.usuario = u;
+//    	p.endereco = e;
+//    	
+//    	PessoaDelegate del = new PessoaDelegate();
+//    	del.cadastrarPessoa(p);
+//    }
 
 }

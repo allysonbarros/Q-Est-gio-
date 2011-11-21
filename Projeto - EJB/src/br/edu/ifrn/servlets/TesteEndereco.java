@@ -1,6 +1,7 @@
 package br.edu.ifrn.servlets;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -10,7 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifrn.beans.EnderecoBeanLocal;
+import br.edu.ifrn.beans.PessoaBeanLocal;
 import br.edu.ifrn.negocio.Endereco;
+import br.edu.ifrn.negocio.Pessoa;
+import br.edu.ifrn.negocio.Usuario;
 
 /**
  * Servlet implementation class TesteEndereco
@@ -21,6 +25,9 @@ public class TesteEndereco extends HttpServlet {
        
 	@EJB
 	private EnderecoBeanLocal ejb;
+	
+	@EJB 
+	private PessoaBeanLocal ejb2;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -49,7 +56,18 @@ public class TesteEndereco extends HttpServlet {
 		e.setUf("RN");
 		e.setCep("59035-186");
 		
-		ejb.cadastrarEndereco(e);
+		Pessoa p = new Pessoa();
+		p.nome = "Allyson Barros";
+		p.endereco = e;
+		try {
+			p.usuario = new Usuario(p, "allysonbarros", "1234", true);
+		} catch (NoSuchAlgorithmException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		ejb2.cadastrarPessoa(p);
+		//ejb.cadastrarEndereco(e);
 	}
 
 }

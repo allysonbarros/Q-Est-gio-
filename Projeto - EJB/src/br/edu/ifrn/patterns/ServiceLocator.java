@@ -11,6 +11,7 @@ import javax.rmi.PortableRemoteObject;
 
 import br.edu.ifrn.beans.EnderecoBeanRemote;
 import br.edu.ifrn.beans.PessoaBeanRemote;
+import br.edu.ifrn.beans.UsuarioBeanRemote;
 
 public class ServiceLocator {
 
@@ -51,6 +52,12 @@ public class ServiceLocator {
 	public PessoaBeanRemote getPessoaBean(){
 		Object ref = getService("PessoaBean/remote");
 		PessoaBeanRemote beanRemote = (PessoaBeanRemote) PortableRemoteObject.narrow(ref, PessoaBeanRemote.class);
+		return beanRemote;
+	}
+	
+	public UsuarioBeanRemote getUsuarioBean(){
+		Object ref = getService("UsuarioBean/remote");
+		UsuarioBeanRemote beanRemote = (UsuarioBeanRemote) PortableRemoteObject.narrow(ref, UsuarioBeanRemote.class);
 		return beanRemote;
 	}
 	

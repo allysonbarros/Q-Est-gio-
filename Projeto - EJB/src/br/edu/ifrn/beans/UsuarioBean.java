@@ -26,9 +26,10 @@ public class UsuarioBean implements UsuarioBeanRemote, UsuarioBeanLocal {
     }
 
 	@Override
-	public void cadastrarUsuario(Usuario o) {
+	public Usuario cadastrarUsuario(Usuario o) {
 		// TODO Auto-generated method stub
 		dao.save(o);
+		return o;
 	}
 
 	@Override
@@ -46,7 +47,7 @@ public class UsuarioBean implements UsuarioBeanRemote, UsuarioBeanLocal {
 	@Override
 	public Usuario getUsuario(Long id) {
 		// TODO Auto-generated method stub
-		return dao.findById(Pessoa.class, id);
+		return dao.findById(Usuario.class, id);
 	}
 
 	@Override

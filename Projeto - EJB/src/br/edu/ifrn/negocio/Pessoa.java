@@ -29,11 +29,11 @@ public class Pessoa implements Serializable {
 	
 	public int tipoPessoa;
 	
-	@OneToOne(cascade=CascadeType.PERSIST)
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="endereco_id")
 	public Endereco endereco;
 	
-	@OneToOne(cascade=CascadeType.PERSIST)
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="usuario_id")
 	public Usuario usuario;
 	
