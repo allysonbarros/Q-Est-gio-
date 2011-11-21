@@ -1,7 +1,9 @@
 package br.edu.ifrn.negocio;
 
+import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Pessoa {
+public class Pessoa implements Serializable {
+	private static final long serialVersionUID = 5267963861854701029L;
+
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 
@@ -25,11 +29,11 @@ public class Pessoa {
 	
 	public int tipoPessoa;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="endereco_id")
 	public Endereco endereco;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="usuario_id")
 	public Usuario usuario;
 	

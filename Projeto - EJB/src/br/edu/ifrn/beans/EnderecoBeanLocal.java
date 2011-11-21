@@ -7,7 +7,7 @@ import br.edu.ifrn.negocio.Endereco;
 
 @Local
 public interface EnderecoBeanLocal {
-	public void cadastrarEndereco(Endereco e);
+	public Endereco cadastrarEndereco(Endereco e);
 	public void editarEndereco(Endereco e);
 	public void deletarEndereco(Endereco e);
 	public Endereco getEndereco(Long id);

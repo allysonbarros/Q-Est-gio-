@@ -7,7 +7,7 @@ import br.edu.ifrn.negocio.Endereco;
 
 @Remote
 public interface EnderecoBeanRemote {
-	public void cadastrarEndereco(Endereco e);
+	public Endereco cadastrarEndereco(Endereco e);
 	public void editarEndereco(Endereco e);
 	public void deletarEndereco(Endereco e);
 	public Endereco getEndereco(Long id);

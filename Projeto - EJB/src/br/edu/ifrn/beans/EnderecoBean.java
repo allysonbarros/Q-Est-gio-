@@ -19,8 +19,9 @@ public class EnderecoBean implements EnderecoBeanRemote, EnderecoBeanLocal {
     }
 
 	@Override
-	public void cadastrarEndereco(Endereco e) {
+	public Endereco cadastrarEndereco(Endereco e) {
 		dao.save(e);
+		return e;
 	}
 
 	@Override

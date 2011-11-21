@@ -9,10 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Endereco implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6666162512956942598L;
 	
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;

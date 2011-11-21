@@ -16,8 +16,8 @@ public class EnderecoDelegate {
 		bean = locator.getEnderecoBean();
 	} 
 
-	public void cadastrarEndereco(Endereco e) {
-		bean.cadastrarEndereco(e);
+	public Endereco cadastrarEndereco(Endereco e) {
+		return bean.cadastrarEndereco(e);
 	}
 
 	public void editarEndereco(Endereco e) {

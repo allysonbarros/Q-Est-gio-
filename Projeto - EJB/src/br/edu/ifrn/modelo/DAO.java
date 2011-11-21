@@ -20,7 +20,6 @@ public class DAO {
 	public <T> void save(T object) {
 		Session session = sf.openSession();
 		try {
-			
 			session.getTransaction().begin();
 			session.persist(object);  
 			session.getTransaction().commit();
@@ -31,6 +30,7 @@ public class DAO {
 		} finally {
 			session.close();
 		}
+		
 	}
 	
 	public <T> void update(T object) {
