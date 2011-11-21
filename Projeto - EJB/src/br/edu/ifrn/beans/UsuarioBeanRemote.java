@@ -11,6 +11,6 @@ public interface UsuarioBeanRemote {
 	public void editarUsuario(Usuario p);
 	public void deletarUsuario(Usuario p);
 	public Usuario getUsuario(Long id);
+	public Usuario getUsuarioByLogin(String login);
 	public List<Usuario> getTodosUsuarios();
-	
 }

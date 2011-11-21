@@ -31,6 +31,10 @@ public class UsuarioDelegate {
 	public Usuario getUsuario(Long id) {
 		return bean.getUsuario(id);
 	}
+	
+	public Usuario getUsuarioByLogin(String login) {
+		return bean.getUsuarioByLogin(login);
+	}
 
 	public List<Usuario> getTodosUsuarios() {
 		return bean.getTodosUsuarios();

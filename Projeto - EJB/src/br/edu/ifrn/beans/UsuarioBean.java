@@ -6,6 +6,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import br.edu.ifrn.modelo.DAO;
+import br.edu.ifrn.modelo.UsuarioDAO;
 import br.edu.ifrn.negocio.Pessoa;
 import br.edu.ifrn.negocio.Usuario;
 
@@ -19,10 +20,10 @@ public class UsuarioBean implements UsuarioBeanRemote, UsuarioBeanLocal {
     /**
      * Default constructor. 
      */
-	DAO dao;
+	UsuarioDAO dao;
     public UsuarioBean() {
         // TODO Auto-generated constructor stub
-    	dao = new DAO();
+    	dao = new UsuarioDAO();
     }
 
 	@Override
@@ -54,6 +55,11 @@ public class UsuarioBean implements UsuarioBeanRemote, UsuarioBeanLocal {
 	public List<Usuario> getTodosUsuarios() {
 		// TODO Auto-generated method stub
 		return dao.findAll(Usuario.class);
+	}
+
+	@Override
+	public Usuario getUsuarioByLogin(String login) {
+		return dao.findByLogin(login);
 	}
 
 }

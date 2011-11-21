@@ -22,9 +22,9 @@ public class Usuario implements Serializable {
 	@OneToOne(mappedBy="usuario", cascade=CascadeType.PERSIST)
 	private Pessoa pessoa;
 	
-	public String login;
-	public String senha;
-	public boolean ativado;
+	private String login;
+	private String senha;
+	private boolean ativado;
 	
 	public Usuario() {
 		super();
@@ -42,7 +42,44 @@ public class Usuario implements Serializable {
 	    digest.update(senha.getBytes(), 0, senha.length());
 	    this.senha = new BigInteger(1, digest.digest()).toString(16);
 	}
-	
-	
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public boolean isAtivado() {
+		return ativado;
+	}
+
+	public void setAtivado(boolean ativado) {
+		this.ativado = ativado;
+	}
 }
