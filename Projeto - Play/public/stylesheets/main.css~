@@ -86,7 +86,7 @@ a { text-decoration:none;}
     border-radius: 5px 5px 0 0;
     display: table;
     margin: 0 auto;
-    width: 980px;
+    width: 960px;
 }
 #portal-column-one, #portal-column-content, #portal-column-two {
     vertical-align: top;
