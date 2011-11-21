@@ -24,7 +24,7 @@ public class Usuarios extends Controller {
     	render();
     }
     
-    public static void cadastrar() throws Exception {
+    public static void cadastrar_teste() throws Exception {
     	PessoaDelegate del = new PessoaDelegate();
     	
     	Endereco e = new Endereco();
@@ -48,12 +48,11 @@ public class Usuarios extends Controller {
 		del.cadastrarPessoa(p);
     }
     
-//    public static void cadastrar(Pessoa p, Usuario u, Endereco e) throws Exception {
-//    	p.usuario = u;
-//    	p.endereco = e;
-//    	
-//    	PessoaDelegate del = new PessoaDelegate();
-//    	del.cadastrarPessoa(p);
-//    }
+    public static void cadastrar(Pessoa p) throws Exception {   	
+    	PessoaDelegate del = new PessoaDelegate();
+    	del.cadastrarPessoa(p);
+    	
+    	index();
+    }
 
 }

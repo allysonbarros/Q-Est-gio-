@@ -1,85 +1,90 @@
 #{extends 'main.html' /}
 #{set title:'formCadastro.html' /}
 
-#{form @Application.index()}
+#{form @usuarios.cadastrar()}
 <div class="formEl_b">
 	<fieldset id="dados_pessoais" class="">
 		<legend>Dados Pessoais</legend>
 		
 		<div class="sepH_b">
 			<label for="matricula" class="lbl_a">Matrícula:</label>
-			<input type="text" name="matricula" value="" id="matricula" class="inpt_a">
+			<input type="text" name="p.matricula" value="" id="matricula" class="inpt_a">
 		</div>
 		<div class="sepH_b">
 			<label for="cpf" class="lbl_a">CPF:</label>
-			<input type="text" name="cpf" value="" id="cpf" class="inpt_a">
+			<input type="text" name="p.cpf" value="" id="cpf" class="inpt_a">
 		</div>
 		<div class="sepH_b">
 			<label for="nome" class="lbl_a">Nome Completo:</label>
-			<input type="text" name="nome" value="" id="nome" class="inpt_a">
+			<input type="text" name="p.nome" value="" id="nome" class="inpt_a">
 		</div>
 		<div class="sepH_b">
 			<label for="endereco" class="lbl_a">Endereço:</label>
-			<input type="text" name="endereco" value="" id="endereco" class="inpt_a">
+			<input type="text" name="p.endereco.logradouro" value="" id="endereco" class="inpt_a">
 		</div>
 		<div class="sepH_b">
 			<label for="complemento" class="lbl_a">Complemento:</label>
-			<input type="text" name="complemento" value="" id="complemento" class="inpt_a">
+			<input type="text" name="p.endereco.complemento" value="" id="complemento" class="inpt_a">
 		</div>
 		<div class="sepH_b">
 			<label for="numero" class="lbl_a">Número:</label>
-			<input type="text" name="numero" value="" id="numero" class="inpt_a">
+			<input type="text" name="p.endereco.numero" value="" id="numero" class="inpt_a">
 		</div>
 		<div class="sepH_b">
 			<label for="bairro" class="lbl_a">Bairro:</label>
-			<input type="text" name="bairro" value="" id="bairro" class="inpt_a">
+			<input type="text" name="p.endereco.bairro" value="" id="bairro" class="inpt_a">
 		</div>
 		<div class="sepH_b">
 			<label for="cidade" class="lbl_a">Cidade:</label>
-			<input type="text" name="cidade" value="" id="cidade" class="inpt_a">
+			<input type="text" name="p.endereco.cidade" value="" id="cidade" class="inpt_a">
 		</div>
 		<div class="sepH_b">
 			<label for="estado" class="lbl_a">Estado:</label>
-			<input type="text" name="estado" value="" id="estado" class="inpt_a">
+			<input type="text" name="p.endereco.uf" value="" id="estado" class="inpt_a">
 		</div>
 		<div class="sepH_b">
 			<label for="cep" class="lbl_a">Cep:</label>
-			<input type="text" name="cep" value="" id="cep" class="inpt_a">
+			<input type="text" name="p.endereco.cep" value="" id="cep" class="inpt_a">
 		</div>
 		<div class="sepH_b">
 			<label for="email" class="lbl_a">Email:</label>
-			<input type="text" name="email" value="" id="email" class="inpt_a">
+			<input type="text" name="p.email" value="" id="email" class="inpt_a">
 		</div>
 		<div class="sepH_b">
 			<label for="estadoCivil" class="lbl_a">Estado Civil:</label>
-			<input type="text" name="estadoCivil" value="" id="estadoCivil" class="inpt_a">
+			<input type="text" name="p.estadoCivil" value="" id="estadoCivil" class="inpt_a">
 		</div>
 		<div class="sepH_b">
 			<label for="sexo" class="lbl_a">Sexo:</label>
-			<input type="text" name="sexo" value="" id="sexo" class="inpt_a">
+			<input type="text" name="p.sexo" value="" id="sexo" class="inpt_a">
 		</div>
 		<div class="sepH_b">
 			<label for="nomeMae" class="lbl_a">Nome da Mãe:</label>
-			<input type="text" name="nomeMae" value="" id="nomeMae" class="inpt_a">
+			<input type="text" name="p.nomeMae" value="" id="nomeMae" class="inpt_a">
 		</div>
 		<div class="sepH_b">
 			<label for="nomePai" class="lbl_a">Nome do Pai:</label>
-			<input type="text" name="nomePai" value="" id="nomePai" class="inpt_a">
+			<input type="text" name="p.nomePai" value="" id="nomePai" class="inpt_a">
 		</div>
 		<div class="sepH_b">
 			<label for="nomeConjuge" class="lbl_a">Nome do Conjuge:</label>
-			<input type="text" name="nomeConjuge" value="" id="nomeConjuge" class="inpt_a">
+			<input type="text" name="p.nomeConjuge" value="" id="nomeConjuge" class="inpt_a">
 		</div>
 	</fieldset>
 	
 	<fieldset id="documentacao" class="">
-		<legend>Documentacao</legend>
+		<legend>Dados de Acesso</legend>
+		<div class="sepH_b">
+			<label for="p.usuario.login" class="lbl_a">Matrícula:</label>
+			<input type="text" name="p.usuario.senha" value="" id="p.usuario.login" class="inpt_a">
+		</div>
+		<div class="sepH_b">
+			<label for="p.usuario.senha" class="lbl_a">Senha:</label>
+			<input type="text" name="p.usuario.senha" value="" id="p.usuario.senha" class="inpt_a">
+		</div>
 	</fieldset>
 	
-	<fieldset id="dados_curriculares" class="">
-		<legend>Dados Curriculares</legend>	
-	</fieldset>
 	
-	
+	<input type="submit" name="enviar" class="btn btn_aS fl sepV_a" value="Cadastrar" id="enviar">
 </div>
 #{/form}
