@@ -57,10 +57,10 @@ public class TesteEndereco extends HttpServlet {
 		e.setCep("59035-186");
 		
 		Pessoa p = new Pessoa();
-		p.nome = "Allyson Barros";
-		p.endereco = e;
+		p.setNome("Allyson Barros");
+		p.setEndereco(e);
 		try {
-			p.usuario = new Usuario(p, "allysonbarros", "1234", true);
+			p.setUsuario(new Usuario(p, "allysonbarros", "1234", true));
 		} catch (NoSuchAlgorithmException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

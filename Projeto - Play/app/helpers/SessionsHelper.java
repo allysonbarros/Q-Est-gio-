@@ -21,7 +21,7 @@ public class SessionsHelper extends Controller {
 			Sessions.login();
 	}
 	
-	@Before
+	@Before(unless={"Sessions.login", "Sessions.logout"})
 	public static void getInfoUsuario() throws Exception {
 		if (session.get("usuarioAtivo") != null) {
 			UsuarioDelegate del = new UsuarioDelegate();

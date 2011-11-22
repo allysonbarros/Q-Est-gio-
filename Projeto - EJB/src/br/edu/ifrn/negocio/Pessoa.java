@@ -1,6 +1,7 @@
 package br.edu.ifrn.negocio;
 
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -18,24 +19,25 @@ public class Pessoa implements Serializable {
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 
-	public Long matricula;
-	public String cpf;
-	public String rg;
-	public String nome;
-	public Date dataNascimento;
-	public String email;
-	public String nomePai;
-	public String nomeMae;
+	private Long matricula;
+	private String cpf;
+	private String rg;
+	private String nome;
+	private Date dataNascimento;
+	private String email;
+	private String nomePai;
+	private String nomeMae;
+	private Blob foto;
 	
-	public int tipoPessoa;
+	private int tipoPessoa;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="endereco_id")
-	public Endereco endereco;
+	private Endereco endereco;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="usuario_id")
-	public Usuario usuario;
+	private Usuario usuario;
 	
 	
 	public Long getId() {
