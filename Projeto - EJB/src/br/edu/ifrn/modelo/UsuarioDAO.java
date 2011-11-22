@@ -17,8 +17,10 @@ public class UsuarioDAO extends DAO {
 		try {
 			Query query = session.createQuery("from Usuario where login = :login");
 			query.setParameter("login", login);
-		    u = (Usuario) query.list().get(0);
-		} catch (Exception e) {
+			if (query.list().size() != 0)
+				u = (Usuario) query.list().get(0);				
+		} 
+		catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
