@@ -3,8 +3,10 @@ package controllers;
 import helpers.SessionsHelper;
 import br.edu.ifrn.negocio.Usuario;
 import br.edu.ifrn.patterns.UsuarioDelegate;
+import play.cache.Cache;
 import play.mvc.*;
 
+@With(SessionsHelper.class)
 public class Sessions extends Controller {
 
     public static void index() {
@@ -24,7 +26,8 @@ public class Sessions extends Controller {
     		login();
     	} else {
     		if (u.getSenha().equals(SessionsHelper.criptografarSenha(senha))) {
-    			session.put("usuario_id", u.getId());
+    			session.put("usuarioAtivo", u.getId());
+    			
     			Application.index();
     		} else {
     			flash.error("Matrícula ou Senha Inválida(s). Tente novamente!");

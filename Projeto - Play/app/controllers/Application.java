@@ -1,6 +1,7 @@
 package controllers;
 
 import helpers.Contexto;
+import helpers.SessionsHelper;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -11,7 +12,9 @@ import br.edu.ifrn.patterns.EnderecoDelegate;
 import br.edu.ifrn.patterns.ServiceLocator;
 
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(SessionsHelper.class)
 public class Application extends Controller {
 
     public static void index() throws Exception {

@@ -22,6 +22,7 @@
 	    				</h1>
 					</div>
 					
+					#{ifnot usuarioAtivo}
 					<div id="box-login">
 						#{form @sessions.efetuarLogin()}
 							<div class="formEl_b">
@@ -43,6 +44,7 @@
 							
 						#{/form}
 					</div>
+					#{/ifnot}
     			</div>
     		</div>
     		

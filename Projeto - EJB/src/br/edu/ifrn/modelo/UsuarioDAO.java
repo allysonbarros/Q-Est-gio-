@@ -1,12 +1,8 @@
 package br.edu.ifrn.modelo;
 
-import java.util.List;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import br.edu.ifrn.negocio.Endereco;
-import br.edu.ifrn.negocio.Pessoa;
 import br.edu.ifrn.negocio.Usuario;
 
 public class UsuarioDAO extends DAO {
