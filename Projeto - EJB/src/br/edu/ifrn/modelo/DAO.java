@@ -81,7 +81,7 @@ public class DAO {
 	}
 	
 	public <T> T findById(Class classe, long id){
-		Object objeto =null;
+		Object objeto = null;
 		
 		Session session = sf.openSession();
 		try {

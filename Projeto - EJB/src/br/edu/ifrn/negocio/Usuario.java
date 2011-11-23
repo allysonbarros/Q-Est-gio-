@@ -6,6 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,9 +22,15 @@ public class Usuario implements Serializable {
 	
 	@OneToOne(mappedBy="usuario", cascade=CascadeType.PERSIST)
 	private Pessoa pessoa;
+	
+	@Column(unique=true) 
 	private String email;
+	
+	@Column(unique=true) 
 	private String login;
+	
 	private String senha;
+	
 	private boolean ativado;
 	
 	public Usuario() {
