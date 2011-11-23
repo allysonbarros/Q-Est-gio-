@@ -15,7 +15,7 @@ import play.mvc.Scope;
 import play.mvc.Scope.Session;
 
 public class SessionsHelper extends Controller {
-	@Before(unless={"Application.index", "Sessions.login", "Sessions.efetuarLogin"})
+	@Before(unless={"Application.index", "Sessions.login", "Sessions.efetuarLogin", "Sessions.esqueciSenha"})
 	public static void checkAuthentication() throws Exception {
 		if (session.get("usuarioAtivo") == null)
 			Sessions.login();

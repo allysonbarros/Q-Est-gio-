@@ -23,30 +23,7 @@
     		</div>
     		
     		<div id="container-conteudo">
-				
-    			<div id="box-login">
-					<h2>Acesso ao Sistema</h2>
-	
-					#{form @sessions.efetuarLogin()}
-						<div class="formEl_b">
-							<div class="sepH_b">
-								<input type="text" name="login" class="inpt_b" value="" placeholder="Matrícula" id="login">
-							</div>
-							<div class="sepH_b">
-								<input type="password" name="senha" class="inpt_b" value="" placeholder="Senha" id="senha">
-							</div>
-						</div>
-						<div id="esqueciSenha-submit">
-							<div class="esqueciSenha">
-								<a href="#">Esqueci a Senha</a>
-							</div>
-							<div class="submit">
-								<input type="submit" name="enviar" class="btn btn_aS fl sepV_a" value="Acessar" id="enviar">
-							</div>
-						</div>
-						
-					#{/form}
-				</div>
+				#{doLayout /}
     		</div>
 			
 			<div id="footer">

@@ -36,9 +36,12 @@ public class Sessions extends Controller {
     	}
     }
     
-    public static void logout() {
+    public static void efetuarLogout() {
     	session.remove("usuarioAtivo");
     	Application.index();
     }
-
+    
+    public static void esqueciSenha() {
+    	render();
+    }
 }
