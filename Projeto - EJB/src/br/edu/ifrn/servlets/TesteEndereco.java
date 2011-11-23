@@ -60,7 +60,7 @@ public class TesteEndereco extends HttpServlet {
 		p.setNome("Allyson Barros");
 		p.setEndereco(e);
 		try {
-			p.setUsuario(new Usuario(p, "allysonbarros", "1234", true));
+			p.setUsuario(new Usuario(p, "allysonbarrosrn@gmail.com", "allysonbarros", "1234", true));
 		} catch (NoSuchAlgorithmException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

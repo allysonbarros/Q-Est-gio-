@@ -14,7 +14,6 @@ public class Teste {
 		DAO dao = new DAO();
 		Pessoa p = new Pessoa();
 		p.setCpf("12");
-		p.setEmail("@monte");
 		p.setNome("Dani");
 		
 		dao.save(p);

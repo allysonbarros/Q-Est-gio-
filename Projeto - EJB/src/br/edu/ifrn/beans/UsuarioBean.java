@@ -62,4 +62,9 @@ public class UsuarioBean implements UsuarioBeanRemote, UsuarioBeanLocal {
 		return dao.findByLogin(login);
 	}
 
+	@Override
+	public Usuario getUsuarioByEmail(String email) {
+		return dao.findByEmail(email);
+	}
+
 }

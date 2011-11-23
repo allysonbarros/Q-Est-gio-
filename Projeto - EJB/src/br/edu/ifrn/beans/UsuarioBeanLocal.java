@@ -12,5 +12,6 @@ public interface UsuarioBeanLocal {
 	public void deletarUsuario(Usuario p);
 	public Usuario getUsuario(Long id);
 	public Usuario getUsuarioByLogin(String login);
+	public Usuario getUsuarioByEmail(String email);
 	public List<Usuario> getTodosUsuarios();
 }

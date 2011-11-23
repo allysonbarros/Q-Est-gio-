@@ -21,7 +21,7 @@ public class Usuario implements Serializable {
 	
 	@OneToOne(mappedBy="usuario", cascade=CascadeType.PERSIST)
 	private Pessoa pessoa;
-	
+	private String email;
 	private String login;
 	private String senha;
 	private boolean ativado;
@@ -30,8 +30,9 @@ public class Usuario implements Serializable {
 		super();
 	}
 
-	public Usuario(Pessoa pessoa, String login, String senha, boolean ativado) throws NoSuchAlgorithmException {
+	public Usuario(Pessoa pessoa, String email, String login, String senha, boolean ativado) throws NoSuchAlgorithmException {
 		this.pessoa = pessoa;
+		this.email = email;
 		this.login = login;
 		this.criptografarSenha(senha);
 		this.ativado = ativado;
@@ -59,6 +60,14 @@ public class Usuario implements Serializable {
 		this.pessoa = pessoa;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public String getLogin() {
 		return login;
 	}
@@ -71,8 +80,8 @@ public class Usuario implements Serializable {
 		return senha;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setSenha(String senha) throws NoSuchAlgorithmException {
+		criptografarSenha(senha);
 	}
 
 	public boolean isAtivado() {

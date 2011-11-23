@@ -35,7 +35,11 @@ public class UsuarioDelegate {
 	public Usuario getUsuarioByLogin(String login) {
 		return bean.getUsuarioByLogin(login);
 	}
-
+	
+	public Usuario getUsuarioByEmail(String email) {
+		return bean.getUsuarioByEmail(email);
+	}
+	
 	public List<Usuario> getTodosUsuarios() {
 		return bean.getTodosUsuarios();
 	}

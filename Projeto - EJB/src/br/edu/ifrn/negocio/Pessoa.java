@@ -24,7 +24,7 @@ public class Pessoa implements Serializable {
 	private String rg;
 	private String nome;
 	private Date dataNascimento;
-	private String email;
+	
 	private String nomePai;
 	private String nomeMae;
 	private Blob foto;
@@ -86,14 +86,6 @@ public class Pessoa implements Serializable {
 
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getNomePai() {

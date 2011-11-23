@@ -1,24 +1,21 @@
 #{extends 'login.html' /}
-#{set title:'Login' /}
+#{set title:'esqueciSenha.html' /}
 
 <div id="box-login">
-	<h2>Acesso ao Sistema</h2>
+	<h2>Esqueci a Senha</h2>
 
-	#{form @sessions.efetuarLogin()}
+	#{form @Sessions.resetarSenha()}
 		<div class="formEl_b">
 			<div class="sepH_b">
-				<input type="text" name="login" class="inpt_b" value="" placeholder="Matrícula" id="login">
-			</div>
-			<div class="sepH_b">
-				<input type="password" name="senha" class="inpt_b" value="" placeholder="Senha" id="senha">
+				<input type="text" name="email" class="inpt_b" value="" placeholder="Email" id="email">
 			</div>
 		</div>
 		<div id="esqueciSenha-submit">
 			<div class="esqueciSenha">
-				<a href="@{Sessions.esqueciSenha()}">Esqueci a Senha</a>
+				<a href="@{Sessions.login()}">Cancelar</a>
 			</div>
 			<div class="submit">
-				<input type="submit" name="enviar" class="btn btn_aS fl sepV_a" value="Acessar" id="enviar">
+				<input type="submit" name="resetar" class="btn btn_aS fl sepV_a" value="Resetar Senha" id="resetar">
 			</div>
 		</div>
 		
