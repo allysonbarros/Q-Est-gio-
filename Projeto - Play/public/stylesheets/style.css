@@ -317,8 +317,9 @@
 			cursor: pointer;
 			display: block;
 			float: left;
-			width: 170px;
-			padding: 7px 0 0 10px
+			width: 150px;
+			padding: 7px 30px 0 10px;
+			text-align: right;
 		}
 
 		.formEl_b label.lbl_c {
