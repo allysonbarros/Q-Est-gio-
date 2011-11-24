@@ -15,6 +15,7 @@ public class Endereco implements Serializable {
 	
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ENDERECO_SeqGen")
 	private Long id;
+	
 	private String logradouro;
 	private String numero;
 	private String complemento;
