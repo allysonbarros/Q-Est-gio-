@@ -5,28 +5,38 @@ import java.sql.Blob;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity
+@SequenceGenerator(name="PESSOA_SeqGen", sequenceName="PESSOA_GEN_VAL")
 public class Pessoa implements Serializable {
 	private static final long serialVersionUID = 5267963861854701029L;
 
-	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PESSOA_SeqGen")
 	private Long id;
 
+	@Column(unique=true)
 	private Long matricula;
+	
+	@Column(unique=true)
 	private String cpf;
+	
 	private String rg;
+	
 	private String nome;
+	
 	private Date dataNascimento;
 	
 	private String nomePai;
 	private String nomeMae;
+	
 	private Blob foto;
 	
 	private int tipoPessoa;

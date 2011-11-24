@@ -6,12 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 @Entity
+@SequenceGenerator(name="ENDERECO_SeqGen", sequenceName="ENDERECO_GEN_VAL")
 public class Endereco implements Serializable {
 	private static final long serialVersionUID = 6666162512956942598L;
 	
-	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ENDERECO_SeqGen")
 	private Long id;
 	private String logradouro;
 	private String numero;

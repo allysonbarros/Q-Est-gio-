@@ -7,6 +7,7 @@ import helpers.Contexto;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import play.data.validation.Required;
 import play.mvc.Controller;
 import br.edu.ifrn.negocio.Endereco;
 import br.edu.ifrn.negocio.Pessoa;

@@ -12,12 +12,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity
+@SequenceGenerator(name="USUARIO_SeqGen", sequenceName="USUARIO_GEN_VAL")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1709541412674451282L;
 
-	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USUARIO_SeqGen")
 	private Long id;
 	
 	@OneToOne(mappedBy="usuario", cascade=CascadeType.PERSIST)
