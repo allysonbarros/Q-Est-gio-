@@ -48,6 +48,8 @@ public class Usuario implements Serializable {
 	}
 
 	private void criptografarSenha(String senha) throws NoSuchAlgorithmException {
+		if (senha.equals("") || senha == null)
+			return;
 		MessageDigest digest = MessageDigest.getInstance("MD5");
 	    digest.update(senha.getBytes(), 0, senha.length());
 	    this.senha = new BigInteger(1, digest.digest()).toString(16);
