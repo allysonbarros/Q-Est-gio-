@@ -29,7 +29,7 @@ public class Sessions extends Controller {
     		login();
     	} else {
     		if (u.getSenha().equals(SessionsHelper.criptografarSenha(senha))) {
-    			session.put("usuarioAtivo", u.getId());
+    			session.put("usuarioAtivoID", u.getId());
     			
     			Application.index();
     		} else {
@@ -39,8 +39,8 @@ public class Sessions extends Controller {
     	}
     }
     
-    public static void efetuarLogout() {
-    	session.remove("usuarioAtivo");
+    public static void efetuarLogoff() {
+    	session.remove("usuarioAtivoID");
     	Application.index();
     }
     

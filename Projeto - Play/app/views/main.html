@@ -22,7 +22,7 @@
 	    				</h1>
 					</div>
 					
-					#{ifnot usuarioAtivo}
+					#{ifnot currentUsuario}
 					<div id="box-login">
 						#{form @sessions.efetuarLogin()}
 							<div class="formEl_b">
@@ -45,6 +45,24 @@
 						#{/form}
 					</div>
 					#{/ifnot}
+					#{else}
+					<div id="box-perfil">
+						<div class="foto">
+							#{ifnot currentUsuario.getPessoa().getFoto()}
+							<img src="@{'public/images/avatar.jpg'}" width="78" height="90" />
+							#{/ifnot}
+							#{else}
+							<img src="#" width="78" height="90" />
+							#{/else}
+						</div>
+						<div class="dados-perfil">
+							
+							${currentUsuario.getPessoa().getNome()}<br/>
+							Você não possui mensagens não lidas. <br/>
+							<a href="@{Sessions.efetuarLogoff()}">Encerrar sua Sessão.</a>
+						</div>
+					</div>
+					#{/else}
     			</div>
     		</div>
     		

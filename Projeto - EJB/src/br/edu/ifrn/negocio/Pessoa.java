@@ -35,6 +35,7 @@ public class Pessoa implements Serializable {
 	private Date dataNascimento;
 	
 	private String nomePai;
+
 	private String nomeMae;
 	
 	private Blob foto;
@@ -136,5 +137,13 @@ public class Pessoa implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+	
+	public Blob getFoto() {
+		return foto;
+	}
+
+	public void setFoto(Blob foto) {
+		this.foto = foto;
 	}
 }

@@ -70,6 +70,43 @@ a { text-decoration:none;}
 	float:right;
 }
 
+#box-perfil {
+	width:400px;
+	float:right;
+	overflow:hidden;
+	margin: 30px 0 20px 10px;
+	font-size:13px;
+	color:#fff;
+	text-shadow: 1px 1px 1px #000000;
+	font-weight:bold;
+}
+
+#box-perfil .foto {
+	float:right;
+	width:78px;
+	height:90px;
+	background:#fff;
+	border-radius: 5px;
+	box-shadow: 0 0 10px #555;
+	margin:10px 20px;
+}
+
+#box-perfil .foto img {
+	border-radius: 5px;
+}
+
+#box-perfil .dados-perfil {
+	float:right;
+	padding-top:20px;
+	line-height:180%;
+	text-align:right;
+}
+
+#box-perfil .dados-perfil a {
+	color:#fff;
+	text-decoration: underline; 
+}
+
 #container-conteudo {
 	background: none repeat scroll 0 0 #FFFFFF;
 	border-radius: 20px 20px 0 0;

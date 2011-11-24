@@ -20,16 +20,17 @@ public class SessionsHelper extends Controller {
 			"Sessions.esqueciSenha", "Sessions.resetarSenha", "Sessions.redefinirSenha"
 	})
 	public static void checkAuthentication() throws Exception {
-		if (session.get("usuarioAtivo") == null)
+		if (session.get("usuarioAtivoID") == null)
 			Sessions.login();
 	}
 	
 	@Before(unless={"Sessions.login", "Sessions.logout"})
 	public static void getInfoUsuario() throws Exception {
-		if (session.get("usuarioAtivo") != null) {
+		if (session.get("usuarioAtivoID") != null) {
 			UsuarioDelegate del = new UsuarioDelegate();
-			Usuario u = del.getUsuario(Long.parseLong(Session.current().get("usuarioAtivo")));
-			renderArgs.put("usuarioAtivo", u);
+			Usuario u = del.getUsuario(Long.parseLong(session.get("usuarioAtivoID")));
+			
+			renderArgs.put("currentUsuario", u);
 		}
 	}
 	
