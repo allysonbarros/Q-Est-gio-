@@ -25,6 +25,7 @@ public class Sessions extends Controller {
     	validation.required(senha);
     	
     	if (validation.hasErrors()) {
+    		flash.error("Você deve preencher todos os campos. <br/> Tente novamente!");
     		validation.keep();
     		login();
     	} else {
@@ -32,7 +33,7 @@ public class Sessions extends Controller {
     		Usuario u = del.getUsuarioByLogin(login);
     	
 	    	if (u == null) {
-	    		flash.error("Matrícula ou Senha Inválida(s). Tente novamente!");
+	    		flash.error("Matrícula ou Senha Inválida(s). <br/> Tente novamente!");
 	    		login();
 	    	} else {
 	    		if (u.getSenha().equals(SessionsHelper.criptografarSenha(senha))) {
@@ -40,7 +41,7 @@ public class Sessions extends Controller {
 	    			
 	    			Application.index();
 	    		} else {
-	    			flash.error("Matrícula ou Senha Inválida(s). Tente novamente!");
+	    			flash.error("Matrícula ou Senha Inválida(s). <br/> Tente novamente!");
 	        		login();
 	    		}
 	    	}
@@ -49,7 +50,8 @@ public class Sessions extends Controller {
     
     public static void efetuarLogoff() {
     	session.remove("usuarioAtivoID");
-    	Application.index();
+    	flash("alert", "Você foi desconectado do sistema!");
+    	login();
     }
     
     public static void esqueciSenha() {

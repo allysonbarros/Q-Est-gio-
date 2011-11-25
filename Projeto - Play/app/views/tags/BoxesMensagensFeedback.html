@@ -1,0 +1,27 @@
+#{if flash.sucess}
+<div class="msg_box msg_ok">
+	${flash.success.raw()}
+	<img alt="" class="msg_close" src="images/blank.gif">
+</div>
+#{/if}
+
+#{if flash.error}
+<div class="msg_box msg_error">
+	${flash.error.raw()}
+	<img alt="" class="msg_close" src="images/blank.gif">
+</div>
+#{/if}
+
+#{if flash.get("info")}
+<div class="msg_box msg_info">
+	${flash.get("info").raw()}
+	<img alt="" class="msg_close" src="images/blank.gif">
+</div>
+#{/if}
+
+#{if flash.get("alert")}
+<div class="msg_box msg_alert">
+	${flash.get("alert").raw()}
+	<img alt="" class="msg_close" src="images/blank.gif">
+</div>
+#{/if}
