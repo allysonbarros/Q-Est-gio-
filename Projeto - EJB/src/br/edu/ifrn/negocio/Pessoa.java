@@ -40,8 +40,6 @@ public class Pessoa implements Serializable {
 	
 	private Blob foto;
 	
-	private int tipoPessoa;
-	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="endereco_id")
 	private Endereco endereco;
@@ -113,14 +111,6 @@ public class Pessoa implements Serializable {
 
 	public void setNomeMae(String nomeMae) {
 		this.nomeMae = nomeMae;
-	}
-
-	public int getTipoPessoa() {
-		return tipoPessoa;
-	}
-
-	public void setTipoPessoa(int tipoPessoa) {
-		this.tipoPessoa = tipoPessoa;
 	}
 
 	public Endereco getEndereco() {

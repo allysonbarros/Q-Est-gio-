@@ -14,6 +14,7 @@ import br.edu.ifrn.beans.EnderecoBeanLocal;
 import br.edu.ifrn.beans.PessoaBeanLocal;
 import br.edu.ifrn.negocio.Endereco;
 import br.edu.ifrn.negocio.Pessoa;
+import br.edu.ifrn.negocio.TipoPessoa;
 import br.edu.ifrn.negocio.Usuario;
 
 /**
@@ -60,7 +61,7 @@ public class TesteEndereco extends HttpServlet {
 		p.setNome("Allyson Barros");
 		p.setEndereco(e);
 		try {
-			p.setUsuario(new Usuario(p, "allysonbarrosrn@gmail.com", "200924040192", "1234", true));
+			p.setUsuario(new Usuario(p, "allysonbarrosrn@gmail.com", "200924040192", "1234", true, TipoPessoa.ALUNO));
 		} catch (NoSuchAlgorithmException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

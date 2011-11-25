@@ -74,7 +74,7 @@ a { text-decoration:none;}
 	float:right;
 	overflow:hidden;
 	margin: 30px 0 20px 10px;
-	font-size:13px;
+	font-size:14px;
 	color:#fff;
 	text-shadow: 1px 1px 1px #000000;
 	font-weight:bold;
@@ -96,14 +96,18 @@ a { text-decoration:none;}
 
 #box-perfil .dados-perfil {
 	float:right;
-	padding-top:20px;
-	line-height:180%;
+	padding-top:15px;
+	line-height:200%;
 	text-align:right;
+}
+
+#box-perfil .dados-perfil img {
+	vertical-align:middle;
 }
 
 #box-perfil .dados-perfil a {
 	color:#fff;
-	text-decoration: underline; 
+	/* text-decoration: underline; */ 
 }
 
 #container-conteudo {

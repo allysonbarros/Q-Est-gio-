@@ -35,16 +35,19 @@ public class Usuario implements Serializable {
 	
 	private boolean ativado;
 	
+	private int tipoUsuario;
+	
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(Pessoa pessoa, String email, String login, String senha, boolean ativado) throws NoSuchAlgorithmException {
+	public Usuario(Pessoa pessoa, String email, String login, String senha, boolean ativado, int tipoUsuario) throws NoSuchAlgorithmException {
 		this.pessoa = pessoa;
 		this.email = email;
 		this.login = login;
 		this.criptografarSenha(senha);
 		this.ativado = ativado;
+		this.tipoUsuario = tipoUsuario;
 	}
 
 	private void criptografarSenha(String senha) throws NoSuchAlgorithmException {
@@ -101,5 +104,13 @@ public class Usuario implements Serializable {
 
 	public void setAtivado(boolean ativado) {
 		this.ativado = ativado;
+	}
+
+	public void setTipoUsuario(int tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
+	public int getTipoUsuario() {
+		return tipoUsuario;
 	}
 }

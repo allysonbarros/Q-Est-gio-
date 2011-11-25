@@ -56,10 +56,9 @@
 							#{/else}
 						</div>
 						<div class="dados-perfil">
-							
-							${currentUsuario.getPessoa().getNome()}<br/>
-							Você não possui mensagens não lidas. <br/>
-							<a href="@{Sessions.efetuarLogoff()}">Encerrar sua Sessão.</a>
+							<img src="@{'public/images/aluno-icon.png'}" width="18px"/> ${currentUsuario.getPessoa().getNome()}<br/>
+							<img src="@{'public/images/mensagem-icon.png'}" width="18px" /> Você não possui mensagens<br/>
+							<img src="@{'public/images/logout-icon.png'}" width="18px" /> <a href="@{Sessions.efetuarLogoff()}">Encerrar sua Sessão</a>
 						</div>
 					</div>
 					#{/else}
