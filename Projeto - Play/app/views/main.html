@@ -57,10 +57,12 @@
 						</div>
 						<div class="dados-perfil">
 							<div>
-								#{if currentUsuario.tipoUsuario = 3}
+								#{if currentUsuario.tipoUsuario == 3}
 								<img src="@{'public/images/aluno-icon.png'}" width="18px"/>
 								#{/if}
-								
+								#{if currentUsuario.tipoUsuario == 1}
+								<img src="@{'public/images/icon-funcionario.png'}" width="18px"/>
+								#{/if}
 								${currentUsuario.getPessoa().getNome()}<br/>
 							</div>
 							
