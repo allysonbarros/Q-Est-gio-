@@ -25,6 +25,7 @@ public class Empresa implements Serializable {
 	
 	private String razaoSocial;
 	private String nomeFantasia;
+	private String email;
 	private String emailAlternativo;
 	private String site;
 	private String nomeResponsavel;
@@ -36,22 +37,23 @@ public class Empresa implements Serializable {
 	@JoinColumn(name="endereco_id")
 	private Endereco endereco;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="usuario_id")
-	private Usuario usuario;
+//	@OneToOne(cascade=CascadeType.ALL)
+//	@JoinColumn(name="usuario_id")
+//	private Usuario usuario;
 	
 	public Empresa() {
 		
 	}
 	
 	public Empresa(Long id, Long cnpj, String razaoSocial, String nomeFantasia,
-			String emailAlternativo, String site, String nomeResponsavel,
+			String email, String emailAlternativo, String site, String nomeResponsavel,
 			String cargoResponsavel, String areaAtuacao,
-			int numeroFuncionarios, Endereco endereco, Usuario usuario) {
+			int numeroFuncionarios, Endereco endereco) {
 		this.id = id;
 		this.cnpj = cnpj;
 		this.razaoSocial = razaoSocial;
 		this.nomeFantasia = nomeFantasia;
+		this.email = email;
 		this.emailAlternativo = emailAlternativo;
 		this.site = site;
 		this.nomeResponsavel = nomeResponsavel;
@@ -59,7 +61,6 @@ public class Empresa implements Serializable {
 		this.areaAtuacao = areaAtuacao;
 		this.numeroFuncionarios = numeroFuncionarios;
 		this.endereco = endereco;
-		this.usuario = usuario;
 	}
 
 	public Long getId() {
@@ -150,13 +151,12 @@ public class Empresa implements Serializable {
 		this.endereco = endereco;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public String getEmail() {
+		return email;
 	}
-	
 	
 }
