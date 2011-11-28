@@ -35,7 +35,7 @@ public class Usuario implements Serializable {
 	
 	private boolean ativado;
 	
-	@Column(columnDefinition="default 3")
+	@Column(columnDefinition="int default '3'")
 	private int tipoUsuario;
 	
 	public Usuario() {

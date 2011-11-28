@@ -13,7 +13,7 @@ import br.edu.ifrn.negocio.Usuario;
 import br.edu.ifrn.patterns.EnderecoDelegate;
 import br.edu.ifrn.patterns.PessoaDelegate;
 
-public class Alunos extends Controller {
+public class Orientadores extends Controller {
 
     public static void index() {
         render();
@@ -24,6 +24,7 @@ public class Alunos extends Controller {
     }
     
     public static void cadastrar(Pessoa p, String confirmacaoSenha) throws Exception {
+    	p.getUsuario().setTipoUsuario(2);
     	validation.required("matr",p.getMatricula());
     	validation.required("cpf",p.getCpf());
 //    	validation.required("rg",p.getRg());
@@ -43,7 +44,7 @@ public class Alunos extends Controller {
 //    	validation.required(p.getNomeConjuge());
     	validation.required("login",p.getUsuario().getLogin());
     	validation.required("senha",p.getUsuario().getSenha());
-    	//validation.equals("asd",p.getUsuario().getSenha(), confirmacaoSenha, confirmacaoSenha);
+    	//validation.equals(p.getUsuario().getSenha(), confirmacaoSenha);
     	
     	if (validation.hasErrors()) {
     		validation.keep();
@@ -52,7 +53,7 @@ public class Alunos extends Controller {
 	    	PessoaDelegate del = new PessoaDelegate();
 	    	del.cadastrarPessoa(p);
 	    	
-	    	index();
+	    	Application.index();
     	}
     }
 
