@@ -2,12 +2,8 @@ package controllers;
 
 import java.security.NoSuchAlgorithmException;
 
-import helpers.Contexto;
-
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-
-import org.apache.commons.lang.text.StrBuilder;
 
 import play.data.validation.Required;
 import play.mvc.Controller;

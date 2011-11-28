@@ -40,6 +40,10 @@ public class Empresa implements Serializable {
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
 	
+	public Empresa() {
+		
+	}
+	
 	public Empresa(Long id, Long cnpj, String razaoSocial, String nomeFantasia,
 			String emailAlternativo, String site, String nomeResponsavel,
 			String cargoResponsavel, String areaAtuacao,

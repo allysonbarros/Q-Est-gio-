@@ -14,8 +14,8 @@ public class Empresas extends Controller {
     	render();
     }
     
-    public static void cadastrar(Empresa e) throws Exception {
-    	validation.required(e.getCnpj());
+    public static void cadastrar(Empresa e, String confirmacaoSenha) throws Exception {     	
+    	validation.required("cnpj", e.getCnpj());
     	
     	if (validation.hasErrors()) {
     		validation.keep();
@@ -23,6 +23,8 @@ public class Empresas extends Controller {
     	} else {
     		EmpresaDelegate del = new EmpresaDelegate();
         	del.cadastrarEmpresa(e);
+        	
+        	index();
     	}
     }
     

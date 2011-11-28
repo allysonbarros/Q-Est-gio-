@@ -1,7 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'formCadastro.html' /}
 
-#{form @Empresas.formCadastro()}
+#{form @Empresas.cadastrar()}
 <div class="formEl_b">
 	<fieldset id="dados_da_empresa" class="">
 		<legend>Dados da Empresa</legend>
@@ -52,12 +52,12 @@
 		
 		<div class="sepH_b">
 			<label for="e.areaAtuacao" class="lbl_a">Área de Atuação:</label>
-			<input type="text" name="e.cnpj" value="" id="e.areaAtuacao" class="inpt_a">
+			<input type="text" name="e.areaAtuacao" value="" id="e.areaAtuacao" class="inpt_a">
 		</div>
 		
 		<div class="sepH_b">
 			<label for="e.numeroFuncionarios" class="lbl_a">Nº de Funcionários:</label>
-			<input type="text" name="e.cnpj" value="" id="e.numeroFuncionarios" class="inpt_a">
+			<input type="text" name="e.numeroFuncionarios" value="" id="e.numeroFuncionarios" class="inpt_a">
 		</div>
 		
 	</fieldset>
@@ -95,7 +95,7 @@
 	<fieldset id="dados_de_acesso" class="">
 		<legend>Dados de Acesso</legend>
 		<div class="sepH_b">
-			<label for="e.usuario.login" class="lbl_a">Matrícula:</label>
+			<label for="e.usuario.login" class="lbl_a">Login:</label>
 			<input type="text" name="e.usuario.login" value="" id="e.usuario.login" class="inpt_a">
 		</div>
 		<div class="sepH_b">
