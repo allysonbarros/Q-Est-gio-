@@ -30,7 +30,7 @@ public class Usuarios extends Controller {
     public static void cadastrar(Pessoa p) throws Exception {
     	validation.required("matr",p.getMatricula());
     	validation.required("cpf",p.getCpf());
-    	validation.required("rg",p.getRg());
+//    	validation.required("rg",p.getRg());
     	validation.required("nom",p.getNome());
     	validation.required("logr",p.getEndereco().getLogradouro());
     	validation.required("num",p.getEndereco().getNumero());
@@ -49,6 +49,10 @@ public class Usuarios extends Controller {
     	validation.required("senha",p.getUsuario().getSenha());
     	
     	if (validation.hasErrors()) {
+    		for(play.data.validation.Error error : validation.errors()) {
+                System.out.println(error.message());
+            }
+    		
     		validation.keep();
     		formCadastro();
     	}
