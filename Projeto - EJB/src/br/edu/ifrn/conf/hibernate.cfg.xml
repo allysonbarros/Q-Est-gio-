@@ -15,5 +15,6 @@
         <mapping class="br.edu.ifrn.negocio.Endereco" />
         <mapping class="br.edu.ifrn.negocio.Pessoa" />
         <mapping class="br.edu.ifrn.negocio.Usuario" />
+        <mapping class="br.edu.ifrn.negocio.Empresa" />
     </session-factory>
 </hibernate-configuration>
