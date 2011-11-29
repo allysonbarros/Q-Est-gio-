@@ -9,6 +9,7 @@ import play.data.validation.Required;
 import play.mvc.Controller;
 import br.edu.ifrn.negocio.Endereco;
 import br.edu.ifrn.negocio.Pessoa;
+import br.edu.ifrn.negocio.TipoPessoa;
 import br.edu.ifrn.negocio.Usuario;
 import br.edu.ifrn.patterns.EnderecoDelegate;
 import br.edu.ifrn.patterns.PessoaDelegate;
@@ -51,6 +52,7 @@ public class Orientadores extends Controller {
     		formCadastro();
     	} else {
 	    	PessoaDelegate del = new PessoaDelegate();
+	    	p.getUsuario().setTipoUsuario(TipoPessoa.ORIENTADOR);
 	    	del.cadastrarPessoa(p);
 	    	
 	    	Application.index();
