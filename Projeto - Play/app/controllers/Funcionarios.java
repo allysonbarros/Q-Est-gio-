@@ -14,7 +14,7 @@ import br.edu.ifrn.negocio.Usuario;
 import br.edu.ifrn.patterns.EnderecoDelegate;
 import br.edu.ifrn.patterns.PessoaDelegate;
 
-public class Orientadores extends Controller {
+public class Funcionarios extends Controller {
 
     public static void index() {
         render();
@@ -51,7 +51,7 @@ public class Orientadores extends Controller {
     		formCadastro();
     	} else {
 	    	PessoaDelegate del = new PessoaDelegate();
-	    	p.getUsuario().setTipoUsuario(TipoPessoa.FUNCIONARIO);
+	    	p.getUsuario().setTipoUsuario(TipoPessoa.ORIENTADOR);
 	    	del.cadastrarPessoa(p);
 	    	
 	    	Application.index();
