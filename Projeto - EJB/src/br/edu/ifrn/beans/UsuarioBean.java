@@ -5,9 +5,7 @@ import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
-import br.edu.ifrn.modelo.DAO;
 import br.edu.ifrn.modelo.UsuarioDAO;
-import br.edu.ifrn.negocio.Pessoa;
 import br.edu.ifrn.negocio.Usuario;
 
 /**

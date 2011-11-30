@@ -3,6 +3,7 @@ package br.edu.ifrn.negocio;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,17 +11,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.CollectionOfElements;
+
 @Entity
 @SequenceGenerator(name="OFERTAESTAGIO_SeqGen", sequenceName="OFERTAESTAGIO_GEN_VAL")
 public class OfertaEstagio  implements Serializable {
 	private static final long serialVersionUID = -1651515689960732974L;
 
-	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="OFERTAESTAGIO_SeqGens")
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="OFERTAESTAGIO_SeqGen")
 	private Long id;
 	
 	@JoinColumn(name="empresa_id")
 	private Empresa empresa;
+	@ElementCollection
 	private List<Pessoa> candidatos;
+	private int numVagas;
 	private String areaConhecimento;
 	private String funcao;
 	private String descricao;
@@ -59,6 +64,12 @@ public class OfertaEstagio  implements Serializable {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public int getNumVagas() {
+		return numVagas;
+	}
+	public void setNumVagas(int numVagas) {
+		this.numVagas = numVagas;
 	}
 	
 	
