@@ -113,8 +113,12 @@ a { text-decoration:none;}
 	margin: 0 auto;
 	width: 980px;
 	height:auto;
-	min-height: 800px;
+	min-height: 500px;
 	overflow:hidden;
+}
+
+#container-conteudo p {
+	margin:15px 0;
 }
 
 #migalhadepao {

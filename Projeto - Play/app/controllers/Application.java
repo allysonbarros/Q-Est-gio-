@@ -21,4 +21,19 @@ public class Application extends Controller {
     	render();
     }
     
+    public static void informacoesEstagio() {
+    	render();
+    }
+    
+    public static void legislacaoNormas() {
+    	render();
+    }
+    
+    public static void modelosFormularios() {
+    	render();
+    }
+    
+    public static void ofertaEstagio() {
+    	render();
+    }
 }

@@ -4,7 +4,8 @@
 <div id="box-login">
 	<h2>Esqueci a Senha</h2>
 
-	<h4>${flash.success} ${flash.error} ${flash.info}</h4>
+	*{"Tag que importa as mensagens de feedback do sistema"}*
+	#{BoxesMensagensFeedback /}
 
 	#{form @Sessions.resetarSenha()}
 		<div class="formEl_b">

@@ -69,11 +69,11 @@ public class Sessions extends Controller {
 	    	UsuarioDelegate del = new UsuarioDelegate();
 	    	Usuario u = del.getUsuarioByEmail(email);
 	    	if (u == null) {
-	    		flash.error("Email inválido ou não cadastrado. Tente novamente!");
+	    		flash.error("Email inválido ou não cadastrado. <br/> Tente novamente!");
 	    		esqueciSenha();
 	    	} else {
 	    		flash.success("Enviamos uma email para o endereço: %s. " +
-						"Nele você receberá as intruções para a redefinição de sua senha", u.getEmail());
+						"<br/><br/>Nele você receberá as intruções para a redefinição de sua senha", u.getEmail());
 	    		Mails.esqueciSenha(u);
 	    		
 	    		esqueciSenha();
