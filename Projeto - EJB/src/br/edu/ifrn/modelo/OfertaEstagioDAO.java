@@ -4,7 +4,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import br.edu.ifrn.negocio.OfertaEstagio;
-import br.edu.ifrn.negocio.Pessoa;
 
 public class OfertaEstagioDAO extends DAO {
 	@Deprecated
