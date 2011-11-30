@@ -86,7 +86,17 @@
     		
     			<div id="portal-columns" class="sl">
     				<div id="portal-column-one">
-						#{menuPublico /}					
+						#{ifnot currentUsuario} 
+							#{menuPublico /}
+						#{/ifnot}
+						#{else}
+							#{if currentUsuario.tipoUsuario == 3}
+								#{menuAluno /}
+							#{/if}
+							#{if currentUsuario.tipoUsuario == 1}
+								#{menuFuncionario /}
+							#{/if}
+						#{/else}					
 					</div>
 					<div id="portal-column-content">
 						#{doLayout /}
