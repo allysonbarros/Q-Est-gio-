@@ -1,6 +1,9 @@
 #{extends 'main.html' /}
 #{set title:'formCadastro.html' /}
 
+*{"Tag que importa as mensagens de feedback do sistema"}*
+#{BoxesMensagensFeedback /}
+	
 #{form @Empresas.cadastrar()}
 <div class="formEl_b">
 	<fieldset id="dados_da_empresa" class="">

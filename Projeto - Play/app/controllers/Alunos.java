@@ -1,5 +1,7 @@
 package controllers;
 
+import helpers.SessionsHelper;
+
 import java.security.NoSuchAlgorithmException;
 
 import javax.naming.InitialContext;
@@ -7,6 +9,7 @@ import javax.naming.NamingException;
 
 import play.data.validation.Required;
 import play.mvc.Controller;
+import play.mvc.With;
 import br.edu.ifrn.negocio.Endereco;
 import br.edu.ifrn.negocio.Pessoa;
 import br.edu.ifrn.negocio.TipoPessoa;
@@ -14,6 +17,7 @@ import br.edu.ifrn.negocio.Usuario;
 import br.edu.ifrn.patterns.EnderecoDelegate;
 import br.edu.ifrn.patterns.PessoaDelegate;
 
+@With(SessionsHelper.class)
 public class Alunos extends Controller {
 
     public static void index() {
@@ -54,7 +58,8 @@ public class Alunos extends Controller {
 	    	p.getUsuario().setTipoUsuario(TipoPessoa.ALUNO);
 	    	del.cadastrarPessoa(p);
 	    	
-	    	index();
+	    	flash.success("Aluno cadastrado com sucesso!");
+	    	formCadastro();
     	}
     }
 
