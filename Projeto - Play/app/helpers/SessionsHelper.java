@@ -6,18 +6,21 @@ import java.security.NoSuchAlgorithmException;
 
 import controllers.Sessions;
 
+import br.edu.ifrn.negocio.TipoPessoa;
 import br.edu.ifrn.negocio.Usuario;
 import br.edu.ifrn.patterns.UsuarioDelegate;
 
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.Scope;
+import play.mvc.With;
 import play.mvc.Scope.Session;
 
 public class SessionsHelper extends Controller {
 	@Before(unless={
 			"Application.index", "Sessions.login", "Sessions.efetuarLogin",
-			"Sessions.esqueciSenha", "Sessions.resetarSenha", "Sessions.redefinirSenha"
+			"Sessions.esqueciSenha", "Sessions.resetarSenha", "Sessions.redefinirSenha",
+			"Alunos.formCadastro", "Alunos.cadastrar"
 	})
 	public static void checkAuthentication() throws Exception {
 		if (session.get("usuarioAtivoID") == null)
@@ -33,6 +36,17 @@ public class SessionsHelper extends Controller {
 			renderArgs.put("currentUsuario", u);
 		}
 	}
+	
+//	public static void verificaPermissao(int nivelAcesso) throws Exception {
+//		UsuarioDelegate del = new UsuarioDelegate();
+//		Usuario u = del.getUsuario(Long.parseLong(session.get("usuarioAtivoID")));
+//		
+//		if (u.getTipoUsuario() == nivelAcesso) {
+//			return;
+//		} else {
+//			flash.error("Você não tem permissão para acessar este recurso.");
+//		}
+//	}
 	
 	public static String criptografarSenha(String senha) throws NoSuchAlgorithmException {
 		MessageDigest digest = MessageDigest.getInstance("MD5");

@@ -11,7 +11,7 @@
 	code{background-color:#fee9cc;color:rgba(0,0,0,0.75);padding:1px 3px}
 	pre{background-color:#f5f5f5;display:block;line-height:18px;font-size:12px;border:1px solid #ccc;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;white-space:pre-wrap;word-wrap:break-word;margin:0 0 18px;padding:17px}
 	
-	ul ul,ul ol,ol ol,ol ul{margin-bottom:0}
+	ul ul,ul ol,ol ol,ol ul{margin-bottom:0;}
 	ul.disc,ul.circle,ol.dec,ol.lalpha {margin:6px 0 6px 25px}
 	ul.disc {list-style:disc}
 	ul.circle {list-style:circle}
@@ -453,21 +453,18 @@
 		#main_nav .active .tick {display:block}
 	
 	/* sidebar */
-		#sidebar {display:none}
-		.sidebar #sidebar {display:block;width:200px;float:left;margin-left:-100%}
-		.sidebar #main_content {margin-left:216px;min-width:607px;min-height:1px}
-
+		#sidebar ul { list-style:none;}
 		#sidebar .sub_section {margin:0 0 2px;padding:4px 6px 4px 10px;border-bottom:1px solid #f0f0f0}
-		#sidebar .sub_section li {margin-bottom:4px;padding-left:12px;background: url(../images/arrow_a.gif) no-repeat 2px 5px;font-size:11px}
+		#sidebar .sub_section li {margin-bottom:4px;padding-left:12px;background: url(../images/arrow_a.gif) no-repeat 2px 5px;font-size:12px}
 		#sidebar .sub_section li.parent {background:none;overflow:hidden}
-		#sidebar .sub_section ul {margin-left:10px}
-		#sidebar h4 {color:#5F5F5F;padding:5px 8px 5px 10px;margin-bottom:2px;border-width:1px;border-style:solid;border-color:transparent transparent #f0f0f0;cursor:pointer;position:relative;font-size:12px}
+		#sidebar .sub_section ul {margin-left:10px;}
+		#sidebar h4 {color:#5F5F5F;padding:5px 8px 5px 10px;margin-bottom:2px;border-width:1px;border-style:solid;border-color:transparent transparent #f0f0f0;cursor:pointer;position:relative;font-size:14px}
 		#sidebar h4 span {display:block;font-weight:700}
 		#sidebar .sub_section .active {background: url(../images/arrow_b.gif) no-repeat 2px 5px}
 		#sidebar .sub_section .active a {text-decoration:none;font-weight:700;color:#222}
 		#sidebar .micro-closed span {background: url(../images/up_down_arrows_a.gif) no-repeat right 4px}
 		#sidebar .micro-hover-closed span,#sidebar .micro-hover-open span,#sidebar .micro-open span {background: url(../images/up_down_arrows_a.gif) no-repeat right -49px}
-		#sidebar .micro-hover-closed,#sidebar .micro-open {background:#f0f0f0;border:1px solid #e3e3e3;color:#222}
+		#sidebar .micro-hover-closed,#sidebar .micro-open, .micro-solo {background:#f0f0f0;border:1px solid #e3e3e3;color:#222}
 		
 	/* slide panel */
 		#slide_wrapper {position: absolute;top: 0;width: 100%;z-index: 1010;margin:0 auto}

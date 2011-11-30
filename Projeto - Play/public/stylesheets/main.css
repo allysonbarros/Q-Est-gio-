@@ -1,15 +1,14 @@
 * {
-	border: 0 none;
-	font-family: Arial, sans-serif;
-	margin: 0;
-	outline: 0 none;
-	padding: 0;
+	margin:0;
+	padding:0;
 }
 
 body {
 	background: url("/public/images/bg.jpg") no-repeat scroll center 0 #FFFFFF;
 	color: #333333;
 	font-size: 100%;
+	font-family: Arial, Verdana, 'Sans-Serif';
+	font-size:14px;
 }
 
 a { text-decoration:none;}
@@ -215,3 +214,5 @@ div.cell {
 	text-shadow: none;
 	text-align: left;
 }
+
+#sidebar div {margin:0; padding:0; outline:0 none;}

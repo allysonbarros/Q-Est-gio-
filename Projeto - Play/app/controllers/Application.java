@@ -14,7 +14,6 @@ import br.edu.ifrn.patterns.ServiceLocator;
 import play.mvc.Controller;
 import play.mvc.With;
 
-@With(SessionsHelper.class)
 public class Application extends Controller {
 
     public static void index() {
