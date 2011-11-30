@@ -19,19 +19,19 @@ public class EmpresaDelegate {
 		bean.cadastrarEmpresa(e);
 	}
 
-	public void editarPessoa(Empresa e) {
+	public void editarEmpresa(Empresa e) {
 		bean.editarEmpresa(e);
 	}
 
-	public void deletarPessoa(Empresa e) {
+	public void deletarEmpresa(Empresa e) {
 		bean.deletarEmpresa(e);
 	}
 
-	public Empresa getPessoa(Long id) {
+	public Empresa getEmpresa(Long id) {
 		return bean.getEmpresa(id);
 	}
 
-	public List<Empresa> getTodasPessoas() {
+	public List<Empresa> getTodasEmpresas() {
 		return bean.getTodasEmpresas();
 	}
 
