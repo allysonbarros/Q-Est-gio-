@@ -5,9 +5,11 @@ import java.util.List;
 import play.mvc.Controller;
 import br.edu.ifrn.negocio.Empresa;
 import br.edu.ifrn.negocio.OfertaEstagio;
+import br.edu.ifrn.negocio.Pessoa;
 import br.edu.ifrn.negocio.TipoPessoa;
 import br.edu.ifrn.patterns.EmpresaDelegate;
 import br.edu.ifrn.patterns.OfertaEstagioDelegate;
+import br.edu.ifrn.patterns.PessoaDelegate;
 
 public class OfertasEstagio extends Controller {
 
@@ -41,6 +43,19 @@ public class OfertasEstagio extends Controller {
 			flash.success("Oferta de estágio cadastrada com sucesso!");
 			formCadastro();
 		}
-
+	}
+	
+	public static void candidatarAluno(long idOferta ) throws Exception{
+		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
+		OfertaEstagioDelegate del_oe = new OfertaEstagioDelegate();
+		del_oe.inserirCandidato(idOferta, alunoId);
+		
+	}
+	
+	public static void descandidatarAluno(long idOferta ) throws Exception{
+		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
+		OfertaEstagioDelegate del_oe = new OfertaEstagioDelegate();
+		del_oe.removerCandidato(idOferta, alunoId);
+		
 	}
 }
