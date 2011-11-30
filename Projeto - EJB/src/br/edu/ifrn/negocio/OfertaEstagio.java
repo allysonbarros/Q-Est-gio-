@@ -1,10 +1,12 @@
 package br.edu.ifrn.negocio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,12 +23,19 @@ public class OfertaEstagio  implements Serializable {
 	
 	@JoinColumn(name="empresa_id")
 	private Empresa empresa;
-	@ElementCollection
+	@ElementCollection(fetch=FetchType.EAGER)
 	private List<Pessoa> candidatos;
 	private int numVagas;
 	private String areaConhecimento;
 	private String funcao;
 	private String descricao;
+	
+	
+	
+	public OfertaEstagio() {
+		candidatos = new ArrayList<Pessoa>();
+		// TODO Auto-generated constructor stub
+	}
 	public Empresa getEmpresa() {
 		return empresa;
 	}
