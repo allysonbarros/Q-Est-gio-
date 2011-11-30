@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.SequenceGenerator;
 
-import org.hibernate.annotations.CollectionOfElements;
-
 @Entity
 @SequenceGenerator(name="OFERTAESTAGIO_SeqGen", sequenceName="OFERTAESTAGIO_GEN_VAL")
 public class OfertaEstagio  implements Serializable {

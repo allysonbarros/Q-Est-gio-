@@ -11,6 +11,8 @@ import javax.rmi.PortableRemoteObject;
 
 import br.edu.ifrn.beans.EmpresaBeanRemote;
 import br.edu.ifrn.beans.EnderecoBeanRemote;
+import br.edu.ifrn.beans.EstagioBeanRemote;
+import br.edu.ifrn.beans.OfertaEstagioBeanRemote;
 import br.edu.ifrn.beans.PessoaBeanRemote;
 import br.edu.ifrn.beans.UsuarioBeanRemote;
 
@@ -65,6 +67,17 @@ public class ServiceLocator {
 	public EmpresaBeanRemote getEmpresaBean(){
 		Object ref = getService("EmpresaBean/remote");
 		EmpresaBeanRemote beanRemote = (EmpresaBeanRemote) PortableRemoteObject.narrow(ref, EmpresaBeanRemote.class);
+		return beanRemote;
+	}
+
+	public EstagioBeanRemote getEstagioBean(){
+		Object ref = getService("EstagioBean/Remote");
+		EstagioBeanRemote beanRemote = (EstagioBeanRemote) PortableRemoteObject.narrow(ref, EmpresaBeanRemote.class);
+		return beanRemote;
+	}
+	public OfertaEstagioBeanRemote getOfertaEstagioBean(){
+		Object ref = getService("OfertaEstagioBean/remote");
+		OfertaEstagioBeanRemote beanRemote = (OfertaEstagioBeanRemote) PortableRemoteObject.narrow(ref, EmpresaBeanRemote.class);
 		return beanRemote;
 	}
 	

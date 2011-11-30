@@ -3,9 +3,7 @@ package br.edu.ifrn.patterns;
 import java.util.List;
 
 import br.edu.ifrn.beans.EmpresaBeanRemote;
-import br.edu.ifrn.beans.PessoaBeanRemote;
 import br.edu.ifrn.negocio.Empresa;
-import br.edu.ifrn.negocio.Pessoa;
 
 public class EmpresaDelegate {
 	
