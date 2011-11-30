@@ -21,7 +21,7 @@
 	h1,h2,h3,h4{font-weight:400;color:#222}
 	h1,h2,h3{font-family:'Open Sans', sans-serif}
 	h1{font-size:26px}
-	h2{font-size:22px}
+	h2{font-size:22px; padding-bottom:10px; margin-bottom:20px; border-bottom:1px solid #ccc; }
 	h3{font-size:18px}
 	h4{font-size:16px}
 	h5{font-size:14px}

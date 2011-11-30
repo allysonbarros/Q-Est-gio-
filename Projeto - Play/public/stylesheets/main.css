@@ -1,14 +1,10 @@
-* {
-	margin:0;
-	padding:0;
-}
-
 body {
 	background: url("/public/images/bg.jpg") no-repeat scroll center 0 #FFFFFF;
 	color: #333333;
 	font-size: 100%;
 	font-family: Arial, Verdana, 'Sans-Serif';
 	font-size:14px;
+	line-height:170%;
 }
 
 a { text-decoration:none;}
