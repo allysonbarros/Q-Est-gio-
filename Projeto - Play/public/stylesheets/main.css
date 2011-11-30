@@ -127,9 +127,10 @@ a { text-decoration:none;}
     vertical-align: top;
 }
 #portal-column-content {
-    float: right;
-    padding: 20px;
+    float: left;
+    padding: 20px 0px;
     width: 980px;
+    margin:0 30px;
 }
 #portal-columns.sn #portal-column-content {
     width: 960px;
@@ -149,7 +150,7 @@ a { text-decoration:none;}
     padding: 20px 0 20px 20px;
 }
 #portal-column-two {
-    float: right;
+    float: left;
     padding: 20px 20px 20px 0;
 }
 

@@ -24,6 +24,10 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
-ul, ol ul {
+ol {
 	list-style-position:inside;
+}
+ol ul {
+	list-style-type: circle;
+	padding-left:30px;
 }
