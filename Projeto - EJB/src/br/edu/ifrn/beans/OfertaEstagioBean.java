@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 
 import br.edu.ifrn.modelo.DAO;
 import br.edu.ifrn.negocio.OfertaEstagio;
+import br.edu.ifrn.negocio.Pessoa;
 
 /**
  * Session Bean implementation class OfertaEstagioBean
@@ -25,12 +26,7 @@ public class OfertaEstagioBean implements OfertaEstagioBeanRemote, OfertaEstagio
 	public void cadastrarOfertaEstagio(OfertaEstagio e) {
 		dao.save(e);
 	}
-
-	@Override
-	public void editarOfertaEstagio(OfertaEstagio e) {
-		dao.update(e);
-	}
-
+	
 	@Override
 	public void deletarOfertaEstagio(OfertaEstagio e) {
 		dao.delete(e);
@@ -44,6 +40,23 @@ public class OfertaEstagioBean implements OfertaEstagioBeanRemote, OfertaEstagio
 	@Override
 	public List<OfertaEstagio> getTodasOfertaEstagios() {
 		return dao.findAll(OfertaEstagio.class);
+	}
+
+	@Override
+	public void editarOfertaEstagio(OfertaEstagio e) {
+		dao.update(e);
+	}
+
+	@Override
+	public void inserirCandidato(OfertaEstagio e, Pessoa p) {
+		e.getCandidatos().add(p);
+		dao.update(e);
+	}
+
+	@Override
+	public void removerCandidato(OfertaEstagio e, Pessoa p) {
+		e.getCandidatos().remove(p);
+		dao.update(e);
 	}
 
 }

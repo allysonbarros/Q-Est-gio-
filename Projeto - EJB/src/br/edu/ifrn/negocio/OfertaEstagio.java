@@ -24,6 +24,7 @@ public class OfertaEstagio  implements Serializable {
 	@JoinColumn(name="empresa_id")
 	private Empresa empresa;
 	@ElementCollection(fetch=FetchType.EAGER)
+	@JoinColumn(name="pessoa_id")
 	private List<Pessoa> candidatos;
 	private int numVagas;
 	private String areaConhecimento;
