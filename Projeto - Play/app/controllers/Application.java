@@ -1,6 +1,5 @@
 package controllers;
 
-import helpers.Contexto;
 import helpers.SessionsHelper;
 
 import javax.naming.InitialContext;
@@ -22,6 +21,10 @@ public class Application extends Controller {
     }
     
     public static void informacoesEstagio() {
+    	render();
+    }
+    
+    public static void modeloDeclaracaoEstagio() {
     	render();
     }
     

@@ -455,7 +455,7 @@
 	/* sidebar */
 		#sidebar ul { list-style:none;}
 		#sidebar .sub_section {margin:0 0 2px;padding:4px 6px 4px 10px;border-bottom:1px solid #f0f0f0}
-		#sidebar .sub_section li {margin-bottom:4px;padding-left:12px;background: url(../images/arrow_a.gif) no-repeat 2px 5px;font-size:12px}
+		#sidebar .sub_section li {margin-bottom:4px;padding-left:12px;background: url(../images/arrow_a.gif) no-repeat 2px 8px;font-size:12px}
 		#sidebar .sub_section li.parent {background:none;overflow:hidden}
 		#sidebar .sub_section ul {margin-left:10px;}
 		#sidebar h4 {color:#5F5F5F;padding:5px 8px 5px 10px;margin-bottom:2px;border-width:1px;border-style:solid;border-color:transparent transparent #f0f0f0;cursor:pointer;position:relative;font-size:14px}

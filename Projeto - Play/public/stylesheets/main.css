@@ -256,4 +256,5 @@ div.cell {
 	text-align: left;
 }
 
-#sidebar div {margin:0; padding:0; outline:0 none;}
+#sidebar ul li a {color:#CE0000;}
+#sidebar ul li a:hover { font-weight:bold; }
