@@ -44,7 +44,7 @@ a { text-decoration:none;}
 
 #box-login {
 	float: right;
-	margin: 30px 10px 20px 10px;
+	margin: 25px 10px 20px 10px;
 }
 
 #box-login #esqueciSenha-submit {
@@ -58,6 +58,7 @@ a { text-decoration:none;}
 #box-login #esqueciSenha-submit .esqueciSenha a{
 	color:#fff;
 	font-size:12px;
+	text-shadow: 1px 1px 1px #333;
 }
 
 #box-login #esqueciSenha-submit .submit {
@@ -114,6 +115,45 @@ a { text-decoration:none;}
 	height:auto;
 	min-height: 800px;
 	overflow:hidden;
+}
+
+#migalhadepao {
+	margin:20px 20px 0 20px;
+	display:block;
+	border:1px solid #eee;
+	overflow:hidden;
+}
+
+#migalhadepao li {
+	float:left;
+	padding:5px;
+}
+
+#migalhadepao li, #migalhadepao ul, #migalhadepao ul li {
+	list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+
+#migalhadepao li.parent {
+    background: url("../images/crumbs.gif") no-repeat scroll right center transparent;
+    border-right: medium none;
+    padding-left: 10px;
+    padding-right: 15px;
+    position: relative;
+}
+
+#migalhadepao li.current {
+	margin-left:10px;
+}
+
+#migalhadepao li.current a {
+    color: #222222;
+}
+
+#migalhadepao a {
+	color: #CE0000;
+	font-size:11px;
 }
 
 #portal-columns {

@@ -1,5 +1,38 @@
 #{extends 'main.html' /}
 #{set title:'formCadastro.html' /}
+#{set 'migalhaDePao'}
+<ul id="migalhadepao">
+	<li class="parent">
+		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
+		<a href="index.php?uid=1&amp;page=dashboard" class="vam">Lagu Admin</a>
+		<ul style="display: none;" class="first">
+			<li><a href="#">Content</a></li>
+			<li><a href="#">Media library</a></li>
+			<li><a href="#">Users</a></li>
+			<li><a href="#">Tasks</a></li>
+			<li><a href="#">Reports</a></li>
+			<li><a href="#">Settings</a></li>
+		</ul>
+	</li>
+	<li class="parent">
+		<a href="#">Content</a>
+		<ul style="display: none;">
+			<li><a href="#">Articles</a></li>
+			<li><a href="#">Pages</a></li>
+			<li><a href="#">Custom content</a></li>
+		</ul>
+	</li>
+	<li class="parent">
+		<a href="#">Articles</a>
+		<ul style="display: none;">
+			<li><a href="#">Show All</a></li>
+			<li><a href="#">Create new</a></li>
+		</ul>
+	</li>
+	<li class="current"><a href="#">Contact page</a></li>
+</ul>
+#{/set}
+
 
 *{"Tag que importa as mensagens de feedback do sistema"}*
 #{BoxesMensagensFeedback /}
