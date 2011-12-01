@@ -31,8 +31,6 @@ public class OfertaEstagio  implements Serializable {
 	private String funcao;
 	private String descricao;
 	
-	
-	
 	public OfertaEstagio() {
 		candidatos = new ArrayList<Pessoa>();
 		// TODO Auto-generated constructor stub

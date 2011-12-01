@@ -58,7 +58,8 @@ public class Funcionarios extends Controller {
 	    	p.getUsuario().setTipoUsuario(TipoPessoa.ORIENTADOR);
 	    	del.cadastrarPessoa(p);
 	    	
-	    	Application.index();
+	    	flash.success("Funcionário cadastrado com sucesso!");
+	    	formCadastro();
     	}
     }
 

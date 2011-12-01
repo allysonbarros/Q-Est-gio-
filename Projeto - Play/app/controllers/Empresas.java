@@ -26,7 +26,8 @@ public class Empresas extends Controller {
     		EmpresaDelegate del = new EmpresaDelegate();
         	del.cadastrarEmpresa(e);
         	
-        	index();
+        	flash.success("Empresa cadastrada com sucesso!");
+	    	formCadastro();
     	}
     }
     

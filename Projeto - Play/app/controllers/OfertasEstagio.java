@@ -1,8 +1,11 @@
 package controllers;
 
+import helpers.SessionsHelper;
+
 import java.util.List;
 
 import play.mvc.Controller;
+import play.mvc.With;
 import br.edu.ifrn.negocio.Empresa;
 import br.edu.ifrn.negocio.OfertaEstagio;
 import br.edu.ifrn.negocio.Pessoa;
@@ -11,6 +14,7 @@ import br.edu.ifrn.patterns.EmpresaDelegate;
 import br.edu.ifrn.patterns.OfertaEstagioDelegate;
 import br.edu.ifrn.patterns.PessoaDelegate;
 
+@With(SessionsHelper.class)
 public class OfertasEstagio extends Controller {
 
 	public static void index() {
