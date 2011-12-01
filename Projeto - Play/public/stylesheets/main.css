@@ -152,11 +152,11 @@ a { text-decoration:none;}
 }
 
 #migalhadepao li.current a {
-    color: #222222;
+	color: #CE0000;
 }
 
 #migalhadepao a {
-	color: #CE0000;
+	color: #000;
 	font-size:11px;
 }
 

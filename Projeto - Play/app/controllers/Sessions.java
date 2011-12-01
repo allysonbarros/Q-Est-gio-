@@ -50,7 +50,7 @@ public class Sessions extends Controller {
     
     public static void efetuarLogoff() {
     	session.remove("usuarioAtivoID");
-    	flash("alert", "Você foi desconectado do sistema!");
+    	flash("info", "Você foi desconectado do sistema!");
     	login();
     }
     
