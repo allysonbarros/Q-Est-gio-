@@ -77,7 +77,7 @@ public class ServiceLocator {
 	}
 	public OfertaEstagioBeanRemote getOfertaEstagioBean(){
 		Object ref = getService("OfertaEstagioBean/remote");
-		OfertaEstagioBeanRemote beanRemote = (OfertaEstagioBeanRemote) PortableRemoteObject.narrow(ref, EmpresaBeanRemote.class);
+		OfertaEstagioBeanRemote beanRemote = (OfertaEstagioBeanRemote) PortableRemoteObject.narrow(ref, OfertaEstagioBeanRemote.class);
 		return beanRemote;
 	}
 	
