@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -21,11 +22,14 @@ public class OfertaEstagio  implements Serializable {
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="OFERTAESTAGIO_SeqGen")
 	private Long id;
 	
+	@OneToOne
 	@JoinColumn(name="empresa_id")
 	private Empresa empresa;
+	
 	@ElementCollection(fetch=FetchType.EAGER)
 	@JoinColumn(name="pessoa_id")
 	private List<Pessoa> candidatos;
+	
 	private int numVagas;
 	private String areaConhecimento;
 	private String funcao;

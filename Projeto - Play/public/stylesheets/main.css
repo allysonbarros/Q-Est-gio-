@@ -258,3 +258,8 @@ div.cell {
 
 #sidebar ul li a {color:#CE0000;}
 #sidebar ul li a:hover { font-weight:bold; }
+
+#lista-ofertas { overflow:hidden; line-height:180%; }
+#lista-ofertas .item-ofertas {padding-bottom:20px; border-bottom:1px solid #ccc;}
+#lista-ofertas .item-ofertas .titulo-oferta {font-size:20px;}
+#lista-ofertas .item-ofertas .quantidadeVagas-oferta {font-size:14px; color:#666;}

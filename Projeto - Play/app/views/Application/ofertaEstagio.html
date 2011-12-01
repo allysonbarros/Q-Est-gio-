@@ -1,4 +1,17 @@
 #{extends 'main.html' /}
 #{set title:'ofertaEstagio' /}
 
-Here goes your content.
+<h2>Ofertas de Estágio</h2>
+
+<div id="lista-ofertas">
+	#{list items:lista, as:'oferta'}
+	<div class="item-ofertas">
+		
+		<div class="titulo-oferta">${oferta.funcao}</div>
+		<div class="numVagas-oferta"><strong>Nº de Vaga(s):</strong> ${oferta.numVagas}</div>
+		<div class="areaConhecimento-oferta"><strong>Área de Conhecimento:</strong> ${oferta.areaConhecimento}</div>
+		<div class="empresa-oferta"><strong>Empresa:</strong> ${oferta.empresa.nomeFantasia}</div>
+		<div class="descricao-oferta"><strong>Descrição:</strong> ${oferta.descricao}</div>
+	</div>
+	#{/list}
+</div>
