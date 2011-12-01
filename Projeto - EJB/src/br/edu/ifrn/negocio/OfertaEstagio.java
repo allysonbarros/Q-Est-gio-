@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @SequenceGenerator(name="OFERTAESTAGIO_SeqGen", sequenceName="OFERTAESTAGIO_GEN_VAL")
@@ -27,7 +30,8 @@ public class OfertaEstagio  implements Serializable {
 	private Empresa empresa;
 	
 	@ElementCollection(fetch=FetchType.EAGER)
-	@JoinColumn(name="pessoa_id")
+	@CollectionTable(name = "oferta_pessoa", joinColumns = @JoinColumn(name = "pessoa_id"))
+	@OrderColumn
 	private List<Pessoa> candidatos;
 	
 	private int numVagas;

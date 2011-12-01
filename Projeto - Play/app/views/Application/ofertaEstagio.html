@@ -1,12 +1,30 @@
 #{extends 'main.html' /}
 #{set title:'ofertaEstagio' /}
-
+#{set 'migalhaDePao'}
+<ul id="migalhadepao">
+	<li class="parent">
+		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
+		<a href="/" class="vam">Início</a>
+	</li>
+	<li class="current"><a href="#">Oferta de estágio</a></li>
+</ul>
+#{/set}
 <h2>Ofertas de Estágio</h2>
 
 <div id="lista-ofertas">
 	#{list items:lista, as:'oferta'}
 	<div class="item-ofertas">
-		
+	<div style="float: right;">
+	#{if session.get('usuarioAtivoID')}
+	#{if listaCand.get(oferta_index-1).equals(false)}
+		<a class="btn btn_d fl" href="@{OfertasEstagio.candidatarAluno(oferta.id)}">Desejo candidatar-me a esta oferta</a>
+	#{/if}
+	#{else}
+			<a class="btn btn_c fl sepV_a" href="@{OfertasEstagio.descandidatarAluno(oferta.id)}">Remover minha candidatura</a>
+	#{/else}
+	#{/if}
+	</div>
+	
 		<div class="titulo-oferta">${oferta.funcao}</div>
 		<div class="numVagas-oferta"><strong>Nº de Vaga(s):</strong> ${oferta.numVagas}</div>
 		<div class="areaConhecimento-oferta"><strong>Área de Conhecimento:</strong> ${oferta.areaConhecimento}</div>
@@ -14,4 +32,5 @@
 		<div class="descricao-oferta"><strong>Descrição:</strong> ${oferta.descricao}</div>
 	</div>
 	#{/list}
+	
 </div>

@@ -53,13 +53,13 @@ public class OfertasEstagio extends Controller {
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
 		OfertaEstagioDelegate del_oe = new OfertaEstagioDelegate();
 		del_oe.inserirCandidato(idOferta, alunoId);
-		
+		Application.ofertaEstagio();
 	}
 	
 	public static void descandidatarAluno(long idOferta ) throws Exception{
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
 		OfertaEstagioDelegate del_oe = new OfertaEstagioDelegate();
 		del_oe.removerCandidato(idOferta, alunoId);
-		
+		Application.ofertaEstagio();
 	}
 }

@@ -3,24 +3,33 @@ package br.edu.ifrn.modelo;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import br.edu.ifrn.beans.OfertaEstagioBeanRemote;
+import br.edu.ifrn.beans.PessoaBeanRemote;
 import br.edu.ifrn.negocio.*;
+import br.edu.ifrn.patterns.OfertaEstagioDelegate;
+import br.edu.ifrn.patterns.ServiceLocator;
 public class Teste {
 
 
 
 	/**
 	 * @param args
-	 * @throws NoSuchAlgorithmException 
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) throws NoSuchAlgorithmException {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		DAO dao = new DAO();
-
-		//		Pessoa p = new Pessoa();
-		//		p.setNome("Sedir");
-		//		p.setMatricula(200920404257L);
-		//		dao.save(p);
-		//		
+		
+		OfertaEstagioDelegate of = new OfertaEstagioDelegate();
+		of.removerCandidato(100L, 300L);
+		
+		
+//
+//				Pessoa p = new Pessoa();
+//				p.setNome("Sedir");
+//				p.setUsuario(new Usuario(p, "philippi.sedir@gmail.com", "1234", "1234", true, TipoPessoa.ADMINISTRADOR));
+//				p.setMatricula(200920404257L);
+//				dao.save(p);
+				
 		//		p = new Pessoa();
 		//		p.setNome("Lucena");
 		//		p.setMatricula(1234L);
@@ -35,7 +44,7 @@ public class Teste {
 		//		e.setNomeResponsavel("Allyson Barros");
 		//		dao.save(e);
 		//		
-		List<Pessoa> lista = dao.findAll(Pessoa.class);
+//		List<Pessoa> lista = dao.findAll(Pessoa.class);
 
 //		for(Pessoa pessoa: lista){
 //			System.out.println(pessoa.getNome() + pessoa.getMatricula());
@@ -49,18 +58,19 @@ public class Teste {
 //			}
 //		}
 
-		List<Empresa> lista1 = dao.findAll(Empresa.class);
-
-		for(Empresa pessoa: lista1){
-			System.out.println(pessoa.getNomeFantasia() + pessoa.getNomeResponsavel());
-		}
-
-		OfertaEstagioDAO ofdao = new OfertaEstagioDAO();
-		OfertaEstagio oe = ofdao.findById(50l);
-		for (Pessoa p : oe.getCandidatos()) {
-			System.out.println(p.getNome());
-		}
-		dao.update(oe);
+//		List<Empresa> lista1 = dao.findAll(Empresa.class);
+//
+//		for(Empresa pessoa: lista1){
+//			System.out.println(pessoa.getNomeFantasia() + pessoa.getNomeResponsavel());
+//		}
+//
+//		OfertaEstagioDAO ofdao = new OfertaEstagioDAO();
+//		OfertaEstagio oe = ofdao.findById(50l);
+//		for (Pessoa p : oe.getCandidatos()) {
+//			System.out.println(p.getNome());
+//		}
+//		dao.update(oe);
+//		
 		
 	}
 }
