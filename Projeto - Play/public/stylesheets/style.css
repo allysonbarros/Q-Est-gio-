@@ -140,7 +140,7 @@
 		.neutral_bg {background:#929494}
 	
 	/* alert boxes */
-		.msg_box {padding:8px 20px 8px 46px;margin-bottom:10px;position:relative;color:#444;overflow:hidden; font-size:12px; }
+		.msg_box {padding:8px 20px 8px 46px;margin-bottom:10px;position:relative;color:#444;overflow:hidden; font-size:14px; }
 		.msg_box img {background-image: url(../images/lga_spr.png);background-repeat:no-repeat;width:9px;height:9px}
 		.msg_error {background:#f2cac2 url(../images/error_ico.png) no-repeat 14px center;border:1px solid #ae432e}
 		.msg_error img {background-position:-47px 0}
@@ -278,7 +278,7 @@
 
 		.formEl_b .inpt_a,.formEl_b textarea {
 			padding: 5px 8px !important;
-			width: 400px;
+			width: 350px;
 			border: 1px;
 			border-color: #b8b8b8 #e2e2e2 #e2e2e2 #b8b8b8;
 			border-style: solid
@@ -331,7 +331,7 @@
 			border: 1px solid #ccc;
 			padding: 20px 20px 20px 10px;
 			margin-bottom: 16px;
-			background: #f8f8f8
+			background: #f8f8f8;
 		}
 
 		.formEl_b fieldset legend {
@@ -455,7 +455,7 @@
 	/* sidebar */
 		#sidebar ul { list-style:none;}
 		#sidebar .sub_section {margin:0 0 2px;padding:4px 6px 4px 10px;border-bottom:1px solid #f0f0f0}
-		#sidebar .sub_section li {margin-bottom:4px;padding-left:12px;background: url(../images/arrow_a.gif) no-repeat 2px 8px;font-size:12px}
+		#sidebar .sub_section li {margin-bottom:4px;padding-left:12px;background: url(../images/arrow_a.gif) no-repeat 2px 10px;font-size:12px}
 		#sidebar .sub_section li.parent {background:none;overflow:hidden}
 		#sidebar .sub_section ul {margin-left:10px;}
 		#sidebar h4 {color:#5F5F5F;padding:5px 8px 5px 10px;margin-bottom:2px;border-width:1px;border-style:solid;border-color:transparent transparent #f0f0f0;cursor:pointer;position:relative;font-size:14px}
@@ -483,7 +483,7 @@
 	
 	/* large tabs */
 		.tabsB {border-bottom:1px solid #ccc;margin-bottom:10px}
-		.tabsB li {float:left}
+		.tabsB li {float:left; list-style:none;}
 		.tabsB a {position:relative;top:1px;line-height:26px;height:26px;display:block;padding:0 14px;margin-right:2px;border-width:1px 1px 0 1px;border-style:solid;border-color: transparent;-moz-border-radius-topleft: 4px;-moz-border-radius-topright: 4px;-moz-border-radius-bottomright: 0px;-moz-border-radius-bottomleft: 0px;-webkit-border-radius: 4px 4px 0px 0px;border-radius: 4px 4px 0px 0px}
 		.tabsB a:hover {text-decoration:none;background:#eee}
 		.tabsB a.current {color:#222;background:#fff;border-color:#ccc;font-weight:700;line-height:28px;height:28px}

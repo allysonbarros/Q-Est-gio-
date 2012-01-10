@@ -51,6 +51,7 @@ public class Alunos extends Controller {
     	//validation.equals("asd",p.getUsuario().getSenha(), confirmacaoSenha, confirmacaoSenha);
     	
     	if (validation.hasErrors()) {
+    		flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
     		validation.keep();
     		formCadastro();
     	} else {
