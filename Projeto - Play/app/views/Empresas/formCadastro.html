@@ -1,5 +1,24 @@
 #{extends 'main.html' /}
 #{set title:'formCadastro.html' /}
+#{set 'moreScripts'}
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/jquery_ui/tema.css'}">
+<script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.mask.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#formtabs").tabs();
+
+		$("#cnpj").mask("99.999.999/9999-99");
+		$("#cep").mask("99999-999");
+		
+		$("#matricula").focusout(function() {
+			var value = $(this).val();
+			$("#login").val(value);
+		});
+	});
+</script>
+#{/set}
 #{set 'migalhaDePao'}
 <ul id="migalhadepao">
 	<li class="parent">
@@ -14,113 +33,110 @@
 #{BoxesMensagensFeedback /}
 	
 #{form @Empresas.cadastrar()}
-<div class="formEl_b">
-	<fieldset id="dados_da_empresa" class="">
-		<legend>Dados da Empresa</legend>
+	<div id="formtabs">
+		<ul>
+		    <li><a class="passo1" href="#tabs-1" class="current">Dados Empresariais</a></li>
+		    <li><a class="passo2" href="#tabs-2">Dados de Contato</a></li>
+		</ul>
 		
-		<div class="sepH_b">
-			<label for="e.cnpj" class="lbl_a">CNPJ:</label>
-			<input type="text" name="e.cnpj" value="" id="e.cnpj" class="inpt_a">
-		</div>
-		
-		<div class="sepH_b">
-			<label for="e.razaoSocial" class="lbl_a">Razão Social:</label>
-			<input type="text" name="e.razaoSocial" value="" id="e.razaoSocial" class="inpt_a">
-		</div>
-		
-		<div class="sepH_b">
-			<label for="e.nomeFantasia" class="lbl_a">Nome Fantasia:</label>
-			<input type="text" name="e.nomeFantasia" value="" id="e.nomeFantasia" class="inpt_a">
-		</div>
-		
-		<div class="sepH_b">
-			<label for="endereco" class="lbl_a">Endereço:</label>
-			<input type="text" name="e.endereco.logradouro" value="" id="endereco" class="inpt_a">
-		</div>
-		<div class="sepH_b">
-			<label for="complemento" class="lbl_a">Complemento:</label>
-			<input type="text" name="e.endereco.complemento" value="" id="complemento" class="inpt_a">
-		</div>
-		<div class="sepH_b">
-			<label for="numero" class="lbl_a">Número:</label>
-			<input type="text" name="e.endereco.numero" value="" id="numero" class="inpt_a">
-		</div>
-		<div class="sepH_b">
-			<label for="bairro" class="lbl_a">Bairro:</label>
-			<input type="text" name="e.endereco.bairro" value="" id="bairro" class="inpt_a">
-		</div>
-		<div class="sepH_b">
-			<label for="cidade" class="lbl_a">Cidade:</label>
-			<input type="text" name="e.endereco.cidade" value="" id="cidade" class="inpt_a">
-		</div>
-		<div class="sepH_b">
-			<label for="estado" class="lbl_a">Estado:</label>
-			<input type="text" name="e.endereco.uf" value="" id="estado" class="inpt_a">
-		</div>
-		<div class="sepH_b">
-			<label for="cep" class="lbl_a">Cep:</label>
-			<input type="text" name="e.endereco.cep" value="" id="cep" class="inpt_a">
-		</div>
-		
-		<div class="sepH_b">
-			<label for="e.areaAtuacao" class="lbl_a">Área de Atuação:</label>
-			<input type="text" name="e.areaAtuacao" value="" id="e.areaAtuacao" class="inpt_a">
-		</div>
-		
-		<div class="sepH_b">
-			<label for="e.numeroFuncionarios" class="lbl_a">Nº de Funcionários:</label>
-			<input type="text" name="e.numeroFuncionarios" value="" id="e.numeroFuncionarios" class="inpt_a">
-		</div>
-		
-	</fieldset>
-	
-	<fieldset id="dados_de_contato" class="">
-		<legend>Dados de Contato</legend>
-		
-		<div class="sepH_b">
-			<label for="e.nomeResponsavel" class="lbl_a">Nome do Responsável:</label>
-			<input type="text" name="e.nomeResponsavel" value="" id="e.nomeResponsavel" class="inpt_a">
-		</div>
-		
-		<div class="sepH_b">
-			<label for="e.cargoResponsavel" class="lbl_a">Cargo do Responsável:</label>
-			<input type="text" name="e.cargoResponsavel" value="" id="e.cargoResponsavel" class="inpt_a">
-		</div>
-		
-		<div class="sepH_b">
-			<label for="email" class="lbl_a">Email:</label>
-			<input type="text" name="e.email" value="" id="email" class="inpt_a">
-		</div>
-		
-		<div class="sepH_b">
-			<label for="e.emailAlternativo" class="lbl_a">Email Alternativo:</label>
-			<input type="text" name="e.emailAlternativo" value="" id="e.emailAlternativo" class="inpt_a">
-		</div>
-		
-		<div class="sepH_b">
-			<label for="e.site" class="lbl_a">Site:</label>
-			<input type="text" name="e.site" value="" id="e.site" class="inpt_a">
-		</div>
-		
-	</fieldset>
-	
-	<!-- <fieldset id="dados_de_acesso" class="">
-			<legend>Dados de Acesso</legend>
-			<div class="sepH_b">
-				<label for="e.usuario.login" class="lbl_a">Login:</label>
-				<input type="text" name="e.usuario.login" value="" id="e.usuario.login" class="inpt_a">
+		<div id="tabs-1">
+			<div class="formEl_b">
+				<fieldset id="dados_da_empresa" class="">		
+				<div class="sepH_b">
+					<label for="e.cnpj" class="lbl_a">CNPJ:</label>
+					<input type="text" name="e.cnpj" value="" id="cnpj" class="inpt_a">
+				</div>
+				
+				<div class="sepH_b">
+					<label for="e.razaoSocial" class="lbl_a">Razão Social:</label>
+					<input type="text" name="e.razaoSocial" value="" id="e.razaoSocial" class="inpt_a">
+				</div>
+				
+				<div class="sepH_b">
+					<label for="e.nomeFantasia" class="lbl_a">Nome Fantasia:</label>
+					<input type="text" name="e.nomeFantasia" value="" id="e.nomeFantasia" class="inpt_a">
+				</div>
+				
+				<div class="sepH_b">
+					<label for="endereco" class="lbl_a">Endereço:</label>
+					<input type="text" name="e.endereco.logradouro" value="" id="endereco" class="inpt_a">
+				</div>
+				<div class="sepH_b">
+					<label for="complemento" class="lbl_a">Complemento:</label>
+					<input type="text" name="e.endereco.complemento" value="" id="complemento" class="inpt_a">
+				</div>
+				<div class="sepH_b">
+					<label for="numero" class="lbl_a">Número:</label>
+					<input type="text" name="e.endereco.numero" value="" id="numero" class="inpt_a">
+				</div>
+				<div class="sepH_b">
+					<label for="bairro" class="lbl_a">Bairro:</label>
+					<input type="text" name="e.endereco.bairro" value="" id="bairro" class="inpt_a">
+				</div>
+				<div class="sepH_b">
+					<label for="cidade" class="lbl_a">Cidade:</label>
+					<input type="text" name="e.endereco.cidade" value="" id="cidade" class="inpt_a">
+				</div>
+				<div class="sepH_b">
+					<label for="estado" class="lbl_a">Estado:</label>
+					<input type="text" name="e.endereco.uf" value="" id="estado" class="inpt_a">
+				</div>
+				<div class="sepH_b">
+					<label for="cep" class="lbl_a">Cep:</label>
+					<input type="text" name="e.endereco.cep" value="" id="cep" class="inpt_a">
+				</div>
+				
+				<div class="sepH_b">
+					<label for="e.areaAtuacao" class="lbl_a">Área de Atuação:</label>
+					<input type="text" name="e.areaAtuacao" value="" id="e.areaAtuacao" class="inpt_a">
+				</div>
+				
+				<div class="sepH_b">
+					<label for="e.numeroFuncionarios" class="lbl_a">Nº de Funcionários:</label>
+					<input type="text" name="e.numeroFuncionarios" value="" id="e.numeroFuncionarios" class="inpt_a">
+				</div>
+			</fieldset>
 			</div>
-			<div class="sepH_b">
-				<label for="e.usuario.senha" class="lbl_a">Senha:</label>
-				<input type="text" name="e.usuario.senha" value="" id="e.usuario.senha" class="inpt_a">
+			
+			<div class="cf">
+				<a class="btn btn_d fl" onclick="$('.passo2').click(); return false;" href="#">Avançar  &raquo;</a>
 			</div>
-
-			<div class="sepH_b">
-				<label for="confirmacaoSenha" class="lbl_a">Confirme a Senha:</label>
-				<input type="text" name="confirmacaoSenha" value="" id="confirmacaoSenha" class="inpt_a">
+		</div>
+		
+		<div id="tabs-2">
+			<div class="formEl_b">
+				<fieldset id="dados_de_contato" class="">
+					<div class="sepH_b">
+						<label for="e.nomeResponsavel" class="lbl_a">Nome do Responsável:</label>
+						<input type="text" name="e.nomeResponsavel" value="" id="e.nomeResponsavel" class="inpt_a">
+					</div>
+					
+					<div class="sepH_b">
+						<label for="e.cargoResponsavel" class="lbl_a">Cargo do Responsável:</label>
+						<input type="text" name="e.cargoResponsavel" value="" id="e.cargoResponsavel" class="inpt_a">
+					</div>
+					
+					<div class="sepH_b">
+						<label for="email" class="lbl_a">Email:</label>
+						<input type="text" name="e.email" value="" id="email" class="inpt_a">
+					</div>
+					
+					<div class="sepH_b">
+						<label for="e.emailAlternativo" class="lbl_a">Email Alternativo:</label>
+						<input type="text" name="e.emailAlternativo" value="" id="e.emailAlternativo" class="inpt_a">
+					</div>
+					
+					<div class="sepH_b">
+						<label for="e.site" class="lbl_a">Site:</label>
+						<input type="text" name="e.site" value="" id="e.site" class="inpt_a">
+					</div>
+				</fieldset>
 			</div>
-		</fieldset> -->
-	
-	<input type="submit" name="enviar" class="btn btn_aS fl sepV_a" value="Cadastrar" id="enviar">
-</div>
+			<div class="cf">
+				<a class="btn btn_a fl sepV_a" onclick="$('.passo1').click(); return false;" href="#">&laquo; Voltar</a>
+				<button class="btn btn_d sepV_a"  type="submit"><span>Cadastrar Empresa</span></button>
+			</div>
+			
+		</div>
+	</div>
 #{/form}
