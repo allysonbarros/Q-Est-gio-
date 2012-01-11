@@ -3,10 +3,21 @@
 #{set 'moreScripts'}
 <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/jquery_ui/tema.css'}">
 <script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.mask.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#formtabs").tabs();
+
+		$("#matricula").mask("999999999999");
+		$("#login").mask("999999999999");
+		$("#cpf").mask("999.999.999-99");
+		$("#cep").mask("99999-999");
+		
+		$("#matricula").focusout(function() {
+			var value = $(this).val();
+			$("#login").val(value);
+		});
 	});
 </script>
 #{/set}
@@ -28,9 +39,9 @@
 #{form @Alunos.cadastrar()}
 	<div id="formtabs">
 		<ul>
-		    <li><a href="#tabs-1" class="current">Dados Pessoais</a></li>
-		    <li><a href="#tabs-2">Dados de Contato</a></li>
-		    <li><a href="#tabs-3">Dados de Acesso</a></li>
+		    <li><a class="passo1" href="#tabs-1" class="current">Dados Pessoais</a></li>
+		    <li><a class="passo2" href="#tabs-2">Dados de Contato</a></li>
+		    <li><a class="passo3" href="#tabs-3">Dados de Acesso</a></li>
 		</ul>
 		
 		<div id="tabs-1">
@@ -71,7 +82,7 @@
 				</fieldset>
 			
 				<div class="cf">
-					<a class="btn btn_d fl" href="#">Avançar  &raquo;</a>
+					<a class="btn btn_d fl" onclick="$('.passo2').click(); return false;" href="#">Avançar  &raquo;</a>
 				</div>
 							
 			</div>
@@ -113,8 +124,8 @@
 					</div>
 				</fieldset>
 				<div class="cf">
-					<a class="btn btn_a fl sepV_a" href="#">&laquo; Voltar</a>
-					<a class="btn btn_d fl" href="#">Avançar  &raquo;</a>
+					<a class="btn btn_a fl sepV_a" onclick="$('.passo1').click(); return false;" href="#">&laquo; Voltar</a>
+					<a class="btn btn_d fl" onclick="$('.passo3').click(); return false;" href="#">Avançar  &raquo;</a>
 				</div>
 			</div>
 		</div>
@@ -123,7 +134,7 @@
 				<fieldset id="dados_acesso" class="">
 					<div class="sepH_b">
 						<label for="p.usuario.login" class="lbl_a">Matrícula:</label>
-						<input type="text" name="p.usuario.login" value="" id="p.usuario.login" class="inpt_a">
+						<input type="text" name="p.usuario.login" disabled="disabled" value="" id="login" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="p.usuario.senha" class="lbl_a">Senha:</label>
@@ -138,8 +149,8 @@
 				
 				
 				<div class="cf">
-					<a class="btn btn_a fl sepV_a" href="#">&laquo; Voltar</a>
-					<button class="btn btn_d sepV_a" type="submit"><span>Cadastrar Aluno</span></button>
+					<a class="btn btn_a fl sepV_a" onclick="$('.passo2').click(); return false;" href="#">&laquo; Voltar</a>
+					<button class="btn btn_d sepV_a"  type="submit"><span>Cadastrar Aluno</span></button>
 				</div>
 			</div>
 		</div>
