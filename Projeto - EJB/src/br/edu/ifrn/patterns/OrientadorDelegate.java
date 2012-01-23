@@ -2,37 +2,37 @@ package br.edu.ifrn.patterns;
 
 import java.util.List;
 
-import br.edu.ifrn.beans.FuncionarioBeanRemote;
-import br.edu.ifrn.negocio.Funcionario;
+import br.edu.ifrn.beans.OrientadorBeanRemote;
+import br.edu.ifrn.negocio.Orientador;
 
 public class OrientadorDelegate {
 	
 	ServiceLocator locator;
-	FuncionarioBeanRemote bean;
+	OrientadorBeanRemote bean;
 	
 	public OrientadorDelegate() throws Exception{
 		locator = ServiceLocator.getInstace(); 
-		bean = locator.getFuncionarioBean();
+		bean = locator.getOrientadorBean();
 	}
 	
-	public void cadastrarFuncionario(Funcionario p) {
-		bean.cadastrarFuncionario(p);
+	public void cadastrarOrientador(Orientador p) {
+		bean.cadastrarOrientador(p);
 	}
 
-	public void editarFuncionario(Funcionario p) {
-		bean.editarFuncionario(p);
+	public void editarOrientador(Orientador p) {
+		bean.editarOrientador(p);
 	}
 
-	public void deletarFuncionario(Funcionario p) {
-		bean.deletarFuncionario(p);
+	public void deletarOrientador(Orientador p) {
+		bean.deletarOrientador(p);
 	}
 
-	public Funcionario getFuncionario(Long id) {
-		return bean.getFuncionario(id);
+	public Orientador getOrientador(Long id) {
+		return bean.getOrientador(id);
 	}
 
-	public List<Funcionario> getTodasFuncionarios() {
-		return bean.getTodosFuncionarios();
+	public List<Orientador> getTodosOrientadores() {
+		return bean.getTodosOrientadores();
 	}
 
 }
