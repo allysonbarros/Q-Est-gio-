@@ -5,6 +5,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import br.edu.ifrn.modelo.DAO;
+import br.edu.ifrn.negocio.Aluno;
 import br.edu.ifrn.negocio.Pessoa;
 /**
  * Session Bean implementation class PessoaBean
@@ -21,7 +22,7 @@ public class PessoaBean implements PessoaBeanRemote {
     	dao = new DAO();
     }
 
-	public void cadastrarPessoa(Pessoa p) {
+	public void cadastrarPessoa(Aluno p) {
 		// TODO Auto-generated method stub
 		dao.save(p);
 	}

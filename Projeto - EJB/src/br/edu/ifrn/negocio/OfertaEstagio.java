@@ -41,50 +41,61 @@ public class OfertaEstagio  implements Serializable {
 	
 	public OfertaEstagio() {
 		candidatos = new ArrayList<Pessoa>();
-		// TODO Auto-generated constructor stub
 	}
+	
 	public Empresa getEmpresa() {
 		return empresa;
 	}
+	
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
+	
 	public List<Pessoa> getCandidatos() {
 		return candidatos;
 	}
+	
 	public void setCandidatos(List<Pessoa> candidatos) {
 		this.candidatos = candidatos;
 	}
+	
 	public String getAreaConhecimento() {
 		return areaConhecimento;
 	}
+	
 	public void setAreaConhecimento(String areaConhecimento) {
 		this.areaConhecimento = areaConhecimento;
 	}
+	
 	public String getFuncao() {
 		return funcao;
 	}
+	
 	public void setFuncao(String funcao) {
 		this.funcao = funcao;
 	}
+	
 	public String getDescricao() {
 		return descricao;
 	}
+	
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
 	public Long getId() {
 		return id;
 	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 	public int getNumVagas() {
 		return numVagas;
 	}
+	
 	public void setNumVagas(int numVagas) {
 		this.numVagas = numVagas;
 	}
-	
-	
 }

@@ -3,6 +3,7 @@ package br.edu.ifrn.patterns;
 import java.util.List;
 
 import br.edu.ifrn.beans.PessoaBeanRemote;
+import br.edu.ifrn.negocio.Aluno;
 import br.edu.ifrn.negocio.Pessoa;
 
 public class PessoaDelegate {
@@ -15,7 +16,7 @@ public class PessoaDelegate {
 		bean = locator.getPessoaBean();
 	}
 	
-	public void cadastrarPessoa(Pessoa p) {
+	public void cadastrarPessoa(Aluno p) {
 		bean.cadastrarPessoa(p);
 	}
 

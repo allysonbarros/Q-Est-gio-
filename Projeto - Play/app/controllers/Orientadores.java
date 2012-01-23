@@ -58,7 +58,7 @@ public class Orientadores extends Controller {
 	    	PessoaDelegate del = new PessoaDelegate();
 	    	p.getUsuario().setLogin(p.getMatricula().toString());
 	    	p.getUsuario().setTipoUsuario(TipoPessoa.FUNCIONARIO);
-	    	del.cadastrarPessoa(p);
+	    	//del.cadastrarPessoa(p);
 	    	
 	    	flash.success("Orientador cadastrado com sucesso!");
 	    	formCadastro();

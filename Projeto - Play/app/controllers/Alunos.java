@@ -10,6 +10,7 @@ import javax.naming.NamingException;
 import play.data.validation.Required;
 import play.mvc.Controller;
 import play.mvc.With;
+import br.edu.ifrn.negocio.Aluno;
 import br.edu.ifrn.negocio.Endereco;
 import br.edu.ifrn.negocio.Pessoa;
 import br.edu.ifrn.negocio.TipoPessoa;
@@ -28,11 +29,11 @@ public class Alunos extends Controller {
     	render();
     }
     
-    public static void cadastrar(Pessoa p, String confirmacaoSenha) throws Exception {
+    public static void cadastrar(Aluno p, String confirmacaoSenha) throws Exception {
     	validation.required("matr",p.getMatricula());
     	validation.required("cpf",p.getCpf());
 //    	validation.required("rg",p.getRg());
-    	validation.required("nom",p.getNome());
+    	validation.required("nome",p.getNome());
     	validation.required("logr",p.getEndereco().getLogradouro());
     	validation.required("num",p.getEndereco().getNumero());
     	validation.required("bairro",p.getEndereco().getBairro());
@@ -46,13 +47,15 @@ public class Alunos extends Controller {
     	validation.required("mae",p.getNomeMae());
     	validation.required("pai",p.getNomePai());
 //    	validation.required(p.getNomeConjuge());
-    	validation.required("login",p.getUsuario().getLogin());
     	validation.required("senha",p.getUsuario().getSenha());
     	//validation.equals("asd",p.getUsuario().getSenha(), confirmacaoSenha, confirmacaoSenha);
     	
     	if (validation.hasErrors()) {
     		flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
     		validation.keep();
+    		for (play.data.validation.Error er : validation.errors()) {
+				System.out.println(er.getKey());
+			}
     		formCadastro();
     	} else {
 	    	PessoaDelegate del = new PessoaDelegate();

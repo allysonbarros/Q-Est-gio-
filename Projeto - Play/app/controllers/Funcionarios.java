@@ -58,7 +58,7 @@ public class Funcionarios extends Controller {
 	    	PessoaDelegate del = new PessoaDelegate();
 	    	p.getUsuario().setLogin(p.getMatricula().toString());
 	    	p.getUsuario().setTipoUsuario(TipoPessoa.ORIENTADOR);
-	    	del.cadastrarPessoa(p);
+	    	//del.cadastrarPessoa(p);
 	    	
 	    	flash.success("Funcionário cadastrado com sucesso!");
 	    	formCadastro();

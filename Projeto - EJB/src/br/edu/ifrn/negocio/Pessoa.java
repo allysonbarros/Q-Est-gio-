@@ -6,15 +6,23 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
+
+@Inheritance(strategy=InheritanceType.JOINED)	
+@DiscriminatorColumn(name="tipopessoa",discriminatorType=DiscriminatorType.INTEGER)	
+
 @SequenceGenerator(name="PESSOA_SeqGen", sequenceName="PESSOA_GEN_VAL")
 public class Pessoa implements Serializable {
 	private static final long serialVersionUID = 5267963861854701029L;
@@ -29,15 +37,10 @@ public class Pessoa implements Serializable {
 	private String cpf;
 	
 	private String rg;
-	
 	private String nome;
-	
 	private Date dataNascimento;
-	
 	private String nomePai;
-
 	private String nomeMae;
-	
 	private Blob foto;
 	
 	@OneToOne(cascade=CascadeType.ALL)
@@ -47,7 +50,6 @@ public class Pessoa implements Serializable {
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
-	
 	
 	public Long getId() {
 		return id;
