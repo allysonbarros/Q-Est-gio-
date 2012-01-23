@@ -61,7 +61,7 @@ public class Alunos extends Controller {
 	    	AlunoDelegate del = new AlunoDelegate();
 	    	p.getUsuario().setLogin(p.getMatricula().toString());
 	    	p.getUsuario().setTipoUsuario(TipoPessoa.ALUNO);
-	    	del.cadastrarPessoa(p);
+	    	del.cadastrarAluno(p);
 	    	
 	    	flash.success("Aluno cadastrado com sucesso!");
 	    	formCadastro();

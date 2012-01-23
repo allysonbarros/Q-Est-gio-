@@ -16,6 +16,7 @@ import br.edu.ifrn.negocio.TipoPessoa;
 import br.edu.ifrn.negocio.Usuario;
 import br.edu.ifrn.patterns.EnderecoDelegate;
 import br.edu.ifrn.patterns.AlunoDelegate;
+import br.edu.ifrn.patterns.OrientadorDelegate;
 
 @With(SessionsHelper.class)
 public class Orientadores extends Controller {
@@ -55,10 +56,9 @@ public class Orientadores extends Controller {
     		validation.keep();
     		formCadastro();
     	} else {
-	    	AlunoDelegate del = new AlunoDelegate();
+	    	OrientadorDelegate del = new OrientadorDelegate();
 	    	p.getUsuario().setLogin(p.getMatricula().toString());
 	    	p.getUsuario().setTipoUsuario(TipoPessoa.FUNCIONARIO);
-	    	//del.cadastrarPessoa(p);
 	    	
 	    	flash.success("Orientador cadastrado com sucesso!");
 	    	formCadastro();

@@ -1,21 +1,12 @@
 package controllers;
 
 import helpers.SessionsHelper;
-
-import java.security.NoSuchAlgorithmException;
-
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
-import play.data.validation.Required;
 import play.mvc.Controller;
 import play.mvc.With;
-import br.edu.ifrn.negocio.Endereco;
-import br.edu.ifrn.negocio.Pessoa;
+import br.edu.ifrn.negocio.Funcionario;
 import br.edu.ifrn.negocio.TipoPessoa;
-import br.edu.ifrn.negocio.Usuario;
-import br.edu.ifrn.patterns.EnderecoDelegate;
 import br.edu.ifrn.patterns.AlunoDelegate;
+import br.edu.ifrn.patterns.FuncionarioDelegate;
 
 @With(SessionsHelper.class)
 public class Funcionarios extends Controller {
@@ -28,7 +19,7 @@ public class Funcionarios extends Controller {
     	render();
     }
     
-    public static void cadastrar(Pessoa p, String confirmacaoSenha) throws Exception {
+    public static void cadastrar(Funcionario p, String confirmacaoSenha) throws Exception {
     	validation.required("matr",p.getMatricula());
     	validation.required("cpf",p.getCpf());
 //    	validation.required("rg",p.getRg());
@@ -55,10 +46,10 @@ public class Funcionarios extends Controller {
     		validation.keep();
     		formCadastro();
     	} else {
-	    	AlunoDelegate del = new AlunoDelegate();
+	    	FuncionarioDelegate del = new FuncionarioDelegate();
 	    	p.getUsuario().setLogin(p.getMatricula().toString());
 	    	p.getUsuario().setTipoUsuario(TipoPessoa.ORIENTADOR);
-	    	//del.cadastrarPessoa(p);
+	    	del.cadastrarFuncionario(p);
 	    	
 	    	flash.success("Funcionário cadastrado com sucesso!");
 	    	formCadastro();

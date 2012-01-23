@@ -7,8 +7,5 @@ import javax.persistence.Entity;
 @DiscriminatorValue((TipoPessoa.ORIENTADOR+""))	
 public class Orientador extends Pessoa {
 	private static final long serialVersionUID = 2108646997187776609L;
-	/**
-	 * 
-	 */
 	private String teste;
 }
