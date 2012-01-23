@@ -9,11 +9,13 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.rmi.PortableRemoteObject;
 
+import br.edu.ifrn.beans.AlunoBeanRemote;
 import br.edu.ifrn.beans.EmpresaBeanRemote;
 import br.edu.ifrn.beans.EnderecoBeanRemote;
 import br.edu.ifrn.beans.EstagioBeanRemote;
+import br.edu.ifrn.beans.FuncionarioBeanRemote;
 import br.edu.ifrn.beans.OfertaEstagioBeanRemote;
-import br.edu.ifrn.beans.PessoaBeanRemote;
+import br.edu.ifrn.beans.OrientadorBeanRemote;
 import br.edu.ifrn.beans.UsuarioBeanRemote;
 
 public class ServiceLocator {
@@ -52,9 +54,9 @@ public class ServiceLocator {
 		return beanRemote;
 	}
 	
-	public PessoaBeanRemote getPessoaBean(){
-		Object ref = getService("PessoaBean/remote");
-		PessoaBeanRemote beanRemote = (PessoaBeanRemote) PortableRemoteObject.narrow(ref, PessoaBeanRemote.class);
+	public AlunoBeanRemote getPessoaBean(){
+		Object ref = getService("AlunoBean/remote");
+		AlunoBeanRemote beanRemote = (AlunoBeanRemote) PortableRemoteObject.narrow(ref, AlunoBeanRemote.class);
 		return beanRemote;
 	}
 	
@@ -94,5 +96,22 @@ public class ServiceLocator {
 				e.printStackTrace();
 			}
 			return service;
+	}
+	public AlunoBeanRemote getAlunoBean() {
+		Object ref = getService("AlunoBean/remote");
+		AlunoBeanRemote beanRemote = (AlunoBeanRemote) PortableRemoteObject.narrow(ref, AlunoBeanRemote.class);
+		return beanRemote;
+	}
+	
+	public FuncionarioBeanRemote getFuncionarioBean() {
+		Object ref = getService("FuncionarioBean/remote");
+		FuncionarioBeanRemote beanRemote = (FuncionarioBeanRemote) PortableRemoteObject.narrow(ref, FuncionarioBeanRemote.class);
+		return beanRemote;
+	}
+	
+	public OrientadorBeanRemote getOrientadorBean() {
+		Object ref = getService("OrientadorBean/remote");
+		OrientadorBeanRemote beanRemote = (OrientadorBeanRemote) PortableRemoteObject.narrow(ref, OrientadorBeanRemote.class);
+		return beanRemote;
 	}
 }

@@ -1,51 +1,51 @@
 package br.edu.ifrn.beans;
 
 import java.util.List;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import br.edu.ifrn.modelo.DAO;
 import br.edu.ifrn.negocio.Aluno;
-import br.edu.ifrn.negocio.Pessoa;
 /**
- * Session Bean implementation class PessoaBean
+ * Session Bean implementation class AlunoBean
  */
 @Stateless
 @LocalBean
-public class PessoaBean implements PessoaBeanRemote {
+public class AlunoBean implements AlunoBeanRemote {
     /**
      * Default constructor. 
      */
 	DAO dao;
-    public PessoaBean() {
+    public AlunoBean() {
         // TODO Auto-generated constructor stub
     	dao = new DAO();
     }
 
-	public void cadastrarPessoa(Aluno p) {
+	public void cadastrarAluno(Aluno p) {
 		// TODO Auto-generated method stub
 		dao.save(p);
 	}
 
-	public void editarPessoa(Pessoa p) {
+	public void editarAluno(Aluno p) {
 		// TODO Auto-generated method stub
 		dao.update(p);
 	}
 
-	public void deletarPessoa(Pessoa p) {
+	public void deletarAluno(Aluno p) {
 		dao.delete(p);
 	}
 
 	@Override
-	public Pessoa getPessoa(Long id) {
+	public Aluno getAluno(Long id) {
 		// TODO Auto-generated method stub
-		return dao.findById(Pessoa.class, id);
+		return dao.findById(Aluno.class, id);
 	}
 
 	@Override
-	public List<Pessoa> getTodasPessoas() {
+	public List<Aluno> getTodosAlunos() {
 		// TODO Auto-generated method stub
-		return dao.findAll(Pessoa.class);
+		return dao.findAll(Aluno.class);
 	}
 
 }

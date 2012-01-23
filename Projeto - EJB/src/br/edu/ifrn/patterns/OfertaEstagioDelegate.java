@@ -3,7 +3,7 @@ package br.edu.ifrn.patterns;
 import java.util.List;
 
 import br.edu.ifrn.beans.OfertaEstagioBeanRemote;
-import br.edu.ifrn.beans.PessoaBeanRemote;
+import br.edu.ifrn.beans.AlunoBeanRemote;
 import br.edu.ifrn.beans.UsuarioBeanRemote;
 import br.edu.ifrn.negocio.OfertaEstagio;
 import br.edu.ifrn.negocio.Pessoa;
@@ -13,7 +13,7 @@ public class OfertaEstagioDelegate {
 	
 	ServiceLocator locator;
 	OfertaEstagioBeanRemote bean;
-	PessoaBeanRemote beanPessoa;
+	AlunoBeanRemote beanPessoa;
 	UsuarioBeanRemote beanUsuario;
 	
 	public OfertaEstagioDelegate() throws Exception{

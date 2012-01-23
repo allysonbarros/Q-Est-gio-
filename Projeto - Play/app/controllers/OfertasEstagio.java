@@ -12,7 +12,7 @@ import br.edu.ifrn.negocio.Pessoa;
 import br.edu.ifrn.negocio.TipoPessoa;
 import br.edu.ifrn.patterns.EmpresaDelegate;
 import br.edu.ifrn.patterns.OfertaEstagioDelegate;
-import br.edu.ifrn.patterns.PessoaDelegate;
+import br.edu.ifrn.patterns.AlunoDelegate;
 
 @With(SessionsHelper.class)
 public class OfertasEstagio extends Controller {

@@ -4,7 +4,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import br.edu.ifrn.beans.OfertaEstagioBeanRemote;
-import br.edu.ifrn.beans.PessoaBeanRemote;
+import br.edu.ifrn.beans.AlunoBeanRemote;
 import br.edu.ifrn.negocio.*;
 import br.edu.ifrn.patterns.OfertaEstagioDelegate;
 import br.edu.ifrn.patterns.ServiceLocator;

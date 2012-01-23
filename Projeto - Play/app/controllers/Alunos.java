@@ -16,7 +16,7 @@ import br.edu.ifrn.negocio.Pessoa;
 import br.edu.ifrn.negocio.TipoPessoa;
 import br.edu.ifrn.negocio.Usuario;
 import br.edu.ifrn.patterns.EnderecoDelegate;
-import br.edu.ifrn.patterns.PessoaDelegate;
+import br.edu.ifrn.patterns.AlunoDelegate;
 
 @With(SessionsHelper.class)
 public class Alunos extends Controller {
@@ -58,7 +58,7 @@ public class Alunos extends Controller {
 			}
     		formCadastro();
     	} else {
-	    	PessoaDelegate del = new PessoaDelegate();
+	    	AlunoDelegate del = new AlunoDelegate();
 	    	p.getUsuario().setLogin(p.getMatricula().toString());
 	    	p.getUsuario().setTipoUsuario(TipoPessoa.ALUNO);
 	    	del.cadastrarPessoa(p);
