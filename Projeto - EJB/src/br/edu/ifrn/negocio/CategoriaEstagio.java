@@ -1,7 +1,6 @@
 package br.edu.ifrn.negocio;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,35 +8,37 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator(name="CURSO_SeqGen", sequenceName="CURSO_GEN_VAL")
-public class Curso implements Serializable {	
+@SequenceGenerator(name="CATEGORIAESTAGIO_SeqGen", sequenceName="CATEGORIAESTAGIO_GEN_VAL")
+public class CategoriaEstagio implements Serializable {	
 	private static final long serialVersionUID = -1913019698608405151L;
 
-	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CURSO_SeqGen")
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CATEGORIAESTAGIO_SeqGen")
 	private Long id;
 	
 	@Column(unique=true)
 	private String nome;
+	
+	private String descricao;
 
 	@ManyToOne(cascade=CascadeType.ALL)
-	private Diretoria diretoria;
+	private Curso curso;
 	
-	@OneToMany(mappedBy="curso")
-	private List<CategoriaEstagio> categoriasEstagio;
-	
-	public Curso() {
+	public CategoriaEstagio() {
 		
 	}
 
-	public Curso(String nome, Diretoria diretoria) {
+	public CategoriaEstagio(String nome, String descricao, Curso curso) {
 		super();
 		this.nome = nome;
-		this.diretoria = diretoria;
+		this.descricao = descricao;
+		this.curso = curso;
 	}
 
 	public Long getId() {
@@ -56,12 +57,20 @@ public class Curso implements Serializable {
 		this.nome = nome;
 	}
 
-	public Diretoria getDiretoria() {
-		return diretoria;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDiretoria(Diretoria diretoria) {
-		this.diretoria = diretoria;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
 	
 }
