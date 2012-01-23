@@ -21,5 +21,6 @@
         <mapping class="br.edu.ifrn.negocio.InstituicaoEnsino" />
         <mapping class="br.edu.ifrn.negocio.Diretoria" />
         <mapping class="br.edu.ifrn.negocio.Curso" />
+        <mapping class="br.edu.ifrn.negocio.CategoriaEstagio" />
     </session-factory>
 </hibernate-configuration>
