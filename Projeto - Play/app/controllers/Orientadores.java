@@ -57,6 +57,7 @@ public class Orientadores extends Controller {
     	} else {
 	    	PessoaDelegate del = new PessoaDelegate();
 	    	p.getUsuario().setTipoUsuario(TipoPessoa.FUNCIONARIO);
+	    	p.getUsuario().setLogin(p.getMatricula().toString());
 	    	del.cadastrarPessoa(p);
 	    	
 	    	flash.success("Orientador cadastrado com sucesso!");

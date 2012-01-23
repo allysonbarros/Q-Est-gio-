@@ -56,6 +56,7 @@ public class Alunos extends Controller {
     		formCadastro();
     	} else {
 	    	PessoaDelegate del = new PessoaDelegate();
+	    	p.getUsuario().setLogin(p.getMatricula().toString());
 	    	p.getUsuario().setTipoUsuario(TipoPessoa.ALUNO);
 	    	del.cadastrarPessoa(p);
 	    	
