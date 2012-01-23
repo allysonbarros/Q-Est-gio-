@@ -11,7 +11,7 @@ import br.edu.ifrn.negocio.Endereco;
  * Session Bean implementation class EnderecoBean
  */
 @Stateless
-public class EnderecoBean implements EnderecoBeanRemote, EnderecoBeanLocal {
+public class EnderecoBean implements EnderecoBeanRemote {
 	DAO dao;
 	
     public EnderecoBean() {

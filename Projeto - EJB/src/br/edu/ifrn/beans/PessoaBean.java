@@ -11,7 +11,7 @@ import br.edu.ifrn.negocio.Pessoa;
  */
 @Stateless
 @LocalBean
-public class PessoaBean implements PessoaBeanRemote, PessoaBeanLocal {
+public class PessoaBean implements PessoaBeanRemote {
     /**
      * Default constructor. 
      */

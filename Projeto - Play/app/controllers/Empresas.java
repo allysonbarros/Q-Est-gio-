@@ -20,6 +20,7 @@ public class Empresas extends Controller {
     	validation.required("cnpj", e.getCnpj());
     	
     	if (validation.hasErrors()) {
+    		flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
     		validation.keep();
     		formCadastro();
     	} else {

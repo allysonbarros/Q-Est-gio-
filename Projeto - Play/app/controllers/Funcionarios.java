@@ -51,6 +51,7 @@ public class Funcionarios extends Controller {
     	//validation.equals(p.getUsuario().getSenha(), confirmacaoSenha);
     	
     	if (validation.hasErrors()) {
+    		flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
     		validation.keep();
     		formCadastro();
     	} else {

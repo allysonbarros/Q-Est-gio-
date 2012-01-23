@@ -12,7 +12,7 @@ import br.edu.ifrn.negocio.Pessoa;
  * Session Bean implementation class OfertaEstagioBean
  */
 @Stateless
-public class OfertaEstagioBean implements OfertaEstagioBeanRemote, OfertaEstagioBeanLocal {
+public class OfertaEstagioBean implements OfertaEstagioBeanRemote {
 
     /**
      * Default constructor. 
