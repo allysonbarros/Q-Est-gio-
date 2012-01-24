@@ -52,10 +52,9 @@ public class Alunos extends Controller {
     	
     	if (validation.hasErrors()) {
     		flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
+    		
     		validation.keep();
-    		for (play.data.validation.Error er : validation.errors()) {
-				System.out.println(er.getKey());
-			}
+    		renderArgs.put("p", p);
     		formCadastro();
     	} else {
 	    	AlunoDelegate del = new AlunoDelegate();

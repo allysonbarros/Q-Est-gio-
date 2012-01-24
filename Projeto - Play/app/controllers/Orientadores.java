@@ -48,7 +48,7 @@ public class Orientadores extends Controller {
     	validation.required("mae",p.getNomeMae());
     	validation.required("pai",p.getNomePai());
 //    	validation.required(p.getNomeConjuge());
-    	validation.required("login",p.getUsuario().getLogin());
+//    	validation.required("login",p.getUsuario().getLogin());
     	validation.required("senha",p.getUsuario().getSenha());
     	//validation.equals(p.getUsuario().getSenha(), confirmacaoSenha);
     	

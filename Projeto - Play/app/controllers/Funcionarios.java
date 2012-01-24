@@ -37,7 +37,7 @@ public class Funcionarios extends Controller {
     	validation.required("mae",p.getNomeMae());
     	validation.required("pai",p.getNomePai());
 //    	validation.required(p.getNomeConjuge());
-    	validation.required("login",p.getUsuario().getLogin());
+//    	validation.required("login",p.getUsuario().getLogin());
     	validation.required("senha",p.getUsuario().getSenha());
     	//validation.equals(p.getUsuario().getSenha(), confirmacaoSenha);
     	
@@ -48,7 +48,7 @@ public class Funcionarios extends Controller {
     	} else {
 	    	FuncionarioDelegate del = new FuncionarioDelegate();
 	    	p.getUsuario().setLogin(p.getMatricula().toString());
-	    	p.getUsuario().setTipoUsuario(TipoPessoa.ORIENTADOR);
+	    	p.getUsuario().setTipoUsuario(TipoPessoa.FUNCIONARIO);
 	    	del.cadastrarFuncionario(p);
 	    	
 	    	flash.success("Funcionário cadastrado com sucesso!");
