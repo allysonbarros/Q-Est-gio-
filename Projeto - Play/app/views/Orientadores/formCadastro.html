@@ -49,15 +49,15 @@
 				<fieldset id="dados_pessoais" class="">
 					<div class="sepH_b">
 						<label for="matricula" class="lbl_a">Matrícula:</label>
-						<input type="text" name="p.matricula" value="${p.getMatricula()}" id="matricula" class="inpt_a">
+						<input type="text" name="p.matricula" value="${p?.getMatricula()}" id="matricula" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="cpf" class="lbl_a">CPF:</label>
-						<input type="text" name="p.cpf" value="${p.getCpf()}" id="cpf" class="inpt_a">
+						<input type="text" name="p.cpf" value="${p?.getCpf()}" id="cpf" class="inpt_a">
 					</div>	
 					<div class="sepH_b">
 						<label for="nome" class="lbl_a">Nome Completo:</label>
-						<input type="text" name="p.nome" value="${p.getNome()}" id="nome" class="inpt_a">
+						<input type="text" name="p.nome" value="${p?.getNome()}" id="nome" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="estadoCivil" class="lbl_a">Estado Civil:</label>
@@ -69,15 +69,15 @@
 					</div>
 					<div class="sepH_b">
 						<label for="nomeMae" class="lbl_a">Nome da Mãe:</label>
-						<input type="text" name="p.nomeMae" value="" id="nomeMae" class="inpt_a">
+						<input type="text" name="p.nomeMae" value="${p?.getNomeMae()}" id="nomeMae" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="nomePai" class="lbl_a">Nome do Pai:</label>
-						<input type="text" name="p.nomePai" value="" id="nomePai" class="inpt_a">
+						<input type="text" name="p.nomePai" value="${p?.getMatricula()}" id="nomePai" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="nomeConjuge" class="lbl_a">Nome do Conjuge:</label>
-						<input type="text" name="p.nomeConjuge" value="" id="nomeConjuge" class="inpt_a">
+						<input type="text" name="p.nomeConjuge" value="${p.getNomeConjuge()}" id="nomeConjuge" class="inpt_a">
 					</div>		
 				</fieldset>
 			

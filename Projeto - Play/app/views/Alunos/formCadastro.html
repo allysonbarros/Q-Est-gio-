@@ -49,15 +49,15 @@
 				<fieldset id="dados_pessoais" class="">
 					<div class="sepH_b">
 						<label for="matricula" class="lbl_a">Matrícula:</label>
-						<input type="text" name="p.matricula" value="" id="matricula" class="inpt_a">
+						<input type="text" name="p.matricula" value="${p?.getMatricula()}" id="matricula" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="cpf" class="lbl_a">CPF:</label>
-						<input type="text" name="p.cpf" value="" id="cpf" class="inpt_a">
+						<input type="text" name="p.cpf" value="${p?.getCpf()}" id="cpf" class="inpt_a">
 					</div>	
 					<div class="sepH_b">
 						<label for="nome" class="lbl_a">Nome Completo:</label>
-						<input type="text" name="p.nome" value="" id="nome" class="inpt_a">
+						<input type="text" name="p.nome" value="${p?.getNome()}" id="nome" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="estadoCivil" class="lbl_a">Estado Civil:</label>
@@ -69,15 +69,15 @@
 					</div>
 					<div class="sepH_b">
 						<label for="nomeMae" class="lbl_a">Nome da Mãe:</label>
-						<input type="text" name="p.nomeMae" value="" id="nomeMae" class="inpt_a">
+						<input type="text" name="p.nomeMae" value="${p?.getNomeMae()}" id="nomeMae" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="nomePai" class="lbl_a">Nome do Pai:</label>
-						<input type="text" name="p.nomePai" value="" id="nomePai" class="inpt_a">
+						<input type="text" name="p.nomePai" value="${p?.getNomePai()}" id="nomePai" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="nomeConjuge" class="lbl_a">Nome do Conjuge:</label>
-						<input type="text" name="p.nomeConjuge" value="" id="nomeConjuge" class="inpt_a">
+						<input type="text" name="p.nomeConjuge" value="p?.getNomeConjuge()?" id="nomeConjuge" class="inpt_a">
 					</div>		
 				</fieldset>
 			
@@ -92,35 +92,35 @@
 				<fieldset id="dados_contato" class="">
 					<div class="sepH_b">
 						<label for="endereco" class="lbl_a">Endereço:</label>
-						<input type="text" name="p.endereco.logradouro" value="" id="endereco" class="inpt_a">
+						<input type="text" name="p.endereco.logradouro" value="${p?.getEndereco()?.getLogradouro()}" id="endereco" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="complemento" class="lbl_a">Complemento:</label>
-						<input type="text" name="p.endereco.complemento" value="" id="complemento" class="inpt_a">
+						<input type="text" name="p.endereco.complemento" value="${p?.getEndereco()?.getComplemento()}" id="complemento" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="numero" class="lbl_a">Número:</label>
-						<input type="text" name="p.endereco.numero" value="" id="numero" class="inpt_a">
+						<input type="text" name="p.endereco.numero" value="${p?.getEndereco()?.getNumero()}" id="numero" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="bairro" class="lbl_a">Bairro:</label>
-						<input type="text" name="p.endereco.bairro" value="" id="bairro" class="inpt_a">
+						<input type="text" name="p.endereco.bairro" value="${p?.getEndereco()?.getBairro()}" id="bairro" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="cidade" class="lbl_a">Cidade:</label>
-						<input type="text" name="p.endereco.cidade" value="" id="cidade" class="inpt_a">
+						<input type="text" name="p.endereco.cidade" value="${p?.getEndereco()?.getCidade()}" id="cidade" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="estado" class="lbl_a">Estado:</label>
-						<input type="text" name="p.endereco.uf" value="" id="estado" class="inpt_a">
+						<input type="text" name="p.endereco.uf" value="${p?.getEndereco()?.getUf()}" id="estado" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="cep" class="lbl_a">Cep:</label>
-						<input type="text" name="p.endereco.cep" value="" id="cep" class="inpt_a">
+						<input type="text" name="p.endereco.cep" value="${p?.getEndereco()?.getCep()}" id="cep" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="email" class="lbl_a">Email:</label>
-						<input type="text" name="p.usuario.email" value="" id="email" class="inpt_a">
+						<input type="text" name="p.usuario.email" value="${p?.getUsuario()?.getEmail()}" id="email" class="inpt_a">
 					</div>
 				</fieldset>
 				<div class="cf">
@@ -134,7 +134,7 @@
 				<fieldset id="dados_acesso" class="">
 					<div class="sepH_b">
 						<label for="p.usuario.login" class="lbl_a">Matrícula:</label>
-						<input type="text" name="p.usuario.login" disabled="disabled" value="" id="login" class="inpt_a">
+						<input type="text" name="p.usuario.login" disabled="disabled" value="${p?.getMatricula()}" id="login" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="p.usuario.senha" class="lbl_a">Senha:</label>
