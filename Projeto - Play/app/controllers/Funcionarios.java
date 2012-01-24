@@ -43,8 +43,9 @@ public class Funcionarios extends Controller {
     	
     	if (validation.hasErrors()) {
     		flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
-    		validation.keep();
-    		formCadastro();
+
+    		renderArgs.put("p", p);
+    		renderTemplate("Funcionarios/formCadastro.html");
     	} else {
 	    	FuncionarioDelegate del = new FuncionarioDelegate();
 	    	p.getUsuario().setLogin(p.getMatricula().toString());

@@ -48,14 +48,11 @@ public class Alunos extends Controller {
     	validation.required("pai",p.getNomePai());
 //    	validation.required(p.getNomeConjuge());
     	validation.required("senha",p.getUsuario().getSenha());
-    	validation.equals("asd",p.getUsuario().getSenha(), confirmacaoSenha, confirmacaoSenha);
+    	//validation.equals("asd ",p.getUsuario().getSenha(), confirmacaoSenha, confirmacaoSenha);
     	
     	if (validation.hasErrors()) {
 			flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
-    		
-    		params.flash();
-    		validation.keep();
-    		
+
     		renderArgs.put("p", p);
     		renderTemplate("Alunos/formCadastro.html");
     	} else {

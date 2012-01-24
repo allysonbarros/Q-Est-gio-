@@ -54,8 +54,9 @@ public class Orientadores extends Controller {
     	
     	if (validation.hasErrors()) {
     		flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
-    		validation.keep();
-    		formCadastro();
+
+    		renderArgs.put("p", p);
+    		renderTemplate("Orientadores/formCadastro.html");
     	} else {
 	    	OrientadorDelegate del = new OrientadorDelegate();
 	    	p.getUsuario().setLogin(p.getMatricula().toString());
