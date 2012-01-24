@@ -37,7 +37,7 @@
 #{BoxesMensagensFeedback /}
 
 #{form @Alunos.cadastrar()}
-	<div id="formtabs">
+<div id="formtabs">
 		<ul>
 		    <li><a class="passo1" href="#tabs-1" class="current">Dados Pessoais</a></li>
 		    <li><a class="passo2" href="#tabs-2">Dados de Contato</a></li>
@@ -60,12 +60,24 @@
 						<input type="text" name="p.nome" value="${p?.getNome()}" id="nome" class="inpt_a">
 					</div>
 					<div class="sepH_b">
+					#{field 'p.estadoCivil'}
 						<label for="estadoCivil" class="lbl_a">Estado Civil:</label>
-						<input type="text" name="p.estadoCivil" value="" id="estadoCivil" class="inpt_a">
+						#{select field.name,value:p?.getEstadoCivil()}
+							#{option 'Solteiro'}Solteiro#{/option}
+							#{option 'Casado'}Casado#{/option}
+							#{option 'Viúvo'}Viúvo#{/option}
+							#{option 'Divorciado'}Divorciado#{/option}
+						#{/select}
+					#{/field}
 					</div>
 					<div class="sepH_b">
-						<label for="sexo" class="lbl_a">Sexo:</label>
-						<input type="text" name="p.sexo" value="" id="sexo" class="inpt_a">
+					#{field 'p.sexo'}
+						<label for="${field.name}" class="lbl_a">Sexo:</label>
+						#{select field.name,value:p?.getSexo()}
+							#{option 'Masculino'}Masculino#{/option}
+							#{option 'Feminino'}Feminino#{/option}
+						#{/select}
+					#{/field}
 					</div>
 					<div class="sepH_b">
 						<label for="nomeMae" class="lbl_a">Nome da Mãe:</label>
@@ -77,7 +89,7 @@
 					</div>
 					<div class="sepH_b">
 						<label for="nomeConjuge" class="lbl_a">Nome do Conjuge:</label>
-						<input type="text" name="p.nomeConjuge" value="p?.getNomeConjuge()?" id="nomeConjuge" class="inpt_a">
+						<input type="text" name="p.nomeConjuge" value="${p?.getNomeConjuge()}" id="nomeConjuge" class="inpt_a">
 					</div>		
 				</fieldset>
 			
