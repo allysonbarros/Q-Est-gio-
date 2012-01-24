@@ -11,6 +11,7 @@ import play.data.validation.Required;
 import play.mvc.Controller;
 import play.mvc.With;
 import br.edu.ifrn.negocio.Endereco;
+import br.edu.ifrn.negocio.Orientador;
 import br.edu.ifrn.negocio.Pessoa;
 import br.edu.ifrn.negocio.TipoPessoa;
 import br.edu.ifrn.negocio.Usuario;
@@ -29,7 +30,7 @@ public class Orientadores extends Controller {
     	render();
     }
     
-    public static void cadastrar(Pessoa p, String confirmacaoSenha) throws Exception {
+    public static void cadastrar(Orientador p, String confirmacaoSenha) throws Exception {
     	validation.required("matr",p.getMatricula());
     	validation.required("cpf",p.getCpf());
 //    	validation.required("rg",p.getRg());
@@ -47,7 +48,7 @@ public class Orientadores extends Controller {
     	validation.required("mae",p.getNomeMae());
     	validation.required("pai",p.getNomePai());
 //    	validation.required(p.getNomeConjuge());
-    	validation.required("login",p.getUsuario().getLogin());
+//    	validation.required("login",p.getUsuario().getLogin());
     	validation.required("senha",p.getUsuario().getSenha());
     	//validation.equals(p.getUsuario().getSenha(), confirmacaoSenha);
     	
@@ -59,6 +60,7 @@ public class Orientadores extends Controller {
 	    	OrientadorDelegate del = new OrientadorDelegate();
 	    	p.getUsuario().setLogin(p.getMatricula().toString());
 	    	p.getUsuario().setTipoUsuario(TipoPessoa.FUNCIONARIO);
+	    	del.cadastrarOrientador(p);
 	    	
 	    	flash.success("Orientador cadastrado com sucesso!");
 	    	formCadastro();

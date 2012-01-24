@@ -42,21 +42,22 @@ public class Alunos extends Controller {
     	validation.required("cep",p.getEndereco().getCep());
     	validation.required("ema",p.getUsuario().getEmail());
     	validation.email("ema_ema",p.getUsuario().getEmail());
-//    	validation.required(p.getEstadoCivil());
-//    	validation.required(p.getSexo());
+    	validation.required(p.getEstadoCivil());
+    	validation.required(p.getSexo());
     	validation.required("mae",p.getNomeMae());
     	validation.required("pai",p.getNomePai());
 //    	validation.required(p.getNomeConjuge());
     	validation.required("senha",p.getUsuario().getSenha());
-    	//validation.equals("asd",p.getUsuario().getSenha(), confirmacaoSenha, confirmacaoSenha);
+    	validation.equals("asd",p.getUsuario().getSenha(), confirmacaoSenha, confirmacaoSenha);
     	
     	if (validation.hasErrors()) {
-    		flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
+			flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
+    		
+    		params.flash();
     		validation.keep();
-    		for (play.data.validation.Error er : validation.errors()) {
-				System.out.println(er.getKey());
-			}
-    		formCadastro();
+    		
+    		renderArgs.put("p", p);
+    		renderTemplate("Alunos/formCadastro.html");
     	} else {
 	    	AlunoDelegate del = new AlunoDelegate();
 	    	p.getUsuario().setLogin(p.getMatricula().toString());
