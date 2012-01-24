@@ -25,13 +25,13 @@
 <ul id="migalhadepao">
 	<li class="parent">
 		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
-		<a href="/" class="vam">Início</a>
+		<a href="/" class="vam">In√≠cio</a>
 	</li><div id="tabs">
-	<li class="current"><a href="#">Cadastro de Funcionário</a></li>
+	<li class="current"><a href="#">Cadastro de Funcion√°rio</a></li>
 </ul>
 #{/set}
 
-<h1 class="sepH_c">Cadastro de Funcionário</h1>
+<h1 class="sepH_c">Cadastro de Funcion√°rio</h1>
 
 *{"Tag que importa as mensagens de feedback do sistema"}*
 #{BoxesMensagensFeedback /}
@@ -48,7 +48,7 @@
 			<div class="formEl_b">
 				<fieldset id="dados_pessoais" class="">
 					<div class="sepH_b">
-						<label for="matricula" class="lbl_a">Matrícula:</label>
+						<label for="matricula" class="lbl_a">Matr√≠cula:</label>
 						<input type="text" name="p.matricula" value="" id="matricula" class="inpt_a">
 					</div>
 					<div class="sepH_b">
@@ -60,15 +60,27 @@
 						<input type="text" name="p.nome" value="" id="nome" class="inpt_a">
 					</div>
 					<div class="sepH_b">
+					#{field 'p.estadoCivil'}
 						<label for="estadoCivil" class="lbl_a">Estado Civil:</label>
-						<input type="text" name="p.estadoCivil" value="" id="estadoCivil" class="inpt_a">
+						#{select field.name,value:p?.getSexo()}
+							#{option 'Solteiro'}Solteiro#{/option}
+							#{option 'Casado'}Casado#{/option}
+							#{option 'Viuvo'}Viuvo#{/option}
+							#{option 'Divorciado'}Divorciado#{/option}
+						#{/select}
+					#{/field}
 					</div>
 					<div class="sepH_b">
-						<label for="sexo" class="lbl_a">Sexo:</label>
-						<input type="text" name="p.sexo" value="" id="sexo" class="inpt_a">
+					#{field 'p.sexo'}
+						<label for="${field.name}" class="lbl_a">Sexo:</label>
+						#{select field.name,value:p?.getSexo()}
+							#{option 'Masculino'}Masculino#{/option}
+							#{option 'Feminino'}Feminino#{/option}
+						#{/select}
+					#{/field}
 					</div>
 					<div class="sepH_b">
-						<label for="nomeMae" class="lbl_a">Nome da Mãe:</label>
+						<label for="nomeMae" class="lbl_a">Nome da M√£e:</label>
 						<input type="text" name="p.nomeMae" value="" id="nomeMae" class="inpt_a">
 					</div>
 					<div class="sepH_b">
@@ -82,7 +94,7 @@
 				</fieldset>
 			
 				<div class="cf">
-					<a class="btn btn_d fl" onclick="$('.passo2').click(); return false;" href="#">Avançar  &raquo;</a>
+					<a class="btn btn_d fl" onclick="$('.passo2').click(); return false;" href="#">Avan√ßar  &raquo;</a>
 				</div>
 							
 			</div>
@@ -91,7 +103,7 @@
 			<div class="formEl_b">
 				<fieldset id="dados_contato" class="">
 					<div class="sepH_b">
-						<label for="endereco" class="lbl_a">Endereço:</label>
+						<label for="endereco" class="lbl_a">Endere√ßo:</label>
 						<input type="text" name="p.endereco.logradouro" value="" id="endereco" class="inpt_a">
 					</div>
 					<div class="sepH_b">
@@ -99,7 +111,7 @@
 						<input type="text" name="p.endereco.complemento" value="" id="complemento" class="inpt_a">
 					</div>
 					<div class="sepH_b">
-						<label for="numero" class="lbl_a">Número:</label>
+						<label for="numero" class="lbl_a">N√∫mero:</label>
 						<input type="text" name="p.endereco.numero" value="" id="numero" class="inpt_a">
 					</div>
 					<div class="sepH_b">
@@ -125,7 +137,7 @@
 				</fieldset>
 				<div class="cf">
 					<a class="btn btn_a fl sepV_a" onclick="$('.passo1').click(); return false;" href="#">&laquo; Voltar</a>
-					<a class="btn btn_d fl" onclick="$('.passo3').click(); return false;" href="#">Avançar  &raquo;</a>
+					<a class="btn btn_d fl" onclick="$('.passo3').click(); return false;" href="#">Avan√ßar  &raquo;</a>
 				</div>
 			</div>
 		</div>
@@ -133,7 +145,7 @@
 			<div class="formEl_b">
 				<fieldset id="dados_acesso" class="">
 					<div class="sepH_b">
-						<label for="p.usuario.login" class="lbl_a">Matrícula:</label>
+						<label for="p.usuario.login" class="lbl_a">Matr√≠cula:</label>
 						<input type="text" name="p.usuario.login" disabled="disabled" value="" id="login" class="inpt_a">
 					</div>
 					<div class="sepH_b">
