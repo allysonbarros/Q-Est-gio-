@@ -1,10 +1,8 @@
 package br.edu.ifrn.beans;
 import java.util.List;
-
 import javax.ejb.Remote;
-
 import br.edu.ifrn.negocio.OfertaEstagio;
-import br.edu.ifrn.negocio.Pessoa;
+
 
 @Remote
 public interface OfertaEstagioBeanRemote {
@@ -13,6 +11,6 @@ public interface OfertaEstagioBeanRemote {
 	public void deletarOfertaEstagio(OfertaEstagio e);
 	public OfertaEstagio getOfertaEstagio(Long id);
 	public List<OfertaEstagio> getTodasOfertaEstagios();
-	public void inserirCandidato(OfertaEstagio e, Pessoa p);
-	public void removerCandidato(OfertaEstagio e, Pessoa p);
+	public void removerCandidato(long idOferta , long idAluno);
+	public void inserirCandidato(long idOferta, long idAluno);
 }

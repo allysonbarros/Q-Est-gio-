@@ -1,18 +1,20 @@
 package br.edu.ifrn.beans;
 
+import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.ejb.Stateless;
 
 import br.edu.ifrn.modelo.DAO;
+import br.edu.ifrn.negocio.Aluno;
 import br.edu.ifrn.negocio.OfertaEstagio;
-import br.edu.ifrn.negocio.Pessoa;
 
 /**
  * Session Bean implementation class OfertaEstagioBean
  */
 @Stateless
-public class OfertaEstagioBean implements OfertaEstagioBeanRemote {
+public class OfertaEstagioBean implements OfertaEstagioBeanRemote, OfertaEstagioBeanLocal {
 
     /**
      * Default constructor. 
@@ -48,15 +50,23 @@ public class OfertaEstagioBean implements OfertaEstagioBeanRemote {
 	}
 
 	@Override
-	public void inserirCandidato(OfertaEstagio e, Pessoa p) {
-		e.getCandidatos().add(p);
-		dao.update(e);
+	public void removerCandidato(long idOferta, long idAluno) {
+		
+		
+		
 	}
 
 	@Override
-	public void removerCandidato(OfertaEstagio e, Pessoa p) {
-		e.getCandidatos().remove(p);
-		dao.update(e);
+	public void inserirCandidato(long idOferta, long idAluno) {
+		Aluno a = dao.findById(Aluno.class, idAluno);
+		OfertaEstagio o = dao.findById(OfertaEstagio.class, idOferta);
+		List<Aluno> alunos = new ArrayList<Aluno>();
+		alunos.add(a);
+		o.setCandidatos(alunos);
+		dao.update(o);
+		
 	}
+
+	
 
 }

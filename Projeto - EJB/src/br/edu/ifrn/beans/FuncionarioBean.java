@@ -11,7 +11,7 @@ import br.edu.ifrn.negocio.Funcionario;
  * Session Bean implementation class FuncionarioBean
  */
 @Stateless
-public class FuncionarioBean implements FuncionarioBeanRemote {
+public class FuncionarioBean implements FuncionarioBeanRemote, FuncionarioBeanLocal {
 
     /**
      * Default constructor. 

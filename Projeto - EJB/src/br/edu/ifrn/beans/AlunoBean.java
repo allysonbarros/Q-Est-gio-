@@ -12,7 +12,7 @@ import br.edu.ifrn.negocio.Aluno;
  */
 @Stateless
 @LocalBean
-public class AlunoBean implements AlunoBeanRemote {
+public class AlunoBean implements AlunoBeanRemote, AlunoBeanLocal {
     /**
      * Default constructor. 
      */

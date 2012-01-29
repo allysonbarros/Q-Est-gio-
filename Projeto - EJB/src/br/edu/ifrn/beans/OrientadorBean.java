@@ -11,7 +11,7 @@ import br.edu.ifrn.negocio.Orientador;
  * Session Bean implementation class OrientadorBean
  */
 @Stateless
-public class OrientadorBean implements OrientadorBeanRemote {
+public class OrientadorBean implements OrientadorBeanRemote, OrientadorBeanLocal {
 
 	DAO dao;
     public OrientadorBean() {

@@ -24,7 +24,7 @@ import javax.persistence.SequenceGenerator;
 @DiscriminatorColumn(name="tipopessoa",discriminatorType=DiscriminatorType.INTEGER)	
 
 @SequenceGenerator(name="PESSOA_SeqGen", sequenceName="PESSOA_GEN_VAL")
-public class Pessoa implements Serializable {
+public abstract class Pessoa implements Serializable {
 	private static final long serialVersionUID = 5267963861854701029L;
 
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PESSOA_SeqGen")
@@ -39,11 +39,8 @@ public class Pessoa implements Serializable {
 	private String rg;
 	private String nome;
 	private Date dataNascimento;
-	private String sexo;
-	private String estadoCivil;
 	private String nomePai;
 	private String nomeMae;
-	private String nomeConjuge;
 	private Blob foto;
 	
 	@OneToOne(cascade=CascadeType.ALL)
@@ -140,29 +137,5 @@ public class Pessoa implements Serializable {
 
 	public void setFoto(Blob foto) {
 		this.foto = foto;
-	}
-
-	public String getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-
-	public String getEstadoCivil() {
-		return estadoCivil;
-	}
-
-	public void setEstadoCivil(String estadoCivil) {
-		this.estadoCivil = estadoCivil;
-	}
-
-	public String getNomeConjuge() {
-		return nomeConjuge;
-	}
-
-	public void setNomeConjuge(String nomeConjuge) {
-		this.nomeConjuge = nomeConjuge;
 	}
 }

@@ -1,13 +1,11 @@
 package br.edu.ifrn.patterns;
 
 import java.util.List;
-
 import br.edu.ifrn.beans.OfertaEstagioBeanRemote;
 import br.edu.ifrn.beans.AlunoBeanRemote;
 import br.edu.ifrn.beans.UsuarioBeanRemote;
 import br.edu.ifrn.negocio.OfertaEstagio;
-import br.edu.ifrn.negocio.Pessoa;
-import br.edu.ifrn.negocio.Usuario;
+
 
 public class OfertaEstagioDelegate {
 	
@@ -35,34 +33,13 @@ public class OfertaEstagioDelegate {
 		bean.deletarOfertaEstagio(o);
 	}
 	
-	public void inserirCandidato(long idOferta, long idPessoa){
-		System.out.println(idOferta+"  "+idPessoa);
-		
-		OfertaEstagio oferta = bean.getOfertaEstagio(idOferta);
-		Usuario usuario = beanUsuario.getUsuario(idPessoa);
-
-		Pessoa pessoa = usuario.getPessoa();
-		if (oferta.getCandidatos().contains(pessoa))
-			return;
-		oferta.getCandidatos().add(pessoa);
-		System.out.println(oferta.getCandidatos().size());
-		editarOfertaEstagio(oferta);
+	public void inserirCandidato(long idOferta, long idAluno){
+		bean.inserirCandidato(idOferta, idAluno);
 	}
 	
-	public void removerCandidato(long idOferta, long idPessoa){
-		OfertaEstagio oferta = bean.getOfertaEstagio(idOferta);
-		Usuario usuario = beanUsuario.getUsuario(idPessoa);
-		List<Pessoa> candidatos = oferta.getCandidatos();
-		Pessoa pessoa = usuario.getPessoa();
-		for (Pessoa pessoalista : candidatos) {
-			
-			if (pessoalista.getId().equals(pessoa.getId())){
-				candidatos.remove(pessoalista);
-				break;
-			}
-		}
-		editarOfertaEstagio(oferta);
-	}
+	public void removerCandidato(long idOferta, long idAluno){
+		bean.removerCandidato(idOferta, idAluno);
+}
 	
 	public OfertaEstagio getOfertaEstagio(long id){
 		return bean.getOfertaEstagio(id);

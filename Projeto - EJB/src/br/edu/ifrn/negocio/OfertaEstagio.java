@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -12,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.OrderColumn;
 import javax.persistence.SequenceGenerator;
@@ -28,18 +31,21 @@ public class OfertaEstagio  implements Serializable {
 	@JoinColumn(name="empresa_id")
 	private Empresa empresa;
 	
-	@ElementCollection(fetch=FetchType.EAGER)
-	@CollectionTable(name = "oferta_pessoa", joinColumns = @JoinColumn(name = "pessoa_id"))
-	@OrderColumn
-	private List<Pessoa> candidatos;
+	
+	@ManyToMany
+	@JoinTable(name="oferta_aluno",
+	joinColumns={@JoinColumn(name="oferta_id")},
+	inverseJoinColumns={@JoinColumn(name="aluno_id")}) 
+	private List<Aluno> candidatos;
 	
 	private int numVagas;
 	private String areaConhecimento;
 	private String funcao;
 	private String descricao;
 	
+	
 	public OfertaEstagio() {
-		candidatos = new ArrayList<Pessoa>();
+		
 	}
 	
 	public Empresa getEmpresa() {
@@ -48,14 +54,6 @@ public class OfertaEstagio  implements Serializable {
 	
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
-	}
-	
-	public List<Pessoa> getCandidatos() {
-		return candidatos;
-	}
-	
-	public void setCandidatos(List<Pessoa> candidatos) {
-		this.candidatos = candidatos;
 	}
 	
 	public String getAreaConhecimento() {
@@ -97,4 +95,14 @@ public class OfertaEstagio  implements Serializable {
 	public void setNumVagas(int numVagas) {
 		this.numVagas = numVagas;
 	}
+
+	public void setCandidatos(List<Aluno> candidatos) {
+		this.candidatos = candidatos;
+	}
+
+	public List<Aluno> getCandidatos() {
+		return candidatos;
+	}
+
+	
 }

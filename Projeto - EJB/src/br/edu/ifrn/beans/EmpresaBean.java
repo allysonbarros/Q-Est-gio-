@@ -11,7 +11,7 @@ import br.edu.ifrn.negocio.Empresa;
  * Session Bean implementation class EmpresaBean
  */
 @Stateless
-public class EmpresaBean implements EmpresaBeanRemote {
+public class EmpresaBean implements EmpresaBeanRemote, EmpresaBeanLocal {
 
     /**
      * Default constructor. 

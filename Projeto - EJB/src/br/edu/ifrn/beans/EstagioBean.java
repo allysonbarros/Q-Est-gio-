@@ -11,7 +11,7 @@ import br.edu.ifrn.negocio.Estagio;
  * Session Bean implementation class EstagioBean
  */
 @Stateless
-public class EstagioBean implements EstagioBeanRemote {
+public class EstagioBean implements EstagioBeanRemote, EstagioBeanLocal {
 
     /**
      * Default constructor. 
