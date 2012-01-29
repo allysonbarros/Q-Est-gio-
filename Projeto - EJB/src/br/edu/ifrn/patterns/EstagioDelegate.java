@@ -3,6 +3,7 @@ package br.edu.ifrn.patterns;
 import java.util.List;
 
 import br.edu.ifrn.beans.EstagioBeanRemote;
+import br.edu.ifrn.exceptions.DatabaseException;
 import br.edu.ifrn.negocio.Estagio;
 
 public class EstagioDelegate {
@@ -15,23 +16,23 @@ public class EstagioDelegate {
 		bean = locator.getEstagioBean();
 	}
 
-	public void cadastrarEstagio(Estagio o) {
+	public void cadastrarEstagio(Estagio o) throws DatabaseException {
 		bean.cadastrarEstagio(o);
 	}
 
-	public void editarEstagio(Estagio o) {
+	public void editarEstagio(Estagio o) throws DatabaseException {
 		bean.editarEstagio(o);
 	}
 
-	public void deletarEstagio(Estagio o) {
+	public void deletarEstagio(Estagio o) throws DatabaseException {
 		bean.deletarEstagio(o);
 	}
 
-	public Estagio getEstagio(long id) {
+	public Estagio getEstagio(long id) throws DatabaseException {
 		return bean.getEstagio(id);
 	}
 
-	public List<Estagio> getTodasOfertasEstagio() {
+	public List<Estagio> getTodasOfertasEstagio() throws DatabaseException {
 		return bean.getTodosEstagios();
 	}
 

@@ -41,6 +41,8 @@ public abstract class Pessoa implements Serializable {
 	private Date dataNascimento;
 	private String nomePai;
 	private String nomeMae;
+	private String sexo;
+	private String estadoCivil;
 	private Blob foto;
 	
 	@OneToOne(cascade=CascadeType.ALL)
@@ -137,5 +139,21 @@ public abstract class Pessoa implements Serializable {
 
 	public void setFoto(Blob foto) {
 		this.foto = foto;
+	}
+	
+	public String getEstadoCivil() {
+		return estadoCivil;
+	}
+	
+	public void setEstadoCivil(String estadoCivil) {
+		this.estadoCivil = estadoCivil;
+	}
+	
+	public String getSexo() {
+		return sexo;
+	}
+	
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 }

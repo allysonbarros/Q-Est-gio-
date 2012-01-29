@@ -30,7 +30,7 @@ public class Orientadores extends Controller {
     	render();
     }
     
-    public static void cadastrar(Orientador p, String confirmacaoSenha) throws Exception {
+    public static void cadastrar(Orientador p, String confirmacaoSenha) {
     	validation.required("matr",p.getMatricula()).message("O campo matrícula deve ser preenchido com 12 dígitos.");
     	validation.required("cpf",p.getCpf()).message("O campo CPF deve ser preenchido.");
 //    	validation.required("rg",p.getRg());
@@ -57,11 +57,18 @@ public class Orientadores extends Controller {
     		renderArgs.put("p", p);
     		renderTemplate("Orientadores/formCadastro.html");
     	} else {
+    		try{
 	    	OrientadorDelegate del = new OrientadorDelegate();
 	    	p.getUsuario().setLogin(p.getMatricula().toString());
 	    	p.getUsuario().setTipoUsuario(TipoPessoa.FUNCIONARIO);
 	    	del.cadastrarOrientador(p);
-	    	
+    		} catch (Exception er) {
+				// TODO Auto-generated catch block
+				er.printStackTrace();
+				flash.error(er.getMessage());
+				renderArgs.put("p", p);
+				renderTemplate("Orientadores/formCadastro.html");
+			}
 	    	flash.success("Orientador cadastrado com sucesso!");
 	    	formCadastro();
     	}

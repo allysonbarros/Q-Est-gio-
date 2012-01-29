@@ -20,7 +20,7 @@ public class Sessions extends Controller {
     	render();
     }
     
-    public static void efetuarLogin(String login, String senha) throws Exception {
+    public static void efetuarLogin(String login, String senha) {
     	validation.required(login);
     	validation.required(senha);
     	
@@ -29,6 +29,7 @@ public class Sessions extends Controller {
     		validation.keep();
     		login();
     	} else {
+    		try{
     		UsuarioDelegate del = new UsuarioDelegate();
     		Usuario u = del.getUsuarioByLogin(login);
     	
@@ -45,6 +46,12 @@ public class Sessions extends Controller {
 	        		login();
 	    		}
 	    	}
+    		} catch (Exception er) {
+				// TODO Auto-generated catch block
+				er.printStackTrace();
+				flash.error(er.getMessage());
+				login();
+			}
     	}
     }
     
@@ -58,7 +65,7 @@ public class Sessions extends Controller {
     	render();
     }
     
-    public static void resetarSenha(String email) throws Exception {
+    public static void resetarSenha(String email) {
     	validation.required(email);
     	validation.email(email);
     	
@@ -66,6 +73,7 @@ public class Sessions extends Controller {
     		validation.keep();
     		esqueciSenha();
     	} else {
+    		try{
 	    	UsuarioDelegate del = new UsuarioDelegate();
 	    	Usuario u = del.getUsuarioByEmail(email);
 	    	if (u == null) {
@@ -78,10 +86,17 @@ public class Sessions extends Controller {
 	    		
 	    		esqueciSenha();
 	    	}
+    		} catch (Exception er) {
+				// TODO Auto-generated catch block
+				er.printStackTrace();
+				flash.error(er.getMessage());
+				esqueciSenha();
+			}
     	}
     }
     
-    public static void redefinirSenha(Long id) throws Exception {
+    public static void redefinirSenha(Long id) {
+    	try{
     	UsuarioDelegate del = new UsuarioDelegate();
     	Usuario u = del.getUsuario(id);
     	
@@ -101,5 +116,12 @@ public class Sessions extends Controller {
     		
     		login();
     	}
+    	
+    	} catch (Exception er) {
+			// TODO Auto-generated catch block
+			er.printStackTrace();
+			flash.error(er.getMessage());
+			login();
+		}
     }
 }

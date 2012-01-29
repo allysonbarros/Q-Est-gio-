@@ -21,13 +21,17 @@ public class OfertasEstagio extends Controller {
 		render();
 	}
 
-	public static void formCadastro() throws Exception {
-		EmpresaDelegate del = new EmpresaDelegate();
-		List<Empresa> empresas = del.getTodasEmpresas();
-		render(empresas);
+	public static void formCadastro() {
+		try{
+			EmpresaDelegate del = new EmpresaDelegate();
+			List<Empresa> empresas = del.getTodasEmpresas();
+			render(empresas);
+		}catch (Exception e) {
+			error(e.getMessage());
+		}
 	}
 
-	public static void cadastrar(OfertaEstagio o, long idEmpresa) throws Exception {
+	public static void cadastrar(OfertaEstagio o, long idEmpresa) {
 		validation.required("area",o.getAreaConhecimento());
 		validation.required("descr",o.getDescricao());
 		validation.required("empresa",idEmpresa);
@@ -39,24 +43,31 @@ public class OfertasEstagio extends Controller {
 			validation.keep();
 			formCadastro();
 		} else {
-			OfertaEstagioDelegate del = new OfertaEstagioDelegate();
-			EmpresaDelegate del_empresa = new EmpresaDelegate();
-			Empresa e = del_empresa.getEmpresa(idEmpresa);
-			o.setEmpresa(e);
-			del.cadastrarOfertaEstagio(o);
-
+			try{
+				OfertaEstagioDelegate del = new OfertaEstagioDelegate();
+				EmpresaDelegate del_empresa = new EmpresaDelegate();
+				Empresa e = del_empresa.getEmpresa(idEmpresa);
+				o.setEmpresa(e);
+				del.cadastrarOfertaEstagio(o);
+			} catch (Exception er) {
+				// TODO Auto-generated catch block
+				er.printStackTrace();
+				flash.error(er.getMessage());
+				renderArgs.put("o", o);
+				renderTemplate("OfertasEstagio/formCadastro.html");
+			}
 			flash.success("Oferta de estágio cadastrada com sucesso!");
 			formCadastro();
 		}
 	}
-	
+
 	public static void candidatarAluno(long idOferta ) throws Exception{
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
 		OfertaEstagioDelegate del_oe = new OfertaEstagioDelegate();
 		del_oe.inserirCandidato(idOferta, alunoId);
 		Application.ofertaEstagio();
 	}
-	
+
 	public static void descandidatarAluno(long idOferta ) throws Exception{
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
 		OfertaEstagioDelegate del_oe = new OfertaEstagioDelegate();

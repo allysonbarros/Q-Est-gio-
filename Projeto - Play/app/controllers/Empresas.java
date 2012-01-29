@@ -16,7 +16,7 @@ public class Empresas extends Controller {
     	render();
     }
     
-    public static void cadastrar(Empresa e, String confirmacaoSenha) throws Exception {     	
+    public static void cadastrar(Empresa e, String confirmacaoSenha) {     	
     	validation.required("cnpj", e.getCnpj());
     	
     	if (validation.hasErrors()) {
@@ -24,9 +24,16 @@ public class Empresas extends Controller {
     		validation.keep();
     		formCadastro();
     	} else {
+    		try{
     		EmpresaDelegate del = new EmpresaDelegate();
         	del.cadastrarEmpresa(e);
-        	
+    		} catch (Exception er) {
+				// TODO Auto-generated catch block
+				er.printStackTrace();
+				flash.error(er.getMessage());
+				renderArgs.put("e", e);
+				renderTemplate("Empresas/formCadastro.html");
+			}
         	flash.success("Empresa cadastrada com sucesso!");
 	    	formCadastro();
     	}

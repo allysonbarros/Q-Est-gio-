@@ -4,7 +4,7 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/play-1.2.4.jar" sourcepath="/opt/play-1.2.4/framework/src"/>
-	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/lib/jbossall-client.jar"/>
+	<classpathentry kind="lib" path="/Users/sedir/Desenvolvimento/Q-Est-gio-/Projeto - Play/lib/jbossall-client.jar"/>
 	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/activation-1.1.1.jar"/>
 	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/antlr-2.7.6.jar"/>
 	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/asm-all-3.3.1.jar"/>

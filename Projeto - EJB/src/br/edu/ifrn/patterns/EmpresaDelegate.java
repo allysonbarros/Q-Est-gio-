@@ -3,6 +3,7 @@ package br.edu.ifrn.patterns;
 import java.util.List;
 
 import br.edu.ifrn.beans.EmpresaBeanRemote;
+import br.edu.ifrn.exceptions.DatabaseException;
 import br.edu.ifrn.negocio.Empresa;
 
 public class EmpresaDelegate {
@@ -15,23 +16,23 @@ public class EmpresaDelegate {
 		bean = locator.getEmpresaBean();
 	}
 	
-	public void cadastrarEmpresa(Empresa e) {
+	public void cadastrarEmpresa(Empresa e) throws DatabaseException {
 		bean.cadastrarEmpresa(e);
 	}
 
-	public void editarEmpresa(Empresa e) {
+	public void editarEmpresa(Empresa e) throws DatabaseException {
 		bean.editarEmpresa(e);
 	}
 
-	public void deletarEmpresa(Empresa e) {
+	public void deletarEmpresa(Empresa e) throws DatabaseException {
 		bean.deletarEmpresa(e);
 	}
 
-	public Empresa getEmpresa(Long id) {
+	public Empresa getEmpresa(Long id) throws DatabaseException {
 		return bean.getEmpresa(id);
 	}
 
-	public List<Empresa> getTodasEmpresas() {
+	public List<Empresa> getTodasEmpresas() throws DatabaseException {
 		return bean.getTodasEmpresas();
 	}
 

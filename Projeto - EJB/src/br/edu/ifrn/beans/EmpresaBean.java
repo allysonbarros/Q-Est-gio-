@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 
+import br.edu.ifrn.exceptions.DatabaseException;
 import br.edu.ifrn.modelo.DAO;
 import br.edu.ifrn.negocio.Empresa;
 
@@ -17,32 +18,32 @@ public class EmpresaBean implements EmpresaBeanRemote, EmpresaBeanLocal {
      * Default constructor. 
      */
 	DAO dao;
-    public EmpresaBean() {
+    public EmpresaBean(){
         dao = new DAO();
     }
 
 	@Override
-	public void cadastrarEmpresa(Empresa e) {
+	public void cadastrarEmpresa(Empresa e) throws DatabaseException{
 		dao.save(e);
 	}
 
 	@Override
-	public void editarEmpresa(Empresa e) {
+	public void editarEmpresa(Empresa e) throws DatabaseException{
 		dao.update(e);
 	}
 
 	@Override
-	public void deletarEmpresa(Empresa e) {
+	public void deletarEmpresa(Empresa e) throws DatabaseException{
 		dao.delete(e);
 	}
 
 	@Override
-	public Empresa getEmpresa(Long id) {
+	public Empresa getEmpresa(Long id) throws DatabaseException{
 		return dao.findById(Empresa.class, id);
 	}
 
 	@Override
-	public List<Empresa> getTodasEmpresas() {
+	public List<Empresa> getTodasEmpresas() throws DatabaseException{
 		return dao.findAll(Empresa.class);
 	}
 

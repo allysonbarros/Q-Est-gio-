@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 
+import br.edu.ifrn.exceptions.DatabaseException;
 import br.edu.ifrn.modelo.DAO;
 import br.edu.ifrn.negocio.Estagio;
 
@@ -22,27 +23,27 @@ public class EstagioBean implements EstagioBeanRemote, EstagioBeanLocal {
     }
 
 	@Override
-	public void cadastrarEstagio(Estagio e) {
+	public void cadastrarEstagio(Estagio e) throws DatabaseException{
 		dao.save(e);
 	}
 
 	@Override
-	public void editarEstagio(Estagio e) {
+	public void editarEstagio(Estagio e) throws DatabaseException{
 		dao.update(e);
 	}
 
 	@Override
-	public void deletarEstagio(Estagio e) {
+	public void deletarEstagio(Estagio e) throws DatabaseException{
 		dao.delete(e);
 	}
 
 	@Override
-	public Estagio getEstagio(Long id) {
+	public Estagio getEstagio(Long id) throws DatabaseException{
 		return dao.findById(Estagio.class, id);
 	}
 
 	@Override
-	public List<Estagio> getTodosEstagios() {
+	public List<Estagio> getTodosEstagios() throws DatabaseException{
 		return dao.findAll(Estagio.class);
 	}
 
