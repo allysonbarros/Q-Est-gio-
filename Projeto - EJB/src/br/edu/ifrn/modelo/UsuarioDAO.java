@@ -3,10 +3,11 @@ package br.edu.ifrn.modelo;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import br.edu.ifrn.exceptions.DatabaseException;
 import br.edu.ifrn.negocio.Usuario;
 
 public class UsuarioDAO extends DAO {
-	public Usuario findByLogin(String login) {
+	public Usuario findByLogin(String login) throws DatabaseException {
 		Session session = sf.openSession();
 		Usuario u = null;
 		
@@ -18,6 +19,7 @@ public class UsuarioDAO extends DAO {
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
+			throw new DatabaseException("Falha na busca");
 		} finally {
 			session.close();
 		}
@@ -25,7 +27,7 @@ public class UsuarioDAO extends DAO {
 		return u;
 	}
 	
-	public Usuario findByEmail(String email) {
+	public Usuario findByEmail(String email) throws DatabaseException {
 		Session session = sf.openSession();
 		Usuario u = null;
 		
@@ -37,6 +39,7 @@ public class UsuarioDAO extends DAO {
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
+			throw new DatabaseException("Falha na busca");
 		} finally {
 			session.close();
 		}

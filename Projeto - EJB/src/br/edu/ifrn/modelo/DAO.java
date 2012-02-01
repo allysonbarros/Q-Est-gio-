@@ -83,7 +83,7 @@ public class DAO {
 		return lista;
 	}
 	
-	public <T> T findById(Class classe, long id) throws DatabaseException{
+	public <T> T findById(Class classe, long id) throws DatabaseException {
 		Object objeto = null;
 		
 		Session session = sf.openSession();
