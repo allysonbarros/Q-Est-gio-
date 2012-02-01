@@ -10,6 +10,7 @@ import br.edu.ifrn.negocio.TipoPessoa;
 import br.edu.ifrn.negocio.Usuario;
 import br.edu.ifrn.patterns.UsuarioDelegate;
 
+import play.libs.Crypto;
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.Scope;

@@ -1,6 +1,22 @@
 #{extends 'login.html' /}
 #{set title:'Login' /}
-
+#{set 'moreScripts'}
+<script type="text/javascript">
+$(".formEl_b #senha").live("keypress", function(e){
+	var s = String.fromCharCode(e.keyCode);
+	
+	if (s.toUpperCase() === s && s.toLowerCase() !== s && !e.shiftKey) {
+		if ($('.msg_box.msg_alert').is(':visible')) {
+	        return;
+	    } else {
+	    	$(".formEl_b").before('<div class="msg_box msg_alert"><strong>Atenção:</strong> A tecla Caps Lock está ligada! <img alt="" class="msg_close" src="images/blank.gif"></div>');
+		}
+	} else {
+		$(".msg_box.msg_alert").fadeOut();
+	}
+});
+</script>
+#{/set}
 <div id="box-login">
 	<h2>Acesso ao Sistema</h2>
 
