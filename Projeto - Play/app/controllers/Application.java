@@ -65,7 +65,7 @@ public class Application extends Controller {
 	    	render(lista,listaCand, pessoa);
     	} catch (Exception e) {
     		e.printStackTrace();
-			flash.error("<strong>Erro:</strong>" + e.getMessage());
+			flash.error("<strong>Erro:</strong> " + e.getMessage());
 			
 			render(lista);
 		}

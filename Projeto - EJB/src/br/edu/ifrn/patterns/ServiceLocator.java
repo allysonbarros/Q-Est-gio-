@@ -17,6 +17,8 @@ import br.edu.ifrn.beans.FuncionarioBeanRemote;
 import br.edu.ifrn.beans.OfertaEstagioBeanRemote;
 import br.edu.ifrn.beans.OrientadorBeanRemote;
 import br.edu.ifrn.beans.UsuarioBeanRemote;
+import br.edu.ifrn.exceptions.ConnectionException;
+import br.edu.ifrn.exceptions.DatabaseException;
 
 public class ServiceLocator {
 
@@ -24,19 +26,21 @@ public class ServiceLocator {
 	private Map<String, Object> cache;
 	private static ServiceLocator instance;
 	
-	public static ServiceLocator getInstace(){
+	public static ServiceLocator getInstace() throws ConnectionException{
 		if(instance == null){
 			instance = new ServiceLocator();
 		}
 		return instance;
 	}
-	private ServiceLocator(){
+	
+	private ServiceLocator() throws ConnectionException{
 		try{
 			ctx = getInitialContext();
 			cache = new HashMap<String, Object>();
-		}catch(NamingException ne){
+		} catch(NamingException ne){
 			ne.printStackTrace();
-			}
+			throw new ConnectionException("Falha na comunicação com o servidor JBOSS.");
+		}
 	}
 
 	public static InitialContext getInitialContext() throws NamingException {
@@ -48,42 +52,43 @@ public class ServiceLocator {
 		return new InitialContext(env);
 	}
 	
-	public EnderecoBeanRemote getEnderecoBean(){
+	public EnderecoBeanRemote getEnderecoBean() throws ConnectionException{
 		Object ref = getService("EnderecoBean/remote");
 		EnderecoBeanRemote beanRemote = (EnderecoBeanRemote) PortableRemoteObject.narrow(ref, EnderecoBeanRemote.class);
 		return beanRemote;
 	}
 	
-	public AlunoBeanRemote getPessoaBean(){
+	public AlunoBeanRemote getPessoaBean() throws ConnectionException{
 		Object ref = getService("AlunoBean/remote");
 		AlunoBeanRemote beanRemote = (AlunoBeanRemote) PortableRemoteObject.narrow(ref, AlunoBeanRemote.class);
 		return beanRemote;
 	}
 	
-	public UsuarioBeanRemote getUsuarioBean(){
+	public UsuarioBeanRemote getUsuarioBean() throws ConnectionException{
 		Object ref = getService("UsuarioBean/remote");
 		UsuarioBeanRemote beanRemote = (UsuarioBeanRemote) PortableRemoteObject.narrow(ref, UsuarioBeanRemote.class);
 		return beanRemote;
 	}
 	
-	public EmpresaBeanRemote getEmpresaBean(){
+	public EmpresaBeanRemote getEmpresaBean() throws ConnectionException{
 		Object ref = getService("EmpresaBean/remote");
 		EmpresaBeanRemote beanRemote = (EmpresaBeanRemote) PortableRemoteObject.narrow(ref, EmpresaBeanRemote.class);
 		return beanRemote;
 	}
 
-	public EstagioBeanRemote getEstagioBean(){
+	public EstagioBeanRemote getEstagioBean() throws ConnectionException{
 		Object ref = getService("EstagioBean/Remote");
 		EstagioBeanRemote beanRemote = (EstagioBeanRemote) PortableRemoteObject.narrow(ref, EmpresaBeanRemote.class);
 		return beanRemote;
 	}
-	public OfertaEstagioBeanRemote getOfertaEstagioBean(){
-		Object ref = getService("OfertaEstagioBean/remote");
-		OfertaEstagioBeanRemote beanRemote = (OfertaEstagioBeanRemote) PortableRemoteObject.narrow(ref, OfertaEstagioBeanRemote.class);
-		return beanRemote;
+	
+	public OfertaEstagioBeanRemote getOfertaEstagioBean() throws ConnectionException {
+			Object ref = getService("OfertaEstagioBean/remote");
+			OfertaEstagioBeanRemote beanRemote = (OfertaEstagioBeanRemote) PortableRemoteObject.narrow(ref, OfertaEstagioBeanRemote.class);
+			return beanRemote;
 	}
 	
-	private Object getService(String serviceId){
+	private Object getService(String serviceId) throws ConnectionException{
 		if(cache.containsKey(serviceId)){
 			return cache.get(serviceId);
 		}
@@ -92,24 +97,24 @@ public class ServiceLocator {
 			try {
 				service = ctx.lookup(serviceId);
 				cache.put(serviceId, service);
-			} catch (NamingException e) {
-				e.printStackTrace();
+			} catch (Exception e) {
+				throw new ConnectionException("Falha na comunicação com o servidor JBOSS.");
 			}
 			return service;
 	}
-	public AlunoBeanRemote getAlunoBean() {
+	public AlunoBeanRemote getAlunoBean() throws ConnectionException {
 		Object ref = getService("AlunoBean/remote");
 		AlunoBeanRemote beanRemote = (AlunoBeanRemote) PortableRemoteObject.narrow(ref, AlunoBeanRemote.class);
 		return beanRemote;
 	}
 	
-	public FuncionarioBeanRemote getFuncionarioBean() {
+	public FuncionarioBeanRemote getFuncionarioBean() throws ConnectionException {
 		Object ref = getService("FuncionarioBean/remote");
 		FuncionarioBeanRemote beanRemote = (FuncionarioBeanRemote) PortableRemoteObject.narrow(ref, FuncionarioBeanRemote.class);
 		return beanRemote;
 	}
 	
-	public OrientadorBeanRemote getOrientadorBean() {
+	public OrientadorBeanRemote getOrientadorBean() throws ConnectionException {
 		Object ref = getService("OrientadorBean/remote");
 		OrientadorBeanRemote beanRemote = (OrientadorBeanRemote) PortableRemoteObject.narrow(ref, OrientadorBeanRemote.class);
 		return beanRemote;

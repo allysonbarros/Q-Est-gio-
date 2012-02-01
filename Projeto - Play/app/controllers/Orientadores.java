@@ -65,7 +65,7 @@ public class Orientadores extends Controller {
     		} catch (Exception er) {
 				// TODO Auto-generated catch block
 				er.printStackTrace();
-				flash.error("<strong>Erro:</strong>" + er.getMessage());
+				flash.error("<strong>Erro:</strong> " + er.getMessage());
 				renderArgs.put("p", p);
 				renderTemplate("Orientadores/formCadastro.html");
 			}

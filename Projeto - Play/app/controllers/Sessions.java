@@ -49,7 +49,7 @@ public class Sessions extends Controller {
     		} catch (Exception er) {
 				// TODO Auto-generated catch block
 				er.printStackTrace();
-				flash.error("<strong>Erro:</strong>" + er.getMessage());
+				flash.error("<strong>Erro:</strong> " + er.getMessage());
 				login();
 			}
     	}
@@ -89,7 +89,7 @@ public class Sessions extends Controller {
     		} catch (Exception er) {
 				// TODO Auto-generated catch block
 				er.printStackTrace();
-				flash.error("<strong>Erro:</strong>" + er.getMessage());
+				flash.error("<strong>Erro:</strong> " + er.getMessage());
 				esqueciSenha();
 			}
     	}
