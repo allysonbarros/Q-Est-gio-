@@ -26,7 +26,7 @@ public class DAO {
 		} catch (Exception e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
-			throw new DatabaseException("Falha na persist√™ncia");
+			throw new DatabaseException("Falha na persistência");
 		} finally {
 			session.close();
 		}
@@ -44,7 +44,7 @@ public class DAO {
 		} catch (Exception e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
-			throw new DatabaseException("Falha na atualiza√ß√£o");
+			throw new DatabaseException("Falha na atualização");
 		} finally {
 			session.close();
 		}
@@ -60,7 +60,7 @@ public class DAO {
 		} catch (Exception e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
-			throw new DatabaseException("Falha na remo√ß√£o");
+			throw new DatabaseException("Falha na remoção");
 		} finally {
 			session.close();
 		}
