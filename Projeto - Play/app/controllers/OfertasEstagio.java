@@ -52,7 +52,7 @@ public class OfertasEstagio extends Controller {
 			} catch (Exception er) {
 				// TODO Auto-generated catch block
 				er.printStackTrace();
-				flash.error(er.getMessage());
+				flash.error("<strong>Erro:</strong>" + er.getMessage());
 				renderArgs.put("o", o);
 				renderTemplate("OfertasEstagio/formCadastro.html");
 			}

@@ -65,7 +65,7 @@ public class Alunos extends Controller {
 				del.cadastrarAluno(p);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				flash.error(e.getMessage());
+				flash.error("<strong>Erro:</strong>" + e.getMessage());
 				renderArgs.put("p", p);
 				e.printStackTrace();
 				renderTemplate("Alunos/formCadastro.html");

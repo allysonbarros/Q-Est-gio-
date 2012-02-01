@@ -30,26 +30,26 @@ public class Sessions extends Controller {
     		login();
     	} else {
     		try{
-    		UsuarioDelegate del = new UsuarioDelegate();
-    		Usuario u = del.getUsuarioByLogin(login);
-    	
-	    	if (u == null) {
-	    		flash.error("Matrícula ou Senha Inválida(s). <br/> Tente novamente!");
-	    		login();
-	    	} else {
-	    		if (u.getSenha().equals(SessionsHelper.criptografarSenha(senha))) {
-	    			session.put("usuarioAtivoID", u.getId());
-	    			
-	    			Application.index();
-	    		} else {
-	    			flash.error("Matrícula ou Senha Inválida(s). <br/> Tente novamente!");
-	        		login();
-	    		}
-	    	}
+	    		UsuarioDelegate del = new UsuarioDelegate();
+	    		Usuario u = del.getUsuarioByLogin(login);
+	    	
+		    	if (u == null) {
+		    		flash.error("Matrícula ou Senha Inválida(s). <br/> Tente novamente!");
+		    		login();
+		    	} else {
+		    		if (u.getSenha().equals(SessionsHelper.criptografarSenha(senha))) {
+		    			session.put("usuarioAtivoID", u.getId());
+		    			
+		    			Application.index();
+		    		} else {
+		    			flash.error("Matrícula ou Senha Inválida(s). <br/> Tente novamente!");
+		        		login();
+		    		}
+		    	}
     		} catch (Exception er) {
 				// TODO Auto-generated catch block
 				er.printStackTrace();
-				flash.error(er.getMessage());
+				flash.error("<strong>Erro:</strong>" + er.getMessage());
 				login();
 			}
     	}
@@ -74,22 +74,22 @@ public class Sessions extends Controller {
     		esqueciSenha();
     	} else {
     		try{
-	    	UsuarioDelegate del = new UsuarioDelegate();
-	    	Usuario u = del.getUsuarioByEmail(email);
-	    	if (u == null) {
-	    		flash.error("Email inválido ou não cadastrado. <br/> Tente novamente!");
-	    		esqueciSenha();
-	    	} else {
-	    		flash.success("Enviamos uma email para o endereço: %s. " +
-						"<br/><br/>Nele você receberá as intruções para a redefinição de sua senha", u.getEmail());
-	    		Mails.esqueciSenha(u);
-	    		
-	    		esqueciSenha();
-	    	}
+		    	UsuarioDelegate del = new UsuarioDelegate();
+		    	Usuario u = del.getUsuarioByEmail(email);
+		    	if (u == null) {
+		    		flash.error("Email inválido ou não cadastrado. <br/> Tente novamente!");
+		    		esqueciSenha();
+		    	} else {
+		    		flash.success("Enviamos uma email para o endereço: %s. " +
+							"<br/><br/>Nele você receberá as intruções para a redefinição de sua senha", u.getEmail());
+		    		Mails.esqueciSenha(u);
+		    		
+		    		esqueciSenha();
+		    	}
     		} catch (Exception er) {
 				// TODO Auto-generated catch block
 				er.printStackTrace();
-				flash.error(er.getMessage());
+				flash.error("<strong>Erro:</strong>" + er.getMessage());
 				esqueciSenha();
 			}
     	}
