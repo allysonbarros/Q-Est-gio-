@@ -10,10 +10,6 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue((TipoPessoa.ALUNO+""))	
 public class Aluno extends Pessoa {
-	/**
-	 * 
-	 */
-	
 	
 	private static final long serialVersionUID = -9151016583503663685L;
 	private String teste;

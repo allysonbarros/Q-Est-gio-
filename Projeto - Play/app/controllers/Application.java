@@ -47,22 +47,31 @@ public class Application extends Controller {
     
     public static void ofertaEstagio() throws Exception {
     	List<OfertaEstagio> lista = new ArrayList<OfertaEstagio>();
-    	try{
+    	
+    	try {
 	    	UsuarioDelegate ud = new UsuarioDelegate();
 	    	OfertaEstagioDelegate del = new OfertaEstagioDelegate();
 	    	lista = del.getTodasOfertasEstagio();
-	    	List<Boolean> listaCand = new ArrayList<Boolean>();
-	    	Pessoa pessoa = ud.getUsuario(Long.parseLong(session.get("usuarioAtivoID"))).getPessoa();
 	    	
-	    	for (OfertaEstagio oe : lista) {
-	    		boolean esta = false;
-				for (Pessoa p : oe.getCandidatos()) {
-					if (p.getId().equals(pessoa.getId()))
-						esta=true;
+	    	if (!lista.isEmpty()) {
+		    	List<Boolean> listaCand = new ArrayList<Boolean>();
+		    	Pessoa pessoa = ud.getUsuario(Long.parseLong(session.get("usuarioAtivoID"))).getPessoa();
+		    	
+		    	for (OfertaEstagio oe : lista) {
+		    		boolean esta = false;
+					for (Pessoa p : oe.getCandidatos()) {
+						if (p.getId().equals(pessoa.getId()))
+							esta = true;
+					}
+					
+					listaCand.add(esta);
 				}
-				listaCand.add(esta);
-			}
-	    	render(lista,listaCand, pessoa);
+		    	
+		    	render(lista,listaCand, pessoa);
+		    	
+	    	} else {
+	    		render(lista);
+	    	}
     	} catch (Exception e) {
     		e.printStackTrace();
 			flash.error("<strong>Erro:</strong> " + e.getMessage());

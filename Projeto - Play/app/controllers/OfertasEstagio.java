@@ -22,11 +22,11 @@ public class OfertasEstagio extends Controller {
 	}
 
 	public static void formCadastro() {
-		try{
+		try {
 			EmpresaDelegate del = new EmpresaDelegate();
 			List<Empresa> empresas = del.getTodasEmpresas();
 			render(empresas);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			error(e.getMessage());
 		}
 	}
@@ -56,6 +56,7 @@ public class OfertasEstagio extends Controller {
 				renderArgs.put("o", o);
 				renderTemplate("OfertasEstagio/formCadastro.html");
 			}
+			
 			flash.success("Oferta de estágio cadastrada com sucesso!");
 			formCadastro();
 		}
