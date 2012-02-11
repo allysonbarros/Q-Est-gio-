@@ -26,7 +26,7 @@ public class Alunos extends Controller {
 	}
 
 	public static void formCadastro() {
-		render();
+		renderTemplate("formsGenericos/formCadastroPessoa.html");
 	}
 
 	public static void cadastrar(Aluno p, String confirmacaoSenha) {
@@ -54,7 +54,7 @@ public class Alunos extends Controller {
 			flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
 
 			renderArgs.put("p", p);
-			renderTemplate("Alunos/formCadastro.html");
+			renderTemplate("formsGenericos/formCadastroPessoa.html");
 		} else {
 			AlunoDelegate del;
 			try {
@@ -68,7 +68,7 @@ public class Alunos extends Controller {
 				flash.error("<strong>Erro:</strong> " + e.getMessage());
 				renderArgs.put("p", p);
 				e.printStackTrace();
-				renderTemplate("Alunos/formCadastro.html");
+				renderTemplate("formsGenericos/formCadastroPessoa.html");
 			}
 			flash.success("Aluno cadastrado com sucesso!");
 			formCadastro();

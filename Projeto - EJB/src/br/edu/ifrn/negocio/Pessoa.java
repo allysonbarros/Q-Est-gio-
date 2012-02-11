@@ -41,6 +41,7 @@ public abstract class Pessoa implements Serializable {
 	private Date dataNascimento;
 	private String nomePai;
 	private String nomeMae;
+	private String nomeConjuge;
 	private String sexo;
 	private String estadoCivil;
 	private Blob foto;
@@ -155,5 +156,13 @@ public abstract class Pessoa implements Serializable {
 	
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
+	}
+
+	public void setNomeConjuge(String nomeConjuge) {
+		this.nomeConjuge = nomeConjuge;
+	}
+
+	public String getNomeConjuge() {
+		return nomeConjuge;
 	}
 }
