@@ -14,7 +14,7 @@ import br.edu.ifrn.negocio.Usuario;
  */
 @Stateless
 @LocalBean
-public class UsuarioBean implements UsuarioBeanRemote , UsuarioBeanLocal {
+public class UsuarioBean implements UsuarioBeanRemote {
 
     /**
      * Default constructor. 
