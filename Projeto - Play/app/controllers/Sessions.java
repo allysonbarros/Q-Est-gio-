@@ -21,11 +21,11 @@ public class Sessions extends Controller {
     }
     
     public static void efetuarLogin(String login, String senha) {
-    	validation.required(login);
-    	validation.required(senha);
+    	validation.required(login).message("O campo Login deve ser preenchido.");
+    	validation.required(senha).message("O campo Senha deve ser preenchido.");
     	
     	if (validation.hasErrors()) {
-    		flash.error("Você deve preencher todos os campos. <br/> Tente novamente!");
+    		flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente! <br/><br/>");
     		validation.keep();
     		login();
     	} else {
@@ -66,8 +66,8 @@ public class Sessions extends Controller {
     }
     
     public static void resetarSenha(String email) {
-    	validation.required(email);
-    	validation.email(email);
+    	validation.required(email).message("O campo CPF deve ser preenchido.");
+    	validation.email(email).message("O Email informado não é válido.");
     	
     	if (validation.hasErrors()) {
     		validation.keep();
@@ -76,6 +76,7 @@ public class Sessions extends Controller {
     		try{
 		    	UsuarioDelegate del = new UsuarioDelegate();
 		    	Usuario u = del.getUsuarioByEmail(email);
+		    	
 		    	if (u == null) {
 		    		flash.error("Email inválido ou não cadastrado. <br/> Tente novamente!");
 		    		esqueciSenha();
