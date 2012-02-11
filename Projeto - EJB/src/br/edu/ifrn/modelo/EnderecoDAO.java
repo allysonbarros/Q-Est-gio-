@@ -1,9 +1,5 @@
 package br.edu.ifrn.modelo;
 
-import java.util.List;
+public class EnderecoDao extends DAO {
 
-import br.edu.ifrn.negocio.Endereco;
-
-public class EnderecoDAO extends DAO {
-	
 }
