@@ -16,7 +16,13 @@
 		
 		$("#matricula").focusout(function() {
 			var value = $(this).val();
-			$("#dados_acesso #login").val(value);
+			
+			if (value.indexOf("_") == -1) {
+				$("#dados_acesso #login").val(value);
+			} else {
+				$("#dados_acesso #login").val("");
+				return;
+			} 
 		});
 	});
 </script>

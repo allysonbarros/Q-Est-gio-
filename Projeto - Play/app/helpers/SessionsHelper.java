@@ -21,6 +21,7 @@ public class SessionsHelper extends Controller {
 	@Before(unless={
 	"Application.index", "Application.informacoesEstagio", "Application.legislacaoNormas", "Application.modelosFormularios", "Application.ofertaEstagio", "Application.modeloDeclaracaoEstagio",
 	"Sessions.login", "Sessions.efetuarLogin", "Sessions.esqueciSenha", "Sessions.resetarSenha", "Sessions.redefinirSenha"
+	, "Alunos.formCadastro", "Alunos.cadastrar"
 	})
 	public static void checkAuthentication() throws Exception {
 		if (session.get("usuarioAtivoID") == null)
