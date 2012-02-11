@@ -76,12 +76,12 @@
 	#{/form}
 #{/if}
 #{if request.controller.equals("Funcionarios")}
-	#{form @Alunos.cadastrar()}
+	#{form @Funcionarios.cadastrar()}
 		#{formCadastroPessoaGenerico /}
 	#{/form}
 #{/if}
 #{if request.controller.equals("Orientadores")}
-	#{form @Alunos.cadastrar()}
+	#{form @Orientadores.cadastrar()}
 		#{formCadastroPessoaGenerico /}
 	#{/form}
 #{/if}

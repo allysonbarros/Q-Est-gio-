@@ -64,12 +64,13 @@ public class Alunos extends Controller {
 				p.getUsuario().setTipoUsuario(TipoPessoa.ALUNO);
 				del.cadastrarAluno(p);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				flash.error("<strong>Erro:</strong> " + e.getMessage());
-				renderArgs.put("p", p);
 				e.printStackTrace();
+				
+				renderArgs.put("p", p);
 				renderTemplate("formsGenericos/formCadastroPessoa.html");
 			}
+			
 			flash.success("Aluno cadastrado com sucesso!");
 			formCadastro();
 		}
