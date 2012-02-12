@@ -64,6 +64,7 @@ public class OfertasEstagio extends Controller {
 
 	public static void candidatarAluno(long idOferta ) throws Exception{
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
+		System.out.println(alunoId+"  "+idOferta);
 		OfertaEstagioDelegate del_oe = new OfertaEstagioDelegate();
 		del_oe.inserirCandidato(idOferta, alunoId);
 		Application.ofertaEstagio();

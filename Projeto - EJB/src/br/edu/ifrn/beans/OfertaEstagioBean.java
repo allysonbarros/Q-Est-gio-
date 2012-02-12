@@ -9,6 +9,8 @@ import br.edu.ifrn.exceptions.DatabaseException;
 import br.edu.ifrn.modelo.DAO;
 import br.edu.ifrn.negocio.Aluno;
 import br.edu.ifrn.negocio.OfertaEstagio;
+import br.edu.ifrn.negocio.Pessoa;
+import br.edu.ifrn.negocio.Usuario;
 
 /**
  * Session Bean implementation class OfertaEstagioBean
@@ -16,19 +18,19 @@ import br.edu.ifrn.negocio.OfertaEstagio;
 @Stateless
 public class OfertaEstagioBean implements OfertaEstagioBeanRemote {
 
-    /**
-     * Default constructor. 
-     */
+	/**
+	 * Default constructor. 
+	 */
 	DAO dao;
-    public OfertaEstagioBean() {
-        dao = new DAO();
-    }
+	public OfertaEstagioBean() {
+		dao = new DAO();
+	}
 
 	@Override
 	public void cadastrarOfertaEstagio(OfertaEstagio e) throws DatabaseException{
 		dao.save(e);
 	}
-	
+
 	@Override
 	public void deletarOfertaEstagio(OfertaEstagio e) throws DatabaseException{
 		dao.delete(e);
@@ -51,22 +53,40 @@ public class OfertaEstagioBean implements OfertaEstagioBeanRemote {
 
 	@Override
 	public void removerCandidato(long idOferta, long idAluno) throws DatabaseException{
-		
-		
-		
+		Usuario u = dao.findById(Usuario.class, idAluno);
+		Pessoa p = u.getPessoa();
+		if (p instanceof Aluno){
+			Aluno a = (Aluno) p;
+			OfertaEstagio o = dao.findById(OfertaEstagio.class, idOferta);
+			List<Aluno> candidatos = o.getCandidatos();
+			Aluno ar = null;
+			for (Aluno aluno : candidatos) {
+				if (aluno.getId().equals(a.getId())){
+					ar = aluno;
+					break;
+				}
+			}
+			candidatos.remove(ar);
+			o.setCandidatos(candidatos);
+			dao.update(o);
+		}
 	}
 
 	@Override
 	public void inserirCandidato(long idOferta, long idAluno) throws DatabaseException{
-		Aluno a = dao.findById(Aluno.class, idAluno);
-		OfertaEstagio o = dao.findById(OfertaEstagio.class, idOferta);
-		List<Aluno> alunos = new ArrayList<Aluno>();
-		alunos.add(a);
-		o.setCandidatos(alunos);
-		dao.update(o);
-		
+		Usuario u = dao.findById(Usuario.class, idAluno);
+		Pessoa p = u.getPessoa();
+		if (p instanceof Aluno){
+			Aluno a = (Aluno) p;
+			OfertaEstagio o = dao.findById(OfertaEstagio.class, idOferta);
+			List<Aluno> alunos = new ArrayList<Aluno>();
+			alunos.add(a);
+			o.setCandidatos(alunos);
+			dao.update(o);
+		}
+
 	}
 
-	
+
 
 }
