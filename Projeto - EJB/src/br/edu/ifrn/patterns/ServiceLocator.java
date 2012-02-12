@@ -10,15 +10,22 @@ import javax.naming.NamingException;
 import javax.rmi.PortableRemoteObject;
 
 import br.edu.ifrn.beans.AlunoBeanRemote;
+import br.edu.ifrn.beans.CategoriaEstagioBean;
+import br.edu.ifrn.beans.CategoriaEstagioBeanRemote;
+import br.edu.ifrn.beans.CursoBean;
+import br.edu.ifrn.beans.CursoBeanRemote;
+import br.edu.ifrn.beans.DiretoriaBean;
+import br.edu.ifrn.beans.DiretoriaBeanRemote;
 import br.edu.ifrn.beans.EmpresaBeanRemote;
 import br.edu.ifrn.beans.EnderecoBeanRemote;
 import br.edu.ifrn.beans.EstagioBeanRemote;
 import br.edu.ifrn.beans.FuncionarioBeanRemote;
+import br.edu.ifrn.beans.InstituicaoEnsinoBean;
+import br.edu.ifrn.beans.InstituicaoEnsinoBeanRemote;
 import br.edu.ifrn.beans.OfertaEstagioBeanRemote;
 import br.edu.ifrn.beans.OrientadorBeanRemote;
 import br.edu.ifrn.beans.UsuarioBeanRemote;
 import br.edu.ifrn.exceptions.ConnectionException;
-import br.edu.ifrn.exceptions.DatabaseException;
 
 public class ServiceLocator {
 
@@ -117,6 +124,30 @@ public class ServiceLocator {
 	public OrientadorBeanRemote getOrientadorBean() throws ConnectionException {
 		Object ref = getService("OrientadorBean/remote");
 		OrientadorBeanRemote beanRemote = (OrientadorBeanRemote) PortableRemoteObject.narrow(ref, OrientadorBeanRemote.class);
+		return beanRemote;
+	}
+
+	public InstituicaoEnsinoBeanRemote getInstituicaoEnsinoBean() throws ConnectionException {
+		Object ref = getService("InstituicaoEnsinoBean/remote");
+		InstituicaoEnsinoBean beanRemote = (InstituicaoEnsinoBean) PortableRemoteObject.narrow(ref, InstituicaoEnsinoBean.class);
+		return beanRemote;
+	}
+	
+	public CategoriaEstagioBeanRemote getCategoriaEstagioBean() throws ConnectionException {
+		Object ref = getService("CategoriaEstagioBean/remote");
+		CategoriaEstagioBean beanRemote = (CategoriaEstagioBean) PortableRemoteObject.narrow(ref, CategoriaEstagioBean.class);
+		return beanRemote;
+	}
+	
+	public DiretoriaBeanRemote getDiretoriaBean() throws ConnectionException {
+		Object ref = getService("DiretoriaBean/remote");
+		DiretoriaBean beanRemote = (DiretoriaBean) PortableRemoteObject.narrow(ref, DiretoriaBean.class);
+		return beanRemote;
+	}
+	
+	public CursoBeanRemote getCursoBean() throws ConnectionException {
+		Object ref = getService("CursoBean/remote");
+		CursoBean beanRemote = (CursoBean) PortableRemoteObject.narrow(ref, CursoBean.class);
 		return beanRemote;
 	}
 }
