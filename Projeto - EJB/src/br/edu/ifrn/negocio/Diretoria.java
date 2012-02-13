@@ -32,6 +32,9 @@ public class Diretoria implements Serializable {
 	@OneToMany(mappedBy="diretoria")
 	private List<Curso> cursos;
 	
+	@OneToMany(mappedBy="diretoria")
+	private List<Orientador> orientadores;
+	
 	@ManyToOne(cascade=CascadeType.ALL)
 	private InstituicaoEnsino instituicaoEnsino;
 	
@@ -86,5 +89,20 @@ public class Diretoria implements Serializable {
 
 	public void setInstituicaoEnsino(InstituicaoEnsino instituicaoEnsino) {
 		this.instituicaoEnsino = instituicaoEnsino;
-	}	
+	}
+
+	/**
+	 * @return the orientadores
+	 */
+	public List<Orientador> getOrientadores() {
+		return orientadores;
+	}
+
+	/**
+	 * @param orientadores the orientadores to set
+	 */
+	public void setOrientadores(List<Orientador> orientadores) {
+		this.orientadores = orientadores;
+	}
+
 }

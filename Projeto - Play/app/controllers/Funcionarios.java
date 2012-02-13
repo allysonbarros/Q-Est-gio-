@@ -56,7 +56,7 @@ public class Funcionarios extends Controller {
 				er.printStackTrace();
 				flash.error("<strong>Erro:</strong> " + er.getMessage());
 				
-				renderArgs.put("pessoa", p);
+				renderArgs.put("p", p);
 				renderTemplate("formsGenericos/formCadastroPessoa.html");
 			}
 			flash.success("Funcionário cadastrado com sucesso!");

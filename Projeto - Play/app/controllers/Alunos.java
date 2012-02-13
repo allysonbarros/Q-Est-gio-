@@ -30,6 +30,11 @@ public class Alunos extends Controller {
 	}
 
 	public static void cadastrar(Aluno p, String confirmacaoSenha) {
+		System.out.println(request.action);
+		System.out.println(p);
+		
+		System.out.println("---------------------------------------");
+		
 		validation.required("matr",p.getMatricula()).message("O campo matrícula deve ser preenchido com 12 dígitos.");
 		validation.required("cpf",p.getCpf()).message("O campo CPF deve ser preenchido.");
 		//    	validation.required("rg",p.getRg());

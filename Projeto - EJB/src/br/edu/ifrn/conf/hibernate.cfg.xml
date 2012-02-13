@@ -19,6 +19,7 @@
         <mapping class="br.edu.ifrn.negocio.Usuario" />
         <mapping class="br.edu.ifrn.negocio.Empresa" />
         <mapping class="br.edu.ifrn.negocio.InstituicaoEnsino" />
+        <mapping class="br.edu.ifrn.negocio.Orientador" />
         <mapping class="br.edu.ifrn.negocio.Diretoria" />
         <mapping class="br.edu.ifrn.negocio.Curso" />
         <mapping class="br.edu.ifrn.negocio.CategoriaEstagio" />
