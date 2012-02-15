@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.pattern.LogEvent;
+
 import com.google.gson.JsonArray;
 
 import play.Logger;
@@ -38,6 +40,7 @@ public class Bootstrap extends Job {
 					String d[] = s.trim().split(";");
 					
 					lista.add(new Diretoria(d[0], d[1], null, i));
+					Logger.info("Diretoria \"" + d[0] + "\" adicionada com sucesso!");
 				}
 				
 				i.setDiretorias(lista);
