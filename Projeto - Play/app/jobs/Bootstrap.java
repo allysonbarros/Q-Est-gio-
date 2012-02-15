@@ -4,14 +4,22 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ivy.plugins.repository.ssh.Scp;
 import org.apache.log4j.pattern.LogEvent;
 
+import com.apple.eawt.Application;
 import com.google.gson.JsonArray;
+
+import controllers.Alunos;
 
 import play.Logger;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 import play.libs.IO;
+import play.mvc.Controller;
+import play.mvc.Scope;
+import play.mvc.Scope.Session;
+import play.mvc.results.Error;
 import br.edu.ifrn.negocio.Diretoria;
 import br.edu.ifrn.negocio.Endereco;
 import br.edu.ifrn.negocio.InstituicaoEnsino;
@@ -34,7 +42,7 @@ public class Bootstrap extends Job {
 			
 			if (del2.getTodasDiretoria().isEmpty()) {
 				List<Diretoria> lista = new ArrayList<Diretoria>();
-				List<String> readLines = IO.readLines(new File("diretorias.txt"));
+				List<String> readLines = IO.readLines(new File("conf/diretorias.cfg"));
 				
 				for (String s : readLines) {
 					String d[] = s.trim().split(";");

@@ -46,7 +46,7 @@ public class ServiceLocator {
 			cache = new HashMap<String, Object>();
 		} catch(NamingException ne){
 			ne.printStackTrace();
-			throw new ConnectionException("Falha na comunica√ß√£o com o servidor JBOSS.");
+			throw new ConnectionException("Falha na comunicação com o servidor JBOSS.");
 		}
 	}
 
