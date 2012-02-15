@@ -7,15 +7,15 @@ import javax.persistence.ManyToOne;
 @Entity
 @DiscriminatorValue((TipoPessoa.ALUNO+""))	
 public class Aluno extends Pessoa {
-	
+
 	private static final long serialVersionUID = -9151016583503663685L;
 	@ManyToOne
 	private Curso curso;
-	
+
 	//private OfertaEstagio oferta;
-	
+
 	public Aluno(){
-		
+
 	}
 
 	/**
@@ -32,6 +32,6 @@ public class Aluno extends Pessoa {
 		this.curso = curso;
 	}
 
-	
+
 
 }

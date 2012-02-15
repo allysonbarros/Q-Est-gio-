@@ -23,7 +23,7 @@ public class InstituicaoEnsino implements Serializable {
 	private Long id;
 	
 	@Column(unique=true)
-	private Long cnpj;
+	private String cnpj;
 	
 	private String razaoSocial;
 	private String nomeFantasia;
@@ -39,7 +39,7 @@ public class InstituicaoEnsino implements Serializable {
 		
 	}
 
-	public InstituicaoEnsino(Long cnpj, String razaoSocial, String nomeFantasia, Endereco endereco) {
+	public InstituicaoEnsino(String cnpj, String razaoSocial, String nomeFantasia, Endereco endereco) {
 		this.cnpj = cnpj;
 		this.razaoSocial = razaoSocial;
 		this.nomeFantasia = nomeFantasia;
@@ -54,11 +54,11 @@ public class InstituicaoEnsino implements Serializable {
 		this.id = id;
 	}
 
-	public Long getCnpj() {
+	public String getCnpj() {
 		return cnpj;
 	}
 
-	public void setCnpj(Long cnpj) {
+	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
 

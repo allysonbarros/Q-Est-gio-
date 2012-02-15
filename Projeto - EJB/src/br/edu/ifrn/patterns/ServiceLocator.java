@@ -129,7 +129,7 @@ public class ServiceLocator {
 
 	public InstituicaoEnsinoBeanRemote getInstituicaoEnsinoBean() throws ConnectionException {
 		Object ref = getService("InstituicaoEnsinoBean/remote");
-		InstituicaoEnsinoBean beanRemote = (InstituicaoEnsinoBean) PortableRemoteObject.narrow(ref, InstituicaoEnsinoBean.class);
+		InstituicaoEnsinoBeanRemote beanRemote = (InstituicaoEnsinoBeanRemote) PortableRemoteObject.narrow(ref, InstituicaoEnsinoBeanRemote.class);
 		return beanRemote;
 	}
 	
