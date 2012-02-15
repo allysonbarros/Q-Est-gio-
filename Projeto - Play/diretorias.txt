@@ -1,0 +1,5 @@
+Diretoria de Educação e Tecnologia da Informação;DIATINF;
+Diretoria de Educação e Tecnologia Industrial;DIATIND;
+Diretoria de Educação e Tecnologia de Construção Civil;DIATCC;
+Diretoria de Educação e Tecnologia de Recursos Naturais;DIATRN;
+Diretoria de Educação e Ciências;DIAC;

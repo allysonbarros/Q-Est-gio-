@@ -28,7 +28,7 @@ public class InstituicaoEnsino implements Serializable {
 	private String razaoSocial;
 	private String nomeFantasia;
 	
-	@OneToMany(mappedBy="instituicaoEnsino")
+	@OneToMany(mappedBy="instituicaoEnsino", cascade=CascadeType.ALL)
 	private List<Diretoria> diretorias;
 	
 	@OneToOne(cascade=CascadeType.ALL)

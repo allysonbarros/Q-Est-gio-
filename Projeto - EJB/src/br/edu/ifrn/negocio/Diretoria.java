@@ -29,10 +29,10 @@ public class Diretoria implements Serializable {
 	@Column(unique=true)
 	private String sigla;
 
-	@OneToMany(mappedBy="diretoria")
+	@OneToMany(mappedBy="diretoria",cascade=CascadeType.ALL)
 	private List<Curso> cursos;
 	
-	@OneToMany(mappedBy="diretoria")
+	@OneToMany(mappedBy="diretoria",cascade=CascadeType.ALL)
 	private List<Orientador> orientadores;
 	
 	@ManyToOne(cascade=CascadeType.ALL)

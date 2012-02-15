@@ -135,19 +135,19 @@ public class ServiceLocator {
 	
 	public CategoriaEstagioBeanRemote getCategoriaEstagioBean() throws ConnectionException {
 		Object ref = getService("CategoriaEstagioBean/remote");
-		CategoriaEstagioBean beanRemote = (CategoriaEstagioBean) PortableRemoteObject.narrow(ref, CategoriaEstagioBean.class);
+		CategoriaEstagioBeanRemote beanRemote = (CategoriaEstagioBeanRemote) PortableRemoteObject.narrow(ref, CategoriaEstagioBeanRemote.class);
 		return beanRemote;
 	}
 	
 	public DiretoriaBeanRemote getDiretoriaBean() throws ConnectionException {
 		Object ref = getService("DiretoriaBean/remote");
-		DiretoriaBean beanRemote = (DiretoriaBean) PortableRemoteObject.narrow(ref, DiretoriaBean.class);
+		DiretoriaBeanRemote beanRemote = (DiretoriaBeanRemote) PortableRemoteObject.narrow(ref, DiretoriaBeanRemote.class);
 		return beanRemote;
 	}
 	
 	public CursoBeanRemote getCursoBean() throws ConnectionException {
 		Object ref = getService("CursoBean/remote");
-		CursoBean beanRemote = (CursoBean) PortableRemoteObject.narrow(ref, CursoBean.class);
+		CursoBeanRemote beanRemote = (CursoBeanRemote) PortableRemoteObject.narrow(ref, CursoBeanRemote.class);
 		return beanRemote;
 	}
 }

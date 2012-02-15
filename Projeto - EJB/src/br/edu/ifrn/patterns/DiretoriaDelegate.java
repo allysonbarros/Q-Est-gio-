@@ -32,8 +32,12 @@ public class DiretoriaDelegate {
 		return bean.getDiretoria(id);
 	}
 
-	public List<Diretoria> getTodasOfertasDiretoria() throws DatabaseException {
+	public List<Diretoria> getTodasDiretoria() throws DatabaseException {
 		return bean.getTodasDiretorias();
 	}
+	
+//	public List<Diretoria> getTodasOfertasDiretoria() throws DatabaseException {
+//		return bean.getTodasDiretorias();
+//	}
 
 }
