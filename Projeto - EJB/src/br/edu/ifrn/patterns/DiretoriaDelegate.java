@@ -32,12 +32,12 @@ public class DiretoriaDelegate {
 		return bean.getDiretoria(id);
 	}
 
-	public List<Diretoria> getTodasDiretoria() throws DatabaseException {
+	public Diretoria getDiretoriaBySigla(String sigla) throws DatabaseException {
+		return bean.getDiretoriaBySigla(sigla);
+	}
+	
+	public List<Diretoria> getTodasDiretorias() throws DatabaseException {
 		return bean.getTodasDiretorias();
 	}
 	
-//	public List<Diretoria> getTodasOfertasDiretoria() throws DatabaseException {
-//		return bean.getTodasDiretorias();
-//	}
-
 }

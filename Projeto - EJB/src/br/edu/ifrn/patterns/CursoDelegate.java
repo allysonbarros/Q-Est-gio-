@@ -32,7 +32,7 @@ public class CursoDelegate {
 		return bean.getCurso(id);
 	}
 
-	public List<Curso> getTodasOfertasCurso() throws DatabaseException {
+	public List<Curso> getTodosCursos() throws DatabaseException {
 		return bean.getTodosCursos();
 	}
 

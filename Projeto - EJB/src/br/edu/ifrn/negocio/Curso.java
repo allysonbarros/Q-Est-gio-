@@ -24,7 +24,7 @@ public class Curso implements Serializable {
 	@Column(unique=true)
 	private String nome;
 
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne()
 	private Diretoria diretoria;
 	
 	@OneToMany(mappedBy="curso")

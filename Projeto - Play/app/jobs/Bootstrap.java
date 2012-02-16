@@ -4,35 +4,26 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.ivy.plugins.repository.ssh.Scp;
-import org.apache.log4j.pattern.LogEvent;
-
-import com.apple.eawt.Application;
-import com.google.gson.JsonArray;
-
-import controllers.Alunos;
-
 import play.Logger;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 import play.libs.IO;
-import play.mvc.Controller;
-import play.mvc.Scope;
-import play.mvc.Scope.Session;
-import play.mvc.results.Error;
+import br.edu.ifrn.negocio.Curso;
 import br.edu.ifrn.negocio.Diretoria;
 import br.edu.ifrn.negocio.Endereco;
 import br.edu.ifrn.negocio.InstituicaoEnsino;
+import br.edu.ifrn.patterns.CursoDelegate;
 import br.edu.ifrn.patterns.DiretoriaDelegate;
 import br.edu.ifrn.patterns.InstituicaoEnsinoDelegate;
 
 @OnApplicationStart
 public class Bootstrap extends Job {
 	public void doJob() throws Exception {
-		InstituicaoEnsinoDelegate del = new InstituicaoEnsinoDelegate();
-		DiretoriaDelegate del2 = new DiretoriaDelegate();
+		InstituicaoEnsinoDelegate instituicaoDelegate = new InstituicaoEnsinoDelegate();
+		DiretoriaDelegate diretoriaDelegate = new DiretoriaDelegate();
+		CursoDelegate cursoDelegate = new CursoDelegate();
 		
-		if (del.getTodasOfertasInstituicaoEnsino().isEmpty()) {
+		if (instituicaoDelegate.getTodasOfertasInstituicaoEnsino().isEmpty()) {
 			InstituicaoEnsino i = new InstituicaoEnsino();
 			
 			i.setCnpj("10.877.412.0001-68");
@@ -40,7 +31,7 @@ public class Bootstrap extends Job {
 			i.setNomeFantasia("IFRN");
 			i.setEndereco(new Endereco("Rua Dr. Nilo Bezerra Ramalho", "1692", null, "Tirol", "Natal", "RN", "59015-300"));
 			
-			if (del2.getTodasDiretoria().isEmpty()) {
+			if (diretoriaDelegate.getTodasDiretorias().isEmpty()) {
 				List<Diretoria> lista = new ArrayList<Diretoria>();
 				List<String> readLines = IO.readLines(new File("conf/diretorias.cfg"));
 				
@@ -48,14 +39,22 @@ public class Bootstrap extends Job {
 					String d[] = s.trim().split(";");
 					
 					lista.add(new Diretoria(d[0], d[1], null, i));
-					Logger.info("Diretoria \"" + d[0] + "\" adicionada com sucesso!");
 				}
 				
 				i.setDiretorias(lista);
 			}
+			instituicaoDelegate.cadastrarInstituicaoEnsino(i);
+		}
+		
+		if (cursoDelegate.getTodosCursos().isEmpty()) {
+			List<String> readLines2 = IO.readLines(new File("conf/cursos.cfg"));
 			
-			Logger.info("Instituição de ensino \"" + i.getRazaoSocial() + "\" cadastrada com sucesso!");
-			del.cadastrarInstituicaoEnsino(i);
+			for (String st : readLines2) {
+				String d[] = st.trim().split(";");
+				Diretoria dir = diretoriaDelegate.getDiretoriaBySigla(d[1].toString());
+				
+				cursoDelegate.cadastrarCurso(new Curso(d[0], dir));
+			}
 		}
 	}
 }

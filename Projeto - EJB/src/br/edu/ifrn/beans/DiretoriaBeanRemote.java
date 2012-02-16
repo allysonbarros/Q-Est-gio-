@@ -12,7 +12,6 @@ public interface DiretoriaBeanRemote {
 	public void editarDiretoria(Diretoria p) throws DatabaseException;
 	public void deletarDiretoria(Diretoria p) throws DatabaseException;
 	public Diretoria getDiretoria(Long id) throws DatabaseException;
+	public Diretoria getDiretoriaBySigla(String sigla) throws DatabaseException;
 	public List<Diretoria> getTodasDiretorias() throws DatabaseException;
-	
-	
 }
