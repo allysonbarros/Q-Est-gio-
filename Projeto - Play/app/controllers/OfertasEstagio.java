@@ -6,10 +6,14 @@ import java.util.List;
 
 import play.mvc.Controller;
 import play.mvc.With;
+import br.edu.ifrn.exceptions.DatabaseException;
+import br.edu.ifrn.negocio.Curso;
+import br.edu.ifrn.negocio.Diretoria;
 import br.edu.ifrn.negocio.Empresa;
 import br.edu.ifrn.negocio.OfertaEstagio;
 import br.edu.ifrn.negocio.Pessoa;
 import br.edu.ifrn.negocio.TipoPessoa;
+import br.edu.ifrn.patterns.DiretoriaDelegate;
 import br.edu.ifrn.patterns.EmpresaDelegate;
 import br.edu.ifrn.patterns.OfertaEstagioDelegate;
 import br.edu.ifrn.patterns.AlunoDelegate;
@@ -24,14 +28,16 @@ public class OfertasEstagio extends Controller {
 	public static void formCadastro() {
 		try {
 			EmpresaDelegate del = new EmpresaDelegate();
+			DiretoriaDelegate diretoriaDelegate = new DiretoriaDelegate();
 			List<Empresa> empresas = del.getTodasEmpresas();
+			List<Diretoria> diretorias = diretoriaDelegate.getTodasDiretorias();
 			
 			if (empresas.isEmpty()) {
 				flash.error("<strong>Atenção:</strong> Não é possível criar ofertas de estágio pois nenhuma empresa está cadastrada!");
 				Application.index();
 			}
 			
-			render(empresas);
+			render(empresas, diretorias);
 		} catch (Exception e) {
 			error(e.getMessage());
 		}
@@ -40,7 +46,7 @@ public class OfertasEstagio extends Controller {
 	public static void cadastrar(OfertaEstagio o, long idEmpresa) {
 		validation.required("area",o.getAreaConhecimento());
 		validation.required("descr",o.getDescricao());
-		validation.required("empresa",idEmpresa);
+		validation.required("empresa",idEmpresa).message("Você deve selecionar uma empresa.");
 		validation.required("funcao",o.getFuncao());
 		validation.required("numvagas", o.getNumVagas());
 
@@ -81,4 +87,28 @@ public class OfertasEstagio extends Controller {
 		del_oe.removerCandidato(idOferta, alunoId);
 		Application.ofertaEstagio();
 	}
+	
+	public static void getCursosByDiretoria(long idDiretoria) throws Exception {
+		DiretoriaDelegate diretoriaDelegate = new DiretoriaDelegate();
+		List<Curso> cursos = diretoriaDelegate.getDiretoria(idDiretoria).getCursos();
+		render(cursos);
+	}
+	
+    public static void getDadosEmpresa(Long id) {
+    	try{
+    		EmpresaDelegate del = new EmpresaDelegate();
+    		Empresa e = del.getEmpresa(id);
+    		StringBuilder sb = new StringBuilder();
+    		
+    		sb.append("<br/><h4>Confirmação dos dados da empresa escolhida:</h4>");
+    		sb.append("<strong>Razão Social: </strong>" + e.getRazaoSocial() + "<br/>");
+    		sb.append("<strong>Nome Fantasia: </strong>" + e.getNomeFantasia() + "<br/>");
+    		sb.append("<strong>Área de Atuação: </strong>" + e.getAreaAtuacao() + "<br/>");
+    		sb.append("<strong>Nome do Responsável: </strong>" + e.getNomeResponsavel() + "<br/>");
+    		
+    		renderText(sb.toString());
+    	} catch (Exception er) {
+    		renderText("ERRO: " + er.getLocalizedMessage());
+    	}
+    }
 }

@@ -25,8 +25,8 @@ public class Empresas extends Controller {
     		formCadastro();
     	} else {
     		try{
-    		EmpresaDelegate del = new EmpresaDelegate();
-        	del.cadastrarEmpresa(e);
+    			EmpresaDelegate del = new EmpresaDelegate();
+    			del.cadastrarEmpresa(e);
     		} catch (Exception er) {
 				// TODO Auto-generated catch block
 				er.printStackTrace();
@@ -34,9 +34,9 @@ public class Empresas extends Controller {
 				renderArgs.put("e", e);
 				renderTemplate("Empresas/formCadastro.html");
 			}
+    		
         	flash.success("Empresa cadastrada com sucesso!");
 	    	formCadastro();
     	}
     }
-    
 }

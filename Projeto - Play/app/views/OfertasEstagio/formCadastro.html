@@ -5,11 +5,40 @@
 <script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 <script src="@{'/public/javascripts/jquery.mask.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 
-<script type="text/javascript">
+<script type="text/javascript"><!--
 	$(document).ready(function(){
 		$("#formtabs").tabs();
+
+		$("confirmacaoDadosEmpresa").hide();
+		$("#idEmpresa").live("change", function(){
+			var value = $("#idEmpresa").val(); 
+			
+			if (value == "") {
+				$("#confirmacaoDadosEmpresa").html("");
+			} else {
+				var empresaAction = #{jsAction @OfertasEstagio.getDadosEmpresa(':id') /}
+				$('#confirmacaoDadosEmpresa').load(empresaAction({id: value}));
+			}
+		});
+
+		$("#idDiretoria").live("change", function(){
+			var value = $("#idDiretoria").val(); 
+			
+			if (value == "") {
+				$("#idCurso").html('<option value="">-- Selecione um Curso --</option>');
+				return;
+			} else {
+				$("#idCurso").html('<option value="">-- Selecione um Curso --</option>');
+				
+				var cursosAction = #{jsAction @OfertasEstagio.getCursosByDiretoria(':idDiretoria') /}
+				$.get(cursosAction({idDiretoria: value}), function(data) {
+				  $("#idCurso").append(data);
+				});
+			}
+		});
+		
 	});
-</script>
+--></script>
 #{/set}
 #{set 'migalhaDePao'}
 <ul id="migalhadepao">
@@ -32,32 +61,68 @@
 		</ul>
 		
 		<div id="tabs-1">
-			<label for="idEmpresa" class="lbl_a">Selecione a empresa ofertante:</label>
-			<select style="width:100%;" name="idEmpresa" id="b_select">
-				#{list items:empresas, as:'empresa'}
-				<option value="${empresa.id}">${empresa.nomeFantasia}</option>				
-				#{/list}
-			</select>
+			<div class="formEl_b">
+				<label for="idEmpresa" style="width:31%;" class="lbl_a">Selecione a empresa ofertante:</label> <br />
+				<select style="width:100%;" name="idEmpresa" id="idEmpresa">
+					<option value="">-- Selecione uma Empresa --</option>
+					#{list items:empresas, as:'empresa'}
+					<option value="${empresa.id}">${empresa.nomeFantasia}</option>				
+					#{/list}
+				</select>
+				
+				<div id="confirmacaoDadosEmpresa"></div>
+				
+				<br/>
+				
+				<div class="cf">
+					<a class="btn btn_d fl" onclick="$('.passo2').click(); return false;" href="#">Dados da Oferta de Estágio  &raquo;</a>
+				</div>
+			</div>
 		</div>
+		
 		<div id="tabs-2">
-			<div class="sepH_b">
-				<label for="o.numVagas" class="lbl_a">Número de Vagas:</label>
-				<input type="text" name="o.numVagas" value="" id="o.numVagas" class="inpt_a">
-			</div>
+			<div class="formEl_b">
+				<div class="sepH_b">
+					<label for="idDiretoria" class="lbl_a">Selecione a Diretoria:</label>
+					<select style="width:40%; margin-top:8px;" name="idDiretoria" id="idDiretoria">
+						<option value="">-- Selecione uma Diretoria --</option>
+						#{list items:diretorias, as:'diretoria'}
+						<option value="${diretoria.id}">${diretoria.getSigla()} - ${diretoria.getNome()}</option>
+						#{/list}
+					</select>
+				</div>
+				
+				<div class="sepH_b">
+					<label for="idDiretoria" class="lbl_a">Selecione o Curso:</label>
+					<select style="width:40%; margin-top:8px;" name="idCurso" id="idCurso">
+						<option value="">-- Selecione um Curso --</option>
+					</select>
+				</div>
 			
-			<div class="sepH_b">
-				<label for="o.areaConhecimento" class="lbl_a">Área de Conhecimento:</label>
-				<input type="text" name="o.areaConhecimento" value="" id="o.areaConhecimento" class="inpt_a">
-			</div>
-			
-			<div class="sepH_b">
-				<label for="o.funcao" class="lbl_a">Função da Vaga:</label>
-				<input type="text" name="o.funcao" value="" id="o.funcao" class="inpt_a">
-			</div>
-			
-			<div class="sepH_b">
-				<label for="o.descricao" class="lbl_a">Descrição da Vaga:</label>
-				<textarea name="o.descricao" rows="10" cols="30" id="b_textarea"></textarea>
+				<div class="sepH_b">
+					<label for="o.numVagas" class="lbl_a">Número de Vagas:</label>
+					<input type="text" name="o.numVagas" value="" id="o.numVagas" class="inpt_a">
+				</div>
+				
+				<div class="sepH_b">
+					<label for="o.areaConhecimento" class="lbl_a">Área de Conhecimento:</label>
+					<input type="text" name="o.areaConhecimento" value="" id="o.areaConhecimento" class="inpt_a">
+				</div>
+				
+				<div class="sepH_b">
+					<label for="o.funcao" class="lbl_a">Função da Vaga:</label>
+					<input type="text" name="o.funcao" value="" id="o.funcao" class="inpt_a">
+				</div>
+				
+				<div class="sepH_b">
+					<label for="o.descricao" class="lbl_a">Descrição da Vaga:</label>
+					<textarea name="o.descricao" rows="10" cols="30" id="b_textarea"></textarea>
+				</div>
+				
+				<div class="cf">
+					<a class="btn btn_a fl sepV_a" onclick="$('.passo1').click(); return false;" href="#">&laquo; Dados da Empresa</a>
+					<button class="btn btn_d sepV_a"  type="submit"><span>Cadastrar Oferta de Estágio</span></button>
+				</div>
 			</div>
 		</div>
 </div>
