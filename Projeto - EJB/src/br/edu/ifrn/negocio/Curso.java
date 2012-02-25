@@ -68,30 +68,18 @@ public class Curso implements Serializable {
 		this.diretoria = diretoria;
 	}
 
-	/**
-	 * @return the categoriasEstagio
-	 */
 	public List<CategoriaEstagio> getCategoriasEstagio() {
 		return categoriasEstagio;
 	}
 
-	/**
-	 * @param categoriasEstagio the categoriasEstagio to set
-	 */
 	public void setCategoriasEstagio(List<CategoriaEstagio> categoriasEstagio) {
 		this.categoriasEstagio = categoriasEstagio;
 	}
 
-	/**
-	 * @return the alunos
-	 */
 	public List<CategoriaEstagio> getAlunos() {
 		return alunos;
 	}
 
-	/**
-	 * @param alunos the alunos to set
-	 */
 	public void setAlunos(List<CategoriaEstagio> alunos) {
 		this.alunos = alunos;
 	}

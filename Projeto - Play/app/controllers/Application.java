@@ -11,9 +11,12 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import br.edu.ifrn.beans.EnderecoBeanRemote;
+import br.edu.ifrn.negocio.Curso;
+import br.edu.ifrn.negocio.Diretoria;
 import br.edu.ifrn.negocio.Endereco;
 import br.edu.ifrn.negocio.OfertaEstagio;
 import br.edu.ifrn.negocio.Pessoa;
+import br.edu.ifrn.patterns.DiretoriaDelegate;
 import br.edu.ifrn.patterns.EnderecoDelegate;
 import br.edu.ifrn.patterns.OfertaEstagioDelegate;
 import br.edu.ifrn.patterns.ServiceLocator;
@@ -25,7 +28,7 @@ import play.mvc.With;
 @With(SessionsHelper.class)
 public class Application extends Controller {
 
-    public static void index() {
+    public static void index() throws Exception {   	
     	render();
     }
     

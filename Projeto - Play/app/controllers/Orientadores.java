@@ -27,7 +27,7 @@ public class Orientadores extends Controller {
     }
     
     public static void formCadastro() {
-    	renderTemplate("formsGenericos/formCadastroPessoa.html");
+    	render();
     }
     
     public static void cadastrar(Orientador p, String confirmacaoSenha) {
@@ -55,7 +55,7 @@ public class Orientadores extends Controller {
     		flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
 
     		renderArgs.put("p", p);
-			renderTemplate("formsGenericos/formCadastroPessoa.html");
+    		renderTemplate("Orientadores/formCadastro.html");
     	} else {
     		try{
 	    	OrientadorDelegate del = new OrientadorDelegate();
@@ -66,9 +66,8 @@ public class Orientadores extends Controller {
 				// TODO Auto-generated catch block
 				er.printStackTrace();
 				flash.error("<strong>Erro:</strong> " + er.getMessage());
-				
 				renderArgs.put("p", p);
-				renderTemplate("formsGenericos/formCadastroPessoa.html");
+				renderTemplate("Orientadores/formCadastro.html");
 			}
 	    	flash.success("Orientador cadastrado com sucesso!");
 	    	formCadastro();

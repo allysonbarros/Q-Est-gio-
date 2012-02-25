@@ -26,15 +26,10 @@ public class Alunos extends Controller {
 	}
 
 	public static void formCadastro() {
-		renderTemplate("formsGenericos/formCadastroPessoa.html");
+		render();
 	}
 
 	public static void cadastrar(Aluno p, String confirmacaoSenha) {
-		System.out.println(request.action);
-		System.out.println(p);
-		
-		System.out.println("---------------------------------------");
-		
 		validation.required("matr",p.getMatricula()).message("O campo matrícula deve ser preenchido com 12 dígitos.");
 		validation.required("cpf",p.getCpf()).message("O campo CPF deve ser preenchido.");
 		//    	validation.required("rg",p.getRg());
@@ -59,7 +54,7 @@ public class Alunos extends Controller {
 			flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
 
 			renderArgs.put("p", p);
-			renderTemplate("formsGenericos/formCadastroPessoa.html");
+			renderTemplate("Alunos/formCadastro.html");
 		} else {
 			AlunoDelegate del;
 			try {
@@ -69,16 +64,15 @@ public class Alunos extends Controller {
 				p.getUsuario().setTipoUsuario(TipoPessoa.ALUNO);
 				del.cadastrarAluno(p);
 			} catch (Exception e) {
+				// TODO Auto-generated catch block
 				flash.error("<strong>Erro:</strong> " + e.getMessage());
+				renderArgs.put("p", p);
 				e.printStackTrace();
 				
-				renderArgs.put("p", p);
-				renderTemplate("formsGenericos/formCadastroPessoa.html");
+				renderTemplate("Alunos/formCadastro.html");
 			}
-			
 			flash.success("Aluno cadastrado com sucesso!");
 			formCadastro();
 		}
 	}
-
 }

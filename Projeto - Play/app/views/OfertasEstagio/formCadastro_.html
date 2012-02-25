@@ -1,0 +1,54 @@
+#{extends 'main.html' /}
+#{set title:'formCadastro.html' /}
+#{set 'migalhaDePao'}
+<ul id="migalhadepao">
+	<li class="parent">
+		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
+		<a href="/" class="vam">Início</a>
+	</li>
+	<li class="current"><a href="#">Cadastro de oferta de estágio</a></li>
+</ul>
+#{/set}
+*{"Tag que importa as mensagens de feedback do sistema"}*
+#{BoxesMensagensFeedback /}
+
+#{form @OfertasEstagio.cadastrar()}
+<div class="formEl_b">
+	<fieldset id="empresa_anunciante" class="">
+		<legend>Empresa Anunciante</legend>
+		<div class="sepH_b">
+			<select style="width:100%;" name="idEmpresa" id="b_select">
+				#{list items:empresas, as:'empresa'}
+				<option value="${empresa.id}">${empresa.nomeFantasia}</option>				
+				#{/list}
+			</select>
+		</div>
+	</fieldset>
+	
+	<fieldset id="" class="">
+		<legend>Dados da Vaga</legend>
+		<div class="sepH_b">
+			<label for="o.numVagas" class="lbl_a">Número de Vagas:</label>
+			<input type="text" name="o.numVagas" value="" id="o.numVagas" class="inpt_a">
+		</div>
+		
+		<div class="sepH_b">
+			<label for="o.areaConhecimento" class="lbl_a">Área de Conhecimento:</label>
+			<input type="text" name="o.areaConhecimento" value="" id="o.areaConhecimento" class="inpt_a">
+		</div>
+		
+		<div class="sepH_b">
+			<label for="o.funcao" class="lbl_a">Função da Vaga:</label>
+			<input type="text" name="o.funcao" value="" id="o.funcao" class="inpt_a">
+		</div>
+		
+		<div class="sepH_b">
+			<label for="o.descricao" class="lbl_a">Descrição da Vaga:</label>
+			<textarea name="o.descricao" rows="10" cols="30" id="b_textarea"></textarea>
+		</div>
+	</fieldset>
+	
+	<input type="submit" name="enviar" class="btn btn_aS fl sepV_a" value="Cadastrar" id="enviar">
+	
+</div>
+#{/form}

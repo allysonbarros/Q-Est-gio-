@@ -13,6 +13,16 @@
 		$("#login").mask("999999999999");
 		$("#cpf").mask("999.999.999-99");
 		$("#cep").mask("99999-999");
+
+		$("#nomeConjuge").parent().hide();
+		$("#estadoCivil").change(function(){
+			var value = $(this).val();
+			if (value == "Casado") {
+				$("#nomeConjuge").parent().show();
+			} else {
+				$("#nomeConjuge").parent().hide();
+			}
+		});
 		
 		$("#matricula").focusout(function() {
 			var value = $(this).val();
@@ -32,17 +42,17 @@
 	<li class="parent">
 		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
 		<a href="/" class="vam">Início</a>
-	</li>
-	<li class="current"><a href="#">Cadastro de Orientador</a></li>
+	</li><div id="tabs">
+	<li class="current"><a href="#">Cadastro de Aluno</a></li>
 </ul>
 #{/set}
 
-<h1 class="sepH_c">Cadastro de Orientador</h1>
+<h1 class="sepH_c">Cadastro de Aluno</h1>
 
 *{"Tag que importa as mensagens de feedback do sistema"}*
 #{BoxesMensagensFeedback /}
 
-#{form @Orientadores.cadastrar()}
+#{form @Alunos.cadastrar()}
 <div id="formtabs">
 		<ul>
 		    <li><a class="passo1" href="#tabs-1" class="current">Dados Pessoais</a></li>
@@ -68,7 +78,7 @@
 					<div class="sepH_b">
 					#{field 'p.estadoCivil'}
 						<label for="estadoCivil" class="lbl_a">Estado Civil:</label>
-						#{select field.name,value:p?.getEstadoCivil()}
+						#{select field.name, value:p?.getEstadoCivil(), id:'estadoCivil'}
 							#{option 'Solteiro'}Solteiro#{/option}
 							#{option 'Casado'}Casado#{/option}
 							#{option 'Viúvo'}Viúvo#{/option}
@@ -168,7 +178,7 @@
 				
 				<div class="cf">
 					<a class="btn btn_a fl sepV_a" onclick="$('.passo2').click(); return false;" href="#">&laquo; Dados de Contato</a>
-					<button class="btn btn_d sepV_a"  type="submit"><span>Cadastrar Orientador</span></button>
+					<button class="btn btn_d sepV_a"  type="submit"><span>Cadastrar Aluno</span></button>
 				</div>
 			</div>
 		</div>

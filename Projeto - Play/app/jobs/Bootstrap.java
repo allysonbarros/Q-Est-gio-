@@ -11,9 +11,13 @@ import play.libs.IO;
 import br.edu.ifrn.negocio.Curso;
 import br.edu.ifrn.negocio.Diretoria;
 import br.edu.ifrn.negocio.Endereco;
+import br.edu.ifrn.negocio.Funcionario;
 import br.edu.ifrn.negocio.InstituicaoEnsino;
+import br.edu.ifrn.negocio.TipoPessoa;
+import br.edu.ifrn.negocio.Usuario;
 import br.edu.ifrn.patterns.CursoDelegate;
 import br.edu.ifrn.patterns.DiretoriaDelegate;
+import br.edu.ifrn.patterns.FuncionarioDelegate;
 import br.edu.ifrn.patterns.InstituicaoEnsinoDelegate;
 
 @OnApplicationStart
@@ -22,6 +26,26 @@ public class Bootstrap extends Job {
 		InstituicaoEnsinoDelegate instituicaoDelegate = new InstituicaoEnsinoDelegate();
 		DiretoriaDelegate diretoriaDelegate = new DiretoriaDelegate();
 		CursoDelegate cursoDelegate = new CursoDelegate();
+		FuncionarioDelegate funcionarioDelegate = new FuncionarioDelegate();
+		
+		if (funcionarioDelegate.getTodasFuncionarios().isEmpty()) {
+			Funcionario f = new Funcionario();
+			
+			Usuario u = new Usuario();
+			u.setLogin("admin");
+			u.setSenha("admin");
+			u.setAtivado(true);
+			u.setPessoa(f);
+			u.setTipoUsuario(TipoPessoa.FUNCIONARIO);
+			
+			f.setCpf("123456789010");
+			f.setMatricula(123456789010L);
+			f.setNome("Administrador do Sistema");
+			f.setEndereco(new Endereco("Rua Dr. Nilo Bezerra Ramalho", "1692", null, "Tirol", "Natal", "RN", "59015-300"));
+			f.setUsuario(u);
+			
+			funcionarioDelegate.cadastrarFuncionario(f);
+		}
 		
 		if (instituicaoDelegate.getTodasOfertasInstituicaoEnsino().isEmpty()) {
 			InstituicaoEnsino i = new InstituicaoEnsino();
@@ -43,6 +67,7 @@ public class Bootstrap extends Job {
 				
 				i.setDiretorias(lista);
 			}
+			
 			instituicaoDelegate.cadastrarInstituicaoEnsino(i);
 		}
 		
