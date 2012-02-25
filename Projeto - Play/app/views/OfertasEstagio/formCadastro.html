@@ -1,5 +1,16 @@
 #{extends 'main.html' /}
 #{set title:'formCadastro.html' /}
+#{set 'moreScripts'}
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/jquery_ui/tema.css'}">
+<script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.mask.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#formtabs").tabs();
+	});
+</script>
+#{/set}
 #{set 'migalhaDePao'}
 <ul id="migalhadepao">
 	<li class="parent">
@@ -13,4 +24,41 @@
 *{"Tag que importa as mensagens de feedback do sistema"}*
 #{BoxesMensagensFeedback /}
 
-
+#{form @OfertasEstagio.cadastrar()}
+<div id="formtabs">
+		<ul>
+		    <li><a class="passo1" href="#tabs-1" class="current">Dados da Empresa</a></li>
+		    <li><a class="passo2" href="#tabs-2">Dados da Oferta de Estágio</a></li>
+		</ul>
+		
+		<div id="tabs-1">
+			<label for="idEmpresa" class="lbl_a">Selecione a empresa ofertante:</label>
+			<select style="width:100%;" name="idEmpresa" id="b_select">
+				#{list items:empresas, as:'empresa'}
+				<option value="${empresa.id}">${empresa.nomeFantasia}</option>				
+				#{/list}
+			</select>
+		</div>
+		<div id="tabs-2">
+			<div class="sepH_b">
+				<label for="o.numVagas" class="lbl_a">Número de Vagas:</label>
+				<input type="text" name="o.numVagas" value="" id="o.numVagas" class="inpt_a">
+			</div>
+			
+			<div class="sepH_b">
+				<label for="o.areaConhecimento" class="lbl_a">Área de Conhecimento:</label>
+				<input type="text" name="o.areaConhecimento" value="" id="o.areaConhecimento" class="inpt_a">
+			</div>
+			
+			<div class="sepH_b">
+				<label for="o.funcao" class="lbl_a">Função da Vaga:</label>
+				<input type="text" name="o.funcao" value="" id="o.funcao" class="inpt_a">
+			</div>
+			
+			<div class="sepH_b">
+				<label for="o.descricao" class="lbl_a">Descrição da Vaga:</label>
+				<textarea name="o.descricao" rows="10" cols="30" id="b_textarea"></textarea>
+			</div>
+		</div>
+</div>
+#{/form}

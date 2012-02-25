@@ -18,13 +18,19 @@ import br.edu.ifrn.patterns.AlunoDelegate;
 public class OfertasEstagio extends Controller {
 
 	public static void index() {
-		render();
+		formCadastro();
 	}
 
 	public static void formCadastro() {
 		try {
 			EmpresaDelegate del = new EmpresaDelegate();
 			List<Empresa> empresas = del.getTodasEmpresas();
+			
+			if (empresas.isEmpty()) {
+				flash.error("<strong>Atenção:</strong> Não é possível criar ofertas de estágio pois nenhuma empresa está cadastrada!");
+				Application.index();
+			}
+			
 			render(empresas);
 		} catch (Exception e) {
 			error(e.getMessage());
@@ -50,7 +56,6 @@ public class OfertasEstagio extends Controller {
 				o.setEmpresa(e);
 				del.cadastrarOfertaEstagio(o);
 			} catch (Exception er) {
-				// TODO Auto-generated catch block
 				er.printStackTrace();
 				flash.error("<strong>Erro:</strong> " + er.getMessage());
 				renderArgs.put("o", o);
