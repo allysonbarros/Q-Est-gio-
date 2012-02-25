@@ -43,7 +43,10 @@ public class OfertaEstagio  implements Serializable {
 	private String funcao;
 	private String descricao;
 	
+	@OneToOne
 	private Diretoria diretoria;
+	
+	@OneToOne
 	private Curso curso;
 	
 	public OfertaEstagio() {
