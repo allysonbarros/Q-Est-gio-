@@ -24,7 +24,6 @@ public class Curso implements Serializable {
 	@Column(unique=true)
 	private String nome;
 
-	@ManyToOne()
 	private Diretoria diretoria;
 	
 	@OneToMany(mappedBy="curso")

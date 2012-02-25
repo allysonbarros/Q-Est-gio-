@@ -43,6 +43,8 @@ public class OfertaEstagio  implements Serializable {
 	private String funcao;
 	private String descricao;
 	
+	private Diretoria diretoria;
+	private Curso curso;
 	
 	public OfertaEstagio() {
 		
@@ -102,6 +104,22 @@ public class OfertaEstagio  implements Serializable {
 
 	public List<Aluno> getCandidatos() {
 		return candidatos;
+	}
+
+	public void setDiretoria(Diretoria diretoria) {
+		this.diretoria = diretoria;
+	}
+
+	public Diretoria getDiretoria() {
+		return diretoria;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+
+	public Curso getCurso() {
+		return curso;
 	}
 
 	

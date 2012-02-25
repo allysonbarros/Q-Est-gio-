@@ -13,6 +13,7 @@ import br.edu.ifrn.negocio.Empresa;
 import br.edu.ifrn.negocio.OfertaEstagio;
 import br.edu.ifrn.negocio.Pessoa;
 import br.edu.ifrn.negocio.TipoPessoa;
+import br.edu.ifrn.patterns.CursoDelegate;
 import br.edu.ifrn.patterns.DiretoriaDelegate;
 import br.edu.ifrn.patterns.EmpresaDelegate;
 import br.edu.ifrn.patterns.OfertaEstagioDelegate;
@@ -43,8 +44,7 @@ public class OfertasEstagio extends Controller {
 		}
 	}
 
-	public static void cadastrar(OfertaEstagio o, long idEmpresa) {
-		validation.required("area",o.getAreaConhecimento());
+	public static void cadastrar(OfertaEstagio o, long idEmpresa, long idDiretoria, long idCurso) {
 		validation.required("descr",o.getDescricao());
 		validation.required("empresa",idEmpresa).message("Você deve selecionar uma empresa.");
 		validation.required("funcao",o.getFuncao());
@@ -58,8 +58,17 @@ public class OfertasEstagio extends Controller {
 			try{
 				OfertaEstagioDelegate del = new OfertaEstagioDelegate();
 				EmpresaDelegate del_empresa = new EmpresaDelegate();
+				DiretoriaDelegate diretoriaDelegate = new DiretoriaDelegate();
+				CursoDelegate cursoDelegate = new CursoDelegate();
+				
 				Empresa e = del_empresa.getEmpresa(idEmpresa);
+				Diretoria d = diretoriaDelegate.getDiretoria(idDiretoria);
+				Curso c = cursoDelegate.getCurso(idCurso);
+				
 				o.setEmpresa(e);
+				o.setDiretoria(d);
+				o.setCurso(c);
+				
 				del.cadastrarOfertaEstagio(o);
 			} catch (Exception er) {
 				er.printStackTrace();
