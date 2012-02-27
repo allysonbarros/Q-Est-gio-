@@ -7,6 +7,8 @@ import javax.ejb.Stateless;
 
 import br.edu.ifrn.exceptions.DatabaseException;
 import br.edu.ifrn.modelo.DAO;
+import br.edu.ifrn.modelo.DiretoriaDAO;
+import br.edu.ifrn.modelo.OfertaEstagioDAO;
 import br.edu.ifrn.negocio.Aluno;
 import br.edu.ifrn.negocio.OfertaEstagio;
 import br.edu.ifrn.negocio.Pessoa;
@@ -21,9 +23,9 @@ public class OfertaEstagioBean implements OfertaEstagioBeanRemote {
 	/**
 	 * Default constructor. 
 	 */
-	DAO dao;
+	OfertaEstagioDAO dao;
 	public OfertaEstagioBean() {
-		dao = new DAO();
+		dao = new OfertaEstagioDAO();
 	}
 
 	@Override
@@ -44,6 +46,11 @@ public class OfertaEstagioBean implements OfertaEstagioBeanRemote {
 	@Override
 	public List<OfertaEstagio> getTodasOfertaEstagios() throws DatabaseException{
 		return dao.findAll(OfertaEstagio.class);
+	}
+	
+	@Override
+	public List<OfertaEstagio> getTodasOfertaEstagiosByDiretoria(String sigla) throws DatabaseException {
+		return dao.findByDiretoria(sigla);
 	}
 
 	@Override
@@ -86,7 +93,4 @@ public class OfertaEstagioBean implements OfertaEstagioBeanRemote {
 		}
 
 	}
-
-
-
 }

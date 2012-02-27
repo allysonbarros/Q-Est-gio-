@@ -50,4 +50,7 @@ public class OfertaEstagioDelegate {
 		return bean.getTodasOfertaEstagios();
 	}
 	
+	public List<OfertaEstagio> getTodasOfertasEstagioByDiretoria(String sigla) throws DatabaseException{
+		return bean.getTodasOfertaEstagiosByDiretoria(sigla);
+	}
 }

@@ -11,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import br.edu.ifrn.beans.EnderecoBeanRemote;
+import br.edu.ifrn.negocio.Aluno;
 import br.edu.ifrn.negocio.Curso;
 import br.edu.ifrn.negocio.Diretoria;
 import br.edu.ifrn.negocio.Endereco;
@@ -54,7 +55,7 @@ public class Application extends Controller {
     	try {
 	    	UsuarioDelegate ud = new UsuarioDelegate();
 	    	OfertaEstagioDelegate del = new OfertaEstagioDelegate();
-	    	lista = del.getTodasOfertasEstagio();
+	    	lista = del.getTodasOfertasEstagioByDiretoria(((Aluno) ud.getUsuario(Long.parseLong(session.get("usuarioAtivoID"))).getPessoa()).getCurso().getDiretoria().getSigla());
 	    	
 	    	if (!lista.isEmpty()) {
 		    	List<Boolean> listaCand = new ArrayList<Boolean>();
@@ -70,7 +71,7 @@ public class Application extends Controller {
 					listaCand.add(esta);
 				}
 		    	
-		    	render(lista,listaCand, pessoa);
+		    	render(lista, listaCand, pessoa);
 		    	
 	    	} else {
 	    		render(lista);

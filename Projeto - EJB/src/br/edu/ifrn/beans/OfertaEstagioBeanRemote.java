@@ -13,6 +13,7 @@ public interface OfertaEstagioBeanRemote {
 	public void deletarOfertaEstagio(OfertaEstagio e) throws DatabaseException;
 	public OfertaEstagio getOfertaEstagio(Long id) throws DatabaseException;
 	public List<OfertaEstagio> getTodasOfertaEstagios() throws DatabaseException;
+	public List<OfertaEstagio> getTodasOfertaEstagiosByDiretoria(String sigla) throws DatabaseException;
 	public void removerCandidato(long idOferta , long idAluno) throws DatabaseException;
 	public void inserirCandidato(long idOferta, long idAluno) throws DatabaseException;
 }

@@ -32,14 +32,14 @@ public class OfertaEstagio  implements Serializable {
 	private Empresa empresa;
 	
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="oferta_aluno",
 	joinColumns={@JoinColumn(name="oferta_id")},
 	inverseJoinColumns={@JoinColumn(name="aluno_id")}) 
 	private List<Aluno> candidatos;
 	
 	private int numVagas;
-	private String areaConhecimento;
+//	private String areaConhecimento;
 	private String funcao;
 	private String descricao;
 	
@@ -61,13 +61,13 @@ public class OfertaEstagio  implements Serializable {
 		this.empresa = empresa;
 	}
 	
-	public String getAreaConhecimento() {
-		return areaConhecimento;
-	}
+//	public String getAreaConhecimento() {
+//		return areaConhecimento;
+//	}
 	
-	public void setAreaConhecimento(String areaConhecimento) {
-		this.areaConhecimento = areaConhecimento;
-	}
+//	public void setAreaConhecimento(String areaConhecimento) {
+//		this.areaConhecimento = areaConhecimento;
+//	}
 	
 	public String getFuncao() {
 		return funcao;
