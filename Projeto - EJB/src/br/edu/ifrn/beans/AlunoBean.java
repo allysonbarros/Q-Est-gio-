@@ -8,9 +8,7 @@ import javax.ejb.Stateless;
 import br.edu.ifrn.exceptions.DatabaseException;
 import br.edu.ifrn.modelo.DAO;
 import br.edu.ifrn.negocio.Aluno;
-/**
- * Session Bean implementation class AlunoBean
- */
+
 @Stateless
 @LocalBean
 public class AlunoBean implements AlunoBeanRemote {

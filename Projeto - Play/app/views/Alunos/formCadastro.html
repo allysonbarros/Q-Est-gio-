@@ -34,6 +34,22 @@
 				return;
 			} 
 		});
+
+		$("#idDiretoria").live("change", function(){
+			var value = $("#idDiretoria").val(); 
+			
+			if (value == "") {
+				$("#idCurso").html('<option value="">-- Selecione um Curso --</option>');
+				return;
+			} else {
+				$("#idCurso").html('<option value="">-- Selecione um Curso --</option>');
+				
+				var cursosAction = #{jsAction @OfertasEstagio.getCursosByDiretoria(':idDiretoria') /}
+				$.get(cursosAction({idDiretoria: value}), function(data) {
+				  $("#idCurso").append(data);
+				});
+			}
+		});
 	});
 </script>
 #{/set}
@@ -56,8 +72,9 @@
 <div id="formtabs">
 		<ul>
 		    <li><a class="passo1" href="#tabs-1" class="current">Dados Pessoais</a></li>
-		    <li><a class="passo2" href="#tabs-2">Dados de Contato</a></li>
-		    <li><a class="passo3" href="#tabs-3">Dados de Acesso</a></li>
+		    <li><a class="passo2" href="#tabs-2">Dados Acadêmicos</a></li>
+		    <li><a class="passo3" href="#tabs-3">Dados de Contato</a></li>
+		    <li><a class="passo4" href="#tabs-4">Dados de Acesso</a></li>
 		</ul>
 		
 		<div id="tabs-1">
@@ -110,12 +127,42 @@
 				</fieldset>
 			
 				<div class="cf">
-					<a class="btn btn_d fl" onclick="$('.passo2').click(); return false;" href="#">Dados de Contato  &raquo;</a>
+					<a class="btn btn_d fl" onclick="$('.passo2').click(); return false;" href="#">Dados de Acadêmicos  &raquo;</a>
 				</div>
 							
 			</div>
 		</div>
+		
 		<div id="tabs-2">
+			<div class="formEl_b">
+				<fieldset id="dados_acesso" class="">
+				<div class="sepH_b">
+					<label for="idDiretoria" class="lbl_a">Selecione a Diretoria:</label>
+					<select style="width:40%; margin-top:8px;" name="idDiretoria" id="idDiretoria">
+						<option value="">-- Selecione uma Diretoria --</option>
+						#{list items:diretorias, as:'diretoria'}
+						<option value="${diretoria.id}">${diretoria.getSigla()} - ${diretoria.getNome()}</option>
+						#{/list}
+					</select>
+				</div>
+				
+				<div class="sepH_b">
+					<label for="idDiretoria" class="lbl_a">Selecione o Curso:</label>
+					<select style="width:40%; margin-top:8px;" name="idCurso" id="idCurso">
+						<option value="">-- Selecione um Curso --</option>
+					</select>
+				</div>
+				</fieldset>
+				
+				<div class="cf">
+					<a class="btn btn_a fl sepV_a" onclick="$('.passo1').click(); return false;" href="#">&laquo; Dados Pessoais</a>
+					<a class="btn btn_d fl sepV_a" onclick="$('.passo3').click(); return false;" href="#">Dados de Contato &raquo;</a>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div id="tabs-3">
 			<div class="formEl_b">
 				<fieldset id="dados_contato" class="">
 					<div class="sepH_b">
@@ -151,13 +198,15 @@
 						<input type="text" name="p.usuario.email" value="${p?.getUsuario()?.getEmail()}" id="email" class="inpt_a">
 					</div>
 				</fieldset>
+				
 				<div class="cf">
-					<a class="btn btn_a fl sepV_a" onclick="$('.passo1').click(); return false;" href="#">&laquo; Dados Pessoais</a>
-					<a class="btn btn_d fl" onclick="$('.passo3').click(); return false;" href="#">Dados de Acesso  &raquo;</a>
+					<a class="btn btn_a fl sepV_a" onclick="$('.passo2').click(); return false;" href="#">&laquo; Dados Acadêmicos</a>
+					<a class="btn btn_d fl" onclick="$('.passo4').click(); return false;" href="#">Dados de Acesso  &raquo;</a>
 				</div>
 			</div>
 		</div>
-		<div id="tabs-3">
+		
+		<div id="tabs-4">
 			<div class="formEl_b">
 				<fieldset id="dados_acesso" class="">
 					<div class="sepH_b">
@@ -177,7 +226,7 @@
 				
 				
 				<div class="cf">
-					<a class="btn btn_a fl sepV_a" onclick="$('.passo2').click(); return false;" href="#">&laquo; Dados de Contato</a>
+					<a class="btn btn_a fl sepV_a" onclick="$('.passo3').click(); return false;" href="#">&laquo; Dados de Contato</a>
 					<button class="btn btn_d sepV_a"  type="submit"><span>Cadastrar Aluno</span></button>
 				</div>
 			</div>

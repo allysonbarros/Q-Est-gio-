@@ -9,8 +9,12 @@ import javax.persistence.ManyToOne;
 public class Aluno extends Pessoa {
 
 	private static final long serialVersionUID = -9151016583503663685L;
+	
 	@ManyToOne
 	private Curso curso;
+	
+	@ManyToOne
+	private Diretoria diretoria;
 
 	//private OfertaEstagio oferta;
 
@@ -30,6 +34,14 @@ public class Aluno extends Pessoa {
 	 */
 	public void setCurso(Curso curso) {
 		this.curso = curso;
+	}
+
+	public void setDiretoria(Diretoria diretoria) {
+		this.diretoria = diretoria;
+	}
+
+	public Diretoria getDiretoria() {
+		return diretoria;
 	}
 
 
