@@ -43,16 +43,16 @@
 		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
 		<a href="/" class="vam">Início</a>
 	</li><div id="tabs">
-	<li class="current"><a href="#">Cadastro de Aluno</a></li>
+	<li class="current"><a href="#">Cadastro de Funcionário</a></li>
 </ul>
 #{/set}
-
-<h1 class="sepH_c">Cadastro de Aluno</h1>
 
 *{"Tag que importa as mensagens de feedback do sistema"}*
 #{BoxesMensagensFeedback /}
 
-#{form @Alunos.cadastrar()}
+<h1 class="sepH_c">Cadastro de Funcionários</h1>
+
+#{form @Funcionarios.cadastrar()}
 <div id="formtabs">
 		<ul>
 		    <li><a class="passo1" href="#tabs-1" class="current">Dados Pessoais</a></li>

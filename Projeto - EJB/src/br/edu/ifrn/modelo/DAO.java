@@ -26,7 +26,7 @@ public class DAO {
 		} catch (Exception e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
-			throw new DatabaseException("Falha na persistência");
+			throw new DatabaseException(e.getLocalizedMessage());
 		} finally {
 			session.close();
 		}
@@ -44,7 +44,7 @@ public class DAO {
 		} catch (Exception e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
-			throw new DatabaseException("Falha na atualização");
+			throw new DatabaseException(e.getLocalizedMessage());
 		} finally {
 			session.close();
 		}
@@ -60,7 +60,7 @@ public class DAO {
 		} catch (Exception e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
-			throw new DatabaseException("Falha na remoção");
+			throw new DatabaseException(e.getLocalizedMessage());
 		} finally {
 			session.close();
 		}
@@ -76,7 +76,7 @@ public class DAO {
 		    lista =  query.list();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DatabaseException("Falha na busca");
+			throw new DatabaseException(e.getLocalizedMessage());
 		} finally {
 			session.close();
 		}
@@ -93,7 +93,7 @@ public class DAO {
 		    objeto = query.list().get(0);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DatabaseException("Falha na busca");
+			throw new DatabaseException(e.getLocalizedMessage());
 		} finally {
 			session.close();
 		}

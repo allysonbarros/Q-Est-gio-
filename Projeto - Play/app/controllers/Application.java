@@ -55,7 +55,11 @@ public class Application extends Controller {
     	try {
 	    	UsuarioDelegate ud = new UsuarioDelegate();
 	    	OfertaEstagioDelegate del = new OfertaEstagioDelegate();
-	    	lista = del.getTodasOfertasEstagioByDiretoria(((Aluno) ud.getUsuario(Long.parseLong(session.get("usuarioAtivoID"))).getPessoa()).getDiretoria().getSigla());
+	    	
+	    	if (session.get("usuarioAtivoID") == null)
+	    		lista = del.getTodasOfertasEstagio();
+	    	else
+	    		lista = del.getTodasOfertasEstagioByDiretoria(((Aluno) ud.getUsuario(Long.parseLong(session.get("usuarioAtivoID"))).getPessoa()).getDiretoria().getSigla());
 	    	
 	    	if (!lista.isEmpty()) {
 		    	List<Boolean> listaCand = new ArrayList<Boolean>();

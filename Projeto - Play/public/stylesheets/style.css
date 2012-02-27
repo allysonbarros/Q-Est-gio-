@@ -140,7 +140,7 @@
 		.neutral_bg {background:#929494}
 	
 	/* alert boxes */
-		.msg_box {padding:8px 20px 8px 46px;margin-bottom:10px;position:relative;color:#444;overflow:hidden; font-size:14px; }
+		.msg_box {padding:8px 20px 8px 46px; margin-bottom:20px; position:relative; color:#444;overflow:hidden; font-size:14px; }
 		.msg_box img {background-image: url(../images/lga_spr.png);background-repeat:no-repeat;width:9px;height:9px}
 		.msg_error {background:#f2cac2 url(../images/error_ico.png) no-repeat 14px center;border:1px solid #ae432e}
 		.msg_error img {background-position:-47px 0}
