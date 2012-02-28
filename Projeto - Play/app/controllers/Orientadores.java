@@ -3,6 +3,7 @@ package controllers;
 import helpers.SessionsHelper;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -10,11 +11,13 @@ import javax.naming.NamingException;
 import play.data.validation.Required;
 import play.mvc.Controller;
 import play.mvc.With;
+import br.edu.ifrn.negocio.Diretoria;
 import br.edu.ifrn.negocio.Endereco;
 import br.edu.ifrn.negocio.Orientador;
 import br.edu.ifrn.negocio.Pessoa;
 import br.edu.ifrn.negocio.TipoPessoa;
 import br.edu.ifrn.negocio.Usuario;
+import br.edu.ifrn.patterns.DiretoriaDelegate;
 import br.edu.ifrn.patterns.EnderecoDelegate;
 import br.edu.ifrn.patterns.AlunoDelegate;
 import br.edu.ifrn.patterns.OrientadorDelegate;
@@ -26,11 +29,14 @@ public class Orientadores extends Controller {
         render();
     }
     
-    public static void formCadastro() {
-    	render();
+    public static void formCadastro() throws Exception {
+    	DiretoriaDelegate diretoriaDelegate = new DiretoriaDelegate();
+		List<Diretoria> diretorias = diretoriaDelegate.getTodasDiretorias();
+		
+		render(diretorias);
     }
     
-    public static void cadastrar(Orientador p, String confirmacaoSenha) {
+    public static void cadastrar(Orientador p, String confirmacaoSenha, Long idDiretoria) throws Exception {
     	validation.required("matr",p.getMatricula()).message("O campo matrícula deve ser preenchido com 12 dígitos.");
     	validation.required("cpf",p.getCpf()).message("O campo CPF deve ser preenchido.");
 //    	validation.required("rg",p.getRg());
@@ -57,18 +63,28 @@ public class Orientadores extends Controller {
     		renderArgs.put("p", p);
     		renderTemplate("Orientadores/formCadastro.html");
     	} else {
-    		try{
-	    	OrientadorDelegate del = new OrientadorDelegate();
-	    	p.getUsuario().setLogin(p.getMatricula().toString());
-	    	p.getUsuario().setTipoUsuario(TipoPessoa.FUNCIONARIO);
-	    	del.cadastrarOrientador(p);
-    		} catch (Exception er) {
-				// TODO Auto-generated catch block
-				er.printStackTrace();
-				flash.error("<strong>Erro:</strong> " + er.getMessage());
+    		try {
+		    	OrientadorDelegate del = new OrientadorDelegate();
+		    	DiretoriaDelegate del2 = new DiretoriaDelegate();
+		    	
+		    	p.getUsuario().setLogin(p.getMatricula().toString());
+		    	p.getUsuario().setTipoUsuario(TipoPessoa.FUNCIONARIO);
+		    	
+		    	p.setDiretoria(del2.getDiretoria(idDiretoria));
+		    	
+		    	del.cadastrarOrientador(p);
+    		} catch (Exception e) {
+    			DiretoriaDelegate del2 = new DiretoriaDelegate();
+				flash.error("<strong>Erro:</strong> " + e.getMessage());
+				
 				renderArgs.put("p", p);
+				renderArgs.put("diretorias", del2.getTodasDiretorias());
+				
+				e.printStackTrace();
+				
 				renderTemplate("Orientadores/formCadastro.html");
 			}
+    		
 	    	flash.success("Orientador cadastrado com sucesso!");
 	    	formCadastro();
     	}

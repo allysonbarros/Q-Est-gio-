@@ -55,7 +55,7 @@
 #{form @Orientadores.cadastrar()}
 <div id="formtabs">
 		<ul>
-		    <li><a class="passo1" href="#tabs-1" class="current">Dados Pessoais</a></li>
+		    <li><a class="passo1" href="#tabs-1" class="current">Dados Gerais</a></li>
 		    <li><a class="passo2" href="#tabs-2">Dados de Contato</a></li>
 		    <li><a class="passo3" href="#tabs-3">Dados de Acesso</a></li>
 		</ul>
@@ -63,6 +63,7 @@
 		<div id="tabs-1">
 			<div class="formEl_b">
 				<fieldset id="dados_pessoais" class="">
+					<legend>Dados Pessoais</legend>
 					<div class="sepH_b">
 						<label for="matricula" class="lbl_a">Matrícula:</label>
 						<input type="text" name="p.matricula" value="${p?.getMatricula()}" id="matricula" class="inpt_a">
@@ -108,6 +109,19 @@
 						<input type="text" name="p.nomeConjuge" value="${p?.getNomeConjuge()}" id="nomeConjuge" class="inpt_a">
 					</div>		
 				</fieldset>
+				
+				<fieldset>
+					<legend>Dados Acadêmicos</legend>
+					<div class="sepH_b">
+						<label for="idDiretoria" class="lbl_a">Selecione a Diretoria:</label>
+						<select style="width:40%; margin-top:8px;" name="idDiretoria" id="idDiretoria">
+							<option value="">-- Selecione uma Diretoria --</option>
+							#{list items:diretorias, as:'diretoria'}
+							<option value="${diretoria.id}">${diretoria.getSigla()} - ${diretoria.getNome()}</option>
+							#{/list}
+						</select>
+					</div>
+				</fieldset>
 			
 				<div class="cf">
 					<a class="btn btn_d fl" onclick="$('.passo2').click(); return false;" href="#">Dados de Contato  &raquo;</a>
@@ -152,7 +166,7 @@
 					</div>
 				</fieldset>
 				<div class="cf">
-					<a class="btn btn_a fl sepV_a" onclick="$('.passo1').click(); return false;" href="#">&laquo; Dados Pessoais</a>
+					<a class="btn btn_a fl sepV_a" onclick="$('.passo1').click(); return false;" href="#">&laquo; Dados Gerais</a>
 					<a class="btn btn_d fl" onclick="$('.passo3').click(); return false;" href="#">Dados de Acesso  &raquo;</a>
 				</div>
 			</div>
