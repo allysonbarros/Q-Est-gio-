@@ -3,7 +3,9 @@
 #{set 'moreScripts'}
 <script type="text/javascript">
 $(".formEl_b #senha").live("keypress", function(e){
-	var s = String.fromCharCode(e.keyCode);
+	var s = String.fromCharCode(e.which);
+	if (e.which == 8)
+		return;
 	
 	if (s.toUpperCase() === s && s.toLowerCase() !== s && !e.shiftKey) {
 		if ($('.msg_box.msg_alert').is(':visible')) {

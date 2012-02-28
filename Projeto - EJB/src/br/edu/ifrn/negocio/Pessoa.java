@@ -44,7 +44,6 @@ public abstract class Pessoa implements Serializable {
 	private String nomeConjuge;
 	private String sexo;
 	private String estadoCivil;
-	private Blob foto;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="endereco_id")
@@ -132,14 +131,6 @@ public abstract class Pessoa implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-	
-	public Blob getFoto() {
-		return foto;
-	}
-
-	public void setFoto(Blob foto) {
-		this.foto = foto;
 	}
 	
 	public String getEstadoCivil() {

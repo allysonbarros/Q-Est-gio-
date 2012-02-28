@@ -50,13 +50,9 @@
 					#{else}
 					<div id="box-perfil">
 						<div class="foto">
-							#{if currentUsuario.getPessoa().getFoto() == null}
-							<img src="#" width="78" height="90" />
-							#{/if}
-							#{else}
 							<img src="@{'public/images/avatar.jpg'}" width="78" height="90" />
-							#{/else}
 						</div>
+						
 						<div class="dados-perfil">
 							<div>
 								#{if currentUsuario.tipoUsuario == 3}

@@ -29,7 +29,7 @@ import play.mvc.With;
 @With(SessionsHelper.class)
 public class Application extends Controller {
 
-    public static void index() throws Exception {   	
+    public static void index() throws Exception {
     	render();
     }
     

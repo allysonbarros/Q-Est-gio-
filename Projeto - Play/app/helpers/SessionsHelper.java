@@ -38,17 +38,6 @@ public class SessionsHelper extends Controller {
 		}
 	}
 	
-//	public static void verificaPermissao(int nivelAcesso) throws Exception {
-//		UsuarioDelegate del = new UsuarioDelegate();
-//		Usuario u = del.getUsuario(Long.parseLong(session.get("usuarioAtivoID")));
-//		
-//		if (u.getTipoUsuario() == nivelAcesso) {
-//			return;
-//		} else {
-//			flash.error("Você não tem permissão para acessar este recurso.");
-//		}
-//	}
-	
 	public static String criptografarSenha(String senha) throws NoSuchAlgorithmException {
 		MessageDigest digest = MessageDigest.getInstance("MD5");
 	    digest.update(senha.getBytes(), 0, senha.length());
