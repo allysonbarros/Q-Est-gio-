@@ -51,8 +51,8 @@ public class Orientadores extends Controller {
     	validation.email("ema_ema",p.getUsuario().getEmail()).message("O Email informado não é válido.");
     	validation.required(p.getEstadoCivil()).message("O campo Estado Civil deve ser preenchido.");
     	validation.required(p.getSexo()).message("O campo Sexo deve ser preenchido.");
-    	validation.required("mae",p.getNomeMae()).message("O campo Nome da Mãe deve ser preenchido.");
-    	validation.required("pai",p.getNomePai()).message("O campo Nome do Pai deve ser preenchido");
+//    	validation.required("mae",p.getNomeMae()).message("O campo Nome da Mãe deve ser preenchido.");
+//    	validation.required("pai",p.getNomePai()).message("O campo Nome do Pai deve ser preenchido");
 //    	validation.required(p.getNomeConjuge());
     	validation.required("senha",p.getUsuario().getSenha()).message("O campo Senha deve ser preenchido");
     	//validation.equals("asd ",p.getUsuario().getSenha(), confirmacaoSenha, confirmacaoSenha);
