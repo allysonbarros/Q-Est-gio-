@@ -43,6 +43,7 @@ public class Bootstrap extends Job {
 				f.setCpf("123456789010");
 				f.setMatricula(123456789010L);
 				f.setNome("Administrador do Sistema");
+				f.setSexo("Masculino");
 				f.setEndereco(new Endereco("Rua Dr. Nilo Bezerra Ramalho", "1692", null, "Tirol", "Natal", "RN", "59015-300"));
 				f.setUsuario(u);
 				

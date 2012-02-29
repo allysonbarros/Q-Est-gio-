@@ -109,11 +109,13 @@ public class OfertasEstagio extends Controller {
     		Empresa e = del.getEmpresa(id);
     		StringBuilder sb = new StringBuilder();
     		
-    		sb.append("<br/><h4>Confirmação dos dados da empresa escolhida:</h4>");
-    		sb.append("<strong>Razão Social: </strong>" + e.getRazaoSocial() + "<br/>");
-    		sb.append("<strong>Nome Fantasia: </strong>" + e.getNomeFantasia() + "<br/>");
-    		sb.append("<strong>Área de Atuação: </strong>" + e.getAreaAtuacao() + "<br/>");
-    		sb.append("<strong>Nome do Responsável: </strong>" + e.getNomeResponsavel() + "<br/>");
+    		sb.append("<fieldset>" + "\n");
+    		sb.append("<legend>Confirmação dos dados da empresa escolhida:</legend>" + "\n");
+    		sb.append("<strong>Razão Social: </strong>" + e.getRazaoSocial() + "<br/>" + "\n");
+    		sb.append("<strong>Nome Fantasia: </strong>" + e.getNomeFantasia() + "<br/>" + "\n");
+    		sb.append("<strong>Área de Atuação: </strong>" + e.getAreaAtuacao() + "<br/>" + "\n");
+    		sb.append("<strong>Nome do Responsável: </strong>" + e.getNomeResponsavel() + "<br/>" + "\n");
+    		sb.append("</fieldset>" + "\n");
     		
     		renderText(sb.toString());
     	} catch (Exception er) {
