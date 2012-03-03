@@ -19,13 +19,15 @@ import play.mvc.Scope.Session;
 
 public class SessionsHelper extends Controller {
 	@Before(unless={
-	"Application.index", "Application.informacoesEstagio", "Application.legislacaoNormas", "Application.modelosFormularios", "Application.ofertaEstagio", "Application.modeloDeclaracaoEstagio",
+	"Application.index", "Application.informacoesEstagio", "Application.legislacaoNormas", "Application.modelosFormularios", "Application.modeloDeclaracaoEstagio",
 	"Sessions.login", "Sessions.efetuarLogin", "Sessions.esqueciSenha", "Sessions.resetarSenha", "Sessions.redefinirSenha"
 	, "Alunos.formCadastro", "Alunos.cadastrar"
 	})
 	public static void checkAuthentication() throws Exception {
-		if (session.get("usuarioAtivoID") == null)
+		if (session.get("usuarioAtivoID") == null) {
+			flash.put("url", "GET".equals(request.method) ? request.url : "/");
 			Sessions.login();
+		}
 	}
 	
 	@Before(unless={"Sessions.login", "Sessions.logout"})
