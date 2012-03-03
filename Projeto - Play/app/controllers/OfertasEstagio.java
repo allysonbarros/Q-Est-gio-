@@ -1,5 +1,6 @@
 package controllers;
 
+import helpers.Permissao;
 import helpers.SessionsHelper;
 
 import java.util.List;
@@ -22,10 +23,11 @@ import br.edu.ifrn.patterns.AlunoDelegate;
 @With(SessionsHelper.class)
 public class OfertasEstagio extends Controller {
 
-	public static void index() {
-		formCadastro();
-	}
+//	public static void index() {
+//		formCadastro();
+//	}
 
+	@Permissao("funcionario")
 	public static void formCadastro() {
 		try {
 			EmpresaDelegate del = new EmpresaDelegate();
@@ -44,6 +46,7 @@ public class OfertasEstagio extends Controller {
 		}
 	}
 
+	@Permissao("funcionario")
 	public static void cadastrar(OfertaEstagio o, long idEmpresa, long idDiretoria, long idCurso) {
 		validation.required("descr",o.getDescricao());
 		validation.required("empresa",idEmpresa).message("Você deve selecionar uma empresa.");
@@ -82,6 +85,7 @@ public class OfertasEstagio extends Controller {
 		}
 	}
 
+	@Permissao("aluno")
 	public static void candidatarAluno(long idOferta ) throws Exception{
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
 		System.out.println(alunoId+"  "+idOferta);
@@ -90,6 +94,7 @@ public class OfertasEstagio extends Controller {
 		Application.ofertaEstagio();
 	}
 
+	@Permissao("aluno")
 	public static void descandidatarAluno(long idOferta ) throws Exception{
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
 		OfertaEstagioDelegate del_oe = new OfertaEstagioDelegate();
@@ -103,6 +108,7 @@ public class OfertasEstagio extends Controller {
 		render(cursos);
 	}
 	
+	@Permissao("funcionario")
     public static void getDadosEmpresa(Long id) {
     	try{
     		EmpresaDelegate del = new EmpresaDelegate();

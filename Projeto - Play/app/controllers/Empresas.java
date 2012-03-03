@@ -1,5 +1,6 @@
 package controllers;
 
+import helpers.Permissao;
 import helpers.SessionsHelper;
 import br.edu.ifrn.negocio.Empresa;
 import br.edu.ifrn.patterns.EmpresaDelegate;
@@ -8,14 +9,16 @@ import play.mvc.*;
 @With(SessionsHelper.class)
 public class Empresas extends Controller {
 
-    public static void index() {
-        render();
-    }
+//    public static void index() {
+//        render();
+//    }
     
+	@Permissao("funcionario")
     public static void formCadastro() {
     	render();
     }
     
+	@Permissao("funcionario")
     public static void cadastrar(Empresa e, String confirmacaoSenha) {     	
     	validation.required("cnpj", e.getCnpj());
     	

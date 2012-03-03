@@ -1,5 +1,6 @@
 package controllers;
 
+import helpers.Permissao;
 import helpers.SessionsHelper;
 
 import java.security.NoSuchAlgorithmException;
@@ -25,17 +26,19 @@ import br.edu.ifrn.patterns.AlunoDelegate;
 @With(SessionsHelper.class)
 public class Alunos extends Controller {
 
-	public static void index() {
-		render();
-	}
-
+//	public static void index() {
+//		render();
+//	}
+	
+	@Permissao("funcionario")
 	public static void formCadastro() throws Exception {
 		DiretoriaDelegate diretoriaDelegate = new DiretoriaDelegate();
 		List<Diretoria> diretorias = diretoriaDelegate.getTodasDiretorias();
 		
 		render(diretorias);
 	}
-
+	
+	@Permissao("funcionario")
 	public static void cadastrar(Aluno p, String confirmacaoSenha, Long idDiretoria, Long idCurso) throws Exception {
 		validation.required("matr",p.getMatricula()).message("O campo matrícula deve ser preenchido com 12 dígitos.");
 		validation.required("cpf",p.getCpf()).message("O campo CPF deve ser preenchido.");
