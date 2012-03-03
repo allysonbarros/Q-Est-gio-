@@ -61,7 +61,7 @@ public class Application extends Controller {
 	    	else
 	    		lista = del.getTodasOfertasEstagioByDiretoria(((Aluno) ud.getUsuario(Long.parseLong(session.get("usuarioAtivoID"))).getPessoa()).getDiretoria().getSigla());
 	    	
-	    	if (!lista.isEmpty()) {
+	    	if (lista != null && !lista.isEmpty()) {
 		    	List<Boolean> listaCand = new ArrayList<Boolean>();
 		    	Pessoa pessoa = ud.getUsuario(Long.parseLong(session.get("usuarioAtivoID"))).getPessoa();
 		    	
