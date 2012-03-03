@@ -92,18 +92,17 @@ public class Diretoria implements Serializable {
 		this.instituicaoEnsino = instituicaoEnsino;
 	}
 
-	/**
-	 * @return the orientadores
-	 */
 	public List<Orientador> getOrientadores() {
 		return orientadores;
 	}
 
-	/**
-	 * @param orientadores the orientadores to set
-	 */
 	public void setOrientadores(List<Orientador> orientadores) {
 		this.orientadores = orientadores;
+	}
+	
+	@Override	
+	public String toString() {
+		return this.sigla + " - " + this.nome;
 	}
 
 }

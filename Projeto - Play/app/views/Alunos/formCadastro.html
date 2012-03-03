@@ -138,19 +138,16 @@
 				<fieldset id="dados_acesso" class="">
 				<div class="sepH_b">
 					<label for="idDiretoria" class="lbl_a">Selecione a Diretoria:</label>
-					<select style="width:40%; margin-top:8px;" name="idDiretoria" id="idDiretoria">
+					#{select "idDiretoria", id:"idDiretoria", items:diretorias, value:idDiretoria, valueProperty:'id', style:"width:40%; margin-top:8px;"}
 						<option value="">-- Selecione uma Diretoria --</option>
-						#{list items:diretorias, as:'diretoria'}
-						<option value="${diretoria.id}">${diretoria.getSigla()} - ${diretoria.getNome()}</option>
-						#{/list}
-					</select>
+					#{/select}
 				</div>
 				
 				<div class="sepH_b">
-					<label for="idDiretoria" class="lbl_a">Selecione o Curso:</label>
-					<select style="width:40%; margin-top:8px;" name="idCurso" id="idCurso">
-						<option value="">-- Selecione um Curso --</option>
-					</select>
+					<label for="idCurso" class="lbl_a">Selecione o Curso:</label>
+					#{select "idCurso", id:"idCurso", items:cursos, value:idCurso, valueProperty:'id', labelProperty:'nome', style:"width:40%; margin-top:8px;"}
+						<option value="">-- Selecione uma Diretoria --</option>
+					#{/select}
 				</div>
 				</fieldset>
 				
@@ -187,35 +184,7 @@
 					</div>
 					<div class="sepH_b">
 						<label for="estado" class="lbl_a">Estado:</label> 
-						<select name="p.endereco.uf" value="${p?.getEndereco()?.getUf()}">
-							<option value="AC">AC</option>
-							<option value="AL">AL</option>
-							<option value="AM">AM</option>
-							<option value="AP">AP</option>
-							<option value="BA">BA</option>
-							<option value="CE">CE</option>
-							<option value="DF">DF</option>
-							<option value="ES">ES</option>
-							<option value="GO">GO</option>
-							<option value="MA">MA</option>
-							<option value="MG">MG</option>
-							<option value="MS">MS</option>
-							<option value="MT">MT</option>
-							<option value="PA">PA</option>
-							<option value="PB">PB</option>
-							<option value="PE">PE</option>
-							<option value="PI">PI</option>
-							<option value="PR">PR</option>
-							<option value="RJ">RJ</option>
-							<option value="RN">RN</option>
-							<option value="RO">RO</option>
-							<option value="RR">RR</option>
-							<option value="RS">RS</option>
-							<option value="SC">SC</option>
-							<option value="SE">SE</option>
-							<option value="SP">SP</option>
-							<option value="TO">TO</option>
-						</select>
+						#{select "p.endereco.uf", items:helpers.DadosHelper.getEstadosBrasileiros(), value:p?.getEndereco()?.getUf(), style:"margin-top:8px;" /}
 					</div>
 					<div class="sepH_b">
 						<label for="cep" class="lbl_a">Cep:</label>

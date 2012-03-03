@@ -58,9 +58,16 @@ public class Alunos extends Controller {
 		//validation.equals("asd ",p.getUsuario().getSenha(), confirmacaoSenha, confirmacaoSenha);
 
 		if (validation.hasErrors()) {
+			DiretoriaDelegate del2 = new DiretoriaDelegate();
 			flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
 
 			renderArgs.put("p", p);
+			renderArgs.put("diretorias", del2.getTodasDiretorias());
+			renderArgs.put("cursos", del2.getDiretoria(idDiretoria).getCursos());
+			
+			renderArgs.put("idDiretoria", idDiretoria);
+			renderArgs.put("idCurso", idCurso);
+			
 			renderTemplate("Alunos/formCadastro.html");
 		} else {			
 			try {
