@@ -92,7 +92,7 @@ a { text-decoration:none;}
 
 #box-perfil .dados-perfil {
 	float:right;
-	padding-top:15px;
+	padding-top:30px;
 	line-height:200%;
 	text-align:right;
 }
@@ -108,7 +108,7 @@ a { text-decoration:none;}
 
 #container-conteudo {
 	background: none repeat scroll 0 0 #FFFFFF;
-	border-radius: 20px 20px 0 0;
+	border-radius: 10px 20px 0 0;
 	box-shadow: 0 0 40px #555;
 	margin: 0 auto;
 	width: 980px;
