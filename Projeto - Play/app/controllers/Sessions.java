@@ -17,6 +17,7 @@ public class Sessions extends Controller {
     }
     
     public static void login() {
+    	flash.keep("url");
     	render();
     }
     
@@ -35,13 +36,17 @@ public class Sessions extends Controller {
 	    	
 		    	if (u == null) {
 		    		flash.error("Matrícula ou Senha Inválida(s). <br/> Tente novamente!");
+		    		flash.keep("url");
+		    		
 		    		login();
 		    	} else {
 		    		if (u.getSenha().equals(SessionsHelper.criptografarSenha(senha))) {
+		    			flash.keep("url");
 		    			session.put("usuarioAtivoID", u.getId());
+		    			redirectToOriginalURL();
 		    			
-		    			Application.index();
 		    		} else {
+		    			flash.keep("url");
 		    			flash.error("Matrícula ou Senha Inválida(s). <br/> Tente novamente!");
 		        		login();
 		    		}
@@ -55,10 +60,10 @@ public class Sessions extends Controller {
     	}
     }
     
-    public static void efetuarLogoff() {
+    public static void efetuarLogoff() throws Exception {
     	session.remove("usuarioAtivoID");
     	flash("info", "Você foi desconectado do sistema!");
-    	login();
+    	Application.index();
     }
     
     public static void esqueciSenha() {
@@ -107,8 +112,6 @@ public class Sessions extends Controller {
     	} else {
     		String novaSenha = UUID.randomUUID().toString().substring(0, 8);
     		u.setSenha(novaSenha);
-    		
-    		System.out.println("\n\n\nNova Senha:" + u.getSenha() + "\n\n");
     	
     		del.editarUsuario(u);
     		Mails.resetarSenha(u, novaSenha);
@@ -124,5 +127,15 @@ public class Sessions extends Controller {
 			flash.error(er.getMessage());
 			login();
 		}
+    }
+    
+    public static void redirectToOriginalURL() {
+        String url = flash.get("url");
+        
+        if(url == null) {
+            url = "/";
+        }
+        
+        redirect(url);
     }
 }
