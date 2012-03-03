@@ -35,7 +35,7 @@ public class SessionsHelper extends Controller {
 			try {
 				permissao(check);
 			} catch (Throwable e) {
-				flash.error("Acesso negado");
+				flash.error("<strong>Atenção:</strong> Você não tem permissão para acessar a página solicitada.");
 				Application.index();
 			}
 		}

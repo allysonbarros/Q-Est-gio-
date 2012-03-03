@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import helpers.Permissao;
 import helpers.SessionsHelper;
 
 import javax.naming.InitialContext;
@@ -49,6 +50,7 @@ public class Application extends Controller {
     	render();
     }
     
+    @Permissao("aluno")
     public static void ofertaEstagio() throws Exception {
     	List<OfertaEstagio> lista = new ArrayList<OfertaEstagio>();
     	
