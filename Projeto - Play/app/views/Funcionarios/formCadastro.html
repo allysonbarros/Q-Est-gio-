@@ -78,7 +78,7 @@
 					<div class="sepH_b">
 					#{field 'p.estadoCivil'}
 						<label for="estadoCivil" class="lbl_a">Estado Civil:</label>
-						#{select field.name, value:p?.getEstadoCivil(), id:'estadoCivil'}
+						#{select field.name, value:p?.getEstadoCivil(), id:'estadoCivil',style:"margin-top:8px;"}
 							#{option 'Solteiro'}Solteiro#{/option}
 							#{option 'Casado'}Casado#{/option}
 							#{option 'Viúvo'}Viúvo#{/option}
@@ -89,7 +89,7 @@
 					<div class="sepH_b">
 					#{field 'p.sexo'}
 						<label for="${field.name}" class="lbl_a">Sexo:</label>
-						#{select field.name,value:p?.getSexo()}
+						#{select field.name,value:p?.getSexo(), style:"margin-top:8px;"}
 							#{option 'Masculino'}Masculino#{/option}
 							#{option 'Feminino'}Feminino#{/option}
 						#{/select}
