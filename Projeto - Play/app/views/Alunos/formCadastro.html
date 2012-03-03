@@ -138,7 +138,7 @@
 				<fieldset id="dados_acesso" class="">
 				<div class="sepH_b">
 					<label for="idDiretoria" class="lbl_a">Selecione a Diretoria:</label>
-					#{select "idDiretoria", id:"idDiretoria", items:diretorias, value:idDiretoria, valueProperty:'id', style:"width:40%; margin-top:8px;"}
+					#{select "idDiretoria", id:'idDiretoria', items:diretorias, value:idDiretoria, valueProperty:'id', style:"width:40%; margin-top:8px;"}
 						<option value="">-- Selecione uma Diretoria --</option>
 					#{/select}
 				</div>
@@ -184,7 +184,7 @@
 					</div>
 					<div class="sepH_b">
 						<label for="estado" class="lbl_a">Estado:</label> 
-						#{select "p.endereco.uf", items:helpers.DadosHelper.getEstadosBrasileiros(), value:p?.getEndereco()?.getUf(), style:"margin-top:8px;" /}
+						#{select "p.endereco.uf", items:helpers.DadosHelper.getEstadosBrasileiros(), id:estado, value:p?.getEndereco()?.getUf(), style:"margin-top:8px;" /}
 					</div>
 					<div class="sepH_b">
 						<label for="cep" class="lbl_a">Cep:</label>
@@ -208,7 +208,7 @@
 				<fieldset id="dados_acesso" class="">
 					<div class="sepH_b">
 						<label for="p.usuario.login" class="lbl_a">Matrícula:</label>
-						<input type="text" name="p.usuario.login" disabled="disabled" value="${p?.getMatricula()}" id="login" class="inpt_a">
+						<input type="text" name="p.usuario.login" disabled="disabled" value="${p?.getMatricula()}" id="p.usuario.login" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="p.usuario.senha" class="lbl_a">Senha:</label>
