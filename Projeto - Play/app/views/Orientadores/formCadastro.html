@@ -27,7 +27,7 @@
 		$("#matricula").focusout(function() {
 			var value = $(this).val();
 			
-			if (value.indexOf("_") == -1) {
+			if (value.length == 12) {
 				$("#dados_acesso #login").val(value);
 			} else {
 				$("#dados_acesso #login").val("");
