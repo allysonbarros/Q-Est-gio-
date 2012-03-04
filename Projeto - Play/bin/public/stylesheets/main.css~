@@ -1,10 +1,15 @@
+* {
+	border: 0 none;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	outline: 0 none;
+	padding: 0;
+}
+
 body {
 	background: url("/public/images/bg.jpg") no-repeat scroll center 0 #FFFFFF;
 	color: #333333;
 	font-size: 100%;
-	font-family: Arial, Verdana, 'Sans-Serif';
-	font-size:14px;
-	line-height:170%;
 }
 
 a { text-decoration:none;}
@@ -29,22 +34,23 @@ a { text-decoration:none;}
 
 #qestagio-logo {
 	float: left;
-	height: 120px;
-	margin: 15px 0 20px 10px;
+	height: 105px;
+	margin: 20px 0 20px 10px;
 	width: 278px;
 }
 
 #qestagio-logo a {
-	background: url("/public/images/logo.png") no-repeat scroll 0 0 transparent;
+	background: url("/public/images/logo.png") no-repeat scroll 0 0
+		transparent;
 	display: block;
-	height: 118px;
+	height: 105px;
 	text-indent: -9000px;
 	width: 287px;
 }
 
 #box-login {
 	float: right;
-	margin: 25px 10px 20px 10px;
+	margin: 30px 0 20px 10px;
 }
 
 #box-login #esqueciSenha-submit {
@@ -58,106 +64,21 @@ a { text-decoration:none;}
 #box-login #esqueciSenha-submit .esqueciSenha a{
 	color:#fff;
 	font-size:12px;
-	text-shadow: 1px 1px 1px #333;
 }
 
 #box-login #esqueciSenha-submit .submit {
 	float:right;
 }
 
-#box-perfil {
-	width:400px;
-	float:right;
-	overflow:hidden;
-	margin: 30px 0 20px 10px;
-	font-size:14px;
-	color:#fff;
-	text-shadow: 1px 1px 1px #000000;
-	font-weight:bold;
-}
-
-#box-perfil .foto {
-	float:right;
-	width:78px;
-	height:90px;
-	background:#fff;
-	border-radius: 10px;
-	box-shadow: 0 0 5px #555;
-	margin:10px 20px;
-}
-
-#box-perfil .foto img {
-	border-radius: 10px;
-}
-
-#box-perfil .dados-perfil {
-	float:right;
-	padding-top:15px;
-	line-height:200%;
-	text-align:right;
-}
-
-#box-perfil .dados-perfil img {
-	vertical-align:middle;
-}
-
-#box-perfil .dados-perfil a {
-	color:#fff;
-	/* text-decoration: underline; */ 
-}
-
 #container-conteudo {
 	background: none repeat scroll 0 0 #FFFFFF;
-	border-radius: 10px 20px 0 0;
+	border-radius: 20px 20px 0 0;
 	box-shadow: 0 0 40px #555;
 	margin: 0 auto;
 	width: 980px;
 	height:auto;
-	min-height: 500px;
+	min-height: 800px;
 	overflow:hidden;
-}
-
-#container-conteudo p {
-	margin:15px 0;
-}
-
-#migalhadepao {
-	margin:20px 20px 0 20px;
-	display:block;
-	border:1px solid #eee;
-	overflow:hidden;
-}
-
-#migalhadepao li {
-	float:left;
-	padding:5px;
-}
-
-#migalhadepao li, #migalhadepao ul, #migalhadepao ul li {
-	list-style: none outside none;
-    margin: 0;
-    padding: 0;
-}
-
-#migalhadepao li.parent {
-    background: url("../images/crumbs.gif") no-repeat scroll right center transparent;
-    border-right: medium none;
-    padding-left: 10px;
-    padding-right: 15px;
-    position: relative;
-}
-
-#migalhadepao li.current {
-	margin-left:10px;
-}
-
-#migalhadepao li.current a {
-	color: #CE0000;
-}
-
-#migalhadepao a {
-	color: #000;
-	font-size:11px;
 }
 
 #portal-columns {
@@ -165,16 +86,15 @@ a { text-decoration:none;}
     border-radius: 5px 5px 0 0;
     display: table;
     margin: 0 auto;
-    width: 980px;
+    width: 960px;
 }
 #portal-column-one, #portal-column-content, #portal-column-two {
     vertical-align: top;
 }
 #portal-column-content {
-    float: left;
-    padding: 20px 0px;
+    float: right;
+    padding: 20px;
     width: 980px;
-    margin:0 30px;
 }
 #portal-columns.sn #portal-column-content {
     width: 960px;
@@ -194,7 +114,7 @@ a { text-decoration:none;}
     padding: 20px 0 20px 20px;
 }
 #portal-column-two {
-    float: left;
+    float: right;
     padding: 20px 20px 20px 0;
 }
 
@@ -255,11 +175,3 @@ div.cell {
 	text-shadow: none;
 	text-align: left;
 }
-
-#sidebar ul li a {color:#CE0000;}
-#sidebar ul li a:hover { font-weight:bold; }
-
-#lista-ofertas { overflow:hidden; line-height:180%; }
-#lista-ofertas .item-ofertas {margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid #ccc;}
-#lista-ofertas .item-ofertas .titulo-oferta {font-size:20px;}
-#lista-ofertas .item-ofertas .quantidadeVagas-oferta {font-size:14px; color:#666;}

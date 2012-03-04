@@ -1,0 +1,32 @@
+#{extends 'main.html' /}
+#{set title:'informacoesEstagio.html' /}
+#{set 'migalhaDePao'}
+<ul id="migalhadepao">
+	<li class="parent">
+		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
+		<a href="/" class="vam">Início</a>
+	</li>
+	<li class="parent"><a href="@{Application.index()}">Estágio e Egressos</a></li>
+	<li class="current"><a href="#">Informações de estágio</a></li>
+</ul>
+#{/set}
+<h2>Informações sobre Estágio</h2>
+
+<p>
+	<strong>Informações Gerais</strong>
+</p>
+
+<div>
+Documentos para solicitação do Diploma de Técnico ou Superior:
+
+<ol style="padding-left:20px;">
+	<li>Requerimento de solicitação do Diploma (na CEE)</li>
+	<li>Nada Consta (Na Biblioteca)</li>
+	<li>Cópias de RG, CPF e Certidão de Nascimento ou Casamento</li>
+	<li>Cópia do Contrato de Estágio(para quem estagiou) ou da Carteira de Trabalho (Para quem trabalha / trabalhou na área).</li>
+	<li>Declaração da Empresa (somente para estágio)</li>
+	<li>Relatório ou Monografia.</li>
+</ol>
+</div>
+
+<p><a href="@{Application.modeloDeclaracaoEstagio()}">Modelo de declaração de estágio</a></p>

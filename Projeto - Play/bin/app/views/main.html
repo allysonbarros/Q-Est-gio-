@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>QEstágio! - Conectando o aluno à empresa.</title>
+        <meta charset="${_response_encoding}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/reset.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/style.css'}">
+        
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <script src="@{'/public/javascripts/jquery-1.6.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/main.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        #{get 'moreScripts' /}
+    </head>
+    <body>
+    	<div id="container">
+    		<div id="container-topo">
+    			<div id="header-topo">
+					<div id="logomarca">
+	    				<h1 id="qestagio-logo">
+	    					<a title="Q-Estágio!" href="@{Application.index}">QEstágio</a>
+	    				</h1>
+					</div>
+					
+					#{ifnot currentUsuario}
+					<div id="box-login">
+						#{form @sessions.efetuarLogin()}
+							<div class="formEl_b">
+								<div class="sepH_b">
+									<input type="text" name="login" class="inpt_b" value="" placeholder="Matrícula" id="login">
+								</div>
+								<div class="sepH_b">
+									<input type="password" name="senha" class="inpt_b" value="" placeholder="Senha" id="senha">
+								</div>
+							</div>
+							<div id="esqueciSenha-submit">
+								<div class="esqueciSenha">
+									<a href="@{Sessions.esqueciSenha()}">Esqueci a Senha</a>
+								</div>
+								<div class="submit">
+									<input type="submit" name="enviar" class="btn btn_aS fl sepV_a" value="Acessar" id="enviar">
+								</div>
+							</div>
+							
+						#{/form}
+					</div>
+					#{/ifnot}
+					#{else}
+					<div id="box-perfil">
+						<div class="foto">
+							#{if currentUsuario.getPessoa().getSexo() == "Masculino"}
+								<img src="@{'public/images/avatar.jpg'}" width="78" height="90" />
+							#{/if}
+							#{else}
+								<img src="@{'public/images/avatar2.jpg'}" width="78" height="90" />
+							#{/else}
+						</div>
+						
+						<div class="dados-perfil">
+							<div>
+								#{if currentUsuario.tipoUsuario == 3}
+								<img src="@{'public/images/aluno-icon.png'}" width="18px"/>
+								#{/if}
+								#{if currentUsuario.tipoUsuario == 1}
+								<img src="@{'public/images/icon-funcionario.png'}" width="18px"/>
+								#{/if}
+								${currentUsuario.getPessoa().getNome()}<br/>
+							</div>
+							
+						<!--<div>
+								<img src="@{'public/images/mensagem-icon.png'}" width="18px" /> Você não possui mensagens<br/>
+							</div>-->
+							
+							<div>
+								<img src="@{'public/images/logout-icon.png'}" width="18px" /> <a href="@{Sessions.efetuarLogoff()}">Sair do Sistema</a>
+							</div>
+						</div>
+					</div>
+					#{/else}
+    			</div>
+    		</div>
+    		
+    		<div id="container-conteudo">
+    			#{get 'migalhaDePao' /}
+    		
+    			<div id="portal-columns" class="sl">
+    				<div id="portal-column-one">
+						#{ifnot currentUsuario} 
+							#{menuPublico /}
+						#{/ifnot}
+						#{else}
+							#{if currentUsuario.tipoUsuario == 3}
+								#{menuAluno /}
+							#{/if}
+							#{if currentUsuario.tipoUsuario == 1}
+								#{menuFuncionario /}
+							#{/if}
+						#{/else}					
+					</div>
+					<div id="portal-column-content">
+						#{doLayout /}
+					</div>
+				</div>
+    		</div>
+    		
+    		<div class="row">
+    			<div class="cell width-full position-0">
+					<div id="portal-footer">
+						<div class="places"> 
+							<span class="campus_name">Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte | Coordenadoria de Estágios e Egressos</span><br />
+							<br />
+							Copyright &copy; 2011 - Q-Estágio! - Sistema de Gerênciamento do Departamento de Estágios do IFRN.
+						</div>
+					</div>
+				</div>
+    		</div>
+    	</div>
+    </body>
+</html>

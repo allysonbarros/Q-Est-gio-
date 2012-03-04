@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+	<p>
+		Olá <strong>${usuario.getPessoa().getNome()}</strong>, <br/> <br/>
+		
+		Sua senha foi redefinida com sucesso. <br/> <br/>
+		
+		Login: ${usuario.getLogin()} <br/>
+		Sua nova senha é: ${novaSenha} <br/><br/>
+		
+		Para acessar a página de login clique no link abaixo: <br/>
+		<a href="@@{Sessions.login()}">@@{Sessions.login()}</a> <br/> <br/>
+		
+		Atenciosamente, <br/>
+		Equipe do QEstágio!
+	</p>
+</body>
+</html>

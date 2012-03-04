@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>QEstágio! - Conectando o aluno às empresa.</title>
+        <meta charset="${_response_encoding}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/login.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/style.css'}">
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <script src="@{'/public/javascripts/jquery-1.5.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/main.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        #{get 'moreScripts' /}
+	</head>
+	<body>
+		<div id="container">
+    		<div id="container-topo">
+    			<div id="header-topo">
+					<div id="logomarca">
+	    				<h1 id="qestagio-logo">
+	    					<a title="Q-Estágio!" href="@{Application.index}">QEstágio</a>
+	    				</h1>
+					</div>
+    			</div>
+    		</div>
+    		
+    		<div id="container-conteudo">
+				#{doLayout /}
+    		</div>
+			
+			<div id="footer">
+				<span class="campus_name">Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte | Coordenadoria de Estágios e Egressos</span><br>
+				Copyright &copy; 2011 - Q-Estágio! - Sistema de Gerênciamento do Departamento de Estágios do IFRN.
+			</div>
+			
+    	</div>
+	</body>
+</html>

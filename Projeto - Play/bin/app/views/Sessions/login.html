@@ -1,0 +1,47 @@
+#{extends 'login.html' /}
+#{set title:'Login' /}
+#{set 'moreScripts'}
+<script type="text/javascript">
+$(".formEl_b #senha").live("keypress", function(e){
+	var s = String.fromCharCode(e.which);
+	if (e.which == 8)
+		return;
+	
+	if (s.toUpperCase() === s && s.toLowerCase() !== s && !e.shiftKey) {
+		if ($('.msg_box.msg_alert').is(':visible')) {
+	        return;
+	    } else {
+	    	$(".formEl_b").parent().before('<div class="msg_box msg_alert"><strong>Atenção:</strong> A tecla Caps Lock está ligada! <img alt="" class="msg_close" src="images/blank.gif"></div>');
+		}
+	} else {
+		$(".msg_box.msg_alert").fadeOut();
+	}
+});
+</script>
+#{/set}
+<div id="box-login">
+	<h2>Acesso ao Sistema</h2>
+
+	*{"Tag que importa as mensagens de feedback do sistema"}*
+	#{BoxesMensagensFeedback /}
+	
+	#{form @sessions.efetuarLogin()}
+		<div class="formEl_b">
+			<div class="sepH_b">
+				<input type="text" name="login" class="inpt_b" value="" placeholder="Matrícula" id="login">
+			</div>
+			<div class="sepH_b">
+				<input type="password" name="senha" class="inpt_b" value="" placeholder="Senha" id="senha">
+			</div>
+		</div>
+		<div id="esqueciSenha-submit">
+			<div class="esqueciSenha">
+				<a href="@{Sessions.esqueciSenha()}">Esqueci a Senha</a>
+			</div>
+			<div class="submit">
+				<input type="submit" name="enviar" class="btn btn_aS fl sepV_a" value="Acessar" id="enviar">
+			</div>
+		</div>
+		
+	#{/form}
+</div>

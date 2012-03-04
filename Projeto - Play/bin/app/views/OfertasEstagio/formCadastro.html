@@ -1,0 +1,127 @@
+#{extends 'main.html' /}
+#{set title:'formCadastro.html' /}
+#{set 'moreScripts'}
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/jquery_ui/tema.css'}">
+<script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.mask.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+<script type="text/javascript"><!--
+	$(document).ready(function(){
+		$("#formtabs").tabs();
+
+		$("confirmacaoDadosEmpresa").hide();
+		$("#idEmpresa").live("change", function(){
+			var value = $("#idEmpresa").val(); 
+			
+			if (value == "") {
+				$("#confirmacaoDadosEmpresa").html("");
+			} else {
+				var empresaAction = #{jsAction @OfertasEstagio.getDadosEmpresa(':id') /}
+				$('#confirmacaoDadosEmpresa').load(empresaAction({id: value}));
+			}
+		});
+
+		$("#idDiretoria").live("change", function(){
+			var value = $("#idDiretoria").val(); 
+			
+			if (value == "") {
+				$("#idCurso").html('<option value="">-- Selecione um Curso --</option>');
+				return;
+			} else {
+				$("#idCurso").html('<option value="">-- Selecione um Curso --</option>');
+				
+				var cursosAction = #{jsAction @OfertasEstagio.getCursosByDiretoria(':idDiretoria') /}
+				$.get(cursosAction({idDiretoria: value}), function(data) {
+				  $("#idCurso").append(data);
+				});
+			}
+		});
+		
+	});
+--></script>
+#{/set}
+#{set 'migalhaDePao'}
+<ul id="migalhadepao">
+	<li class="parent">
+		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
+		<a href="/" class="vam">Início</a>
+	</li>
+	<li class="current"><a href="#">Cadastro de oferta de estágio</a></li>
+</ul>
+#{/set}
+
+*{"Tag que importa as mensagens de feedback do sistema"}*
+#{BoxesMensagensFeedback /}
+
+<h1 class="sepH_c">Cadastro de Oferta de Estágio</h1>
+
+#{form @OfertasEstagio.cadastrar()}
+<div id="formtabs">
+		<ul>
+		    <li><a class="passo1" href="#tabs-1" class="current">Dados da Empresa</a></li>
+		    <li><a class="passo2" href="#tabs-2">Dados da Oferta de Estágio</a></li>
+		</ul>
+		
+		<div id="tabs-1">
+			<div class="formEl_b">
+				<fieldset>
+					<legend>Selecione a empresa ofertante:</legend>
+					<select style="width:100%;" name="idEmpresa" id="idEmpresa">
+						<option value="">-- Selecione uma Empresa --</option>
+						#{list items:empresas, as:'empresa'}
+						<option value="${empresa.id}">${empresa.nomeFantasia}</option>				
+						#{/list}
+					</select>
+				</fieldset>
+				
+				<div id="confirmacaoDadosEmpresa"></div>
+								
+				<div class="cf">
+					<a class="btn btn_d fl" onclick="$('.passo2').click(); return false;" href="#">Dados da Oferta de Estágio  &raquo;</a>
+				</div>
+			</div>
+		</div>
+		
+		<div id="tabs-2">
+			<div class="formEl_b">
+				<fieldset>
+					<div class="sepH_b">
+						<label for="idDiretoria" class="lbl_a">Selecione a Diretoria:</label>
+						<select style="width:40%; margin-top:8px;" name="idDiretoria" id="idDiretoria">
+							<option value="">-- Selecione uma Diretoria --</option>
+							#{list items:diretorias, as:'diretoria'}
+							<option value="${diretoria.id}">${diretoria.getSigla()} - ${diretoria.getNome()}</option>
+							#{/list}
+						</select>
+					</div>
+					
+					<div class="sepH_b">
+						<label for="idDiretoria" class="lbl_a">Selecione o Curso:</label>
+						<select style="width:40%; margin-top:8px;" name="idCurso" id="idCurso">
+							<option value="">-- Selecione um Curso --</option>
+						</select>
+					</div>
+				
+					<div class="sepH_b">
+						<label for="o.numVagas" class="lbl_a">Número de Vagas:</label>
+						<input type="text" name="o.numVagas" value="" id="o.numVagas" class="inpt_a">
+					</div>
+					
+					<div class="sepH_b">
+						<label for="o.funcao" class="lbl_a">Função da Vaga:</label>
+						<input type="text" name="o.funcao" value="" id="o.funcao" class="inpt_a">
+					</div>
+					
+					<div class="sepH_b">
+						<label for="o.descricao" class="lbl_a">Descrição da Vaga:</label>
+						<textarea name="o.descricao" rows="10" cols="30" id="o.descricao"></textarea>
+					</div>
+				</fieldset>
+				<div class="cf">
+					<a class="btn btn_a fl sepV_a" onclick="$('.passo1').click(); return false;" href="#">&laquo; Dados da Empresa</a>
+					<button class="btn btn_d sepV_a"  type="submit"><span>Cadastrar Oferta de Estágio</span></button>
+				</div>
+			</div>
+		</div>
+</div>
+#{/form}

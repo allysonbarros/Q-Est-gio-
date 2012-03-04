@@ -1,0 +1,172 @@
+#{extends 'main.html' /}
+#{set title:'formCadastro.html' /}
+#{set 'moreScripts'}
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/jquery_ui/tema.css'}">
+<script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.mask.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#formtabs").tabs();
+
+		$("#cnpj").mask("99.999.999/9999-99");
+		$("#cep").mask("99999-999");
+		
+		$("#matricula").focusout(function() {
+			var value = $(this).val();e
+			$("#login").val(value);
+		});
+	});
+</script>
+#{/set}
+#{set 'migalhaDePao'}
+<ul id="migalhadepao">
+	<li class="parent">
+		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
+		<a href="/" class="vam">InÃ­cio</a>
+	</li>
+	<li class="current"><a href="#">Cadastro de Empresa</a></li>
+</ul>
+#{/set}
+
+*{"Tag que importa as mensagens de feedback do sistema"}*
+#{BoxesMensagensFeedback /}
+
+<h1 class="sepH_c">Cadastro de Empresa</h1>
+	
+#{form @Empresas.cadastrar()}
+	<div id="formtabs">
+		<ul>
+		    <li><a class="passo1" href="#tabs-1" class="current">Dados Empresariais</a></li>
+		    <li><a class="passo2" href="#tabs-2">Dados de Contato</a></li>
+		</ul>
+		
+		<div id="tabs-1">
+			<div class="formEl_b">
+				<fieldset id="dados_da_empresa" class="">		
+				<div class="sepH_b">
+					<label for="e.cnpj" class="lbl_a">CNPJ:</label>
+					<input type="text" name="e.cnpj" value="" id="e.cnpj" class="inpt_a">
+				</div>
+				
+				<div class="sepH_b">
+					<label for="e.razaoSocial" class="lbl_a">RazÃ£o Social:</label>
+					<input type="text" name="e.razaoSocial" value="" id="e.razaoSocial" class="inpt_a">
+				</div>
+				
+				<div class="sepH_b">
+					<label for="e.nomeFantasia" class="lbl_a">Nome Fantasia:</label>
+					<input type="text" name="e.nomeFantasia" value="" id="e.nomeFantasia" class="inpt_a">
+				</div>
+				
+				<div class="sepH_b">
+					<label for="endereco" class="lbl_a">EndereÃ§o:</label>
+					<input type="text" name="e.endereco.logradouro" value="" id="endereco" class="inpt_a">
+				</div>
+				<div class="sepH_b">
+					<label for="complemento" class="lbl_a">Complemento:</label>
+					<input type="text" name="e.endereco.complemento" value="" id="complemento" class="inpt_a">
+				</div>
+				<div class="sepH_b">
+					<label for="numero" class="lbl_a">NÃºmero:</label>
+					<input type="text" name="e.endereco.numero" value="" id="numero" class="inpt_a">
+				</div>
+				<div class="sepH_b">
+					<label for="bairro" class="lbl_a">Bairro:</label>
+					<input type="text" name="e.endereco.bairro" value="" id="bairro" class="inpt_a">
+				</div>
+				<div class="sepH_b">
+					<label for="cidade" class="lbl_a">Cidade:</label>
+					<input type="text" name="e.endereco.cidade" value="" id="cidade" class="inpt_a">
+				</div>
+				<div class="sepH_b">
+					<label for="estado" class="lbl_a">Estado:</label>
+					<select name="e.endereco.uf">
+							<option value="AC">AC</option>
+							<option value="AL">AL</option>
+							<option value="AM">AM</option>
+							<option value="AP">AP</option>
+							<option value="BA">BA</option>
+							<option value="CE">CE</option>
+							<option value="DF">DF</option>
+							<option value="ES">ES</option>
+							<option value="GO">GO</option>
+							<option value="MA">MA</option>
+							<option value="MG">MG</option>
+							<option value="MS">MS</option>
+							<option value="MT">MT</option>
+							<option value="PA">PA</option>
+							<option value="PB">PB</option>
+							<option value="PE">PE</option>
+							<option value="PI">PI</option>
+							<option value="PR">PR</option>
+							<option value="RJ">RJ</option>
+							<option value="RN">RN</option>
+							<option value="RO">RO</option>
+							<option value="RR">RR</option>
+							<option value="RS">RS</option>
+							<option value="SC">SC</option>
+							<option value="SE">SE</option>
+							<option value="SP">SP</option>
+							<option value="TO">TO</option>
+						</select>
+				</div>
+				<div class="sepH_b">
+					<label for="cep" class="lbl_a">Cep:</label>
+					<input type="text" name="e.endereco.cep" value="" id="cep" class="inpt_a">
+				</div>
+				
+				<div class="sepH_b">
+					<label for="e.areaAtuacao" class="lbl_a">Ã�rea de AtuaÃ§Ã£o:</label>
+					<input type="text" name="e.areaAtuacao" value="" id="e.areaAtuacao" class="inpt_a">
+				</div>
+				
+				<div class="sepH_b">
+					<label for="e.numeroFuncionarios" class="lbl_a">NÂº de FuncionÃ¡rios:</label>
+					<input type="text" name="e.numeroFuncionarios" value="" id="e.numeroFuncionarios" class="inpt_a">
+				</div>
+			</fieldset>
+			</div>
+			
+			<div class="cf">
+				<a class="btn btn_d fl" onclick="$('.passo2').click(); return false;" href="#">Dados de Contato  &raquo;</a>
+			</div>
+		</div>
+		
+		<div id="tabs-2">
+			<div class="formEl_b">
+				<fieldset id="dados_de_contato" class="">
+					<div class="sepH_b">
+						<label for="e.nomeResponsavel" class="lbl_a">Nome do ResponsÃ¡vel:</label>
+						<input type="text" name="e.nomeResponsavel" value="" id="e.nomeResponsavel" class="inpt_a">
+					</div>
+					
+					<div class="sepH_b">
+						<label for="e.cargoResponsavel" class="lbl_a">Cargo do ResponsÃ¡vel:</label>
+						<input type="text" name="e.cargoResponsavel" value="" id="e.cargoResponsavel" class="inpt_a">
+					</div>
+					
+					<div class="sepH_b">
+						<label for="email" class="lbl_a">Email:</label>
+						<input type="text" name="e.email" value="" id="email" class="inpt_a">
+					</div>
+					
+					<div class="sepH_b">
+						<label for="e.emailAlternativo" class="lbl_a">Email Alternativo:</label>
+						<input type="text" name="e.emailAlternativo" value="" id="e.emailAlternativo" class="inpt_a">
+					</div>
+					
+					<div class="sepH_b">
+						<label for="e.site" class="lbl_a">Site:</label>
+						<input type="text" name="e.site" value="" id="e.site" class="inpt_a">
+					</div>
+				</fieldset>
+			</div>
+			<div class="cf">
+				<a class="btn btn_a fl sepV_a" onclick="$('.passo2').click(); return false;" href="#">&laquo; Dados Empresariais</a>
+				<button class="btn btn_d sepV_a"  type="submit"><span>Cadastrar Empresa</span></button>
+			</div>
+			
+		</div>
+	</div>
+#{/form}
