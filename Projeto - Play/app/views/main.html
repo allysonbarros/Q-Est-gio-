@@ -61,21 +61,20 @@
 						<div class="dados-perfil">
 							<div>
 								#{if currentUsuario.tipoUsuario == 3}
+								<a href="@{Alunos.meusDados}">(Ver Meus Dados)</a>
 								<img src="@{'public/images/aluno-icon.png'}" width="18px"/>
 								#{/if}
 								#{if currentUsuario.tipoUsuario == 1}
 								<img src="@{'public/images/icon-funcionario.png'}" width="18px"/>
 								#{/if}
 								${currentUsuario.getPessoa().getNome()}<br/>
+									
 							</div>
-							
-						<!--<div>
-								<img src="@{'public/images/mensagem-icon.png'}" width="18px" /> Você não possui mensagens<br/>
-							</div>-->
 							
 							<div>
 								<img src="@{'public/images/logout-icon.png'}" width="18px" /> <a href="@{Sessions.efetuarLogoff()}">Sair do Sistema</a>
 							</div>
+							
 						</div>
 					</div>
 					#{/else}
