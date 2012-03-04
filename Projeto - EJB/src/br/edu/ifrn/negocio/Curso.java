@@ -23,6 +23,8 @@ public class Curso implements Serializable {
 	
 	@Column(unique=true)
 	private String nome;
+	
+	private String nivel;
 
 	@ManyToOne
 	private Diretoria diretoria;
@@ -33,14 +35,14 @@ public class Curso implements Serializable {
 	@OneToMany(mappedBy="curso")
 	private List<CategoriaEstagio> alunos;
 	
-	
 	public Curso() {
 		
 	}
 
-	public Curso(String nome, Diretoria diretoria) {
+	public Curso(String nome, String nivel, Diretoria diretoria) {
 		super();
 		this.nome = nome;
+		this.nivel = nivel;
 		this.diretoria = diretoria;
 	}
 
@@ -82,6 +84,14 @@ public class Curso implements Serializable {
 
 	public void setAlunos(List<CategoriaEstagio> alunos) {
 		this.alunos = alunos;
+	}
+
+	public void setNivel(String nivel) {
+		this.nivel = nivel;
+	}
+
+	public String getNivel() {
+		return nivel;
 	}
 	
 }
