@@ -38,16 +38,15 @@
   		<div id="conteudo">
   			<div class="titulo">Currículo do Aluno(a)</div>
   			<div id="box-curriculo">
-  				<div class="uma-coluna">${aluno.nome.toUpperCase()}</div>
-  					<div class="esq">${aluno.getEndereco()?.getLogradouro()}, ${aluno.getEndereco()?.getNumero()}, ${aluno.getEndereco()?.getBairro()} - ${aluno.getEndereco()?.getCidade()} / ${aluno.getEndereco()?.getUf()}</div>
-  					<div class="dir">Nascido em: ${aluno.getDataNascimento().format('dd/MM/yyyy')}</div>
-  					<div class="esq">CEP: ${aluno.getEndereco()?.getCep()}</div>
-  					<div class="dir">Idade: <!-- Falta colocar -->
-  				</div>
+  				<div class="uma-coluna" style="margin-bottom:5px;">${aluno.nome.toUpperCase()}</div>
+				<div class="esq">${aluno.getEndereco()?.getLogradouro()}, ${aluno.getEndereco()?.getNumero()}, ${aluno.getEndereco()?.getBairro()} - ${aluno.getEndereco()?.getCidade()} / ${aluno.getEndereco()?.getUf()}</div>
+				<div class="dir">Nascido em: ${aluno.getDataNascimento().format('dd/MM/yyyy')}</div>
+				<div class="esq">CEP: ${aluno.getEndereco()?.getCep()}</div>
+				<div class="dir">Idade: <strong>Faltando implementar!</strong>
 	  			<div>Telefone: ${'aluno.getTelefone()'}</div>
 	  			<div>Email: ${aluno.getUsuario()?.getEmail()}</div>
 	  			
-	  			<div style="margin-top:30px; font-size:16px;"><strong>Informações Acadêmicas</strong></div>
+	  			<div style="margin-top:30px; font-size:16px; margin-bottom:10px;"><strong>Informações Acadêmicas</strong></div>
 	  			<div>
 	  				Cursando o ${'aluno.getPeriodo()'} do curso de ${aluno.getCurso().getNome()}.
 	  			</div>
@@ -66,38 +65,32 @@
 		  		%>
 		  		</div>
 	  		
-	  		
-		  		<div style="margin-top:30px; font-size:16px;"><strong>Conhecimentos de Idiomas Estrangeiros</strong></div>
-		  		<% @idiomas.each do |idioma| %>
-		  			<div><%= idioma.idioma.capitalize %> 
-		  				<%= case idioma.nivel.to_i 
-					  			when 0
-					  				"Nenhum"
-					  			when 1
-					  				"Básico"
-					  			when 2
-					  				"Intermediário"
-					  			when 3
-					  				"Avançado"
-					  			end %>.
-		  			</div>
-		  		<% end %>
+	  			#{if idiomas}
+		  		<div style="margin-top:30px; font-size:16px; margin-bottom:10px;"><strong>Conhecimentos de Idiomas Estrangeiros</strong></div>
+			  		#{list idiomas, as:'idioma'}
+			  			<div>
+			  				${idioma}
+			  			</div>
+			  		#{/list}
+		  		#{/if}
 		  		
-		  		<div style="margin-top:30px; font-size:16px;"><strong>Conhecimentos de Informática</strong></div>
-		  		<% @informatica.each do |informatica| %>
-		  			<div><%= informatica.aplicativo.capitalize %> 
-		  				<%= case informatica.nivel.to_i 
-					  			when 0
-					  				"Nenhum"
-					  			when 1
-					  				"Básico"
-					  			when 2
-					  				"Intermediário"
-					  			when 3
-					  				"Avançado"
-					  			end %>.
-		  			</div>
-		  		<% end %>
+		  		#{if informatica}
+			  		<div style="margin-top:30px; font-size:16px; margin-bottom:10px;"><strong>Conhecimentos de Informática</strong></div>
+			  		#{list informatica, as:'informatica'}
+			  			<div>
+			  				${informatica}
+			  			</div>
+			  		#{/list}
+		  		#{/if}
+		  		
+		  		#{if conhecimentos}
+			  		<div style="margin-top:30px; font-size:16px; margin-bottom:10px;"><strong>Outros Conhecimentos</strong></div>
+			  		#{list outrosConhecimentos, as:'conhecimento'}
+			  			<div>
+			  				${conhecimento}
+			  			</div>
+			  		#{/list}
+		  		#{/if}
 		  	</div>
 		  </div>
 		</div>

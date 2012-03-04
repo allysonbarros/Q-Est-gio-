@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -15,9 +16,13 @@ public class Habilidade implements Serializable{
 
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HABILIDADE_SeqGen")
 	private Long id;
-
+	
 	private String nome;
 	private String nivel;
+	private int tipoHabilidade;
+	
+	@ManyToOne
+	private Aluno aluno;
 	
 	public Habilidade() {
 
@@ -47,4 +52,24 @@ public class Habilidade implements Serializable{
 		return nivel;
 	}
 
+	public void setTipoHabilidade(int tipoHabilidade) {
+		this.tipoHabilidade = tipoHabilidade;
+	}
+
+	public int getTipoHabilidade() {
+		return tipoHabilidade;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public enum TipoHabilidade {
+		IDIOMA, INFORMATICA, OUTROS_CONHECIMENTOS
+	}
 }
+

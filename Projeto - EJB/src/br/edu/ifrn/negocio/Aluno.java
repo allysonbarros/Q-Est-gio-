@@ -2,15 +2,18 @@ package br.edu.ifrn.negocio;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.IndexColumn;
 
 @Entity
 @DiscriminatorValue((TipoPessoa.ALUNO+""))	
 public class Aluno extends Pessoa {
-
 	private static final long serialVersionUID = -9151016583503663685L;
 	
 	@ManyToOne
@@ -19,26 +22,18 @@ public class Aluno extends Pessoa {
 	@ManyToOne
 	private Diretoria diretoria;
 	
-	@OneToMany
-	List<Habilidade> habilidades;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="aluno")
+	@IndexColumn(name="habilidades_id")
+	private List<Habilidade> habilidades;
 	
-
-	//private OfertaEstagio oferta;
-
 	public Aluno(){
 
 	}
 
-	/**
-	 * @return the curso
-	 */
 	public Curso getCurso() {
 		return curso;
 	}
 
-	/**
-	 * @param curso the curso to set
-	 */
 	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
@@ -51,6 +46,11 @@ public class Aluno extends Pessoa {
 		return diretoria;
 	}
 
+	public void setHabilidades(List<Habilidade> habilidades) {
+		this.habilidades = habilidades;
+	}
 
-
+	public List<Habilidade> getHabilidades() {
+		return habilidades;
+	}
 }

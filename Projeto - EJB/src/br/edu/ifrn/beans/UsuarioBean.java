@@ -13,7 +13,6 @@ import br.edu.ifrn.negocio.Usuario;
  * Session Bean implementation class UsuarioBean
  */
 @Stateless
-@LocalBean
 public class UsuarioBean implements UsuarioBeanRemote {
 
     /**

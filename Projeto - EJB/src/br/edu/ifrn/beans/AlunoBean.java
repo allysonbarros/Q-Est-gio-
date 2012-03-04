@@ -10,7 +10,6 @@ import br.edu.ifrn.modelo.DAO;
 import br.edu.ifrn.negocio.Aluno;
 
 @Stateless
-@LocalBean
 public class AlunoBean implements AlunoBeanRemote {
     /**
      * Default constructor. 
