@@ -29,7 +29,12 @@ public class Empresas extends Controller {
 		validation.required("cid", e.getEndereco().getCidade()).message("O campo Cidade deve ser preenchido.");
 		validation.required("uf", e.getEndereco().getUf()).message("O campo Estado deve ser preenchido.");
 		validation.required("cep", e.getEndereco().getCep()).message("O campo CEP deve ser preenchido.");
-    	
+		validation.required("nomeResponsavel", e.getNomeResponsavel()).message("O campo Nome do Responsável deve ser preenchido.");
+		validation.required("cargoResponsavel", e.getCargoResponsavel()).message("O campo Cargo do Responsável deve ser preenchido.");
+		validation.required("razaoSocial", e.getRazaoSocial()).message("O campo Razão Social deve ser preenchido.");
+		validation.required("razaoSocial", e.getRazaoSocial()).message("O campo Razão Social deve ser preenchido.");
+		validation.required("email", e.getEmail()).message("O campo Email deve ser preenchido.");
+		
     	if (validation.hasErrors()) {
     		flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
     		
