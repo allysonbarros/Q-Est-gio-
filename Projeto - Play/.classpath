@@ -5,17 +5,17 @@
 	<classpathentry kind="src" path="pdf-0.9"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/play-1.2.4.jar" sourcepath="/opt/play-1.2.4/framework/src"/>
-	<classpathentry kind="lib" path="/Users/sedir/Desenvolvimento/Q-Est-gio-/Projeto - Play/lib/jbossall-client.jar"/>
-	<classpathentry kind="lib" path="/Users/sedir/Desenvolvimento/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/lib/core-renderer.jar"/>
-	<classpathentry kind="lib" path="/Users/sedir/Desenvolvimento/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/lib/itext-2.1.7.jar"/>
-	<classpathentry kind="lib" path="/Users/sedir/Desenvolvimento/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/lib/jaxen-1.1.1.jar"/>
-	<classpathentry kind="lib" path="/Users/sedir/Desenvolvimento/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/lib/jtidy-r938.jar"/>
-	<classpathentry kind="lib" path="/Users/sedir/Desenvolvimento/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/lib/log4j-1.2.16.jar"/>
-	<classpathentry kind="lib" path="/Users/sedir/Desenvolvimento/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/lib/play-pdf.jar"/>
-	<classpathentry kind="lib" path="/Users/sedir/Desenvolvimento/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/lib/shani-parser-v1.4.17.jar"/>
-	<classpathentry kind="lib" path="/Users/sedir/Desenvolvimento/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/lib/xml-apis.jar"/>
-	<classpathentry kind="lib" path="/Users/sedir/Desenvolvimento/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/lib/yahp-internal.jar"/>
-	<classpathentry kind="lib" path="/Users/sedir/Desenvolvimento/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/lib/yahp.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/lib/jbossall-client.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/core-renderer.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/itext-2.1.7.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/jaxen-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/jtidy-r938.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/play-pdf.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/shani-parser-v1.4.17.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/xml-apis.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/yahp-internal.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/yahp.jar"/>
 	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/activation-1.1.1.jar"/>
 	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/antlr-2.7.6.jar"/>
 	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/asm-all-3.3.1.jar"/>

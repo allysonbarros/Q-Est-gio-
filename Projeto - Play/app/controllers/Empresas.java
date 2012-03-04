@@ -19,22 +19,37 @@ public class Empresas extends Controller {
     }
     
 	@Permissao("funcionario")
-    public static void cadastrar(Empresa e, String confirmacaoSenha) {     	
-    	validation.required("cnpj", e.getCnpj());
-    	
+    public static void cadastrar(Empresa e) {    
+    	validation.required("cnpj", e.getCnpj()).message("O campo CPF deve ser preenchido.");
+    	validation.required("razaoSocial", e.getRazaoSocial()).message("O campo Razão Social deve ser preenchido.");
+    	validation.required("nomeFantasia", e.getNomeFantasia()).message("O campo Nome Fantasia deve ser preenchido.");
+    	validation.required("logr", e.getEndereco().getLogradouro()).message("O campo Endereço deve ser preenchido.");
+		validation.required("num", e.getEndereco().getNumero()).message("O campo Número deve ser preenchido.");
+		validation.required("bairro", e.getEndereco().getBairro()).message("O campo Bairro deve ser preenchido.");
+		validation.required("cid", e.getEndereco().getCidade()).message("O campo Cidade deve ser preenchido.");
+		validation.required("uf", e.getEndereco().getUf()).message("O campo Estado deve ser preenchido.");
+		validation.required("cep", e.getEndereco().getCep()).message("O campo CEP deve ser preenchido.");
+		validation.required("nomeResponsavel", e.getNomeResponsavel()).message("O campo Nome do Responsável deve ser preenchido.");
+		validation.required("cargoResponsavel", e.getCargoResponsavel()).message("O campo Cargo do Responsável deve ser preenchido.");
+		validation.required("razaoSocial", e.getRazaoSocial()).message("O campo Razão Social deve ser preenchido.");
+		validation.required("razaoSocial", e.getRazaoSocial()).message("O campo Razão Social deve ser preenchido.");
+		validation.required("email", e.getEmail()).message("O campo Email deve ser preenchido.");
+		
     	if (validation.hasErrors()) {
     		flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
-    		validation.keep();
-    		formCadastro();
+    		
+    		renderArgs.put("e", e);
+    		renderTemplate("Empresas/formCadastro.html");
     	} else {
     		try{
     			EmpresaDelegate del = new EmpresaDelegate();
     			del.cadastrarEmpresa(e);
     		} catch (Exception er) {
-				// TODO Auto-generated catch block
 				er.printStackTrace();
+				
 				flash.error("<strong>Erro:</strong> " + er.getMessage());
 				renderArgs.put("e", e);
+				
 				renderTemplate("Empresas/formCadastro.html");
 			}
     		
