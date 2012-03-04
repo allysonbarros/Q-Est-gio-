@@ -15,16 +15,7 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.playframework.playclipse.playNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>pdf-0.9</name>
-			<type>2</type>
-			<location>/opt/play-1.2.4/modules/pdf-0.9/app</location>
-		</link>
-		<link>
-			<name>conf/pdf-0.9</name>
-			<type>2</type>
-			<location>/opt/play-1.2.4/modules/pdf-0.9/conf</location>
-		</link>
-	</linkedResources>
+	<linkedResources><link><name>pdf-0.9</name><type>2</type><location>/opt/play-1.2.4/modules/pdf-0.9/app</location></link>
+<link><name>conf/pdf-0.9</name><type>2</type><location>/opt/play-1.2.4/modules/pdf-0.9/conf</location></link>
+</linkedResources>
 </projectDescription>
