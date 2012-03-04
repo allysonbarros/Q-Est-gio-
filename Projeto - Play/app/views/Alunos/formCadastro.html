@@ -24,7 +24,7 @@
 			}
 		});
 		
-		$("#matricula").focusout(function() {
+		/* $("#matricula").focusout(function() {
 			var value = $(this).val();
 			
 			if (value.length == 12) {
@@ -33,7 +33,7 @@
 				$("#dados_acesso #login").val("");
 				return;
 			} 
-		});
+		}); */
 
 		$("#idDiretoria").live("change", function(){
 			var value = $("#idDiretoria").val(); 
@@ -206,10 +206,10 @@
 		<div id="tabs-4">
 			<div class="formEl_b">
 				<fieldset id="dados_acesso" class="">
-					<div class="sepH_b">
+					<!-- <div class="sepH_b">
 						<label for="p.usuario.login" class="lbl_a">Matrícula:</label>
 						<input type="text" name="p.usuario.login" disabled="disabled" value="${p?.getMatricula()}" id="login" class="inpt_a">
-					</div>
+					</div> -->
 					<div class="sepH_b">
 						<label for="p.usuario.senha" class="lbl_a">Senha:</label>
 						<input type="password" name="p.usuario.senha" value="" id="p.usuario.senha" class="inpt_a">
