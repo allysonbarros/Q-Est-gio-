@@ -34,6 +34,7 @@ public class Empresas extends Controller {
 		validation.required("razaoSocial", e.getRazaoSocial()).message("O campo Razão Social deve ser preenchido.");
 		validation.required("razaoSocial", e.getRazaoSocial()).message("O campo Razão Social deve ser preenchido.");
 		validation.required("email", e.getEmail()).message("O campo Email deve ser preenchido.");
+		validation.email("ema_ema", e.getEmail()).message("O Email informado não é válido.");
 		
     	if (validation.hasErrors()) {
     		flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
