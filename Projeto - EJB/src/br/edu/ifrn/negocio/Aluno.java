@@ -1,8 +1,11 @@
 package br.edu.ifrn.negocio;
 
+import java.util.List;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue((TipoPessoa.ALUNO+""))	
@@ -15,6 +18,10 @@ public class Aluno extends Pessoa {
 	
 	@ManyToOne
 	private Diretoria diretoria;
+	
+	@OneToMany
+	List<Habilidade> habilidades;
+	
 
 	//private OfertaEstagio oferta;
 
