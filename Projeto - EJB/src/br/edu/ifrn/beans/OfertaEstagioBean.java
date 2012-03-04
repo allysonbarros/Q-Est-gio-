@@ -86,7 +86,7 @@ public class OfertaEstagioBean implements OfertaEstagioBeanRemote {
 		if (p instanceof Aluno){
 			Aluno a = (Aluno) p;
 			OfertaEstagio o = dao.findById(OfertaEstagio.class, idOferta);
-			List<Aluno> alunos = new ArrayList<Aluno>();
+			List<Aluno> alunos = o.getCandidatos()==null?new ArrayList<Aluno>():o.getCandidatos();
 			alunos.add(a);
 			o.setCandidatos(alunos);
 			dao.update(o);
