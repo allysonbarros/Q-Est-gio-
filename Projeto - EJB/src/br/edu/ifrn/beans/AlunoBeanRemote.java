@@ -14,8 +14,6 @@ public interface AlunoBeanRemote {
 	public void deletarAluno(Aluno p) throws DatabaseException;
 	public Aluno getAluno(Long id) throws DatabaseException;
 	public List<Aluno> getTodosAlunos() throws DatabaseException;
-	
-	
 }
 
 

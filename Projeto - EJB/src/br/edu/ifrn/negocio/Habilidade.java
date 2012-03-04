@@ -15,9 +15,10 @@ public class Habilidade implements Serializable{
 
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HABILIDADE_SeqGen")
 	private Long id;
-
+	
 	private String nome;
 	private String nivel;
+	private int tipoHabilidade;
 	
 	public Habilidade() {
 
@@ -47,4 +48,16 @@ public class Habilidade implements Serializable{
 		return nivel;
 	}
 
+	public void setTipoHabilidade(int tipoHabilidade) {
+		this.tipoHabilidade = tipoHabilidade;
+	}
+
+	public int getTipoHabilidade() {
+		return tipoHabilidade;
+	}
+
+	public enum TipoHabilidade {
+		IDIOMA, INFORMATICA, OUTROS_CONHECIMENTOS
+	}
 }
+

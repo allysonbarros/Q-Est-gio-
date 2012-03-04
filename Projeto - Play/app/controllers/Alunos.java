@@ -1,19 +1,21 @@
 package controllers;
 
+import static play.modules.pdf.PDF.renderPDF;
 import helpers.Permissao;
 import helpers.SessionsHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import play.mvc.Controller;
 import play.mvc.With;
 import br.edu.ifrn.negocio.Aluno;
 import br.edu.ifrn.negocio.Diretoria;
+import br.edu.ifrn.negocio.Habilidade;
 import br.edu.ifrn.negocio.TipoPessoa;
 import br.edu.ifrn.patterns.AlunoDelegate;
 import br.edu.ifrn.patterns.CursoDelegate;
 import br.edu.ifrn.patterns.DiretoriaDelegate;
-import static play.modules.pdf.PDF.*;
 @With(SessionsHelper.class)
 public class Alunos extends Controller {
 
@@ -36,10 +38,30 @@ public class Alunos extends Controller {
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
 		Aluno aluno = del.getAluno(alunoId);
 		
+		List<Habilidade> idiomas = new ArrayList<Habilidade>();
+		List<Habilidade> informatica = new ArrayList<Habilidade>();
+		List<Habilidade> outrosConhecimentos = new ArrayList<Habilidade>();
+		
+		for (Habilidade habilidade : aluno.getHabilidades()) {
+			switch (habilidade.getTipoHabilidade()) {
+			case 0:
+				idiomas.add(habilidade);
+				break;
+			case 1:
+				informatica.add(habilidade);
+				break;
+			case 2:
+				outrosConhecimentos.add(habilidade);
+				break;
+			default:
+				break;
+			}
+		}
+		
 		if (formato == null || formato.equals("")) {
-			render(aluno);
+			render(aluno, idiomas, informatica, outrosConhecimentos);
 		} else {
-			renderPDF(aluno);
+			renderPDF(aluno, idiomas, informatica, outrosConhecimentos);
 		}
 	}
 	
