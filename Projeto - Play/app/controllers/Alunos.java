@@ -13,7 +13,7 @@ import br.edu.ifrn.negocio.TipoPessoa;
 import br.edu.ifrn.patterns.AlunoDelegate;
 import br.edu.ifrn.patterns.CursoDelegate;
 import br.edu.ifrn.patterns.DiretoriaDelegate;
-
+import static play.modules.pdf.PDF.*;
 @With(SessionsHelper.class)
 public class Alunos extends Controller {
 
@@ -31,12 +31,18 @@ public class Alunos extends Controller {
 	}
 	
 	@Permissao("aluno")
-	public static void imprimirCurriculo() throws Exception {
+	public static void imprimirCurriculo(String formato) throws Exception {
 		AlunoDelegate del = new AlunoDelegate();
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
-		Aluno p = del.getAluno(alunoId);
+		Aluno aluno = del.getAluno(alunoId);
 		
-		render(p);
+		if (formato == null || formato.equals("")) {
+			render(aluno);
+		} else {
+			renderPDF(aluno);
+		}
+		
+		
 	}
 	
 	@Permissao("funcionario")
