@@ -3,25 +3,16 @@ package controllers;
 import helpers.Permissao;
 import helpers.SessionsHelper;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
-import play.data.validation.Required;
 import play.mvc.Controller;
 import play.mvc.With;
 import br.edu.ifrn.negocio.Aluno;
 import br.edu.ifrn.negocio.Diretoria;
-import br.edu.ifrn.negocio.Endereco;
-import br.edu.ifrn.negocio.Pessoa;
 import br.edu.ifrn.negocio.TipoPessoa;
-import br.edu.ifrn.negocio.Usuario;
+import br.edu.ifrn.patterns.AlunoDelegate;
 import br.edu.ifrn.patterns.CursoDelegate;
 import br.edu.ifrn.patterns.DiretoriaDelegate;
-import br.edu.ifrn.patterns.EnderecoDelegate;
-import br.edu.ifrn.patterns.AlunoDelegate;
 
 @With(SessionsHelper.class)
 public class Alunos extends Controller {
@@ -29,6 +20,15 @@ public class Alunos extends Controller {
 //	public static void index() {
 //		render();
 //	}
+	
+	@Permissao("aluno")
+	public static void meusDados() throws Exception {
+		AlunoDelegate del = new AlunoDelegate();
+		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
+		Aluno p = del.getAluno(alunoId);
+		
+		render(p);
+	} 
 	
 	@Permissao("funcionario")
 	public static void formCadastro() throws Exception {
