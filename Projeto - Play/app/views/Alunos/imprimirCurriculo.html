@@ -5,16 +5,17 @@
   	<title>Impressão de Currículo - QEstágio! - Conectando o aluno à empresa.</title>
   	<style>
   		* {margin:0; padding:0;}
-  		body {background:#FAFAFA left top repeat-x; font-family: 'Trebuchet Ms', Calibri, Arial, Verdana, 'Sans Serif'; font-size:14px; line-height:150%;}
+  		body {font-family: 'Trebuchet Ms', Calibri, Arial, Verdana, 'Sans Serif'; font-size:14px; line-height:150%;}
   		img {border:none;}
 		a {color:#CD0000; text-decoration:none;}
 		#geral {width:590px; padding:0 20px; min-height:600px;}
 		#geral #topo {margin-top:25px; overflow:hidden; padding-bottom:25px; margin-bottom:10px; border-bottom:1px solid #d3d3d3;}
+		#geral #topo .logomarcas {overflow:hidden;}
 		#geral #topo .logomarca {float:left;}
+		#geral #topo .logomarca2 {float:right;}
 		#geral #topo .numero_inscricao {padding-top:10px; color:#666; font-weight:bold; float:right; text-align:right; line-height:150%;}
 		#geral #topo .numero_inscricao span {font-size:20px; color:#CD0000;}
-		#geral #conteudo {padding-top:10px;}
-		#geral #conteudo .titulo {text-align:center; font-size:22px; color:#666;}
+		#geral #conteudo .titulo, #geral #topo .titulo {padding:40px 0 0 0; text-align:center; font-size:22px; color:#666;}
 		#geral #conteudo #box-curriculo {width:568px; margin:20px auto; font-size:14px; color:#333; overflow:hidden; display:block;}
 		#geral #conteudo #box-curriculo .foto {padding:2px; border:1px solid #474747; float:right;}
 		#geral #conteudo #box-curriculo .uma-coluna {font-size:19px; overflow:hidden;}
@@ -22,23 +23,26 @@
 		#geral #conteudo #box-curriculo .duas-colunas .esq {float:left;}
 		#geral #conteudo #box-curriculo .duas-colunas .dir {float:right;}
   	</style>
-		<script type="text/javascript" charset="utf-8">
-			//window.print();
-		</script>
+	<script type="text/javascript" charset="utf-8">
+		//window.print();
+	</script>
   </head>
   <body>
   	<div id="geral">
   		<div id="topo">
-  			<div class="logomarca"><img src="@{'/public/images/logo.png'}" height="60px" /></div>
-  			<div class="numero_inscricao">
-  				<span>Currículo do Aluno(a)</span> <br/>
+  			<div class="logomarcas">
+  				<div class="logomarca"><img src="@{'/public/images/logo.png'}" height="60px" /></div>
+  				<div class="logomarca2"><img src="@{'/public/images/logo_ifrn.png'}" height="60px" /></div>
   			</div>
+  			<div class="titulo">Currículo do Aluno(a)</div>
+  			
 	  	</div>
 	  		
   		<div id="conteudo">
-  			<div class="titulo">Currículo do Aluno(a)</div>
   			<div id="box-curriculo">
-  				<div class="uma-coluna" style="margin-bottom:5px;">${aluno.nome.toUpperCase()}</div>
+  				<div class="uma-coluna" style="margin-bottom:5px;">
+  					${aluno.nome.toUpperCase()}
+  				</div>
 				<div class="esq">${aluno.getEndereco()?.getLogradouro()}, ${aluno.getEndereco()?.getNumero()}, ${aluno.getEndereco()?.getBairro()} - ${aluno.getEndereco()?.getCidade()} / ${aluno.getEndereco()?.getUf()}</div>
 				<div class="dir">Nascido em: ${aluno.getDataNascimento()?.format('dd/MM/yyyy')}</div>
 				<div class="esq">CEP: ${aluno.getEndereco()?.getCep()}</div>
