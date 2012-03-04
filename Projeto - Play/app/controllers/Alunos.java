@@ -12,6 +12,7 @@ import play.mvc.With;
 import br.edu.ifrn.negocio.Aluno;
 import br.edu.ifrn.negocio.Diretoria;
 import br.edu.ifrn.negocio.Habilidade;
+import br.edu.ifrn.negocio.Habilidade.TipoHabilidade;
 import br.edu.ifrn.negocio.TipoPessoa;
 import br.edu.ifrn.patterns.AlunoDelegate;
 import br.edu.ifrn.patterns.CursoDelegate;
@@ -42,21 +43,21 @@ public class Alunos extends Controller {
 		List<Habilidade> informatica = new ArrayList<Habilidade>();
 		List<Habilidade> outrosConhecimentos = new ArrayList<Habilidade>();
 		
-//		for (Habilidade habilidade : aluno.getHabilidades()) {
-//			switch (habilidade.getTipoHabilidade()) {
-//			case 0:
-//				idiomas.add(habilidade);
-//				break;
-//			case 1:
-//				informatica.add(habilidade);
-//				break;
-//			case 2:
-//				outrosConhecimentos.add(habilidade);
-//				break;
-//			default:
-//				break;
-//			}
-//		}
+		for (Habilidade habilidade : aluno.getHabilidades()) {
+			switch (habilidade.getTipoHabilidade()) {
+			case IDIOMA:
+				idiomas.add(habilidade);
+				break;
+			case INFORMATICA:
+				informatica.add(habilidade);
+				break;
+			case OUTROS_CONHECIMENTOS:
+				outrosConhecimentos.add(habilidade);
+				break;
+			default:
+				break;
+			}
+		}
 		
 		if (formato == null || formato.equals("")) {
 			render(aluno, idiomas, informatica, outrosConhecimentos);
