@@ -61,9 +61,11 @@ public class Orientadores extends Controller {
     	//validation.equals("asd ",p.getUsuario().getSenha(), confirmacaoSenha, confirmacaoSenha);
     	
     	if (validation.hasErrors()) {
+    		DiretoriaDelegate del2 = new DiretoriaDelegate();
     		flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
 
     		renderArgs.put("p", p);
+    		renderArgs.put("diretorias", del2.getTodasDiretorias());
     		renderTemplate("Orientadores/formCadastro.html");
     	} else {
     		try {
