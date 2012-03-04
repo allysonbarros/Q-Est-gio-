@@ -106,7 +106,7 @@
 					<div class="sepH_b">
 					#{field 'p.sexo'}
 						<label for="${field.name}" class="lbl_a">Sexo:</label>
-						#{select field.name,value:p?.getSexo(), style:"margin-top:8px;"}
+						#{select field.name,value:p?.getSexo(), id:'p.sexo', style:"margin-top:8px;"}
 							#{option 'Masculino'}Masculino#{/option}
 							#{option 'Feminino'}Feminino#{/option}
 						#{/select}
