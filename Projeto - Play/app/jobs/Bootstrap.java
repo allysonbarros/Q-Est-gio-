@@ -79,9 +79,9 @@ public class Bootstrap extends Job {
 				
 				for (String st : readLines2) {
 					String d[] = st.trim().split(";");
-					Diretoria dir = diretoriaDelegate.getDiretoriaBySigla(d[1].toString());
+					Diretoria dir = diretoriaDelegate.getDiretoriaBySigla(d[2].toString());
 					
-					cursoDelegate.cadastrarCurso(new Curso(d[0], dir));
+					cursoDelegate.cadastrarCurso(new Curso(d[0], d[1], dir));
 				}
 			}
 		} catch (Exception e) {
