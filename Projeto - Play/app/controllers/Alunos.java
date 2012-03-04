@@ -54,6 +54,8 @@ public class Alunos extends Controller {
 	@Permissao("funcionario")
 	public static void cadastrar(Aluno p, String confirmacaoSenha, Long idDiretoria, Long idCurso) throws Exception {
 		validation.required("matr",p.getMatricula()).message("O campo matrícula deve ser preenchido com 12 dígitos.");
+		validation.min(p.getMatricula(), 12).message("O campo matrícula deve ser preenchido com 12 dígitos.");
+		validation.max(p.getMatricula(), 12).message("O campo matrícula deve ser preenchido com 12 dígitos.");
 		validation.required("cpf",p.getCpf()).message("O campo CPF deve ser preenchido.");
 		//    	validation.required("rg",p.getRg());
 		validation.required("nome",p.getNome()).message("O campo Nome deve ser preenchido.");

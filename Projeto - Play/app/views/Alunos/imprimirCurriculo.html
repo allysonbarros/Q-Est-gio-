@@ -2,121 +2,105 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
   <head>
-  	<title>Impressão de Currículo - CIERN - Centro de Integração para Estágios do RN</title>
+  	<title>Impressão de Currículo - QEstágio! - Conectando o aluno à empresa.</title>
   	<style>
   		* {margin:0; padding:0;}
-  		body {background:#FAFAFA url("/images/bg-body.jpg") left top repeat-x; font-family: 'Trebuchet Ms', Calibri, Arial, Verdana, 'Sans Serif'; font-size:14px;}
+  		body {background:#FAFAFA left top repeat-x; font-family: 'Trebuchet Ms', Calibri, Arial, Verdana, 'Sans Serif'; font-size:14px; line-height:150%;}
   		img {border:none;}
-			a {color:#CD0000; text-decoration:none;}
-			#geral {width:590px; padding:0 20px; min-height:600px;}
-			#geral #topo {margin-top:25px; overflow:hidden; padding-bottom:25px; margin-bottom:10px; border-bottom:1px solid #d3d3d3;}
-			#geral #topo .logomarca {float:left;}
-			#geral #topo .numero_inscricao {padding-top:10px; color:#666; font-weight:bold; float:right; text-align:right; line-height:150%;}
-			#geral #topo .numero_inscricao span {font-size:20px; color:#CD0000;}
-			#geral #conteudo .titulo {text-align:center; font-size:22px; color:#666;}
-			#geral #conteudo #box-curriculo {width:568px; margin:20px auto; font-size:14px; color:#333; overflow:hidden; display:block;}
-			#geral #conteudo #box-curriculo .foto {padding:2px; border:1px solid #474747; float:right;}
-			#geral #conteudo #box-curriculo .uma-coluna {font-size:19px; overflow:hidden;}
-			#geral #conteudo #box-curriculo .duas-colunas {width:100%; overflow:hidden;}
-			#geral #conteudo #box-curriculo .duas-colunas .esq {float:left;}
-			#geral #conteudo #box-curriculo .duas-colunas .dir {float:right;}
+		a {color:#CD0000; text-decoration:none;}
+		#geral {width:590px; padding:0 20px; min-height:600px;}
+		#geral #topo {margin-top:25px; overflow:hidden; padding-bottom:25px; margin-bottom:10px; border-bottom:1px solid #d3d3d3;}
+		#geral #topo .logomarca {float:left;}
+		#geral #topo .numero_inscricao {padding-top:10px; color:#666; font-weight:bold; float:right; text-align:right; line-height:150%;}
+		#geral #topo .numero_inscricao span {font-size:20px; color:#CD0000;}
+		#geral #conteudo {padding-top:10px;}
+		#geral #conteudo .titulo {text-align:center; font-size:22px; color:#666;}
+		#geral #conteudo #box-curriculo {width:568px; margin:20px auto; font-size:14px; color:#333; overflow:hidden; display:block;}
+		#geral #conteudo #box-curriculo .foto {padding:2px; border:1px solid #474747; float:right;}
+		#geral #conteudo #box-curriculo .uma-coluna {font-size:19px; overflow:hidden;}
+		#geral #conteudo #box-curriculo .duas-colunas {width:100%; overflow:hidden;}
+		#geral #conteudo #box-curriculo .duas-colunas .esq {float:left;}
+		#geral #conteudo #box-curriculo .duas-colunas .dir {float:right;}
   	</style>
 		<script type="text/javascript" charset="utf-8">
-			window.print();
+			//window.print();
 		</script>
   </head>
   <body>
   	<div id="geral">
   		<div id="topo">
-  			<div class="logomarca"><%= image_tag("logomarca.png") %></div>
-  			<div class="numero_inscricao"><span>Currículo do Aluno(a)</span> <br/>
-  				Nº de Inscrição: <%= @candidato.id.to_i %> </div>
-	  		</div>
+  			<div class="logomarca"><img src="@{'/public/images/logo.png'}" height="60px" /></div>
+  			<div class="numero_inscricao">
+  				<span>Currículo do Aluno(a)</span> <br/>
+  			</div>
+	  	</div>
 	  		
-	  		<div id="conteudo">
-	  			<div class="titulo">Currículo do Aluno(a)</div>
-	  			<div id="box-curriculo">
-					<!--  	<% unless @candidato.avatar.nil? %>
-						<div class="foto"><%= image_tag(@candidato.avatar.avatar.url) %></div>
-						<% end %>
-					-->
-	  				<div class="uma-coluna">${aluno.nome.toUpperCase()}</div>
-	  					<div class="esq">${aluno.getPessoa()?.getEndereco()?.getLogradouro()?}, ${aluno.getPessoa()?.getEndereco()?.getNumero()?}, ${aluno.getPessoa()?.getEndereco()?.getBairro()?} - ${aluno.getPessoa()?.getEndereco()?.getCidade()?} / ${aluno.getPessoa()?.getEndereco()?.getUf()?}</div>
-	  					<div class="dir">Nascido em: ${aluno.getPessoa()?.getDataNascimento()?.asDate('dd/MM/YYYY')?}</div>
-	  					<div class="esq">CEP: ${aluno.getPessoa()?.getEndereco()?.getCep()?}</div>
-	  					<div class="dir">Idade: <!-- Falta colocar -->
-	  			</div>
-	  			<div>Telefone: ${aluno.getPessoa()?.getTelefone()?}</div>
-	  			<div>Email: ${aluno.getPessoa()?.getUsuario()?.getEmail()?}</div>
+  		<div id="conteudo">
+  			<div class="titulo">Currículo do Aluno(a)</div>
+  			<div id="box-curriculo">
+  				<div class="uma-coluna">${aluno.nome.toUpperCase()}</div>
+  					<div class="esq">${aluno.getEndereco()?.getLogradouro()}, ${aluno.getEndereco()?.getNumero()}, ${aluno.getEndereco()?.getBairro()} - ${aluno.getEndereco()?.getCidade()} / ${aluno.getEndereco()?.getUf()}</div>
+  					<div class="dir">Nascido em: ${aluno.getDataNascimento().format('dd/MM/yyyy')}</div>
+  					<div class="esq">CEP: ${aluno.getEndereco()?.getCep()}</div>
+  					<div class="dir">Idade: <!-- Falta colocar -->
+  				</div>
+	  			<div>Telefone: ${'aluno.getTelefone()'}</div>
+	  			<div>Email: ${aluno.getUsuario()?.getEmail()}</div>
 	  			
 	  			<div style="margin-top:30px; font-size:16px;"><strong>Informações Acadêmicas</strong></div>
 	  			<div>
-	  				Cursando 
+	  				Cursando o ${'aluno.getPeriodo()'} do curso de ${aluno.getCurso().getNome()}.
 	  			</div>
-	  		<div><%= @candidato.sexo.to_i == 0 ? "Aluno" : "Aluna" %> do <%= 
-				case @candidato.semestre_curso.to_i 
-  			when 0
-  				"1ª ano ou 1º / 2º semestre"
-  			when 1
-  				"2ª ano ou 3º / 4º semestre"
-  			when 2
-  				"3ª ano ou 4º / 6º semestre"
-  			when 3
-  				"4ª ano ou 7º / 8º semestre"
-  			when 4
-  				"5ª ano ou 9º / 10º semestre"
-  			when 5
-  				"6ª ano ou 11º / 12º semestre"
-  			end
-  		%> do curso de <%= @candidato.curso %>.
-			</div>
-  		<div>Período de Aula: <%= 
-				case @candidato.periodo_aula.to_i 
-  			when 0
-  				"Manhã"
-  			when 1
-  				"Tarde"
-  			when 2
-  				"Noite"
-  			when 3
-  				"Integral"
-  			end
-  		%></div>
-  		
-  		
-  		<div style="margin-top:30px; font-size:16px;"><strong>Conhecimentos de Idiomas Estrangeiros</strong></div>
-  		<% @idiomas.each do |idioma| %>
-  			<div><%= idioma.idioma.capitalize %> 
-  				<%= case idioma.nivel.to_i 
-			  			when 0
-			  				"Nenhum"
-			  			when 1
-			  				"Básico"
-			  			when 2
-			  				"Intermediário"
-			  			when 3
-			  				"Avançado"
-			  			end %>.
-  			</div>
-  		<% end %>
-  		
-  		<div style="margin-top:30px; font-size:16px;"><strong>Conhecimentos de Informática</strong></div>
-  		<% @informatica.each do |informatica| %>
-  			<div><%= informatica.aplicativo.capitalize %> 
-  				<%= case informatica.nivel.to_i 
-			  			when 0
-			  				"Nenhum"
-			  			when 1
-			  				"Básico"
-			  			when 2
-			  				"Intermediário"
-			  			when 3
-			  				"Avançado"
-			  			end %>.
-  			</div>
-  		<% end %>
-  	</div>
-  		
+		  		<div>
+		  		Período de Aula: <%= 
+						case @candidato.periodo_aula.to_i 
+		  			when 0
+		  				"Manhã"
+		  			when 1
+		  				"Tarde"
+		  			when 2
+		  				"Noite"
+		  			when 3
+		  				"Integral"
+		  			end
+		  		%>
+		  		</div>
+	  		
+	  		
+		  		<div style="margin-top:30px; font-size:16px;"><strong>Conhecimentos de Idiomas Estrangeiros</strong></div>
+		  		<% @idiomas.each do |idioma| %>
+		  			<div><%= idioma.idioma.capitalize %> 
+		  				<%= case idioma.nivel.to_i 
+					  			when 0
+					  				"Nenhum"
+					  			when 1
+					  				"Básico"
+					  			when 2
+					  				"Intermediário"
+					  			when 3
+					  				"Avançado"
+					  			end %>.
+		  			</div>
+		  		<% end %>
+		  		
+		  		<div style="margin-top:30px; font-size:16px;"><strong>Conhecimentos de Informática</strong></div>
+		  		<% @informatica.each do |informatica| %>
+		  			<div><%= informatica.aplicativo.capitalize %> 
+		  				<%= case informatica.nivel.to_i 
+					  			when 0
+					  				"Nenhum"
+					  			when 1
+					  				"Básico"
+					  			when 2
+					  				"Intermediário"
+					  			when 3
+					  				"Avançado"
+					  			end %>.
+		  			</div>
+		  		<% end %>
+		  	</div>
+		  </div>
+		</div>
   	</div>  	
   </body>
 </html>
