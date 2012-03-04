@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.IndexColumn;
+
 @Entity
 @DiscriminatorValue((TipoPessoa.ALUNO+""))	
 public class Aluno extends Pessoa {
@@ -20,7 +22,8 @@ public class Aluno extends Pessoa {
 	@ManyToOne
 	private Diretoria diretoria;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="aluno")
+	@IndexColumn(name="habilidades_id")
 	private List<Habilidade> habilidades;
 	
 	public Aluno(){
