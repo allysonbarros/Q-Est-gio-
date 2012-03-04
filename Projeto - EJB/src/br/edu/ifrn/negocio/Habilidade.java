@@ -11,18 +11,17 @@ import javax.persistence.SequenceGenerator;
 @Entity
 @SequenceGenerator(name="HABILIDADE_SeqGen", sequenceName="HABILIDADE_GEN_VAL")
 public class Habilidade implements Serializable{
+	private static final long serialVersionUID = -7039304452142611781L;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HABILIDADE_SeqGen")
 	private Long id;
 
 	private String nome;
 	private String nivel;
 	
+	public Habilidade() {
+
+	}
 	
 	public void setId(Long id) {
 		this.id = id;

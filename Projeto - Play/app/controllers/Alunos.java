@@ -41,8 +41,6 @@ public class Alunos extends Controller {
 		} else {
 			renderPDF(aluno);
 		}
-		
-		
 	}
 	
 	@Permissao("funcionario")

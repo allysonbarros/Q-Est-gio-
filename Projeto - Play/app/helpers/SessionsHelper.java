@@ -55,7 +55,6 @@ public class SessionsHelper extends Controller {
 		UsuarioDelegate del = new UsuarioDelegate();
 		
 		Usuario u = del.getUsuario(Long.parseLong(session.get("usuarioAtivoID")));
-		System.out.println(u.getTipoUsuario() +"  "+TipoPessoa.FUNCIONARIO);
 		if (profile.equals("administrador") && (u.getTipoUsuario() == TipoPessoa.ADMINISTRADOR)){
 			return true;
 		}
