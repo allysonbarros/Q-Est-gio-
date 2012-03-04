@@ -42,21 +42,21 @@ public class Alunos extends Controller {
 		List<Habilidade> informatica = new ArrayList<Habilidade>();
 		List<Habilidade> outrosConhecimentos = new ArrayList<Habilidade>();
 		
-		for (Habilidade habilidade : aluno.getHabilidades()) {
-			switch (habilidade.getTipoHabilidade()) {
-			case 0:
-				idiomas.add(habilidade);
-				break;
-			case 1:
-				informatica.add(habilidade);
-				break;
-			case 2:
-				outrosConhecimentos.add(habilidade);
-				break;
-			default:
-				break;
-			}
-		}
+//		for (Habilidade habilidade : aluno.getHabilidades()) {
+//			switch (habilidade.getTipoHabilidade()) {
+//			case 0:
+//				idiomas.add(habilidade);
+//				break;
+//			case 1:
+//				informatica.add(habilidade);
+//				break;
+//			case 2:
+//				outrosConhecimentos.add(habilidade);
+//				break;
+//			default:
+//				break;
+//			}
+//		}
 		
 		if (formato == null || formato.equals("")) {
 			render(aluno, idiomas, informatica, outrosConhecimentos);
@@ -76,8 +76,6 @@ public class Alunos extends Controller {
 	@Permissao("funcionario")
 	public static void cadastrar(Aluno p, String confirmacaoSenha, Long idDiretoria, Long idCurso) throws Exception {
 		validation.required("matr",p.getMatricula()).message("O campo matrícula deve ser preenchido com 12 dígitos.");
-		validation.min(p.getMatricula(), 12).message("O campo matrícula deve ser preenchido com 12 dígitos.");
-		validation.max(p.getMatricula(), 12).message("O campo matrícula deve ser preenchido com 12 dígitos.");
 		validation.required("cpf",p.getCpf()).message("O campo CPF deve ser preenchido.");
 		//    	validation.required("rg",p.getRg());
 		validation.required("nome",p.getNome()).message("O campo Nome deve ser preenchido.");

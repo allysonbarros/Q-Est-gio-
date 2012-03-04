@@ -23,11 +23,10 @@ public class Aluno extends Pessoa {
 	private Diretoria diretoria;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="aluno")
-	@IndexColumn(name="habilidades_id")
 	private List<Habilidade> habilidades;
 	
-	public Aluno(){
-
+	public Aluno() {
+		
 	}
 
 	public Curso getCurso() {
