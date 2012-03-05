@@ -52,22 +52,10 @@
 	  			
 	  			<div style="margin-top:30px; font-size:16px; margin-bottom:10px;"><strong>Informações Acadêmicas</strong></div>
 	  			<div>
-	  				Cursando o ${'aluno.getPeriodo()'} do curso de ${aluno.getCurso().getNome()}.
-	  			</div>
-		  		<div>
-		  		Período de Aula: <%= 
-						case @candidato.periodo_aula.to_i 
-		  			when 0
-		  				"Manhã"
-		  			when 1
-		  				"Tarde"
-		  			when 2
-		  				"Noite"
-		  			when 3
-		  				"Integral"
-		  			end
-		  		%>
-		  		</div>
+	  				Cursando o ${aluno.getPeriodo()} período do curso de
+					${aluno.getCurso().getNome().toUpperCase()} durante o período da
+					${aluno.getPeriodoAula()} no campus NATAL-CENTRAL do INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DO RIO GRANDE DO NORTE.
+				</div>
 	  		
 	  			#{if idiomas}
 		  		<div style="margin-top:30px; font-size:16px; margin-bottom:10px;"><strong>Conhecimentos de Idiomas Estrangeiros</strong></div>
