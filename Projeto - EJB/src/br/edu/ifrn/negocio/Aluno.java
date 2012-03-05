@@ -26,6 +26,10 @@ public class Aluno extends Pessoa {
 	@IndexColumn(name="INDEX_COL")
 	private List<Habilidade> habilidades;
 	
+	private opcoesPeriodo periodo;
+	
+	private OpcoesPeriodoAula periodoAula;
+	
 	public Aluno() {
 		
 	}
@@ -52,5 +56,29 @@ public class Aluno extends Pessoa {
 
 	public List<Habilidade> getHabilidades() {
 		return habilidades;
+	}
+	
+	public void setPeriodo(opcoesPeriodo periodo) {
+		this.periodo = periodo;
+	}
+
+	public opcoesPeriodo getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodoAula(OpcoesPeriodoAula periodoAula) {
+		this.periodoAula = periodoAula;
+	}
+
+	public OpcoesPeriodoAula getPeriodoAula() {
+		return periodoAula;
+	}
+
+	public enum opcoesPeriodo {
+		PRIMEIRO, SEGUNDO, TERCEIRO, QUARTO, QUINTO, SEXTO, SETIMO, OITAVO;
+	}
+	
+	public enum OpcoesPeriodoAula {
+		MANHA, TARDE, NOITE;
 	}
 }
