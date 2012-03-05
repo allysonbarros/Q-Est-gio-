@@ -43,21 +43,6 @@ public class Alunos extends Controller {
 		List<Habilidade> informatica = new ArrayList<Habilidade>();
 		List<Habilidade> outrosConhecimentos = new ArrayList<Habilidade>();
 		
-		if (aluno.getHabilidades().isEmpty()) {
-			List<Habilidade> habilidades = new ArrayList<Habilidade>();
-			habilidades.add(new Habilidade("Japonês", "Intermediário", TipoHabilidade.IDIOMA));
-			habilidades.add(new Habilidade("Italiano", "Intermediário", TipoHabilidade.IDIOMA));
-			habilidades.add(new Habilidade("Chinês", "Básico", TipoHabilidade.IDIOMA));
-			
-			habilidades.add(new Habilidade("Ruby on Rails", "Intermediário", TipoHabilidade.INFORMATICA));
-			habilidades.add(new Habilidade("Java", "Intermediário", TipoHabilidade.INFORMATICA));
-			habilidades.add(new Habilidade("Delphi", "Intermediário", TipoHabilidade.INFORMATICA));
-			habilidades.add(new Habilidade("Illustrator", "Intermediário", TipoHabilidade.INFORMATICA));
-			
-			aluno.setHabilidades(habilidades);
-			del.editarAluno(aluno);
-		}
-		
 		for (Habilidade habilidade : aluno.getHabilidades()) {
 			switch (habilidade.getTipoHabilidade()) {
 			case IDIOMA:
