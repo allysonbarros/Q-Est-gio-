@@ -40,6 +40,47 @@
 	<classpathentry kind="lib" path="C:/play-1.2.4/framework/lib/gson-1.7.1.jar"/>
 	<classpathentry kind="lib" path="C:/play-1.2.4/framework/lib/h2-1.3.149.jar"/>
 	<classpathentry kind="lib" path="C:/play-1.2.4/framework/lib/hibernate-commons-annotations-3.2.0.Final.jar">
+<<<<<<< HEAD
+=======
+=======
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/play-1.2.4.jar" sourcepath="/opt/play-1.2.4/framework/src"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/lib/jbossall-client.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/core-renderer.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/itext-2.1.7.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/jaxen-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/jtidy-r938.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/play-pdf.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/shani-parser-v1.4.17.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/xml-apis.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/yahp-internal.jar"/>
+	<classpathentry kind="lib" path="/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/lib/yahp.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/activation-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/asm-all-3.3.1.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/async-http-client-1.6.5.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/bcprov-jdk15-1.45.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/c3p0-0.9.1.2.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/cglib-nodep-2.2.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/commons-beanutils-1.8.3.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/commons-codec-1.4.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/commons-email-1.2.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/commons-fileupload-1.2.2.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/commons-io-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/commons-javaflow-1066591.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/ehcache-core-2.0.0.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/ezmorph-1.0.3.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/geronimo-servlet_2.5_spec-1.2.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/groovy-all-1.7.10.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/gson-1.7.1.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/h2-1.3.149.jar"/>
+	<classpathentry kind="lib" path="/opt/play-1.2.4/framework/lib/hibernate-commons-annotations-3.2.0.Final.jar">
+>>>>>>> e8d293a3969a08f5bef6b755b900379480bfc5e2
+>>>>>>> 6a6c4f7a29457be591e7df65924c018964bfd5bd
 		<attributes>
 			<attribute name="javadoc_location" value="http://docs.jboss.org/hibernate/annotations/3.5/api/"/>
 		</attributes>
