@@ -13,15 +13,15 @@
 
 *{"Tag que importa as mensagens de feedback do sistema"}*
 #{BoxesMensagensFeedback /}
+#{set 'moreScripts'}
+
+#{/set}
 
 <h2>Ofertas de Estágio</h2>
 
 <div id="lista-ofertas">
-	#{if lista}
-		#{list items:lista, as:'oferta'}
 		<div class="item-ofertas">
 			<div style="float: right;">
-					<a class="btn btn_d fl" href="@{OfertasEstagio.verDetalheOferta(oferta.id)}">Ver oferta</a>
 			</div> 
 			<div class="titulo-oferta">${oferta.funcao}</div></br>
 			<div class="numVagas-oferta"><strong>Nº de Vaga(s):</strong> ${oferta.numVagas}</div>
@@ -29,11 +29,25 @@
 			<div class="curso-oferta"><strong>Curso:</strong> ${oferta.curso.nome}</div>
 			<div class="descricao-oferta"><strong>Descrição:</strong> ${oferta.descricao}</div>
 			<div class="descricao-oferta"><strong>Número de candidatos:</strong> ${oferta.getCandidatos().size()}</div>
+			<br />
 			
+			<table class="table_a">
+			<thead>
+				<tr>
+					<td>#</td>
+					<td>Candidatos</td>
+					<td>Matrícula</td>
+				</tr>
+			</thead>
+			<tbody>
+			#{list oferta.getCandidatos(),as:'candidato'}
+				<tr>
+					<td>Ver currículo</td>
+					<td>${candidato.getNome()}</td>
+					<td>${candidato.getMatricula()}</td>
+				</tr>
+			#{/list}
+			</tbody>
+			</table>
 		</div>
-		#{/list}
-	#{/if}
-	#{else}
-		Nenhuma oferta de estágio cadastrada!
-	#{/else}
 </div>

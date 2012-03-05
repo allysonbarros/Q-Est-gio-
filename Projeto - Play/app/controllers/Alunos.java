@@ -16,7 +16,7 @@ import br.edu.ifrn.negocio.Habilidade.TipoHabilidade;
 import br.edu.ifrn.patterns.AlunoDelegate;
 import br.edu.ifrn.patterns.CursoDelegate;
 import br.edu.ifrn.patterns.DiretoriaDelegate;
-
+import br.edu.ifrn.negocio.Habilidade.TipoHabilidade;
 @With(SessionsHelper.class)
 public class Alunos extends Controller {
 

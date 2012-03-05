@@ -130,10 +130,10 @@ public class OfertasEstagio extends Controller {
     }
 	
 	@Permissao("funcionario")
-	public static void verCandidatosOferta(Long id) throws Exception{
+	public static void verDetalheOferta(Long id) throws Exception{
 		OfertaEstagioDelegate del = new OfertaEstagioDelegate();
-		OfertaEstagio oe = del.getOfertaEstagio(id);
-		render(oe);
+		OfertaEstagio oferta = del.getOfertaEstagio(id);
+		render(oferta);
 	}
 	
 	@Permissao("funcionario")
