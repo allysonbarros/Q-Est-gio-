@@ -11,11 +11,6 @@
 
 		$("#cnpj").mask("99.999.999/9999-99");
 		$("#cep").mask("99999-999");
-		
-		$("#matricula").focusout(function() {
-			var value = $(this).val();e
-			$("#login").val(value);
-		});
 	});
 </script>
 #{/set}
@@ -23,7 +18,7 @@
 <ul id="migalhadepao">
 	<li class="parent">
 		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
-		<a href="/" class="vam">InÃ­cio</a>
+		<a href="/" class="vam">Início</a>
 	</li>
 	<li class="current"><a href="#">Cadastro de Empresa</a></li>
 </ul>
@@ -45,85 +40,57 @@
 			<div class="formEl_b">
 				<fieldset id="dados_da_empresa" class="">		
 				<div class="sepH_b">
-					<label for="e.cnpj" class="lbl_a">CNPJ:</label>
-					<input type="text" name="e.cnpj" value="" id="e.cnpj" class="inpt_a">
+					<label for="cnpj" class="lbl_a">CNPJ:</label>
+					<input type="text" name="e.cnpj" value="${e?.getCnpj()}" id="cnpj" class="inpt_a">
 				</div>
 				
 				<div class="sepH_b">
-					<label for="e.razaoSocial" class="lbl_a">RazÃ£o Social:</label>
-					<input type="text" name="e.razaoSocial" value="" id="e.razaoSocial" class="inpt_a">
+					<label for="e.razaoSocial" class="lbl_a">Razão Social:</label>
+					<input type="text" name="e.razaoSocial" value="${e?.getRazaoSocial()}" id="e.razaoSocial" class="inpt_a">
 				</div>
 				
 				<div class="sepH_b">
 					<label for="e.nomeFantasia" class="lbl_a">Nome Fantasia:</label>
-					<input type="text" name="e.nomeFantasia" value="" id="e.nomeFantasia" class="inpt_a">
+					<input type="text" name="e.nomeFantasia" value="${e?.getNomeFantasia()}" id="e.nomeFantasia" class="inpt_a">
 				</div>
 				
 				<div class="sepH_b">
-					<label for="endereco" class="lbl_a">EndereÃ§o:</label>
-					<input type="text" name="e.endereco.logradouro" value="" id="endereco" class="inpt_a">
+					<label for="endereco" class="lbl_a">Endereço:</label>
+					<input type="text" name="e.endereco.logradouro" value="${e?.getEndereco()?.getLogradouro()}" id="endereco" class="inpt_a">
 				</div>
 				<div class="sepH_b">
 					<label for="complemento" class="lbl_a">Complemento:</label>
-					<input type="text" name="e.endereco.complemento" value="" id="complemento" class="inpt_a">
+					<input type="text" name="e.endereco.complemento" value="${e?.getEndereco()?.getComplemento()}" id="complemento" class="inpt_a">
 				</div>
 				<div class="sepH_b">
-					<label for="numero" class="lbl_a">NÃºmero:</label>
-					<input type="text" name="e.endereco.numero" value="" id="numero" class="inpt_a">
+					<label for="numero" class="lbl_a">Número:</label>
+					<input type="text" name="e.endereco.numero" value="${e?.getEndereco()?.getNumero()}" id="numero" class="inpt_a">
 				</div>
 				<div class="sepH_b">
 					<label for="bairro" class="lbl_a">Bairro:</label>
-					<input type="text" name="e.endereco.bairro" value="" id="bairro" class="inpt_a">
+					<input type="text" name="e.endereco.bairro" value="${e?.getEndereco()?.getBairro()}" id="bairro" class="inpt_a">
 				</div>
 				<div class="sepH_b">
 					<label for="cidade" class="lbl_a">Cidade:</label>
-					<input type="text" name="e.endereco.cidade" value="" id="cidade" class="inpt_a">
+					<input type="text" name="e.endereco.cidade" value="${e?.getEndereco()?.getCidade()}" id="cidade" class="inpt_a">
 				</div>
 				<div class="sepH_b">
-					<label for="estado" class="lbl_a">Estado:</label>
-					<select name="e.endereco.uf">
-							<option value="AC">AC</option>
-							<option value="AL">AL</option>
-							<option value="AM">AM</option>
-							<option value="AP">AP</option>
-							<option value="BA">BA</option>
-							<option value="CE">CE</option>
-							<option value="DF">DF</option>
-							<option value="ES">ES</option>
-							<option value="GO">GO</option>
-							<option value="MA">MA</option>
-							<option value="MG">MG</option>
-							<option value="MS">MS</option>
-							<option value="MT">MT</option>
-							<option value="PA">PA</option>
-							<option value="PB">PB</option>
-							<option value="PE">PE</option>
-							<option value="PI">PI</option>
-							<option value="PR">PR</option>
-							<option value="RJ">RJ</option>
-							<option value="RN">RN</option>
-							<option value="RO">RO</option>
-							<option value="RR">RR</option>
-							<option value="RS">RS</option>
-							<option value="SC">SC</option>
-							<option value="SE">SE</option>
-							<option value="SP">SP</option>
-							<option value="TO">TO</option>
-						</select>
+					<label for="estado" class="lbl_a">Estado:</label> 
+					#{select "e.endereco.uf", items:helpers.DadosHelper.getEstadosBrasileiros(), id:estado, value:e?.getEndereco()?.getUf(), style:"margin-top:8px;" /}
 				</div>
 				<div class="sepH_b">
 					<label for="cep" class="lbl_a">Cep:</label>
-					<input type="text" name="e.endereco.cep" value="" id="cep" class="inpt_a">
+					<input type="text" name="e.endereco.cep" value="${e?.getEndereco()?.getCep()}" id="cep" class="inpt_a">
 				</div>
 				
 				<div class="sepH_b">
-					<label for="e.areaAtuacao" class="lbl_a">Ã�rea de AtuaÃ§Ã£o:</label>
-					<input type="text" name="e.areaAtuacao" value="" id="e.areaAtuacao" class="inpt_a">
+					<label for="e.areaAtuacao" class="lbl_a">Área de Atuação:</label>
+					<input type="text" name="e.areaAtuacao" value="${e?.getAreaAtuacao()}" id="e.areaAtuacao" class="inpt_a">
 				</div>
 				
 				<div class="sepH_b">
-					<label for="e.numeroFuncionarios" class="lbl_a">NÂº de FuncionÃ¡rios:</label>
-					<input type="text" name="e.numeroFuncionarios" value="" id="e.numeroFuncionarios" class="inpt_a">
+					<label for="e.numeroFuncionarios" class="lbl_a">Nº de Funcionários:</label>
+					<input type="text" name="e.numeroFuncionarios" value="${e?.getNumeroFuncionarios()}" id="e.numeroFuncionarios" class="inpt_a">
 				</div>
 			</fieldset>
 			</div>
@@ -137,28 +104,28 @@
 			<div class="formEl_b">
 				<fieldset id="dados_de_contato" class="">
 					<div class="sepH_b">
-						<label for="e.nomeResponsavel" class="lbl_a">Nome do ResponsÃ¡vel:</label>
-						<input type="text" name="e.nomeResponsavel" value="" id="e.nomeResponsavel" class="inpt_a">
+						<label for="e.nomeResponsavel" class="lbl_a">Nome do Responsável:</label>
+						<input type="text" name="e.nomeResponsavel" value="${e?.getNomeResponsavel()}" id="e.nomeResponsavel" class="inpt_a">
 					</div>
 					
 					<div class="sepH_b">
-						<label for="e.cargoResponsavel" class="lbl_a">Cargo do ResponsÃ¡vel:</label>
-						<input type="text" name="e.cargoResponsavel" value="" id="e.cargoResponsavel" class="inpt_a">
+						<label for="e.cargoResponsavel" class="lbl_a">Cargo do Responsável:</label>
+						<input type="text" name="e.cargoResponsavel" value="${e?.getCargoResponsavel()}" id="e.cargoResponsavel" class="inpt_a">
 					</div>
 					
 					<div class="sepH_b">
 						<label for="email" class="lbl_a">Email:</label>
-						<input type="text" name="e.email" value="" id="email" class="inpt_a">
+						<input type="text" name="e.email" value="${e?.getEmail()}" id="email" class="inpt_a">
 					</div>
 					
 					<div class="sepH_b">
 						<label for="e.emailAlternativo" class="lbl_a">Email Alternativo:</label>
-						<input type="text" name="e.emailAlternativo" value="" id="e.emailAlternativo" class="inpt_a">
+						<input type="text" name="e.emailAlternativo" value="${e?.getEmailAlternativo()}" id="e.emailAlternativo" class="inpt_a">
 					</div>
 					
 					<div class="sepH_b">
 						<label for="e.site" class="lbl_a">Site:</label>
-						<input type="text" name="e.site" value="" id="e.site" class="inpt_a">
+						<input type="text" name="e.site" value="${e?.getSite()}" id="e.site" class="inpt_a">
 					</div>
 				</fieldset>
 			</div>

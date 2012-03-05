@@ -13,6 +13,7 @@
 		$("#login").mask("999999999999");
 		$("#cpf").mask("999.999.999-99");
 		$("#cep").mask("99999-999");
+		$("#data_nascimento").mask("99/99/9999");
 
 		$("#nomeConjuge").parent().hide();
 		$("#estadoCivil").change(function(){
@@ -75,6 +76,12 @@
 						<label for="nome" class="lbl_a">Nome Completo:</label>
 						<input type="text" name="p.nome" value="${p?.getNome()}" id="nome" class="inpt_a">
 					</div>
+					
+					<div class="sepH_b">
+						<label for="data_nascimento" class="lbl_a">Data de Nascimento:</label>
+						<input type="text" name="p.getDataNascimento()" value="${p?.getDataNascimento()}" id="data_nascimento" class="inpt_a">
+					</div>
+					
 					<div class="sepH_b">
 					#{field 'p.estadoCivil'}
 						<label for="estadoCivil" class="lbl_a">Estado Civil:</label>

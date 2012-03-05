@@ -22,12 +22,12 @@ public class Aluno extends Pessoa {
 	@ManyToOne
 	private Diretoria diretoria;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="aluno")
-	@IndexColumn(name="habilidades_id")
+	@OneToMany(mappedBy="aluno",cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@IndexColumn(name="INDEX_COL")
 	private List<Habilidade> habilidades;
 	
-	public Aluno(){
-
+	public Aluno() {
+		
 	}
 
 	public Curso getCurso() {

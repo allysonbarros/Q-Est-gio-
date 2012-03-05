@@ -6,6 +6,7 @@
 		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
 		<a href="/" class="vam">Início</a>
 	</li>
+	<li class="parent"><a href="@{Application.index()}">Estágio e Egressos</a></li>
 	<li class="current"><a href="#">Oferta de estágio</a></li>
 </ul>
 #{/set}
@@ -20,24 +21,19 @@
 		#{list items:lista, as:'oferta'}
 		<div class="item-ofertas">
 			<div style="float: right;">
-				#{if session.get('usuarioAtivoID')}
-				#{if listaCand.get(oferta_index-1).equals(false)}
-					<a class="btn btn_d fl" href="@{OfertasEstagio.candidatarAluno(oferta.id)}">Desejo candidatar-me a esta oferta</a>
-				#{/if}
-				#{else}
-						<a class="btn btn_c fl sepV_a" href="@{OfertasEstagio.descandidatarAluno(oferta.id)}">Remover minha candidatura</a>
-				#{/else}
-				#{/if}
+					<a class="btn btn_d fl" href="@{OfertasEstagio.candidatarAluno(oferta.id)}">Ver oferta</a>
 			</div> 
 			<div class="titulo-oferta">${oferta.funcao}</div></br>
 			<div class="numVagas-oferta"><strong>Nº de Vaga(s):</strong> ${oferta.numVagas}</div>
 			<div class="empresa-oferta"><strong>Empresa:</strong> ${oferta.empresa.nomeFantasia}</div>
 			<div class="curso-oferta"><strong>Curso:</strong> ${oferta.curso.nome}</div>
 			<div class="descricao-oferta"><strong>Descrição:</strong> ${oferta.descricao}</div>
+			<div class="descricao-oferta"><strong>Número de candidatos:</strong> ${oferta.getCandidatos().size()}</div>
+			
 		</div>
 		#{/list}
 	#{/if}
 	#{else}
-		Nenhuma oferta de estágio disponivel!
+		Nenhuma oferta de estágio cadastrada!
 	#{/else}
 </div>

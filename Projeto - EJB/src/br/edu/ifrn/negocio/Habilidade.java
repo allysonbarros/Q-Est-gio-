@@ -19,7 +19,7 @@ public class Habilidade implements Serializable{
 	
 	private String nome;
 	private String nivel;
-	private int tipoHabilidade;
+	private TipoHabilidade tipoHabilidade;
 	
 	@ManyToOne
 	private Aluno aluno;
@@ -52,11 +52,11 @@ public class Habilidade implements Serializable{
 		return nivel;
 	}
 
-	public void setTipoHabilidade(int tipoHabilidade) {
+	public void setTipoHabilidade(TipoHabilidade tipoHabilidade) {
 		this.tipoHabilidade = tipoHabilidade;
 	}
 
-	public int getTipoHabilidade() {
+	public TipoHabilidade getTipoHabilidade() {
 		return tipoHabilidade;
 	}
 
@@ -68,6 +68,11 @@ public class Habilidade implements Serializable{
 		return aluno;
 	}
 
+	@Override
+	public String toString() {
+		return this.nome.toUpperCase() + " " + this.nivel.toUpperCase();
+	}
+	
 	public enum TipoHabilidade {
 		IDIOMA, INFORMATICA, OUTROS_CONHECIMENTOS
 	}

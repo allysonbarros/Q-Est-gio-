@@ -128,4 +128,18 @@ public class OfertasEstagio extends Controller {
     		renderText("ERRO: " + er.getLocalizedMessage());
     	}
     }
+	
+	@Permissao("funcionario")
+	public static void verCandidatosOferta(Long id) throws Exception{
+		OfertaEstagioDelegate del = new OfertaEstagioDelegate();
+		OfertaEstagio oe = del.getOfertaEstagio(id);
+		render(oe);
+	}
+	
+	@Permissao("funcionario")
+	public static void verOfertas() throws Exception{
+		OfertaEstagioDelegate del = new OfertaEstagioDelegate();
+		List<OfertaEstagio> lista = del.getTodasOfertasEstagio();
+		render(lista);
+	}
 }
