@@ -43,23 +43,23 @@ public class Alunos extends Controller {
 		List<Habilidade> informatica = new ArrayList<Habilidade>();
 		List<Habilidade> outrosConhecimentos = new ArrayList<Habilidade>();
 		
-//		if (aluno.getHabilidades().isEmpty()) {
-//			List<Habilidade> habilidades = new ArrayList<Habilidade>();
-//			habilidades.add(new Habilidade("Inglês", "Intermediário", TipoHabilidade.IDIOMA));
-//			habilidades.add(new Habilidade("Francês", "Intermediário", TipoHabilidade.IDIOMA));
-//			habilidades.add(new Habilidade("Espanhol", "Básico", TipoHabilidade.IDIOMA));
-//			
-//			habilidades.add(new Habilidade("Word", "Intermediário", TipoHabilidade.INFORMATICA));
-//			habilidades.add(new Habilidade("Excel", "Intermediário", TipoHabilidade.INFORMATICA));
-//			habilidades.add(new Habilidade("BrOffice", "Intermediário", TipoHabilidade.INFORMATICA));
-//			habilidades.add(new Habilidade("Photoshop", "Intermediário", TipoHabilidade.INFORMATICA));
-//			
-//			habilidades.add(new Habilidade("Desenho à mão livre", "Intermediário", TipoHabilidade.OUTROS_CONHECIMENTOS));
-//			habilidades.add(new Habilidade("Culinária Oriental", "Básico", TipoHabilidade.OUTROS_CONHECIMENTOS));
-//			
-//			aluno.setHabilidades(habilidades);
-//			del.editarAluno(aluno);
-//		}
+		if (aluno.getHabilidades().isEmpty()) {
+			List<Habilidade> habilidades = new ArrayList<Habilidade>();
+			habilidades.add(new Habilidade("Inglês", "Intermediário", TipoHabilidade.IDIOMA));
+			habilidades.add(new Habilidade("Francês", "Intermediário", TipoHabilidade.IDIOMA));
+			habilidades.add(new Habilidade("Espanhol", "Básico", TipoHabilidade.IDIOMA));
+			
+			habilidades.add(new Habilidade("Word", "Intermediário", TipoHabilidade.INFORMATICA));
+			habilidades.add(new Habilidade("Excel", "Intermediário", TipoHabilidade.INFORMATICA));
+			habilidades.add(new Habilidade("BrOffice", "Intermediário", TipoHabilidade.INFORMATICA));
+			habilidades.add(new Habilidade("Photoshop", "Intermediário", TipoHabilidade.INFORMATICA));
+			
+			habilidades.add(new Habilidade("Desenho à mão livre", "Intermediário", TipoHabilidade.OUTROS_CONHECIMENTOS));
+			habilidades.add(new Habilidade("Culinária Oriental", "Básico", TipoHabilidade.OUTROS_CONHECIMENTOS));
+			
+			aluno.setHabilidades(habilidades);
+			del.editarAluno(aluno);
+		}
 		
 		for (Habilidade habilidade : aluno.getHabilidades()) {
 			switch (habilidade.getTipoHabilidade()) {
