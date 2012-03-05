@@ -4,6 +4,55 @@
 <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/jquery_ui/tema.css'}">
 <script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 <script src="@{'/public/javascripts/jquery.mask.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#formtabs").tabs();
+
+		$("#matricula").mask("999999999999");
+		$("#login").mask("999999999999");
+		$("#cpf").mask("999.999.999-99");
+		$("#cep").mask("99999-999");
+		$("#data_nascimento").mask("99/99/9999");
+
+		$("#nomeConjuge").parent().hide();
+		$("#estadoCivil").change(function(){
+			var value = $(this).val();
+			if (value == "Casado") {
+				$("#nomeConjuge").parent().show();
+			} else {
+				$("#nomeConjuge").parent().hide();
+			}
+		});
+		
+		/* $("#matricula").focusout(function() {
+			var value = $(this).val();
+			
+			if (value.length == 12) {
+				$("#dados_acesso #login").val(value);
+			} else {
+				$("#dados_acesso #login").val("");
+				return;
+			} 
+		}); */
+
+		$("#idDiretoria").live("change", function(){
+			var value = $("#idDiretoria").val(); 
+			
+			if (value == "") {
+				$("#idCurso").html('<option value="">-- Selecione uma Diretoria --</option>');
+				return;
+			} else {
+				$("#idCurso").html('<option value="">-- Selecione um Curso --</option>');
+				
+				var cursosAction = #{jsAction @OfertasEstagio.getCursosByDiretoria(':idDiretoria') /}
+				$.get(cursosAction({idDiretoria: value}), function(data) {
+				  $("#idCurso").append(data);
+				});
+			}
+		});
+	});
+</script>
 #{/set}
 #{set 'migalhaDePao'}
 <ul id="migalhadepao">
@@ -11,33 +60,44 @@
 		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
 		<a href="/" class="vam">Início</a>
 	</li><div id="tabs">
-	<li class="current"><a href="#">Ver Meus Dados</a></li>
+	<li class="current"><a href="#">Editar Meus Dados</a></li>
 </ul>
 #{/set}
 
 *{"Tag que importa as mensagens de feedback do sistema"}*
 #{BoxesMensagensFeedback /}
 
-<h1 class="sepH_c">Ver Meus Dados</h1>
+<h1 class="sepH_c">Editar Meus Dados</h1>
 
-
+#{form @Alunos.cadastrar()}
 <div id="formtabs">
+		<ul>
+		    <li><a class="passo1" href="#tabs-1" class="current">Dados Pessoais</a></li>
+		    <li><a class="passo2" href="#tabs-2">Dados Acadêmicos</a></li>
+		    <li><a class="passo3" href="#tabs-3">Dados de Contato</a></li>
+		    <li><a class="passo4" href="#tabs-4">Dados de Acesso</a></li>
+		</ul>
+		
 		<div id="tabs-1">
 			<div class="formEl_b">
-			<h3>Dados Pessoais</h3>
 				<fieldset id="dados_pessoais" class="">
-				<div class="sepH_b">
-					
-						<p class="lbl_a">Matrícula: ${p.getMatricula()}</p>
-						<p class="lbl_a">CPF: ${p.getCpf()} </p>
-						<p class="lbl_a">Nome Completo: ${p.getNome()}</p>
-						<p class="lbl_a">Data de Nascimento: ${p.getDataNascimento()}</p>
-						<p class="lbl_a">Data de Nascimento: ${p.getDataNascimento()}</p>
-						<p class="lbl_a">Data de Nascimento: ${p.getDataNascimento()}</p>
+					<div class="sepH_b">
+						<label for="matricula" class="lbl_a">Matrícula:</label>
+						<input type="text" name="p.matricula" value="${p?.getMatricula()}" id="matricula" class="inpt_a">
 					</div>
-		
-					<p><a href="@{Alunos.editarDados}">Editar Dados</a></p>
-
+					<div class="sepH_b">
+						<label for="cpf" class="lbl_a">CPF:</label>
+						<input type="text" name="p.cpf" value="${p?.getCpf()}" id="cpf" class="inpt_a">
+					</div>	
+					<div class="sepH_b">
+						<label for="nome" class="lbl_a">Nome Completo:</label>
+						<input type="text" name="p.nome" value="${p?.getNome()}" id="nome" class="inpt_a">
+					</div>
+					
+					<div class="sepH_b">
+						<label for="data_nascimento" class="lbl_a">Data de Nascimento:</label>
+						<input type="text" name="p.getDataNascimento()" value="${p?.getDataNascimento()}" id="data_nascimento" class="inpt_a">
+					</div>
 					
 					<div class="sepH_b">
 					#{field 'p.estadoCivil'}
@@ -171,9 +231,10 @@
 				
 				<div class="cf">
 					<a class="btn btn_a fl sepV_a" onclick="$('.passo3').click(); return false;" href="#">&laquo; Dados de Contato</a>
-					<button class="btn btn_d sepV_a"  type="submit"><span>Salvar Meus Dados</span></button>
+					<button class="btn btn_d sepV_a"  type="submit"><span>Cadastrar Aluno</span></button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+#{/form}
