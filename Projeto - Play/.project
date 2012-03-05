@@ -19,12 +19,12 @@
 		<link>
 			<name>pdf-0.9</name>
 			<type>2</type>
-			<location>/opt/play-1.2.4/modules/pdf-0.9/app</location>
+			<location>/home/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/app</location>
 		</link>
 		<link>
 			<name>conf/pdf-0.9</name>
 			<type>2</type>
-			<location>/opt/play-1.2.4/modules/pdf-0.9/conf</location>
+			<location>/home/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/conf</location>
 		</link>
 	</linkedResources>
 </projectDescription>

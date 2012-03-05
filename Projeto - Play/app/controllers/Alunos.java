@@ -1,6 +1,5 @@
 package controllers;
 
-import static play.modules.pdf.PDF.renderPDF;
 import helpers.Permissao;
 import helpers.SessionsHelper;
 
@@ -12,11 +11,11 @@ import play.mvc.With;
 import br.edu.ifrn.negocio.Aluno;
 import br.edu.ifrn.negocio.Diretoria;
 import br.edu.ifrn.negocio.Habilidade;
-import br.edu.ifrn.negocio.Habilidade.TipoHabilidade;
 import br.edu.ifrn.negocio.TipoPessoa;
 import br.edu.ifrn.patterns.AlunoDelegate;
 import br.edu.ifrn.patterns.CursoDelegate;
 import br.edu.ifrn.patterns.DiretoriaDelegate;
+
 @With(SessionsHelper.class)
 public class Alunos extends Controller {
 
@@ -34,7 +33,7 @@ public class Alunos extends Controller {
 	}
 	
 	@Permissao("aluno")
-	public static void imprimirCurriculo(String formato) throws Exception {
+	public static void imprimirCurriculo() throws Exception {
 		AlunoDelegate del = new AlunoDelegate();
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
 		Aluno aluno = del.getAluno(alunoId);
@@ -59,11 +58,7 @@ public class Alunos extends Controller {
 			}
 		}
 		
-		if (formato == null || formato.equals("")) {
-			render(aluno, idiomas, informatica, outrosConhecimentos);
-		} else {
-			renderPDF(aluno, idiomas, informatica, outrosConhecimentos);
-		}
+		render(aluno, idiomas, informatica, outrosConhecimentos);
 	}
 	
 	@Permissao("funcionario")
