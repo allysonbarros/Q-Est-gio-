@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
@@ -15,4 +16,23 @@ GET     /favicon.ico                            404
 GET     /public/                                staticDir:public
 
 # Catch all
+=======
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Application.index
+GET     /generate                               Application.generate(id:'home')
+GET     /generate/{id}                          Application.generate
+GET     /images/{id}                            Application.image
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+>>>>>>> e8d293a3969a08f5bef6b755b900379480bfc5e2
 *       /{controller}/{action}                  {controller}.{action}

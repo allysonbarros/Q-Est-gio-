@@ -21,8 +21,8 @@ public class Habilidade implements Serializable{
 	private String nivel;
 	private TipoHabilidade tipoHabilidade;
 	
-	@ManyToOne
-	private Aluno aluno;
+//	@ManyToOne
+//	private Aluno aluno;
 	
 	public Habilidade(String nome, String nivel, TipoHabilidade tipoHabilidade) {
 		super();

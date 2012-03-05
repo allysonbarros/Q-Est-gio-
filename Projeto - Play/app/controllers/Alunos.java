@@ -29,10 +29,17 @@ public class Alunos extends Controller {
 		AlunoDelegate del = new AlunoDelegate();
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
 		Aluno p = del.getAluno(alunoId);
-		
 		render(p);
 	}
 	
+	
+	@Permissao("aluno")
+	public static void editarDados() throws Exception {
+		AlunoDelegate del = new AlunoDelegate();
+		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
+		Aluno p = del.getAluno(alunoId);
+		render(p);
+	}
 	@Permissao("aluno")
 	public static void imprimirCurriculo() throws Exception {
 		AlunoDelegate del = new AlunoDelegate();

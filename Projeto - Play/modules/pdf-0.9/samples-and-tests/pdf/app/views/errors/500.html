@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 
 <html>
@@ -19,3 +20,26 @@
         #{/else}
     </body>
 </html>
+=======
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Application error</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=${_response_encoding}"/>	
+    </head>
+    <body>
+        #{if play.mode.name() == 'DEV'}
+            #{500 exception /}
+        #{/if}
+        #{else}
+            <h1>Oops, an error occured</h1>
+            #{if exception instanceof play.exceptions.PlayException}
+                <p>
+                    This exception has been logged with id <strong>${exception.id}</strong>.
+                </p>
+            #{/if}
+        #{/else}
+    </body>
+</html>
+>>>>>>> e8d293a3969a08f5bef6b755b900379480bfc5e2

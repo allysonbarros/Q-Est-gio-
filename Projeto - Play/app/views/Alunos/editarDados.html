@@ -1,0 +1,240 @@
+#{extends 'main.html' /}
+#{set title:'formCadastro.html' /}
+#{set 'moreScripts'}
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/jquery_ui/tema.css'}">
+<script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.mask.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#formtabs").tabs();
+
+		$("#matricula").mask("999999999999");
+		$("#login").mask("999999999999");
+		$("#cpf").mask("999.999.999-99");
+		$("#cep").mask("99999-999");
+		$("#data_nascimento").mask("99/99/9999");
+
+		$("#nomeConjuge").parent().hide();
+		$("#estadoCivil").change(function(){
+			var value = $(this).val();
+			if (value == "Casado") {
+				$("#nomeConjuge").parent().show();
+			} else {
+				$("#nomeConjuge").parent().hide();
+			}
+		});
+		
+		/* $("#matricula").focusout(function() {
+			var value = $(this).val();
+			
+			if (value.length == 12) {
+				$("#dados_acesso #login").val(value);
+			} else {
+				$("#dados_acesso #login").val("");
+				return;
+			} 
+		}); */
+
+		$("#idDiretoria").live("change", function(){
+			var value = $("#idDiretoria").val(); 
+			
+			if (value == "") {
+				$("#idCurso").html('<option value="">-- Selecione uma Diretoria --</option>');
+				return;
+			} else {
+				$("#idCurso").html('<option value="">-- Selecione um Curso --</option>');
+				
+				var cursosAction = #{jsAction @OfertasEstagio.getCursosByDiretoria(':idDiretoria') /}
+				$.get(cursosAction({idDiretoria: value}), function(data) {
+				  $("#idCurso").append(data);
+				});
+			}
+		});
+	});
+</script>
+#{/set}
+#{set 'migalhaDePao'}
+<ul id="migalhadepao">
+	<li class="parent">
+		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
+		<a href="/" class="vam">Início</a>
+	</li><div id="tabs">
+	<li class="current"><a href="#">Editar Meus Dados</a></li>
+</ul>
+#{/set}
+
+*{"Tag que importa as mensagens de feedback do sistema"}*
+#{BoxesMensagensFeedback /}
+
+<h1 class="sepH_c">Editar Meus Dados</h1>
+
+#{form @Alunos.cadastrar()}
+<div id="formtabs">
+		<ul>
+		    <li><a class="passo1" href="#tabs-1" class="current">Dados Pessoais</a></li>
+		    <li><a class="passo2" href="#tabs-2">Dados Acadêmicos</a></li>
+		    <li><a class="passo3" href="#tabs-3">Dados de Contato</a></li>
+		    <li><a class="passo4" href="#tabs-4">Dados de Acesso</a></li>
+		</ul>
+		
+		<div id="tabs-1">
+			<div class="formEl_b">
+				<fieldset id="dados_pessoais" class="">
+					<div class="sepH_b">
+						<label for="matricula" class="lbl_a">Matrícula:</label>
+						<input type="text" name="p.matricula" value="${p?.getMatricula()}" id="matricula" class="inpt_a">
+					</div>
+					<div class="sepH_b">
+						<label for="cpf" class="lbl_a">CPF:</label>
+						<input type="text" name="p.cpf" value="${p?.getCpf()}" id="cpf" class="inpt_a">
+					</div>	
+					<div class="sepH_b">
+						<label for="nome" class="lbl_a">Nome Completo:</label>
+						<input type="text" name="p.nome" value="${p?.getNome()}" id="nome" class="inpt_a">
+					</div>
+					
+					<div class="sepH_b">
+						<label for="data_nascimento" class="lbl_a">Data de Nascimento:</label>
+						<input type="text" name="p.getDataNascimento()" value="${p?.getDataNascimento()}" id="data_nascimento" class="inpt_a">
+					</div>
+					
+					<div class="sepH_b">
+					#{field 'p.estadoCivil'}
+						<label for="estadoCivil" class="lbl_a">Estado Civil:</label>
+						#{select field.name, value:p?.getEstadoCivil(), id:'estadoCivil', style:"margin-top:8px;"}
+							#{option 'Solteiro'}Solteiro#{/option}
+							#{option 'Casado'}Casado#{/option}
+							#{option 'Viúvo'}Viúvo#{/option}
+							#{option 'Divorciado'}Divorciado#{/option}
+						#{/select}
+					#{/field}
+					</div>
+					<div class="sepH_b">
+					#{field 'p.sexo'}
+						<label for="${field.name}" class="lbl_a">Sexo:</label>
+						#{select field.name,value:p?.getSexo(), id:'p.sexo', style:"margin-top:8px;"}
+							#{option 'Masculino'}Masculino#{/option}
+							#{option 'Feminino'}Feminino#{/option}
+						#{/select}
+					#{/field}
+					</div>
+					<div class="sepH_b">
+						<label for="nomeMae" class="lbl_a">Nome da Mãe:</label>
+						<input type="text" name="p.nomeMae" value="${p?.getNomeMae()}" id="nomeMae" class="inpt_a">
+					</div>
+					<div class="sepH_b">
+						<label for="nomePai" class="lbl_a">Nome do Pai:</label>
+						<input type="text" name="p.nomePai" value="${p?.getNomePai()}" id="nomePai" class="inpt_a">
+					</div>
+					<div class="sepH_b">
+						<label for="nomeConjuge" class="lbl_a">Nome do Conjuge:</label>
+						<input type="text" name="p.nomeConjuge" value="${p?.getNomeConjuge()}" id="nomeConjuge" class="inpt_a">
+					</div>		
+				</fieldset>
+			
+				<div class="cf">
+					<a class="btn btn_d fl" onclick="$('.passo2').click(); return false;" href="#">Dados de Acadêmicos  &raquo;</a>
+				</div>
+							
+			</div>
+		</div>
+		
+		<div id="tabs-2">
+			<div class="formEl_b">
+				<fieldset id="dados_acesso" class="">
+				<div class="sepH_b">
+					<label for="idDiretoria" class="lbl_a">Selecione a Diretoria:</label>
+					#{select "idDiretoria", id:'idDiretoria', items:diretorias, value:idDiretoria, valueProperty:'id', style:"width:40%; margin-top:8px;"}
+						<option value="">-- Selecione uma Diretoria --</option>
+					#{/select}
+				</div>
+				
+				<div class="sepH_b">
+					<label for="idCurso" class="lbl_a">Selecione o Curso:</label>
+					#{select "idCurso", id:"idCurso", items:cursos, value:idCurso, valueProperty:'id', labelProperty:'nome', style:"width:40%; margin-top:8px;"}
+						<option value="">-- Selecione uma Diretoria --</option>
+					#{/select}
+				</div>
+				</fieldset>
+				
+				<div class="cf">
+					<a class="btn btn_a fl sepV_a" onclick="$('.passo1').click(); return false;" href="#">&laquo; Dados Pessoais</a>
+					<a class="btn btn_d fl sepV_a" onclick="$('.passo3').click(); return false;" href="#">Dados de Contato &raquo;</a>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div id="tabs-3">
+			<div class="formEl_b">
+				<fieldset id="dados_contato" class="">
+					<div class="sepH_b">
+						<label for="endereco" class="lbl_a">Endereço:</label>
+						<input type="text" name="p.endereco.logradouro" value="${p?.getEndereco()?.getLogradouro()}" id="endereco" class="inpt_a">
+					</div>
+					<div class="sepH_b">
+						<label for="complemento" class="lbl_a">Complemento:</label>
+						<input type="text" name="p.endereco.complemento" value="${p?.getEndereco()?.getComplemento()}" id="complemento" class="inpt_a">
+					</div>
+					<div class="sepH_b">
+						<label for="numero" class="lbl_a">Número:</label>
+						<input type="text" name="p.endereco.numero" value="${p?.getEndereco()?.getNumero()}" id="numero" class="inpt_a">
+					</div>
+					<div class="sepH_b">
+						<label for="bairro" class="lbl_a">Bairro:</label>
+						<input type="text" name="p.endereco.bairro" value="${p?.getEndereco()?.getBairro()}" id="bairro" class="inpt_a">
+					</div>
+					<div class="sepH_b">
+						<label for="cidade" class="lbl_a">Cidade:</label>
+						<input type="text" name="p.endereco.cidade" value="${p?.getEndereco()?.getCidade()}" id="cidade" class="inpt_a">
+					</div>
+					<div class="sepH_b">
+						<label for="estado" class="lbl_a">Estado:</label> 
+						#{select "p.endereco.uf", items:helpers.DadosHelper.getEstadosBrasileiros(), id:estado, value:p?.getEndereco()?.getUf(), style:"margin-top:8px;" /}
+					</div>
+					<div class="sepH_b">
+						<label for="cep" class="lbl_a">Cep:</label>
+						<input type="text" name="p.endereco.cep" value="${p?.getEndereco()?.getCep()}" id="cep" class="inpt_a">
+					</div>
+					<div class="sepH_b">
+						<label for="email" class="lbl_a">Email:</label>
+						<input type="text" name="p.usuario.email" value="${p?.getUsuario()?.getEmail()}" id="email" class="inpt_a">
+					</div>
+				</fieldset>
+				
+				<div class="cf">
+					<a class="btn btn_a fl sepV_a" onclick="$('.passo2').click(); return false;" href="#">&laquo; Dados Acadêmicos</a>
+					<a class="btn btn_d fl" onclick="$('.passo4').click(); return false;" href="#">Dados de Acesso  &raquo;</a>
+				</div>
+			</div>
+		</div>
+		
+		<div id="tabs-4">
+			<div class="formEl_b">
+				<fieldset id="dados_acesso" class="">
+					<!-- <div class="sepH_b">
+						<label for="p.usuario.login" class="lbl_a">Matrícula:</label>
+						<input type="text" name="p.usuario.login" disabled="disabled" value="${p?.getMatricula()}" id="login" class="inpt_a">
+					</div> -->
+					<div class="sepH_b">
+						<label for="p.usuario.senha" class="lbl_a">Senha:</label>
+						<input type="password" name="p.usuario.senha" value="" id="p.usuario.senha" class="inpt_a">
+					</div>
+					
+					<div class="sepH_b">
+						<label for="confirmacaoSenha" class="lbl_a">Confirme a Senha:</label>
+						<input type="password" name="confirmacaoSenha" value="" id="confirmacaoSenha" class="inpt_a">
+					</div>
+				</fieldset>
+				
+				
+				<div class="cf">
+					<a class="btn btn_a fl sepV_a" onclick="$('.passo3').click(); return false;" href="#">&laquo; Dados de Contato</a>
+					<button class="btn btn_d sepV_a"  type="submit"><span>Cadastrar Aluno</span></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+#{/form}

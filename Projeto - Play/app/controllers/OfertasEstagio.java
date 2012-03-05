@@ -3,6 +3,7 @@ package controllers;
 import helpers.Permissao;
 import helpers.SessionsHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import play.mvc.Controller;
@@ -23,9 +24,9 @@ import br.edu.ifrn.patterns.AlunoDelegate;
 @With(SessionsHelper.class)
 public class OfertasEstagio extends Controller {
 
-//	public static void index() {
-//		formCadastro();
-//	}
+	//	public static void index() {
+	//		formCadastro();
+	//	}
 
 	@Permissao("funcionario")
 	public static void formCadastro() {
@@ -34,12 +35,12 @@ public class OfertasEstagio extends Controller {
 			DiretoriaDelegate diretoriaDelegate = new DiretoriaDelegate();
 			List<Empresa> empresas = del.getTodasEmpresas();
 			List<Diretoria> diretorias = diretoriaDelegate.getTodasDiretorias();
-			
+
 			if (empresas.isEmpty()) {
 				flash.error("<strong>Atenção:</strong> Não é possível criar ofertas de estágio pois nenhuma empresa está cadastrada!");
 				Application.index();
 			}
-			
+
 			render(empresas, diretorias);
 		} catch (Exception e) {
 			error(e.getMessage());
@@ -63,15 +64,15 @@ public class OfertasEstagio extends Controller {
 				EmpresaDelegate del_empresa = new EmpresaDelegate();
 				DiretoriaDelegate diretoriaDelegate = new DiretoriaDelegate();
 				CursoDelegate cursoDelegate = new CursoDelegate();
-				
+
 				Empresa e = del_empresa.getEmpresa(idEmpresa);
 				Diretoria d = diretoriaDelegate.getDiretoria(idDiretoria);
 				Curso c = cursoDelegate.getCurso(idCurso);
-				
+
 				o.setEmpresa(e);
 				o.setDiretoria(d);
 				o.setCurso(c);
-				
+
 				del.cadastrarOfertaEstagio(o);
 			} catch (Exception er) {
 				er.printStackTrace();
@@ -79,7 +80,7 @@ public class OfertasEstagio extends Controller {
 				renderArgs.put("o", o);
 				renderTemplate("OfertasEstagio/formCadastro.html");
 			}
-			
+
 			flash.success("Oferta de estágio cadastrada com sucesso!");
 			formCadastro();
 		}
@@ -101,45 +102,51 @@ public class OfertasEstagio extends Controller {
 		del_oe.removerCandidato(idOferta, alunoId);
 		Application.ofertaEstagio();
 	}
-	
+
 	public static void getCursosByDiretoria(long idDiretoria) throws Exception {
 		DiretoriaDelegate diretoriaDelegate = new DiretoriaDelegate();
 		List<Curso> cursos = diretoriaDelegate.getDiretoria(idDiretoria).getCursos();
 		render(cursos);
 	}
-	
+
 	@Permissao("funcionario")
-    public static void getDadosEmpresa(Long id) {
-    	try{
-    		EmpresaDelegate del = new EmpresaDelegate();
-    		Empresa e = del.getEmpresa(id);
-    		StringBuilder sb = new StringBuilder();
-    		
-    		sb.append("<fieldset>" + "\n");
-    		sb.append("<legend>Confirmação dos dados da empresa escolhida:</legend>" + "\n");
-    		sb.append("<strong>Razão Social: </strong>" + e.getRazaoSocial() + "<br/>" + "\n");
-    		sb.append("<strong>Nome Fantasia: </strong>" + e.getNomeFantasia() + "<br/>" + "\n");
-    		sb.append("<strong>Área de Atuação: </strong>" + e.getAreaAtuacao() + "<br/>" + "\n");
-    		sb.append("<strong>Nome do Responsável: </strong>" + e.getNomeResponsavel() + "<br/>" + "\n");
-    		sb.append("</fieldset>" + "\n");
-    		
-    		renderText(sb.toString());
-    	} catch (Exception er) {
-    		renderText("ERRO: " + er.getLocalizedMessage());
-    	}
-    }
-	
+	public static void getDadosEmpresa(Long id) {
+		try{
+			EmpresaDelegate del = new EmpresaDelegate();
+			Empresa e = del.getEmpresa(id);
+			StringBuilder sb = new StringBuilder();
+
+			sb.append("<fieldset>" + "\n");
+			sb.append("<legend>Confirmação dos dados da empresa escolhida:</legend>" + "\n");
+			sb.append("<strong>Razão Social: </strong>" + e.getRazaoSocial() + "<br/>" + "\n");
+			sb.append("<strong>Nome Fantasia: </strong>" + e.getNomeFantasia() + "<br/>" + "\n");
+			sb.append("<strong>Área de Atuação: </strong>" + e.getAreaAtuacao() + "<br/>" + "\n");
+			sb.append("<strong>Nome do Responsável: </strong>" + e.getNomeResponsavel() + "<br/>" + "\n");
+			sb.append("</fieldset>" + "\n");
+
+			renderText(sb.toString());
+		} catch (Exception er) {
+			renderText("ERRO: " + er.getLocalizedMessage());
+		}
+	}
+
 	@Permissao("funcionario")
 	public static void verDetalheOferta(Long id) throws Exception{
 		OfertaEstagioDelegate del = new OfertaEstagioDelegate();
 		OfertaEstagio oferta = del.getOfertaEstagio(id);
 		render(oferta);
 	}
-	
+
 	@Permissao("funcionario")
-	public static void verOfertas() throws Exception{
+	public static void verOfertas(String diretoria) throws Exception{
 		OfertaEstagioDelegate del = new OfertaEstagioDelegate();
-		List<OfertaEstagio> lista = del.getTodasOfertasEstagio();
-		render(lista);
+		DiretoriaDelegate ddel = new DiretoriaDelegate();
+		List<OfertaEstagio> lista = new ArrayList<OfertaEstagio>();
+		if (diretoria!=null){
+			lista = del.getTodasOfertasEstagioByDiretoria(diretoria);
+		}
+		List<Diretoria> diretorias = ddel.getTodasDiretorias();
+		renderArgs.put("diretoriaSelec", diretoria);
+		render(lista, diretorias);
 	}
 }

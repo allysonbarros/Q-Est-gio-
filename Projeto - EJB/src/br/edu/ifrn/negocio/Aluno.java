@@ -23,7 +23,7 @@ public class Aluno extends Pessoa {
 	private Diretoria diretoria;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@IndexColumn(name="id")
+	@IndexColumn(name="INDEX_COL")
 	private List<Habilidade> habilidades;
 	
 	private opcoesPeriodo periodo;
