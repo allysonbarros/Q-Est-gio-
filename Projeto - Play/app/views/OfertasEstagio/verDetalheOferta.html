@@ -1,0 +1,53 @@
+#{extends 'main.html' /}
+#{set title:'ofertaEstagio' /}
+#{set 'migalhaDePao'}
+<ul id="migalhadepao">
+	<li class="parent">
+		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
+		<a href="/" class="vam">Início</a>
+	</li>
+	<li class="parent"><a href="@{Application.index()}">Estágio e Egressos</a></li>
+	<li class="current"><a href="#">Oferta de estágio</a></li>
+</ul>
+#{/set}
+
+*{"Tag que importa as mensagens de feedback do sistema"}*
+#{BoxesMensagensFeedback /}
+#{set 'moreScripts'}
+
+#{/set}
+
+<h2>Ofertas de Estágio</h2>
+
+<div id="lista-ofertas">
+		<div class="item-ofertas">
+			<div style="float: right;">
+			</div> 
+			<div class="titulo-oferta">${oferta.funcao}</div></br>
+			<div class="numVagas-oferta"><strong>Nº de Vaga(s):</strong> ${oferta.numVagas}</div>
+			<div class="empresa-oferta"><strong>Empresa:</strong> ${oferta.empresa.nomeFantasia}</div>
+			<div class="curso-oferta"><strong>Curso:</strong> ${oferta.curso.nome}</div>
+			<div class="descricao-oferta"><strong>Descrição:</strong> ${oferta.descricao}</div>
+			<div class="descricao-oferta"><strong>Número de candidatos:</strong> ${oferta.getCandidatos().size()}</div>
+			<br />
+			
+			<table class="table_a">
+			<thead>
+				<tr>
+					<td>#</td>
+					<td>Candidatos</td>
+					<td>Matrícula</td>
+				</tr>
+			</thead>
+			<tbody>
+			#{list oferta.getCandidatos(),as:'candidato'}
+				<tr>
+					<td>Ver currículo</td>
+					<td>${candidato.getNome()}</td>
+					<td>${candidato.getMatricula()}</td>
+				</tr>
+			#{/list}
+			</tbody>
+			</table>
+		</div>
+</div>

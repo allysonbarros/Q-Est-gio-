@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 self: play -> pdf 0.9
 
 require:
+=======
+self: play -> pdf 0.9
+
+require:
+>>>>>>> e8d293a3969a08f5bef6b755b900379480bfc5e2
     - play

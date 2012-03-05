@@ -19,12 +19,20 @@
 		<link>
 			<name>pdf-0.9</name>
 			<type>2</type>
+<<<<<<< HEAD
 			<location>C:/play-1.2.4/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/app</location>
+=======
+			<location>/Users/sedir/Desenvolvimento/PDSC/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/app</location>
+>>>>>>> e8d293a3969a08f5bef6b755b900379480bfc5e2
 		</link>
 		<link>
 			<name>conf/pdf-0.9</name>
 			<type>2</type>
+<<<<<<< HEAD
 			<location>C:/play-1.2.4/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/conf</location>
+=======
+			<location>/Users/sedir/Desenvolvimento/PDSC/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/conf</location>
+>>>>>>> e8d293a3969a08f5bef6b755b900379480bfc5e2
 		</link>
 	</linkedResources>
 </projectDescription>

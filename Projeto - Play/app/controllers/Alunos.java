@@ -1,6 +1,5 @@
 package controllers;
 
-import static play.modules.pdf.PDF.renderPDF;
 import helpers.Permissao;
 import helpers.SessionsHelper;
 
@@ -12,11 +11,12 @@ import play.mvc.With;
 import br.edu.ifrn.negocio.Aluno;
 import br.edu.ifrn.negocio.Diretoria;
 import br.edu.ifrn.negocio.Habilidade;
-import br.edu.ifrn.negocio.Habilidade.TipoHabilidade;
 import br.edu.ifrn.negocio.TipoPessoa;
+import br.edu.ifrn.negocio.Habilidade.TipoHabilidade;
 import br.edu.ifrn.patterns.AlunoDelegate;
 import br.edu.ifrn.patterns.CursoDelegate;
 import br.edu.ifrn.patterns.DiretoriaDelegate;
+import br.edu.ifrn.negocio.Habilidade.TipoHabilidade;
 @With(SessionsHelper.class)
 public class Alunos extends Controller {
 
@@ -41,7 +41,7 @@ public class Alunos extends Controller {
 		render(p);
 	}
 	@Permissao("aluno")
-	public static void imprimirCurriculo(String formato) throws Exception {
+	public static void imprimirCurriculo() throws Exception {
 		AlunoDelegate del = new AlunoDelegate();
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
 		Aluno aluno = del.getAluno(alunoId);
@@ -49,6 +49,24 @@ public class Alunos extends Controller {
 		List<Habilidade> idiomas = new ArrayList<Habilidade>();
 		List<Habilidade> informatica = new ArrayList<Habilidade>();
 		List<Habilidade> outrosConhecimentos = new ArrayList<Habilidade>();
+		
+//		if (aluno.getHabilidades().isEmpty()) {
+//			List<Habilidade> habilidades = new ArrayList<Habilidade>();
+//			habilidades.add(new Habilidade("Inglês", "Intermediário", TipoHabilidade.IDIOMA));
+//			habilidades.add(new Habilidade("Francês", "Intermediário", TipoHabilidade.IDIOMA));
+//			habilidades.add(new Habilidade("Espanhol", "Básico", TipoHabilidade.IDIOMA));
+//			
+//			habilidades.add(new Habilidade("Word", "Intermediário", TipoHabilidade.INFORMATICA));
+//			habilidades.add(new Habilidade("Excel", "Intermediário", TipoHabilidade.INFORMATICA));
+//			habilidades.add(new Habilidade("BrOffice", "Intermediário", TipoHabilidade.INFORMATICA));
+//			habilidades.add(new Habilidade("Photoshop", "Intermediário", TipoHabilidade.INFORMATICA));
+//			
+//			habilidades.add(new Habilidade("Desenho à mão livre", "Intermediário", TipoHabilidade.OUTROS_CONHECIMENTOS));
+//			habilidades.add(new Habilidade("Culinária Oriental", "Básico", TipoHabilidade.OUTROS_CONHECIMENTOS));
+//			
+//			aluno.setHabilidades(habilidades);
+//			del.editarAluno(aluno);
+//		}
 		
 		for (Habilidade habilidade : aluno.getHabilidades()) {
 			switch (habilidade.getTipoHabilidade()) {
@@ -66,11 +84,7 @@ public class Alunos extends Controller {
 			}
 		}
 		
-		if (formato == null || formato.equals("")) {
-			render(aluno, idiomas, informatica, outrosConhecimentos);
-		} else {
-			renderPDF(aluno, idiomas, informatica, outrosConhecimentos);
-		}
+		render(aluno, idiomas, informatica, outrosConhecimentos);
 	}
 	
 	@Permissao("funcionario")
