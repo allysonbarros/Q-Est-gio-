@@ -24,17 +24,6 @@
 				$("#nomeConjuge").parent().hide();
 			}
 		});
-		
-		/* $("#matricula").focusout(function() {
-			var value = $(this).val();
-			
-			if (value.length == 12) {
-				$("#dados_acesso #login").val(value);
-			} else {
-				$("#dados_acesso #login").val("");
-				return;
-			} 
-		}); */
 
 		$("#idDiretoria").live("change", function(){
 			var value = $("#idDiretoria").val(); 
@@ -159,7 +148,7 @@
 				
 				<div class="sepH_b">
 					<label for="periodo" class="lbl_a">Período:</label>
-					#{select "periodo", id:"periodo", style:"width:40%; margin-top:8px;"}
+					#{select "p.periodo", id:"periodo", style:"width:40%; margin-top:8px;"}
 						<option value="">-- Selecione um Período --</option>
 						<option value="0">Primeiro</option>
 						<option value="1">Segundo</option>
@@ -174,7 +163,7 @@
 				
 				<div class="sepH_b">
 					<label for="periodoAula" class="lbl_a">Turno:</label>
-					#{select "periodoAula", id:"periodoAula", style:"width:40%; margin-top:8px;"}
+					#{select "p.periodoAula", id:"periodoAula", style:"width:40%; margin-top:8px;"}
 						<option value="">-- Selecione um Turno --</option>
 						<option value="0">Manhã</option>
 						<option value="1">Tarde</option>
