@@ -156,6 +156,31 @@
 						<option value="">-- Selecione uma Diretoria --</option>
 					#{/select}
 				</div>
+				
+				<div class="sepH_b">
+					<label for="periodo" class="lbl_a">Período:</label>
+					#{select "periodo", id:"periodo", style:"width:40%; margin-top:8px;"}
+						<option value="">-- Selecione um Período --</option>
+						<option value="0">Primeiro</option>
+						<option value="1">Segundo</option>
+						<option value="2">Terceiro</option>
+						<option value="3">Quarto</option>
+						<option value="4">Quinto</option>
+						<option value="5">Sexto</option>
+						<option value="6">Sétimo</option>
+						<option value="7">Oitavo</option>
+					#{/select}
+				</div>
+				
+				<div class="sepH_b">
+					<label for="periodoAula" class="lbl_a">Turno:</label>
+					#{select "periodoAula", id:"periodoAula", style:"width:40%; margin-top:8px;"}
+						<option value="">-- Selecione um Turno --</option>
+						<option value="0">Manhã</option>
+						<option value="1">Tarde</option>
+						<option value="2">Noite</option>
+					#{/select}
+				</div>
 				</fieldset>
 				
 				<div class="cf">
