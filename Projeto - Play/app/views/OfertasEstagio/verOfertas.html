@@ -11,11 +11,34 @@
 </ul>
 #{/set}
 
+#{set 'moreScripts'}
+<script type="text/javascript">
+	$(document).ready(function(){
+		var action = #{jsAction @@verOfertas(':diretoria') /}
+		
+		$('#selDiretoria').change(function(){
+			var valor = $(this).val();
+			window.location = action({diretoria:valor});
+		});
+	});
+</script>
+#{/set}
+
 *{"Tag que importa as mensagens de feedback do sistema"}*
 #{BoxesMensagensFeedback /}
 
 <h2>Ofertas de Estágio</h2>
-
+<div class="formEl_b">
+				<fieldset>
+					<legend>Selecione a diretoria:</legend>
+					<select style="width:100%;" id="selDiretoria">
+						<option value="">-- Selecione uma Diretoria --</option>
+						#{list items:diretorias, as:'diretoria'}
+						<option value="${diretoria.getSigla()}" ${diretoria.getSigla() == diretoriaSelec ? 'selected=selected': ''}>${diretoria.getSigla()} - ${diretoria.getNome()}</option>				
+						#{/list}
+					</select>
+				</fieldset>
+				</div>
 <div id="lista-ofertas">
 	#{if lista}
 		#{list items:lista, as:'oferta'}
