@@ -148,7 +148,7 @@
 				
 				<div class="sepH_b">
 					<label for="periodo" class="lbl_a">Período:</label>
-					#{select "p.periodo", id:"periodo", value:p.periodo, style:"width:40%; margin-top:8px;"}
+					#{select "p.periodo", id:"periodo", value:p?.getPeriodo(), style:"width:40%; margin-top:8px;"}
 						<option value="">-- Selecione um Período --</option>
 						<option value="PRIMEIRO">Primeiro</option>
 						<option value="SEGUNDO">Segundo</option>
@@ -163,7 +163,7 @@
 				
 				<div class="sepH_b">
 					<label for="periodoAula" class="lbl_a">Turno:</label>
-					#{select "p.periodoAula", id:"periodoAula", value:p.periodoAula, style:"width:40%; margin-top:8px;"}
+					#{select "p.periodoAula", id:"periodoAula", value:p?.getPeriodoAula(), style:"width:40%; margin-top:8px;"}
 						<option value="">-- Selecione um Turno --</option>
 						<option value="MANHA">Manhã</option>
 						<option value="TARDE">Tarde</option>

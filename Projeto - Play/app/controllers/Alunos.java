@@ -45,17 +45,14 @@ public class Alunos extends Controller {
 		
 		if (aluno.getHabilidades().isEmpty()) {
 			List<Habilidade> habilidades = new ArrayList<Habilidade>();
-			habilidades.add(new Habilidade("Inglês", "Intermediário", TipoHabilidade.IDIOMA));
-			habilidades.add(new Habilidade("Francês", "Intermediário", TipoHabilidade.IDIOMA));
-			habilidades.add(new Habilidade("Espanhol", "Básico", TipoHabilidade.IDIOMA));
+			habilidades.add(new Habilidade("Japonês", "Intermediário", TipoHabilidade.IDIOMA));
+			habilidades.add(new Habilidade("Italiano", "Intermediário", TipoHabilidade.IDIOMA));
+			habilidades.add(new Habilidade("Chinês", "Básico", TipoHabilidade.IDIOMA));
 			
-			habilidades.add(new Habilidade("Word", "Intermediário", TipoHabilidade.INFORMATICA));
-			habilidades.add(new Habilidade("Excel", "Intermediário", TipoHabilidade.INFORMATICA));
-			habilidades.add(new Habilidade("BrOffice", "Intermediário", TipoHabilidade.INFORMATICA));
-			habilidades.add(new Habilidade("Photoshop", "Intermediário", TipoHabilidade.INFORMATICA));
-			
-			habilidades.add(new Habilidade("Desenho à mão livre", "Intermediário", TipoHabilidade.OUTROS_CONHECIMENTOS));
-			habilidades.add(new Habilidade("Culinária Oriental", "Básico", TipoHabilidade.OUTROS_CONHECIMENTOS));
+			habilidades.add(new Habilidade("Ruby on Rails", "Intermediário", TipoHabilidade.INFORMATICA));
+			habilidades.add(new Habilidade("Java", "Intermediário", TipoHabilidade.INFORMATICA));
+			habilidades.add(new Habilidade("Delphi", "Intermediário", TipoHabilidade.INFORMATICA));
+			habilidades.add(new Habilidade("Illustrator", "Intermediário", TipoHabilidade.INFORMATICA));
 			
 			aluno.setHabilidades(habilidades);
 			del.editarAluno(aluno);

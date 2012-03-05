@@ -22,7 +22,7 @@ public class Aluno extends Pessoa {
 	@ManyToOne
 	private Diretoria diretoria;
 	
-	@OneToMany(mappedBy="aluno",cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@IndexColumn(name="id")
 	private List<Habilidade> habilidades;
 	
