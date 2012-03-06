@@ -66,14 +66,14 @@ public class Habilidade implements Serializable{
 	public TipoHabilidade getTipoHabilidade() {
 		return tipoHabilidade;
 	}
-
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
-	}
-
-	public Aluno getAluno() {
-		return aluno;
-	}
+//
+//	public void setAluno(Aluno aluno) {
+//		this.aluno = aluno;
+//	}
+//
+//	public Aluno getAluno() {
+//		return aluno;
+//	}
 
 	@Override
 	public String toString() {
