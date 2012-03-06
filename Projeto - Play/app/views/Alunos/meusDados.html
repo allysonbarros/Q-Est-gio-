@@ -7,6 +7,7 @@
 <style>
 	.label {font-weight:bold; width:250px; display:block; float:left;}
 	.sepH_b div {overflow:hidden; padding-bottom:10px;}
+	.sepH_b div:last-child {padding-bottom:0;}
 </style>
 
 #{/set}
@@ -47,6 +48,8 @@
 			<div style="padding:0px 20px;">
 				<div><span class="label">Diretoria:</span> ${p?.getDiretoria()}</div>
 				<div><span class="label">Curso:</span> ${p?.getCurso().getNome()}</div>
+				<div><span class="label">Período:</span> ${p?.getPeriodo().toString().toLowerCase().capFirst()}</div>
+				<div><span class="label">Turno:</span> ${p?.getPeriodoAula().toString().toLowerCase().capFirst()}</div>
 			</div>
 		</div>
 	</fieldset>
@@ -54,12 +57,12 @@
 	<fieldset id="dados_contato" class="">
 	<legend>Dados de Contato - <a href="#">Alterar Dados</a></legend>
 		<div class="sepH_b">
+			<div style="padding:0px 20px;">
+				<div><span class="label">Endereço:</span> ${p?.getEndereco()?.getLogradouro()}, ${p.getEndereco()?.getNumero()}, ${p.getEndereco()?.getBairro()} - ${p.getEndereco()?.getCidade()} / ${p.getEndereco()?.getUf()}</div>
+				<div><span class="label">Cep:</span> ${p?.getEndereco().getCep()}</div>
+				<div><span class="label">Telefone:</span> ${p?.getTelefone()}</div>
+				<div><span class="label">Email:</span> ${p?.getUsuario().getEmail()}</div>
+			</div>
 		</div>
-	</fieldset>
-	
-	<fieldset id="dados_acesso" class="">
-	<legend>Dados de Acesso - <a href="#">Alterar Dados</a></legend>
-		<div class="sepH_b">
-		</div>
-	</fieldset>
+	</fieldset>	
 </div>
