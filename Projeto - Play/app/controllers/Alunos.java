@@ -36,9 +36,13 @@ public class Alunos extends Controller {
 	@Permissao("aluno")
 	public static void editarDados() throws Exception {
 		AlunoDelegate del = new AlunoDelegate();
+		DiretoriaDelegate diretoriaDelegate = new DiretoriaDelegate();
+		List<Diretoria> diretorias = diretoriaDelegate.getTodasDiretorias();
+		
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
 		Aluno p = del.getAluno(alunoId);
-		render(p);
+		
+		render(p,diretorias);
 	}
 	
 	
@@ -80,7 +84,7 @@ public class Alunos extends Controller {
 	}
 	
 	@Permissao("funcionario")
-	public static void cadastrar(Aluno p, String confirmacaoSenha, Long idDiretoria, Long idCurso) throws Exception {
+	public static void cadastrar(Aluno p, Long idDiretoria, Long idCurso) throws Exception {
 		
 		validation.required("matr",p.getMatricula()).message("O campo matrícula deve ser preenchido com 12 dígitos.");
 		validation.required("cpf",p.getCpf()).message("O campo CPF deve ser preenchido.");
@@ -99,7 +103,7 @@ public class Alunos extends Controller {
 //		validation.required("mae",p.getNomeMae()).message("O campo Nome da Mãe deve ser preenchido.");
 //		validation.required("pai",p.getNomePai()).message("O campo Nome do Pai deve ser preenchido");
 		//    	validation.required(p.getNomeConjuge());
-		validation.required("senha",p.getUsuario().getSenha()).message("O campo Senha deve ser preenchido");
+//		validation.required("senha",p.getUsuario().getSenha()).message("O campo Senha deve ser preenchido");
 		//validation.equals("asd ",p.getUsuario().getSenha(), confirmacaoSenha, confirmacaoSenha);
 
 		if (validation.hasErrors()) {
@@ -136,6 +140,13 @@ public class Alunos extends Controller {
 				
 				renderArgs.put("p", p);
 				renderArgs.put("diretorias", del2.getTodasDiretorias());
+				try {
+					renderArgs.put("cursos", del2.getDiretoria(idDiretoria).getCursos());
+				} catch (Exception ex) {
+					validation.required("idDiretoria");
+				}
+				renderArgs.put("idDiretoria", idDiretoria);
+				renderArgs.put("idCurso", idCurso);
 				
 				e.printStackTrace();
 				
@@ -144,6 +155,81 @@ public class Alunos extends Controller {
 			
 			flash.success("Aluno cadastrado com sucesso!");
 			formCadastro();
+		}
+	}
+	
+	@Permissao("aluno")
+	public static void atualizar(Aluno p, String confirmacaoSenha, Long idDiretoria, Long idCurso) throws Exception {
+		
+		validation.required("matr",p.getMatricula()).message("O campo matrícula deve ser preenchido com 12 dígitos.");
+		validation.required("cpf",p.getCpf()).message("O campo CPF deve ser preenchido.");
+		//    	validation.required("rg",p.getRg());
+		validation.required("nome",p.getNome()).message("O campo Nome deve ser preenchido.");
+		validation.required("logr",p.getEndereco().getLogradouro()).message("O campo Endereço deve ser preenchido.");
+		validation.required("num",p.getEndereco().getNumero()).message("O campo Número deve ser preenchido.");
+		validation.required("bairro",p.getEndereco().getBairro()).message("O campo Bairro deve ser preenchido.");
+		validation.required("cid",p.getEndereco().getCidade()).message("O campo Cidade deve ser preenchido.");
+		validation.required("uf",p.getEndereco().getUf()).message("O campo Estado deve ser preenchido.");
+		validation.required("cep",p.getEndereco().getCep()).message("O campo CEP deve ser preenchido.");
+		validation.required("ema",p.getUsuario().getEmail()).message("O campo Email deve ser preenchido.");
+		validation.email("ema_ema",p.getUsuario().getEmail()).message("O Email informado não é válido.");
+		validation.required(p.getEstadoCivil()).message("O campo Estado Civil deve ser preenchido.");
+		validation.required(p.getSexo()).message("O campo Sexo deve ser preenchido.");
+//		validation.required("mae",p.getNomeMae()).message("O campo Nome da Mãe deve ser preenchido.");
+//		validation.required("pai",p.getNomePai()).message("O campo Nome do Pai deve ser preenchido");
+		//    	validation.required(p.getNomeConjuge());
+		validation.required("senha",p.getUsuario().getSenha()).message("O campo Senha deve ser preenchido");
+		//validation.equals("asd ",p.getUsuario().getSenha(), confirmacaoSenha, confirmacaoSenha);
+
+		if (validation.hasErrors()) {
+			DiretoriaDelegate del2 = new DiretoriaDelegate();
+			flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
+
+			renderArgs.put("p", p);
+			renderArgs.put("diretorias", del2.getTodasDiretorias());
+			try {
+				renderArgs.put("cursos", del2.getDiretoria(idDiretoria).getCursos());
+			}catch (Exception e) {
+				validation.required("idDiretoria");
+			}
+			renderArgs.put("idDiretoria", idDiretoria);
+			renderArgs.put("idCurso", idCurso);
+			
+			renderTemplate("Alunos/editarDados.html");
+		} else {			
+			try {
+				AlunoDelegate del = new AlunoDelegate();
+				DiretoriaDelegate del2 = new DiretoriaDelegate();
+				CursoDelegate del3 = new CursoDelegate();
+
+				p.getUsuario().setLogin(p.getMatricula().toString());
+				p.getUsuario().setTipoUsuario(TipoPessoa.ALUNO);
+				
+				p.setDiretoria(del2.getDiretoria(idDiretoria));
+				p.setCurso(del3.getCurso(idCurso));
+				
+				del.editarAluno(p);
+			} catch (Exception e) {
+				DiretoriaDelegate del2 = new DiretoriaDelegate();
+				flash.error("<strong>Erro:</strong> " + e.getMessage());
+				
+				renderArgs.put("p", p);
+				renderArgs.put("diretorias", del2.getTodasDiretorias());
+				try {
+					renderArgs.put("cursos", del2.getDiretoria(idDiretoria).getCursos());
+				} catch (Exception ex) {
+					validation.required("idDiretoria");
+				}
+				renderArgs.put("idDiretoria", idDiretoria);
+				renderArgs.put("idCurso", idCurso);
+				
+				e.printStackTrace();
+				
+				renderTemplate("Alunos/editarDados.html");
+			}
+			
+			flash.success("Dados atualizados com sucesso!");
+			meusDados();
 		}
 	}
 }

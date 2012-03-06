@@ -13,7 +13,7 @@
 		$("#login").mask("999999999999");
 		$("#cpf").mask("999.999.999-99");
 		$("#cep").mask("99999-999");
-		$("#data_nascimento").mask("99/99/9999");
+		//$("#data_nascimento").mask("99/99/9999");
 
 		$("#nomeConjuge").parent().hide();
 		$("#estadoCivil").change(function(){
@@ -24,17 +24,6 @@
 				$("#nomeConjuge").parent().hide();
 			}
 		});
-		
-		/* $("#matricula").focusout(function() {
-			var value = $(this).val();
-			
-			if (value.length == 12) {
-				$("#dados_acesso #login").val(value);
-			} else {
-				$("#dados_acesso #login").val("");
-				return;
-			} 
-		}); */
 
 		$("#idDiretoria").live("change", function(){
 			var value = $("#idDiretoria").val(); 
@@ -67,15 +56,14 @@
 *{"Tag que importa as mensagens de feedback do sistema"}*
 #{BoxesMensagensFeedback /}
 
-<h1 class="sepH_c">Editar Meus Dados</h1>
+<h2 class="sepH_c">Editar Meus Dados</h2>
 
-#{form @Alunos.cadastrar()}
+#{form @Alunos.atualizar()}
 <div id="formtabs">
 		<ul>
 		    <li><a class="passo1" href="#tabs-1" class="current">Dados Pessoais</a></li>
 		    <li><a class="passo2" href="#tabs-2">Dados Acadêmicos</a></li>
 		    <li><a class="passo3" href="#tabs-3">Dados de Contato</a></li>
-		    <li><a class="passo4" href="#tabs-4">Dados de Acesso</a></li>
 		</ul>
 		
 		<div id="tabs-1">
@@ -96,7 +84,7 @@
 					
 					<div class="sepH_b">
 						<label for="data_nascimento" class="lbl_a">Data de Nascimento:</label>
-						<input type="text" name="p.getDataNascimento()" value="${p?.getDataNascimento()}" id="data_nascimento" class="inpt_a">
+						<input type="text" name="p.dataNascimento" value="${p?.getDataNascimento()?.format('dd/MM/yyyy')}" id="data_nascimento" class="inpt_a">
 					</div>
 					
 					<div class="sepH_b">
@@ -206,32 +194,6 @@
 				<div class="cf">
 					<a class="btn btn_a fl sepV_a" onclick="$('.passo2').click(); return false;" href="#">&laquo; Dados Acadêmicos</a>
 					<a class="btn btn_d fl" onclick="$('.passo4').click(); return false;" href="#">Dados de Acesso  &raquo;</a>
-				</div>
-			</div>
-		</div>
-		
-		<div id="tabs-4">
-			<div class="formEl_b">
-				<fieldset id="dados_acesso" class="">
-					<!-- <div class="sepH_b">
-						<label for="p.usuario.login" class="lbl_a">Matrícula:</label>
-						<input type="text" name="p.usuario.login" disabled="disabled" value="${p?.getMatricula()}" id="login" class="inpt_a">
-					</div> -->
-					<div class="sepH_b">
-						<label for="p.usuario.senha" class="lbl_a">Senha:</label>
-						<input type="password" name="p.usuario.senha" value="" id="p.usuario.senha" class="inpt_a">
-					</div>
-					
-					<div class="sepH_b">
-						<label for="confirmacaoSenha" class="lbl_a">Confirme a Senha:</label>
-						<input type="password" name="confirmacaoSenha" value="" id="confirmacaoSenha" class="inpt_a">
-					</div>
-				</fieldset>
-				
-				
-				<div class="cf">
-					<a class="btn btn_a fl sepV_a" onclick="$('.passo3').click(); return false;" href="#">&laquo; Dados de Contato</a>
-					<button class="btn btn_d sepV_a"  type="submit"><span>Cadastrar Aluno</span></button>
 				</div>
 			</div>
 		</div>
