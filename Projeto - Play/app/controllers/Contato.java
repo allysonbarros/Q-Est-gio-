@@ -1,8 +1,9 @@
 package controllers;
 
+import notifiers.Mails;
 import play.mvc.Controller;
 
-public class Contatos extends Controller {
+public class Contato extends Controller {
 	public static void index() {
 		formContato();
 	}
@@ -12,9 +13,9 @@ public class Contatos extends Controller {
 	}
 	
 	public static void enviarContato(String nome, String email, String mensagem) {
-		validation.required(name).message("O campo Nome deve ser preenchido.");
+		validation.required(nome).message("O campo Nome deve ser preenchido.");
 		validation.required(email).message("O campo Nome deve ser preenchido.");
-		validation.email("ema_ema",p.getUsuario().getEmail()).message("O Email informado não é válido.");
+		validation.email("ema_ema", email).message("O Email informado não é válido.");
 		validation.required(mensagem).message("O campo Nome deve ser preenchido.");
 		
 		if(validation.hasErrors()) {
@@ -27,7 +28,7 @@ public class Contatos extends Controller {
 			renderTemplate("Contato/formCadastro.html");
 		}
 		
-				
+		Mails.enviarContato(nome, email, mensagem);
 		formContato();
 	}
 }

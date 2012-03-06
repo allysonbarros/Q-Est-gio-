@@ -67,6 +67,7 @@ public class Habilidade implements Serializable{
 		return tipoHabilidade;
 	}
 
+<<<<<<< HEAD
 //	public void setAluno(Aluno aluno) {
 //		this.aluno = aluno;
 //	}
@@ -75,6 +76,8 @@ public class Habilidade implements Serializable{
 //		return aluno;
 //	}
 
+=======
+>>>>>>> 92491816c3b34434af042ecf2472714a4bd537cd
 	@Override
 	public String toString() {
 		return this.nome.toUpperCase() + " " + this.nivel.toUpperCase();

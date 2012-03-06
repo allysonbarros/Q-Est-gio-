@@ -66,7 +66,7 @@ a { text-decoration:none;}
 }
 
 #box-perfil {
-	width:400px;
+	width:600px;
 	float:right;
 	overflow:hidden;
 	margin: 30px 0 20px 10px;
@@ -92,7 +92,7 @@ a { text-decoration:none;}
 
 #box-perfil .dados-perfil {
 	float:right;
-	padding-top:15px;
+	padding-top:10px;
 	line-height:200%;
 	text-align:right;
 }
