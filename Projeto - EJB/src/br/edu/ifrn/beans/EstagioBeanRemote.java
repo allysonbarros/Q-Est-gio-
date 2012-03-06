@@ -13,4 +13,6 @@ public interface EstagioBeanRemote {
 	public void deletarEstagio(Estagio e) throws DatabaseException;
 	public Estagio getEstagio(Long id) throws DatabaseException;
 	public List<Estagio> getTodosEstagios() throws DatabaseException;
+	public void registrarEstagio(long alunoid, long orientadorid, long ofertaid)
+			throws Exception;
 }
