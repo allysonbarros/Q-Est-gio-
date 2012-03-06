@@ -151,14 +151,15 @@
 						<label for="periodo" class="lbl_a">Período:</label>
 						#{select "p.periodo", id:"periodo", value:p?.getPeriodo(), style:"width:40%; margin-top:8px;"}
 							<option value="">-- Selecione um Período --</option>
-							<option value="PRIMEIRO">Primeiro</option>
-							<option value="SEGUNDO">Segundo</option>
-							<option value="TERCEIRO">Terceiro</option>
-							<option value="QUARTO">Quarto</option>
-							<option value="QUINTO">Quinto</option>
-							<option value="SEXTO">Sexto</option>
-							<option value="SETIMO">Sétimo</option>
-							<option value="OITAVO">Oitavo</option>
+							
+							#{option "PRIMEIRO"}Primeiro#{/option}
+							#{option "SEGUNDO"}Segundo#{/option}
+							#{option "TERCEIRO"}Terceiro#{/option}
+							#{option "QUARTO"}Quarto#{/option}
+							#{option "QUINTO"}Quinto#{/option}
+							#{option "SEXTO"}Sexto#{/option}
+							#{option "SETIMO"}Sétimo#{/option}
+							#{option "OITAVO"}Oitavo#{/option}
 						#{/select}
 					</div>
 					
@@ -166,50 +167,29 @@
 						<label for="periodoAula" class="lbl_a">Turno:</label>
 						#{select "p.periodoAula", id:"periodoAula", value:p?.getPeriodoAula(), style:"width:40%; margin-top:8px;"}
 							<option value="">-- Selecione um Turno --</option>
-							<option value="MANHA">Manhã</option>
-							<option value="TARDE">Tarde</option>
-							<option value="NOITE">Noite</option>
+							
+							#{option "MANHA"}Manhã#{/option}
+							#{option "TARDE"}Tarde#{/option}
+							#{option "NOITE"}Noite#{/option}
 						#{/select}
 					</div>
 				</fieldset>
 				
 				<fieldset>
 					<legend>Habilidades / Conhecimentos</legend>
+					#{list p.getHabilidades(), as:"habilidade"}
 					<div class="sepH_b">
-						<label for="p.habilidades[0].nivel" class="lbl_a">Inglês - Escrita:</label>
-						#{select "p.habilidades[0].nivel", id:'p.habilidades[0].nivel', style:"margin-top:8px;"}
-							<option value="Baixo">Baixo</option>
-							<option value="Médio">Médio</option>
-							<option value="Alto">Alto</option>
-						#{/select}
+						<label for="p.habilidades[${habilidade_index - 1}].nivel" class="lbl_a">${habilidade.getNome()}</label>
+						#{select "p.habilidades[${habilidade_index - 1}].nivel", value:habilidade.getNivel(), id:'p.habilidades['+ (habilidade_index - 1) + '].nivel', style:"margin-top:8px;"}
+							#{option "Baixo"}Baixo#{/option}
+							#{option "Médio"}Médio#{/option}
+							#{option "Alto"}Alto#{/option}
+						#{/select}	
 						
-						<input type="hidden" name="p.habilidades[0].nome" value="Inglês - Escrita"/>
-						<input type="hidden" name="p.habilidades[0].tipoHabilidade" value="IDIOMA"/>
+						<input type="hidden" name="p.habilidades[${habilidade_index - 1}].nome" value="${habilidade.getNome()}"/>
+						<input type="hidden" name="p.habilidades[${habilidade_index - 1}].tipoHabilidade" value="${habilidade.getTipoHabilidade()}"/>
 					</div>
-					
-					<div class="sepH_b">
-						<label for="p.habilidades[1].nivel" class="lbl_a">Inglês - Leitura:</label>
-						#{select "p.habilidades[1].nivel", id:'p.habilidades[1].nivel', style:"margin-top:8px;"}
-							<option value="Baixo">Baixo</option>
-							<option value="Médio">Médio</option>
-							<option value="Alto">Alto</option>
-						#{/select}
-						
-						<input type="hidden" name="p.habilidades[1].nome" value="Inglês - Leitura"/>
-						<input type="hidden" name="p.habilidades[1].tipoHabilidade" value="IDIOMA"/>
-					</div>
-					
-					<div class="sepH_b">
-						<label for="p.habilidades[2].nivel" class="lbl_a">Inglês - Conversação:</label>
-						#{select "p.habilidades[2].nivel", id:'p.habilidades[2].nivel', style:"margin-top:8px;"}
-							<option value="Baixo">Baixo</option>
-							<option value="Médio">Médio</option>
-							<option value="Alto">Alto</option>
-						#{/select}
-						
-						<input type="hidden" name="p.habilidades[2].nome" value="Inglês - Conversação"/>
-						<input type="hidden" name="p.habilidades[2].tipoHabilidade" value="IDIOMA"/>
-					</div>
+					#{/list}
 				</fieldset>
 				
 				<div class="cf">

@@ -151,14 +151,15 @@
 					<label for="periodo" class="lbl_a">Período:</label>
 					#{select "p.periodo", id:"periodo", value:p?.getPeriodo(), style:"width:40%; margin-top:8px;"}
 						<option value="">-- Selecione um Período --</option>
-						<option value="PRIMEIRO">Primeiro</option>
-						<option value="SEGUNDO">Segundo</option>
-						<option value="TERCEIRO">Terceiro</option>
-						<option value="QUARTO">Quarto</option>
-						<option value="QUINTO">Quinto</option>
-						<option value="SEXTO">Sexto</option>
-						<option value="SETIMO">Sétimo</option>
-						<option value="OITAVO">Oitavo</option>
+						
+						#{option "PRIMEIRO"}Primeiro#{/option}
+						#{option "SEGUNDO"}Segundo#{/option}
+						#{option "TERCEIRO"}Terceiro#{/option}
+						#{option "QUARTO"}Quarto#{/option}
+						#{option "QUINTO"}Quinto#{/option}
+						#{option "SEXTO"}Sexto#{/option}
+						#{option "SETIMO"}Sétimo#{/option}
+						#{option "OITAVO"}Oitavo#{/option}
 					#{/select}
 				</div>
 				
@@ -166,9 +167,10 @@
 					<label for="periodoAula" class="lbl_a">Turno:</label>
 					#{select "p.periodoAula", id:"periodoAula", value:p?.getPeriodoAula(), style:"width:40%; margin-top:8px;"}
 						<option value="">-- Selecione um Turno --</option>
-						<option value="MANHA">Manhã</option>
-						<option value="TARDE">Tarde</option>
-						<option value="NOITE">Noite</option>
+						
+						#{option "MANHA"}Manhã#{/option}
+						#{option "TARDE"}Tarde#{/option}
+						#{option "NOITE"}Noite#{/option}
 					#{/select}
 				</div>
 				</fieldset>
