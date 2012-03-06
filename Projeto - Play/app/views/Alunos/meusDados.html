@@ -4,6 +4,10 @@
 <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/jquery_ui/tema.css'}">
 <script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 <script src="@{'/public/javascripts/jquery.mask.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<style>
+	.label {font-weight:bold; width:250px; display:block; float:left;}
+	.sepH_b div {overflow:hidden; padding-bottom:10px;}
+</style>
 #{/set}
 #{set 'migalhaDePao'}
 <ul id="migalhadepao">
@@ -24,12 +28,27 @@
 	<fieldset id="dados_pessoais" class="">
 	<legend>Dados Pessoais - <a href="#">Alterar Dados</a></legend>
 		<div class="sepH_b">
+			<div style="padding:0px 20px;">
+				<div><span class="label">Matrícula:</span> ${p?.getMatricula()}</div>
+				<div><span class="label">CPF:</span> ${p?.getCpf()}</div>
+				<div><span class="label">Nome Completo:</span> ${p?.getNome()}</div>
+				<div><span class="label">Data de Nascimento:</span> ${p?.getDataNascimento()?.format("DD/MM/yyy")}</div>
+				<div><span class="label">Estado Civil:</span> ${p?.getEstadoCivil()}</div>
+				<div><span class="label">Sexo:</span> ${p?.getSexo()}</div>
+				<div><span class="label">Nome da Mãe:</span> ${p?.getNomeMae()}</div>
+				<div><span class="label">Nome do Pai:</span> ${p?.getNomePai()}</div>
+				<div><span class="label">Nome do Conjuge:</span> ${p?.getNomeConjuge()}</div>
+			</div>
 		</div>
 	</fieldset>
 	
 	<fieldset id="dados_academicos" class="">
 	<legend>Dados Acadêmicos - <a href="#">Alterar Dados</a></legend>
 		<div class="sepH_b">
+			<div style="padding:0px 20px;">
+				<div><span class="label">Diretoria:</span> ${p?.getDiretoria()}</div>
+				<div><span class="label">Curso:</span> ${p?.getCurso().getNome()}</div>
+			</div>
 		</div>
 	</fieldset>
 	
