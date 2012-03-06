@@ -76,7 +76,7 @@ public class Habilidade implements Serializable{
 
 	@Override
 	public String toString() {
-		return this.nome.toUpperCase() + " " + this.nivel.toUpperCase();
+		return this.nome.toUpperCase() + ": " + this.nivel.toUpperCase();
 	}
 	
 	public enum TipoHabilidade {

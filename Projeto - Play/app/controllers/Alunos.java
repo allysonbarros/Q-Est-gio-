@@ -13,6 +13,7 @@ import br.edu.ifrn.negocio.Curso;
 import br.edu.ifrn.negocio.Diretoria;
 import br.edu.ifrn.negocio.Habilidade;
 import br.edu.ifrn.negocio.TipoPessoa;
+import br.edu.ifrn.negocio.Habilidade.TipoHabilidade;
 import br.edu.ifrn.patterns.AlunoDelegate;
 import br.edu.ifrn.patterns.CursoDelegate;
 import br.edu.ifrn.patterns.DiretoriaDelegate;
@@ -28,6 +29,7 @@ public class Alunos extends Controller {
 		AlunoDelegate del = new AlunoDelegate();
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
 		Aluno p = del.getAluno(alunoId);
+
 		render(p);
 	}
 	
@@ -42,6 +44,20 @@ public class Alunos extends Controller {
 		
 		List<Diretoria> diretorias = diretoriaDelegate.getTodasDiretorias();
 		List<Curso> cursos = p.getDiretoria().getCursos();
+		
+		if (p.getHabilidades().isEmpty()) {
+			List<Habilidade> habilidades = new ArrayList<Habilidade>();
+			
+			habilidades.add(new Habilidade("Inglês - Escrita", "Baixo", TipoHabilidade.IDIOMA));
+			habilidades.add(new Habilidade("Inglês - Leitura", "Baixo", TipoHabilidade.IDIOMA));
+			habilidades.add(new Habilidade("Inglês - Conversação", "Baixo", TipoHabilidade.IDIOMA));
+			
+			habilidades.add(new Habilidade("Word", "Baixo", TipoHabilidade.INFORMATICA));
+			habilidades.add(new Habilidade("Excel", "Baixo", TipoHabilidade.INFORMATICA));
+			habilidades.add(new Habilidade("Powerpoint", "Baixo", TipoHabilidade.INFORMATICA));
+			
+			p.setHabilidades(habilidades);
+		}
 		
 		render(p,diretorias, cursos);
 	}
@@ -174,7 +190,8 @@ public class Alunos extends Controller {
 		validation.email("ema_ema",p.getUsuario().getEmail()).message("O Email informado não é válido.");
 		validation.required(p.getEstadoCivil()).message("O campo Estado Civil deve ser preenchido.");
 		validation.required(p.getSexo()).message("O campo Sexo deve ser preenchido.");
-
+//		validation.required("senha",p.getUsuario().getSenha()).message("O campo Senha deve ser preenchido");
+				
 		if (validation.hasErrors()) {
 			flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
 			
