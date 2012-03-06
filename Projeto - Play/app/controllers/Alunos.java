@@ -40,6 +40,8 @@ public class Alunos extends Controller {
 		Aluno p = del.getAluno(alunoId);
 		render(p);
 	}
+	
+	
 	@Permissao("aluno")
 	public static void imprimirCurriculo() throws Exception {
 		AlunoDelegate del = new AlunoDelegate();
@@ -79,6 +81,7 @@ public class Alunos extends Controller {
 	
 	@Permissao("funcionario")
 	public static void cadastrar(Aluno p, String confirmacaoSenha, Long idDiretoria, Long idCurso) throws Exception {
+		
 		validation.required("matr",p.getMatricula()).message("O campo matrícula deve ser preenchido com 12 dígitos.");
 		validation.required("cpf",p.getCpf()).message("O campo CPF deve ser preenchido.");
 		//    	validation.required("rg",p.getRg());
@@ -105,8 +108,11 @@ public class Alunos extends Controller {
 
 			renderArgs.put("p", p);
 			renderArgs.put("diretorias", del2.getTodasDiretorias());
+			try{
 			renderArgs.put("cursos", del2.getDiretoria(idDiretoria).getCursos());
-			
+			}catch (Exception e) {
+				validation.required("idDiretoria");
+			}
 			renderArgs.put("idDiretoria", idDiretoria);
 			renderArgs.put("idCurso", idCurso);
 			

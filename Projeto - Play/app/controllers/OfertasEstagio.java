@@ -153,11 +153,10 @@ public class OfertasEstagio extends Controller {
 	}
 	
 
-	@Permissao("aluno")
-	public static void verCurriculoAluno() throws Exception {
+	@Permissao("funcionario")
+	public static void verCurriculoAluno(Long idAluno) throws Exception {
 		AlunoDelegate del = new AlunoDelegate();
-		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
-		Aluno aluno = del.getAluno(alunoId);
+		Aluno aluno = del.getAluno(idAluno);
 		
 		List<Habilidade> idiomas = new ArrayList<Habilidade>();
 		List<Habilidade> informatica = new ArrayList<Habilidade>();

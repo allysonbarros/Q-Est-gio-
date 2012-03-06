@@ -13,9 +13,30 @@
 
 *{"Tag que importa as mensagens de feedback do sistema"}*
 #{BoxesMensagensFeedback /}
-#{set 'moreScripts'}
 
+#{set 'moreStyles'}
+ <link rel="stylesheet" media="screen" href="@{'/public/javascripts/fb/jquery.fancybox.css'}">
 #{/set}
+#{set 'moreScripts'}
+#{script 'fb/jquery.fancybox.pack.js' /}
+<script type="text/javascript">
+	$(document).ready(function(){
+		var action = #{jsAction @@verCurriculoAluno(':idAluno') /}
+		
+		$('.ver-curriculo').click(function(){
+			var idAluno = $(this).parent().parent().attr('idAluno');
+			var ref = action({'idAluno':idAluno});
+			$.fancybox({
+	          href: ref,
+	          type:  'iframe'
+		     });
+			
+		});
+	});
+</script>
+#{/set}
+
+
 
 <h2>Ofertas de Estágio</h2>
 
@@ -41,8 +62,8 @@
 			</thead>
 			<tbody>
 			#{list oferta.getCandidatos(),as:'candidato'}
-				<tr>
-					<td>Ver currículo</td>
+				<tr idAluno="${candidato.getId()}">
+					<td><a href="#" class="ver-curriculo">Ver currículo</a></td>
 					<td>${candidato.getNome()}</td>
 					<td>${candidato.getMatricula()}</td>
 				</tr>
