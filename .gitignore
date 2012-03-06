@@ -1,4 +1,4 @@
-conf/application.conf
+Projeto - Play/conf/application.conf
 .classpath
 .DS_Store
 .project
@@ -7,8 +7,8 @@ conf/application.conf
 tmp/**/*
 eclipse/**/*
 modules/**/*
-Projeto - EJB/build
-Projeto - EJB/build
-Projeto - Play/eclipse
-Projeto - Play/eclipse
-Projeto - Play/tmp
+Projeto - EJB/build/*
+Projeto - EJB/build/*
+Projeto - Play/eclipse/*
+Projeto - EJB/eclipse/*
+Projeto - Play/tmp/*

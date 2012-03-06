@@ -7,6 +7,7 @@
 <style>
 	.label {font-weight:bold; width:250px; display:block; float:left;}
 	.sepH_b div {overflow:hidden; padding-bottom:10px;}
+	.sepH_b div:last-child {padding-bottom:0;}
 </style>
 
 #{/set}
@@ -25,41 +26,57 @@
 <h2 class="sepH_c">Visualizar Meus Dados</h2>
 <div class="formEl_b">
 	<fieldset id="dados_pessoais" class="">
-	<legend>Dados Pessoais - <a href="#">Alterar Dados</a></legend>
+	<legend>Dados Pessoais - <a href="@{Alunos.editarDados()}#tabs-1">Alterar Dados</a></legend>
 		<div class="sepH_b">
 			<div style="padding:0px 20px;">
 				<div><span class="label">Matrícula:</span> ${p?.getMatricula()}</div>
 				<div><span class="label">CPF:</span> ${p?.getCpf()}</div>
 				<div><span class="label">Nome Completo:</span> ${p?.getNome()}</div>
-				<div><span class="label">Data de Nascimento:</span> ${p?.getDataNascimento()?.format("DD/MM/yyy")}</div>
+				<div><span class="label">Data de Nascimento:</span> ${p?.getDataNascimento()?.format("dd/MM/yyy")}</div>
 				<div><span class="label">Estado Civil:</span> ${p?.getEstadoCivil()}</div>
 				<div><span class="label">Sexo:</span> ${p?.getSexo()}</div>
 				<div><span class="label">Nome da Mãe:</span> ${p?.getNomeMae()}</div>
 				<div><span class="label">Nome do Pai:</span> ${p?.getNomePai()}</div>
-				<div><span class="label">Nome do Conjuge:</span> ${p?.getNomeConjuge()}</div>
+				#{if p?.getEstadoCivil() == "Casado"}
+					<div><span class="label">Nome do Conjuge:</span> ${p?.getNomeConjuge()}</div>
+				#{/if}
 			</div>
 		</div>
 	</fieldset>
-	
+	<br/>
 	<fieldset id="dados_academicos" class="">
-	<legend>Dados Acadêmicos - <a href="#">Alterar Dados</a></legend>
+		<legend>Dados Acadêmicos - <a href="@{Alunos.editarDados()}#tabs-2">Alterar Dados</a></legend>
 		<div class="sepH_b">
 			<div style="padding:0px 20px;">
 				<div><span class="label">Diretoria:</span> ${p?.getDiretoria()}</div>
 				<div><span class="label">Curso:</span> ${p?.getCurso().getNome()}</div>
+				<div><span class="label">Período:</span> ${p?.getPeriodo().toString().toLowerCase().capFirst()}</div>
+				<div><span class="label">Turno:</span> ${p?.getPeriodoAula().toString().toLowerCase().capFirst()}</div>
+			</div>
+		</div>
+	</fieldset>
+	<br/>
+	<fieldset>
+		<legend>Habilidades / Conhecimentos - <a href="@{Alunos.editarDados()}#tabs-2">Alterar Dados</a></legend>
+		<div class="sepH_b">
+			<div style="padding:0px 20px;">
+			#{list p.getHabilidades(), as:"habilidade"}
+				<div><span class="label">${habilidade.getNome()}:</span> ${habilidade.getNivel().toLowerCase().capitalize()}</div>
+			#{/list}
 			</div>
 		</div>
 	</fieldset>
 	
+	<br/>
 	<fieldset id="dados_contato" class="">
-	<legend>Dados de Contato - <a href="#">Alterar Dados</a></legend>
+	<legend>Dados de Contato - <a href="@{Alunos.editarDados()}#tabs-3">Alterar Dados</a></legend>
 		<div class="sepH_b">
+			<div style="padding:0px 20px;">
+				<div><span class="label">Endereço:</span> ${p?.getEndereco()?.getLogradouro()}, ${p.getEndereco()?.getNumero()}, ${p.getEndereco()?.getBairro()} - ${p.getEndereco()?.getCidade()} / ${p.getEndereco()?.getUf()}</div>
+				<div><span class="label">Cep:</span> ${p?.getEndereco().getCep()}</div>
+				<div><span class="label">Telefone:</span> ${p?.getTelefone()}</div>
+				<div><span class="label">Email:</span> ${p?.getUsuario().getEmail()}</div>
+			</div>
 		</div>
-	</fieldset>
-	
-	<fieldset id="dados_acesso" class="">
-	<legend>Dados de Acesso - <a href="#">Alterar Dados</a></legend>
-		<div class="sepH_b">
-		</div>
-	</fieldset>
+	</fieldset>	
 </div>

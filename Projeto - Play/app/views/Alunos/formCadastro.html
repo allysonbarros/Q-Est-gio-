@@ -14,6 +14,7 @@
 		$("#cpf").mask("999.999.999-99");
 		$("#cep").mask("99999-999");
 		$("#data_nascimento").mask("99/99/9999");
+		$("#telefone").mask("(99) 9999-9999");
 
 		$("#nomeConjuge").parent().hide();
 		$("#estadoCivil").change(function(){
@@ -48,7 +49,7 @@
 	<li class="parent">
 		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
 		<a href="/" class="vam">Início</a>
-	</li><div id="tabs">
+	</li>
 	<li class="current"><a href="#">Cadastro de Aluno</a></li>
 </ul>
 #{/set}
@@ -66,7 +67,7 @@
 		    <li><a class="passo3" href="#tabs-3">Dados de Contato</a></li>
 		    <li><a class="passo4" href="#tabs-4">Dados de Acesso</a></li>
 		</ul>
-		
+	<div id="tabs">
 		<div id="tabs-1">
 			<div class="formEl_b">
 				<fieldset id="dados_pessoais" class="">
@@ -210,6 +211,10 @@
 					<div class="sepH_b">
 						<label for="cep" class="lbl_a">Cep:</label>
 						<input type="text" name="p.endereco.cep" value="${p?.getEndereco()?.getCep()}" id="cep" class="inpt_a">
+					</div>
+					<div class="sepH_b">
+						<label for="telefone" class="lbl_a">Email:</label>
+						<input type="text" name="p.telefone" value="${p?.getTelefone()}" id="telefone" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="email" class="lbl_a">Email:</label>

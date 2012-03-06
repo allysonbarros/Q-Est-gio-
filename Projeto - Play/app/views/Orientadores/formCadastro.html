@@ -13,6 +13,7 @@
 		$("#login").mask("999999999999");
 		$("#cpf").mask("999.999.999-99");
 		$("#cep").mask("99999-999");
+		$("#telefone").mask("(99) 9999-9999");
 
 		$("#nomeConjuge").parent().hide();
 		$("#estadoCivil").change(function(){
@@ -23,17 +24,6 @@
 				$("#nomeConjuge").parent().hide();
 			}
 		});
-		
-		/* $("#matricula").focusout(function() {
-			var value = $(this).val();
-			
-			if (value.length == 12) {
-				$("#dados_acesso #login").val(value);
-			} else {
-				$("#dados_acesso #login").val("");
-				return;
-			} 
-		}); */
 	});
 </script>
 #{/set}
@@ -42,7 +32,7 @@
 	<li class="parent">
 		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
 		<a href="/" class="vam">Início</a>
-	</li><div id="tabs">
+	</li>
 	<li class="current"><a href="#">Cadastro de Orientador</a></li>
 </ul>
 #{/set}
@@ -165,6 +155,10 @@
 					<div class="sepH_b">
 						<label for="cep" class="lbl_a">Cep:</label>
 						<input type="text" name="p.endereco.cep" value="${p?.getEndereco()?.getCep()}" id="cep" class="inpt_a">
+					</div>
+					<div class="sepH_b">
+						<label for="telefone" class="lbl_a">Email:</label>
+						<input type="text" name="p.telefone" value="${p?.getTelefone()}" id="telefone" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="email" class="lbl_a">Email:</label>

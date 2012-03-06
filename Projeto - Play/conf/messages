@@ -1,3 +1,7 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+
+validation.invalid = O campo %1$s possui valor inválido.
+p.dataNascimento = Data de Nascimento
+
