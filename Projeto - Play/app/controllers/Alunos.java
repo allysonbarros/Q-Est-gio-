@@ -190,7 +190,7 @@ public class Alunos extends Controller {
 		validation.email("ema_ema",p.getUsuario().getEmail()).message("O Email informado não é válido.");
 		validation.required(p.getEstadoCivil()).message("O campo Estado Civil deve ser preenchido.");
 		validation.required(p.getSexo()).message("O campo Sexo deve ser preenchido.");
-		validation.required("senha",p.getUsuario().getSenha()).message("O campo Senha deve ser preenchido");
+//		validation.required("senha",p.getUsuario().getSenha()).message("O campo Senha deve ser preenchido");
 				
 		if (validation.hasErrors()) {
 			flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
