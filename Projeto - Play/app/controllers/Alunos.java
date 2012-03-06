@@ -29,10 +29,17 @@ public class Alunos extends Controller {
 		AlunoDelegate del = new AlunoDelegate();
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
 		Aluno p = del.getAluno(alunoId);
-		
 		render(p);
 	}
 	
+	
+	@Permissao("aluno")
+	public static void editarDados() throws Exception {
+		AlunoDelegate del = new AlunoDelegate();
+		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
+		Aluno p = del.getAluno(alunoId);
+		render(p);
+	}
 	@Permissao("aluno")
 	public static void imprimirCurriculo() throws Exception {
 		AlunoDelegate del = new AlunoDelegate();
@@ -42,24 +49,6 @@ public class Alunos extends Controller {
 		List<Habilidade> idiomas = new ArrayList<Habilidade>();
 		List<Habilidade> informatica = new ArrayList<Habilidade>();
 		List<Habilidade> outrosConhecimentos = new ArrayList<Habilidade>();
-		
-//		if (aluno.getHabilidades().isEmpty()) {
-//			List<Habilidade> habilidades = new ArrayList<Habilidade>();
-//			habilidades.add(new Habilidade("Inglês", "Intermediário", TipoHabilidade.IDIOMA));
-//			habilidades.add(new Habilidade("Francês", "Intermediário", TipoHabilidade.IDIOMA));
-//			habilidades.add(new Habilidade("Espanhol", "Básico", TipoHabilidade.IDIOMA));
-//			
-//			habilidades.add(new Habilidade("Word", "Intermediário", TipoHabilidade.INFORMATICA));
-//			habilidades.add(new Habilidade("Excel", "Intermediário", TipoHabilidade.INFORMATICA));
-//			habilidades.add(new Habilidade("BrOffice", "Intermediário", TipoHabilidade.INFORMATICA));
-//			habilidades.add(new Habilidade("Photoshop", "Intermediário", TipoHabilidade.INFORMATICA));
-//			
-//			habilidades.add(new Habilidade("Desenho à mão livre", "Intermediário", TipoHabilidade.OUTROS_CONHECIMENTOS));
-//			habilidades.add(new Habilidade("Culinária Oriental", "Básico", TipoHabilidade.OUTROS_CONHECIMENTOS));
-//			
-//			aluno.setHabilidades(habilidades);
-//			del.editarAluno(aluno);
-//		}
 		
 		for (Habilidade habilidade : aluno.getHabilidades()) {
 			switch (habilidade.getTipoHabilidade()) {
