@@ -5,7 +5,7 @@
 <script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 <script src="@{'/public/javascripts/jquery.mask.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 
-<script type="text/javascript">
+<script type="text/javascript"><!--
 	$(document).ready(function(){
 		$("#formtabs").tabs();
 
@@ -41,14 +41,14 @@
 			}
 		});
 	});
-</script>
+--></script>
 #{/set}
 #{set 'migalhaDePao'}
 <ul id="migalhadepao">
 	<li class="parent">
 		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
 		<a href="/" class="vam">Início</a>
-	</li><div id="tabs">
+	</li>
 	<li class="current"><a href="#">Editar Meus Dados</a></li>
 </ul>
 #{/set}
