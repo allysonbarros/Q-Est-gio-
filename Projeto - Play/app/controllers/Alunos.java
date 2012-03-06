@@ -40,6 +40,8 @@ public class Alunos extends Controller {
 		Aluno p = del.getAluno(alunoId);
 		render(p);
 	}
+	
+	
 	@Permissao("aluno")
 	public static void imprimirCurriculo() throws Exception {
 		AlunoDelegate del = new AlunoDelegate();

@@ -61,18 +61,19 @@
 						<div class="dados-perfil">
 							<div>
 								#{if currentUsuario.tipoUsuario == 3}
-								<a href="@{Alunos.meusDados}">(Ver Meus Dados)</a>
 								<img src="@{'public/images/aluno-icon.png'}" width="18px"/>
 								#{/if}
 								#{if currentUsuario.tipoUsuario == 1}
 								<img src="@{'public/images/icon-funcionario.png'}" width="18px"/>
 								#{/if}
 								${currentUsuario.getPessoa().getNome()}<br/>
-									
+								#{if currentUsuario.tipoUsuario == 3}
+								<a href="@{Alunos.meusDados}"><img src="@{'public/images/icon-dados.png'}" width="18px"/> Visualizar Meus Dados</a>
+								#{/if}
 							</div>
 							
 							<div>
-								<img src="@{'public/images/logout-icon.png'}" width="18px" /> <a href="@{Sessions.efetuarLogoff()}">Sair do Sistema</a>
+								<a href="@{Sessions.efetuarLogoff()}"><img src="@{'public/images/logout-icon.png'}" width="18px" />  Sair do Sistema</a>
 							</div>
 							
 						</div>

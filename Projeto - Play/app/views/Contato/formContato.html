@@ -1,0 +1,25 @@
+#{extends 'main.html' /}
+#{set title:'formContato.html' /}
+
+#{set 'migalhaDePao'}
+<ul id="migalhadepao">
+	<li class="parent">
+		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
+		<a href="/" class="vam">Início</a>
+	</li><div id="tabs">
+	<li class="current"><a href="#">Fale Conosco</a></li>
+</ul>
+#{/set}
+
+*{"Tag que importa as mensagens de feedback do sistema"}*
+#{BoxesMensagensFeedback /}
+
+<h1 class="sepH_c">Fale Conosco</h1>
+
+#{form @Contato.enviarContato()}
+	<div class="formEl_b">
+		<fieldset>
+			<legend></legend>
+		</fieldset>
+	</div>
+#{/form}

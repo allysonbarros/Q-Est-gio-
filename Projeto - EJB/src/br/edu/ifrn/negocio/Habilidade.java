@@ -66,7 +66,6 @@ public class Habilidade implements Serializable{
 	public TipoHabilidade getTipoHabilidade() {
 		return tipoHabilidade;
 	}
-//
 //	public void setAluno(Aluno aluno) {
 //		this.aluno = aluno;
 //	}
