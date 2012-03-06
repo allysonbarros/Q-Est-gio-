@@ -5,7 +5,7 @@
 <script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 <script src="@{'/public/javascripts/jquery.mask.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 
-<script type="text/javascript"><!--
+<script type="text/javascript">
 	$(document).ready(function(){
 		$("#formtabs").tabs();
 
@@ -13,7 +13,8 @@
 		$("#login").mask("999999999999");
 		$("#cpf").mask("999.999.999-99");
 		$("#cep").mask("99999-999");
-		//$("#data_nascimento").mask("99/99/9999");
+		$("#data_nascimento").mask("99/99/9999");
+		$("#telefone").mask("(99) 9999-9999");
 
 		$("#nomeConjuge").parent().hide();
 		$("#estadoCivil").change(function(){
@@ -184,6 +185,10 @@
 					<div class="sepH_b">
 						<label for="cep" class="lbl_a">Cep:</label>
 						<input type="text" name="p.endereco.cep" value="${p?.getEndereco()?.getCep()}" id="cep" class="inpt_a">
+					</div>
+					<div class="sepH_b">
+						<label for="telefone" class="lbl_a">Email:</label>
+						<input type="text" name="p.telefone" value="${p?.getTelefone()}" id="telefone" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="email" class="lbl_a">Email:</label>
