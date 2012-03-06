@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -13,16 +15,20 @@ public class Estagio {
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ESTAGIO_SeqGen")
 	private Long id;
 	
+	@OneToMany
 	@JoinColumn(name="empresa_id")
 	private Empresa empresa;
+	@OneToMany
 	@JoinColumn(name="orientador_id")
-	private Pessoa orientador;
+	private Orientador orientador;
+	@OneToOne
 	@JoinColumn(name="aluno_id")
-	private Pessoa aluno;
+	private Aluno aluno;
 	
 	private String areaConhecimento;
 	private String funcao;
 	private String descricao;
+	
 	public Long getId() {
 		return id;
 	}
@@ -35,18 +41,8 @@ public class Estagio {
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
-	public Pessoa getOrientador() {
-		return orientador;
-	}
-	public void setOrientador(Pessoa orientador) {
-		this.orientador = orientador;
-	}
-	public Pessoa getAluno() {
-		return aluno;
-	}
-	public void setAluno(Pessoa aluno) {
-		this.aluno = aluno;
-	}
+
+	
 	public String getAreaConhecimento() {
 		return areaConhecimento;
 	}
@@ -64,6 +60,18 @@ public class Estagio {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	public void setOrientador(Orientador orientador) {
+		this.orientador = orientador;
+	}
+	public Orientador getOrientador() {
+		return orientador;
+	}
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+	public Aluno getAluno() {
+		return aluno;
 	}
 	
 	
