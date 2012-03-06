@@ -112,9 +112,9 @@ public class Alunos extends Controller {
 
 			renderArgs.put("p", p);
 			renderArgs.put("diretorias", del2.getTodasDiretorias());
-			try{
-			renderArgs.put("cursos", del2.getDiretoria(idDiretoria).getCursos());
-			}catch (Exception e) {
+			try {
+				renderArgs.put("cursos", del2.getDiretoria(idDiretoria).getCursos());
+			} catch (Exception e) {
 				validation.required("idDiretoria");
 			}
 			renderArgs.put("idDiretoria", idDiretoria);
