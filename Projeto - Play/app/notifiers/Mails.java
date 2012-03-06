@@ -25,8 +25,8 @@ public class Mails extends Mailer {
 	}
 	
 	public static void enviarContato(String nome, String email, String mensagem) {
-		setSubject("[QEstágio!] " +  + " entrou em contato.");
-		addRecipient("no-reply@qestagio.ifrn.edu.br);
+		setSubject("[QEstágio!] " + nome  + " entrou em contato.");
+		addRecipient("no-reply@qestagio.ifrn.edu.br");
 		setFrom(email);
 		
 		send(nome, email, mensagem);
