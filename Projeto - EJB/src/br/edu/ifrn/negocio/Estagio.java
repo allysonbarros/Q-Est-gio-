@@ -1,5 +1,7 @@
 package br.edu.ifrn.negocio;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,7 +17,12 @@ import org.hibernate.annotations.IndexColumn;
 
 @Entity
 @SequenceGenerator(name="ESTAGIO_SeqGen", sequenceName="ESTAGIO_GEN_VAL")
-public class Estagio {
+public class Estagio implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ESTAGIO_SeqGen")
 	private Long id;
 	
@@ -23,11 +30,6 @@ public class Estagio {
 	@IndexColumn(name="INDEX_COL")
 	@JoinColumn(name="empresa_id")
 	private Empresa empresa;
-	
-	@OneToMany(fetch=FetchType.EAGER)
-	@JoinColumn(name="orientador_id")
-	@IndexColumn(name="INDEX_COL")
-	private Orientador orientador;
 	
 	@ManyToOne
 	@JoinColumn(name="oferta_id")
@@ -41,9 +43,8 @@ public class Estagio {
 	private String funcao;
 	private String descricao;
 	
-	public Estagio(OfertaEstagio ofertaEstagio, Orientador orientador, Aluno aluno) {
+	public Estagio(OfertaEstagio ofertaEstagio, Aluno aluno) {
 		this.ofertaEstagio = ofertaEstagio;
-		this.orientador = orientador;
 		this.aluno = aluno;
 		this.funcao = ofertaEstagio.getFuncao();
 		this.descricao = ofertaEstagio.getDescricao();
@@ -61,9 +62,6 @@ public class Estagio {
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
-
-	
-
 	public String getFuncao() {
 		return funcao;
 	}
@@ -75,12 +73,6 @@ public class Estagio {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-	public void setOrientador(Orientador orientador) {
-		this.orientador = orientador;
-	}
-	public Orientador getOrientador() {
-		return orientador;
 	}
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;

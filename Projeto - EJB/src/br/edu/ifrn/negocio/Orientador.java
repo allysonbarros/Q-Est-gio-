@@ -11,7 +11,14 @@ public class Orientador extends Pessoa {
 	
 	@ManyToOne
 	private Diretoria diretoria;
-
+	
+	private int munOrientandos;
+	
+	
+	public Orientador(){
+		
+	}
+	
 	public Diretoria getDiretoria() {
 		return diretoria;
 	}
@@ -19,4 +26,14 @@ public class Orientador extends Pessoa {
 	public void setDiretoria(Diretoria diretoria) {
 		this.diretoria = diretoria;
 	}
+
+	public void setMunOrientandos(int munOrientandos) {
+		this.munOrientandos = munOrientandos;
+	}
+
+	public int getMunOrientandos() {
+		return munOrientandos;
+	}
+	
+	
 }

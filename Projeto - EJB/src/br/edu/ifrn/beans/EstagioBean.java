@@ -70,7 +70,7 @@ public class EstagioBean implements EstagioBeanRemote {
 			throw new Exception("Vagas já foram preenchidas pelos candidatos");
 		
 		oferta.setNumVagas(oferta.getNumVagas());
-		Estagio estagio = new Estagio(oferta,orientador,aluno);
+		Estagio estagio = new Estagio(oferta,aluno);
 		
 		ofd.editarOfertaEstagio(oferta);
 		cadastrarEstagio(estagio);
