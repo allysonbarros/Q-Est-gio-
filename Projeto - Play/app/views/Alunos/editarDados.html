@@ -72,7 +72,7 @@
 				<fieldset id="dados_pessoais" class="">
 					<div class="sepH_b">
 						<label for="matricula" class="lbl_a">Matrícula:</label>
-						<input type="text" name="p.matricula" value="${p?.getMatricula()}" id="matricula" class="inpt_a">
+						<input type="text" name="p.matricula" value="${p?.getMatricula()}" readonly="readonly" id="matricula" class="inpt_a">
 					</div>
 					<div class="sepH_b">
 						<label for="cpf" class="lbl_a">CPF:</label>
@@ -132,26 +132,90 @@
 		<div id="tabs-2">
 			<div class="formEl_b">
 				<fieldset id="dados_acesso" class="">
-				<div class="sepH_b">
-					<label for="idDiretoria" class="lbl_a">Selecione a Diretoria:</label>
-					#{select "idDiretoria", id:'idDiretoria', items:diretorias, value:idDiretoria, valueProperty:'id', style:"width:40%; margin-top:8px;"}
-						<option value="">-- Selecione uma Diretoria --</option>
-					#{/select}
-				</div>
+					<legend>Dados Acadêmicos</legend>
+					<div class="sepH_b">
+						<label for="idDiretoria" class="lbl_a">Selecione a Diretoria:</label>
+						#{select "idDiretoria", id:'idDiretoria', items:diretorias, value:p?.getDiretoria().getId(), valueProperty:'id', style:"width:60%; margin-top:8px;"}
+							<option value="">-- Selecione uma Diretoria --</option>
+						#{/select}
+					</div>
+					
+					<div class="sepH_b">
+						<label for="idCurso" class="lbl_a">Selecione o Curso:</label>
+						#{select "idCurso", id:"idCurso", items:cursos, value:p?.getCurso().getId(), valueProperty:'id', labelProperty:'nome', style:"width:60%; margin-top:8px;"}
+							<option value="">-- Selecione um Curso --</option>
+						#{/select}
+					</div>
+					
+					<div class="sepH_b">
+						<label for="periodo" class="lbl_a">Período:</label>
+						#{select "p.periodo", id:"periodo", value:p?.getPeriodo(), style:"width:40%; margin-top:8px;"}
+							<option value="">-- Selecione um Período --</option>
+							<option value="PRIMEIRO">Primeiro</option>
+							<option value="SEGUNDO">Segundo</option>
+							<option value="TERCEIRO">Terceiro</option>
+							<option value="QUARTO">Quarto</option>
+							<option value="QUINTO">Quinto</option>
+							<option value="SEXTO">Sexto</option>
+							<option value="SETIMO">Sétimo</option>
+							<option value="OITAVO">Oitavo</option>
+						#{/select}
+					</div>
+					
+					<div class="sepH_b">
+						<label for="periodoAula" class="lbl_a">Turno:</label>
+						#{select "p.periodoAula", id:"periodoAula", value:p?.getPeriodoAula(), style:"width:40%; margin-top:8px;"}
+							<option value="">-- Selecione um Turno --</option>
+							<option value="MANHA">Manhã</option>
+							<option value="TARDE">Tarde</option>
+							<option value="NOITE">Noite</option>
+						#{/select}
+					</div>
+				</fieldset>
 				
-				<div class="sepH_b">
-					<label for="idCurso" class="lbl_a">Selecione o Curso:</label>
-					#{select "idCurso", id:"idCurso", items:cursos, value:idCurso, valueProperty:'id', labelProperty:'nome', style:"width:40%; margin-top:8px;"}
-						<option value="">-- Selecione uma Diretoria --</option>
-					#{/select}
-				</div>
+				<fieldset>
+					<legend>Habilidades / Conhecimentos</legend>
+					<div class="sepH_b">
+						<label for="p.habilidades[0].nivel" class="lbl_a">Inglês - Escrita:</label>
+						#{select "p.habilidades[0].nivel", id:'p.habilidades[0].nivel', style:"margin-top:8px;"}
+							<option value="Baixo">Baixo</option>
+							<option value="Médio">Médio</option>
+							<option value="Alto">Alto</option>
+						#{/select}
+						
+						<input type="hidden" name="p.habilidades[0].nome" value="Inglês - Escrita"/>
+						<input type="hidden" name="p.habilidades[0].tipoHabilidade" value="IDIOMA"/>
+					</div>
+					
+					<div class="sepH_b">
+						<label for="p.habilidades[1].nivel" class="lbl_a">Inglês - Leitura:</label>
+						#{select "p.habilidades[1].nivel", id:'p.habilidades[1].nivel', style:"margin-top:8px;"}
+							<option value="Baixo">Baixo</option>
+							<option value="Médio">Médio</option>
+							<option value="Alto">Alto</option>
+						#{/select}
+						
+						<input type="hidden" name="p.habilidades[1].nome" value="Inglês - Leitura"/>
+						<input type="hidden" name="p.habilidades[1].tipoHabilidade" value="IDIOMA"/>
+					</div>
+					
+					<div class="sepH_b">
+						<label for="p.habilidades[2].nivel" class="lbl_a">Inglês - Conversação:</label>
+						#{select "p.habilidades[2].nivel", id:'p.habilidades[2].nivel', style:"margin-top:8px;"}
+							<option value="Baixo">Baixo</option>
+							<option value="Médio">Médio</option>
+							<option value="Alto">Alto</option>
+						#{/select}
+						
+						<input type="hidden" name="p.habilidades[2].nome" value="Inglês - Conversação"/>
+						<input type="hidden" name="p.habilidades[2].tipoHabilidade" value="IDIOMA"/>
+					</div>
 				</fieldset>
 				
 				<div class="cf">
 					<a class="btn btn_a fl sepV_a" onclick="$('.passo1').click(); return false;" href="#">&laquo; Dados Pessoais</a>
 					<a class="btn btn_d fl sepV_a" onclick="$('.passo3').click(); return false;" href="#">Dados de Contato &raquo;</a>
 				</div>
-				
 			</div>
 		</div>
 		
@@ -198,7 +262,7 @@
 				
 				<div class="cf">
 					<a class="btn btn_a fl sepV_a" onclick="$('.passo2').click(); return false;" href="#">&laquo; Dados Acadêmicos</a>
-					<a class="btn btn_d fl" onclick="$('.passo4').click(); return false;" href="#">Dados de Acesso  &raquo;</a>
+					<button class="btn btn_d sepV_a"  type="submit"><span>Atualizar os Dados</span></button>
 				</div>
 			</div>
 		</div>

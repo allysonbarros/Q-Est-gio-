@@ -26,7 +26,7 @@
 <h2 class="sepH_c">Visualizar Meus Dados</h2>
 <div class="formEl_b">
 	<fieldset id="dados_pessoais" class="">
-	<legend>Dados Pessoais - <a href="@{Alunos.editarDados()}">Alterar Dados</a></legend>
+	<legend>Dados Pessoais - <a href="@{Alunos.editarDados()}#tabs-1">Alterar Dados</a></legend>
 		<div class="sepH_b">
 			<div style="padding:0px 20px;">
 				<div><span class="label">Matrícula:</span> ${p?.getMatricula()}</div>
@@ -43,9 +43,9 @@
 			</div>
 		</div>
 	</fieldset>
-	
+	<br/>
 	<fieldset id="dados_academicos" class="">
-	<legend>Dados Acadêmicos - <a href="@{Alunos.editarDados()}">Alterar Dados</a></legend>
+		<legend>Dados Acadêmicos - <a href="@{Alunos.editarDados()}#tabs-2">Alterar Dados</a></legend>
 		<div class="sepH_b">
 			<div style="padding:0px 20px;">
 				<div><span class="label">Diretoria:</span> ${p?.getDiretoria()}</div>
@@ -55,9 +55,21 @@
 			</div>
 		</div>
 	</fieldset>
+	<br/>
+	<fieldset>
+		<legend>Habilidades / Conhecimentos - <a href="@{Alunos.editarDados()}#tabs-2">Alterar Dados</a></legend>
+		<div class="sepH_b">
+			<div style="padding:0px 20px;">
+			#{list p.getHabilidades(), as:"habilidade"}
+				<div><span class="label">${habilidade.getNome()}:</span> ${habilidade.getNivel().toLowerCase().capitalize()}</div>
+			#{/list}
+			</div>
+		</div>
+	</fieldset>
 	
+	<br/>
 	<fieldset id="dados_contato" class="">
-	<legend>Dados de Contato - <a href="@{Alunos.editarDados()}">Alterar Dados</a></legend>
+	<legend>Dados de Contato - <a href="@{Alunos.editarDados()}#tabs-3">Alterar Dados</a></legend>
 		<div class="sepH_b">
 			<div style="padding:0px 20px;">
 				<div><span class="label">Endereço:</span> ${p?.getEndereco()?.getLogradouro()}, ${p.getEndereco()?.getNumero()}, ${p.getEndereco()?.getBairro()} - ${p.getEndereco()?.getCidade()} / ${p.getEndereco()?.getUf()}</div>

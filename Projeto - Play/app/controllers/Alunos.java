@@ -9,14 +9,13 @@ import java.util.List;
 import play.mvc.Controller;
 import play.mvc.With;
 import br.edu.ifrn.negocio.Aluno;
+import br.edu.ifrn.negocio.Curso;
 import br.edu.ifrn.negocio.Diretoria;
 import br.edu.ifrn.negocio.Habilidade;
 import br.edu.ifrn.negocio.TipoPessoa;
-import br.edu.ifrn.negocio.Habilidade.TipoHabilidade;
 import br.edu.ifrn.patterns.AlunoDelegate;
 import br.edu.ifrn.patterns.CursoDelegate;
 import br.edu.ifrn.patterns.DiretoriaDelegate;
-import br.edu.ifrn.negocio.Habilidade.TipoHabilidade;
 @With(SessionsHelper.class)
 public class Alunos extends Controller {
 
@@ -37,12 +36,14 @@ public class Alunos extends Controller {
 	public static void editarDados() throws Exception {
 		AlunoDelegate del = new AlunoDelegate();
 		DiretoriaDelegate diretoriaDelegate = new DiretoriaDelegate();
-		List<Diretoria> diretorias = diretoriaDelegate.getTodasDiretorias();
 		
 		long alunoId = Long.parseLong(session.get("usuarioAtivoID"));
 		Aluno p = del.getAluno(alunoId);
 		
-		render(p,diretorias);
+		List<Diretoria> diretorias = diretoriaDelegate.getTodasDiretorias();
+		List<Curso> cursos = p.getDiretoria().getCursos();
+		
+		render(p,diretorias, cursos);
 	}
 	
 	
@@ -103,7 +104,7 @@ public class Alunos extends Controller {
 //		validation.required("mae",p.getNomeMae()).message("O campo Nome da Mãe deve ser preenchido.");
 //		validation.required("pai",p.getNomePai()).message("O campo Nome do Pai deve ser preenchido");
 		//    	validation.required(p.getNomeConjuge());
-//		validation.required("senha",p.getUsuario().getSenha()).message("O campo Senha deve ser preenchido");
+		validation.required("senha",p.getUsuario().getSenha()).message("O campo Senha deve ser preenchido");
 		//validation.equals("asd ",p.getUsuario().getSenha(), confirmacaoSenha, confirmacaoSenha);
 
 		if (validation.hasErrors()) {
@@ -160,10 +161,8 @@ public class Alunos extends Controller {
 	
 	@Permissao("aluno")
 	public static void atualizar(Aluno p, String confirmacaoSenha, Long idDiretoria, Long idCurso) throws Exception {
-		
 		validation.required("matr",p.getMatricula()).message("O campo matrícula deve ser preenchido com 12 dígitos.");
 		validation.required("cpf",p.getCpf()).message("O campo CPF deve ser preenchido.");
-		//    	validation.required("rg",p.getRg());
 		validation.required("nome",p.getNome()).message("O campo Nome deve ser preenchido.");
 		validation.required("logr",p.getEndereco().getLogradouro()).message("O campo Endereço deve ser preenchido.");
 		validation.required("num",p.getEndereco().getNumero()).message("O campo Número deve ser preenchido.");
@@ -175,23 +174,25 @@ public class Alunos extends Controller {
 		validation.email("ema_ema",p.getUsuario().getEmail()).message("O Email informado não é válido.");
 		validation.required(p.getEstadoCivil()).message("O campo Estado Civil deve ser preenchido.");
 		validation.required(p.getSexo()).message("O campo Sexo deve ser preenchido.");
-//		validation.required("mae",p.getNomeMae()).message("O campo Nome da Mãe deve ser preenchido.");
-//		validation.required("pai",p.getNomePai()).message("O campo Nome do Pai deve ser preenchido");
-		//    	validation.required(p.getNomeConjuge());
-		validation.required("senha",p.getUsuario().getSenha()).message("O campo Senha deve ser preenchido");
-		//validation.equals("asd ",p.getUsuario().getSenha(), confirmacaoSenha, confirmacaoSenha);
 
 		if (validation.hasErrors()) {
-			DiretoriaDelegate del2 = new DiretoriaDelegate();
 			flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
+			
+			DiretoriaDelegate del2 = new DiretoriaDelegate();
+			CursoDelegate del3 = new CursoDelegate();
+
+			p.setDiretoria(del2.getDiretoria(idDiretoria));
+			p.setCurso(del3.getCurso(idCurso));
 
 			renderArgs.put("p", p);
 			renderArgs.put("diretorias", del2.getTodasDiretorias());
+			
 			try {
 				renderArgs.put("cursos", del2.getDiretoria(idDiretoria).getCursos());
-			}catch (Exception e) {
+			} catch (Exception e) {
 				validation.required("idDiretoria");
 			}
+			
 			renderArgs.put("idDiretoria", idDiretoria);
 			renderArgs.put("idCurso", idCurso);
 			
@@ -202,29 +203,42 @@ public class Alunos extends Controller {
 				DiretoriaDelegate del2 = new DiretoriaDelegate();
 				CursoDelegate del3 = new CursoDelegate();
 
-				p.getUsuario().setLogin(p.getMatricula().toString());
-				p.getUsuario().setTipoUsuario(TipoPessoa.ALUNO);
+				Aluno a = del.getAluno(Long.parseLong(session.get("usuarioAtivoID")));
+				a.setCpf(p.getCpf());
+				a.setNome(p.getNome());
+				a.setDataNascimento(p.getDataNascimento());
+				a.setEndereco(p.getEndereco());
+				a.setEstadoCivil(p.getEstadoCivil());
+				a.setNomeConjuge(p.getNomeConjuge());
+				a.setNomeMae(p.getNome());
+				a.setNomePai(p.getNomePai());
+				a.setPeriodo(p.getPeriodo());
+				a.setPeriodoAula(p.getPeriodoAula());
+				a.setSexo(p.getSexo());
+				a.setTelefone(p.getTelefone());
 				
-				p.setDiretoria(del2.getDiretoria(idDiretoria));
-				p.setCurso(del3.getCurso(idCurso));
+				a.setHabilidades(p.getHabilidades());
+				a.setDiretoria(del2.getDiretoria(idDiretoria));
+				a.setCurso(del3.getCurso(idCurso));
 				
-				del.editarAluno(p);
+				del.editarAluno(a);
 			} catch (Exception e) {
 				DiretoriaDelegate del2 = new DiretoriaDelegate();
 				flash.error("<strong>Erro:</strong> " + e.getMessage());
 				
 				renderArgs.put("p", p);
 				renderArgs.put("diretorias", del2.getTodasDiretorias());
+				
 				try {
 					renderArgs.put("cursos", del2.getDiretoria(idDiretoria).getCursos());
 				} catch (Exception ex) {
 					validation.required("idDiretoria");
 				}
+				
 				renderArgs.put("idDiretoria", idDiretoria);
 				renderArgs.put("idCurso", idCurso);
 				
 				e.printStackTrace();
-				
 				renderTemplate("Alunos/editarDados.html");
 			}
 			
@@ -232,4 +246,5 @@ public class Alunos extends Controller {
 			meusDados();
 		}
 	}
+	
 }
