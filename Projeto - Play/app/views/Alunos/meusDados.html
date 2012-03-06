@@ -37,7 +37,9 @@
 				<div><span class="label">Sexo:</span> ${p?.getSexo()}</div>
 				<div><span class="label">Nome da Mãe:</span> ${p?.getNomeMae()}</div>
 				<div><span class="label">Nome do Pai:</span> ${p?.getNomePai()}</div>
-				<div><span class="label">Nome do Conjuge:</span> ${p?.getNomeConjuge()}</div>
+				#{if p?.getEstadoCivil() == "Casado"}
+					<div><span class="label">Nome do Conjuge:</span> ${p?.getNomeConjuge()}</div>
+				#{/if}
 			</div>
 		</div>
 	</fieldset>
