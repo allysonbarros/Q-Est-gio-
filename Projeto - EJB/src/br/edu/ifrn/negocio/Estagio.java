@@ -26,7 +26,7 @@ public class Estagio implements Serializable{
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ESTAGIO_SeqGen")
 	private Long id;
 	
-	@OneToMany(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@IndexColumn(name="INDEX_COL")
 	@JoinColumn(name="empresa_id")
 	private Empresa empresa;
