@@ -2,6 +2,7 @@ package br.edu.ifrn.negocio;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -40,6 +41,11 @@ public class Estagio implements Serializable{
 	@JoinColumn(name="aluno_id")
 	private Aluno aluno;
 	
+
+	@OneToOne(cascade={CascadeType.ALL})
+	@JoinColumn(name="orientador_id")
+	private Orientador orientador;
+	
 	private String funcao;
 	private String descricao;
 	
@@ -47,11 +53,12 @@ public class Estagio implements Serializable{
 		
 	}
 	
-	public Estagio(OfertaEstagio ofertaEstagio, Aluno aluno) {
+	public Estagio(OfertaEstagio ofertaEstagio, Aluno aluno, Orientador orientador) {
 		this.ofertaEstagio = ofertaEstagio;
 		this.aluno = aluno;
 		this.funcao = ofertaEstagio.getFuncao();
 		this.descricao = ofertaEstagio.getDescricao();
+		this.orientador = orientador;
 	}
 	
 	public Long getId() {
@@ -89,6 +96,20 @@ public class Estagio implements Serializable{
 	}
 	public OfertaEstagio getOfertaEstagio() {
 		return ofertaEstagio;
+	}
+
+	/**
+	 * @return the orientador
+	 */
+	public Orientador getOrientador() {
+		return orientador;
+	}
+
+	/**
+	 * @param orientador the orientador to set
+	 */
+	public void setOrientador(Orientador orientador) {
+		this.orientador = orientador;
 	}
 	
 	

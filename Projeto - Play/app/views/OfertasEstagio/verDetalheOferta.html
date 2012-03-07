@@ -30,8 +30,23 @@
 	          href: ref,
 	          type:  'iframe'
 		     });
+		     return false;
 			
 		});
+
+
+  	 	 var numVagas = ${oferta.getNumVagas()};
+  	 	 var selecionados = 0;
+   	 $('.ck_selec').click(function(){
+   		 selecionados = $(".ck_selec:input:checked").length;
+
+			if (selecionados==numVagas){
+				$('.ck_selec:input:not(:checked)').attr('disabled', true);
+			}
+			else{
+				$('.ck_selec:input:not(:checked)').removeAttr('disabled');
+			}
+	     });
 	});
 </script>
 #{/set}
@@ -51,24 +66,33 @@
 			<div class="descricao-oferta"><strong>Descrição:</strong> ${oferta.descricao}</div>
 			<div class="descricao-oferta"><strong>Número de candidatos:</strong> ${oferta.getCandidatos().size()}</div>
 			<br />
+			#{if oferta.getCandidatos()}
+			#{form @Estagios.confirmarEstagio()}
+			<input type="hidden" name="idOferta" value="${oferta.id}" />
 			
 			<table class="table_a">
 			<thead>
 				<tr>
-					<td>#</td>
-					<td>Candidatos</td>
-					<td>Matrícula</td>
+					<td style="width: 10px;"></td>
+					<td style="width: 100px;"></td>
+					<td>Nome do Candidato</td>
 				</tr>
 			</thead>
 			<tbody>
 			#{list oferta.getCandidatos(),as:'candidato'}
 				<tr idAluno="${candidato.getId()}">
-					<td><a href="#" class="ver-curriculo">Ver currículo</a></td>
+					<td><input type="checkbox" class="ck_selec" name="idCandidato" value="${candidato.getId()}" /></td>
+					<td><a href="#" class="ver-curriculo"><img src="@{'/public/images/curriculum-icon.png'}" />Ver currículo</a></td>
 					<td>${candidato.getNome()}</td>
-					<td>${candidato.getMatricula()}</td>
 				</tr>
 			#{/list}
 			</tbody>
 			</table>
+			<div style="padding-bottom: 5px;">
+				<button class="btn btn_d" type="submit">Selecionar candidatos</button>
+			</div>
+			#{/form}
+			
+			#{/if}
 		</div>
 </div>

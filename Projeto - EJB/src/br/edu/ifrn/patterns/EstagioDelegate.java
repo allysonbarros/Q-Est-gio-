@@ -20,6 +20,10 @@ public class EstagioDelegate {
 		bean.cadastrarEstagio(o);
 	}
 
+	public void registrarEstagio(Long alunoid, Long orientadorid, Long ofertaid) throws Exception {
+		bean.registrarEstagio(alunoid,orientadorid,ofertaid);
+	}
+
 	public void editarEstagio(Estagio o) throws DatabaseException {
 		bean.editarEstagio(o);
 	}
