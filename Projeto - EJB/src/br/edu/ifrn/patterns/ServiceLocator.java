@@ -10,19 +10,16 @@ import javax.naming.NamingException;
 import javax.rmi.PortableRemoteObject;
 
 import br.edu.ifrn.beans.AlunoBeanRemote;
-import br.edu.ifrn.beans.CategoriaEstagioBean;
 import br.edu.ifrn.beans.CategoriaEstagioBeanRemote;
-import br.edu.ifrn.beans.CursoBean;
 import br.edu.ifrn.beans.CursoBeanRemote;
-import br.edu.ifrn.beans.DiretoriaBean;
 import br.edu.ifrn.beans.DiretoriaBeanRemote;
 import br.edu.ifrn.beans.EmpresaBeanRemote;
 import br.edu.ifrn.beans.EnderecoBeanRemote;
 import br.edu.ifrn.beans.EstagioBeanRemote;
 import br.edu.ifrn.beans.FuncionarioBeanRemote;
-import br.edu.ifrn.beans.InstituicaoEnsinoBean;
 import br.edu.ifrn.beans.InstituicaoEnsinoBeanRemote;
 import br.edu.ifrn.beans.OfertaEstagioBeanRemote;
+import br.edu.ifrn.beans.OrientacaoBeanRemote;
 import br.edu.ifrn.beans.OrientadorBeanRemote;
 import br.edu.ifrn.beans.UsuarioBeanRemote;
 import br.edu.ifrn.exceptions.ConnectionException;
@@ -46,7 +43,7 @@ public class ServiceLocator {
 			cache = new HashMap<String, Object>();
 		} catch(NamingException ne){
 			ne.printStackTrace();
-			throw new ConnectionException("Falha na comunicação com o servidor JBOSS.");
+			throw new ConnectionException("Falha na comunicaÔøΩÔøΩo com o servidor JBOSS.");
 		}
 	}
 
@@ -148,6 +145,12 @@ public class ServiceLocator {
 	public CursoBeanRemote getCursoBean() throws ConnectionException {
 		Object ref = getService("CursoBean/remote");
 		CursoBeanRemote beanRemote = (CursoBeanRemote) PortableRemoteObject.narrow(ref, CursoBeanRemote.class);
+		return beanRemote;
+	}
+	
+	public OrientacaoBeanRemote getOrientacaoBean() throws ConnectionException {
+		Object ref = getService("OrientacaoBean/remote");
+		OrientacaoBeanRemote beanRemote = (OrientacaoBeanRemote) PortableRemoteObject.narrow(ref, OrientacaoBeanRemote.class);
 		return beanRemote;
 	}
 }
