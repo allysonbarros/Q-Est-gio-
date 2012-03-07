@@ -94,6 +94,9 @@
 							#{if currentUsuario.tipoUsuario == 3}
 								#{menuAluno /}
 							#{/if}
+							#{if currentUsuario.tipoUsuario == 2}
+								#{menuOrientador /}
+							#{/if}
 							#{if currentUsuario.tipoUsuario == 1}
 								#{menuFuncionario /}
 							#{/if}
