@@ -34,6 +34,7 @@
 		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
 		<a href="/" class="vam">Início</a>
 	</li>
+	<li class="parent"><a href="#">Cadastros</a></li>
 	<li class="current"><a href="#">Cadastro de Funcionário</a></li>
 </ul>
 #{/set}
@@ -144,7 +145,7 @@
 					<input type="text" name="p.endereco.cep" value="${p?.getEndereco()?.getCep()}" id="cep" class="inpt_a">
 				</div>
 				<div class="sepH_b">
-					<label for="telefone" class="lbl_a">Email:</label>
+					<label for="telefone" class="lbl_a">Telefone:</label>
 					<input type="text" name="p.telefone" value="${p?.getTelefone()}" id="telefone" class="inpt_a">
 				</div>
 				<div class="sepH_b">

@@ -34,6 +34,10 @@ public class Application extends Controller {
     	render();
     }
     
+    public static void sobre() throws Exception {
+    	render();
+    }
+    
     public static void informacoesEstagio() {
     	render();
     }

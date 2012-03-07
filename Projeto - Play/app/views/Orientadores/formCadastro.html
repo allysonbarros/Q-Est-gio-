@@ -8,7 +8,7 @@
 <script type="text/javascript"><!--
 	$(document).ready(function(){
 		$("#formtabs").tabs();
-
+		$("#data_nascimento").mask("99/99/9999");
 		$("#matricula").mask("999999999999");
 		$("#login").mask("999999999999");
 		$("#cpf").mask("999.999.999-99");
@@ -33,6 +33,7 @@
 		<img src="@{'/public/images/blank.gif'}" alt="" class="sepV_a vam home_ico">
 		<a href="/" class="vam">Início</a>
 	</li>
+		<li class="parent"><a href="#">Cadastros</a></li>
 	<li class="current"><a href="#">Cadastro de Orientador</a></li>
 </ul>
 #{/set}
@@ -157,7 +158,7 @@
 						<input type="text" name="p.endereco.cep" value="${p?.getEndereco()?.getCep()}" id="cep" class="inpt_a">
 					</div>
 					<div class="sepH_b">
-						<label for="telefone" class="lbl_a">Email:</label>
+						<label for="telefone" class="lbl_a">Telefone:</label>
 						<input type="text" name="p.telefone" value="${p?.getTelefone()}" id="telefone" class="inpt_a">
 					</div>
 					<div class="sepH_b">
@@ -192,7 +193,7 @@
 				
 				<div class="cf">
 					<a class="btn btn_a fl sepV_a" onclick="$('.passo2').click(); return false;" href="#">&laquo; Dados de Contato</a>
-					<button class="btn btn_d sepV_a"  type="submit"><span>Cadastrar Aluno</span></button>
+					<button class="btn btn_d sepV_a"  type="submit"><span>Cadastrar Orientador</span></button>
 				</div>
 			</div>
 		</div>

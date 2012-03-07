@@ -39,7 +39,7 @@
 					</select>
 				</fieldset>
 				</div>
-<div id="lista-ofertas">
+	<div id="lista-ofertas">
 	#{if lista}
 		#{list items:lista, as:'oferta'}
 		<div class="item-ofertas">
@@ -57,6 +57,8 @@
 		#{/list}
 	#{/if}
 	#{else}
-		Nenhuma oferta de estágio cadastrada!
+		#{if diretoriaSelec}
+			Nenhuma oferta de estágio cadastrada!
+		#{/if}
 	#{/else}
 </div>

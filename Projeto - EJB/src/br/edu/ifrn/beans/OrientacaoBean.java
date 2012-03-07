@@ -17,7 +17,6 @@ import br.edu.ifrn.modelo.DAO;
  * Session Bean implementation class OrientacaoBean
  */
 @Stateless
-@LocalBean
 public class OrientacaoBean implements OrientacaoBeanRemote {
 
 	private DAO dao;
