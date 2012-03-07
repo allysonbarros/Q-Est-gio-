@@ -12,7 +12,7 @@ public class Orientador extends Pessoa {
 	@ManyToOne
 	private Diretoria diretoria;
 	
-	private int munOrientandos;
+	private int numeroOrientandos;
 	
 	
 	public Orientador(){
@@ -28,11 +28,11 @@ public class Orientador extends Pessoa {
 	}
 
 	public void setMunOrientandos(int munOrientandos) {
-		this.munOrientandos = munOrientandos;
+		this.numeroOrientandos = munOrientandos;
 	}
 
 	public int getMunOrientandos() {
-		return munOrientandos;
+		return numeroOrientandos;
 	}
 	
 	
