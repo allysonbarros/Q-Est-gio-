@@ -73,7 +73,7 @@ public class Orientadores extends Controller {
 		    	DiretoriaDelegate del2 = new DiretoriaDelegate();
 		    	
 		    	p.getUsuario().setLogin(p.getMatricula().toString());
-		    	p.getUsuario().setTipoUsuario(TipoPessoa.FUNCIONARIO);
+		    	p.getUsuario().setTipoUsuario(TipoPessoa.ORIENTADOR);
 		    	
 		    	p.setDiretoria(del2.getDiretoria(idDiretoria));
 		    	
