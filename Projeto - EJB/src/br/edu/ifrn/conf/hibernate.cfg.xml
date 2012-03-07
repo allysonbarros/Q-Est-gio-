@@ -11,6 +11,8 @@
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
         
+        
+         <mapping class="br.edu.ifrn.negocio.Orientacao" />
         <mapping class="br.edu.ifrn.negocio.OfertaEstagio" />
         <mapping class="br.edu.ifrn.negocio.Estagio" />
         <mapping class="br.edu.ifrn.negocio.Endereco" />

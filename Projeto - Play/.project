@@ -19,20 +19,12 @@
 		<link>
 			<name>pdf-0.9</name>
 			<type>2</type>
-<<<<<<< HEAD
 			<location>C:/play-1.2.4/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/app</location>
-=======
-			<location>/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/app</location>
->>>>>>> 7cd25d1136d5d33c3708d162c17521cb044c7d80
 		</link>
 		<link>
 			<name>conf/pdf-0.9</name>
 			<type>2</type>
-<<<<<<< HEAD
 			<location>C:/play-1.2.4/Q-Est-gio-/Projeto - Play/modules/pdf-0.9/conf</location>
-=======
-			<location>/Users/allysonbarros/Dropbox/Q-Estágio!/Projeto - Play/modules/pdf-0.9/conf</location>
->>>>>>> 7cd25d1136d5d33c3708d162c17521cb044c7d80
 		</link>
 	</linkedResources>
 </projectDescription>
