@@ -43,6 +43,10 @@ public class Estagio implements Serializable{
 	private String funcao;
 	private String descricao;
 	
+	public Estagio(){
+		
+	}
+	
 	public Estagio(OfertaEstagio ofertaEstagio, Aluno aluno) {
 		this.ofertaEstagio = ofertaEstagio;
 		this.aluno = aluno;
