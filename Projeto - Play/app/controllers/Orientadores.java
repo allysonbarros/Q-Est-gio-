@@ -98,5 +98,9 @@ public class Orientadores extends Controller {
 	public static void preencherFichaVisita(){
 		render();
 	}
+	
+	public static void consultarOrientandos(){
+		render();
+	}
 
 }
