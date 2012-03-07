@@ -46,8 +46,7 @@
 				<div class="esq">${aluno.getEndereco()?.getLogradouro()}, ${aluno.getEndereco()?.getNumero()}, ${aluno.getEndereco()?.getBairro()} - ${aluno.getEndereco()?.getCidade()} / ${aluno.getEndereco()?.getUf()}</div>
 				<div class="dir">Nascido em: ${aluno.getDataNascimento()?.format('dd/MM/yyyy')}</div>
 				<div class="esq">CEP: ${aluno.getEndereco()?.getCep()}</div>
-				<div class="dir">Idade: <strong>Faltando implementar!</strong>
-	  			<div>Telefone: ${'aluno.getTelefone()'}</div>
+	  			<div>Telefone: ${aluno.getTelefone()}</div>
 	  			<div>Email: ${aluno.getUsuario()?.getEmail()}</div>
 	  			
 	  			<div style="margin-top:30px; font-size:16px; margin-bottom:10px;"><strong>Informações Acadêmicas</strong></div>
