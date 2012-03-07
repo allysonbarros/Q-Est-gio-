@@ -60,9 +60,14 @@
 		<legend>Habilidades / Conhecimentos - <a href="@{Alunos.editarDados()}#tabs-2">Alterar Dados</a></legend>
 		<div class="sepH_b">
 			<div style="padding:0px 20px;">
-			#{list p.getHabilidades(), as:"habilidade"}
-				<div><span class="label">${habilidade.getNome()}:</span> ${habilidade.getNivel().toLowerCase().capitalize()}</div>
-			#{/list}
+			#{if p.getHabilidades()}
+				#{list p.getHabilidades(), as:"habilidade"}
+					<div><span class="label">${habilidade.getNome()}:</span> ${habilidade.getNivel().toLowerCase().capitalize()}</div>
+				#{/list}
+			#{/if}
+			#{else}
+				<div>Você ainda não preencheu suas habilidades e conhecimentos.</div>
+			#{/else}
 			</div>
 		</div>
 	</fieldset>
