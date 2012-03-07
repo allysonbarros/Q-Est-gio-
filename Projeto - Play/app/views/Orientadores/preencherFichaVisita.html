@@ -11,3 +11,68 @@
 	<li class="current"><a href="#">Preencher Ficha Visita</a></li>
 </ul>
 #{/set}
+
+#{set 'moreScripts'}
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/jquery_ui/tema.css'}">
+<script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/jquery.mask.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#formtabs").tabs();
+
+		$("#matricula").mask("999999999999");
+		$("#login").mask("999999999999");
+		$("#cpf").mask("999.999.999-99");
+		$("#cep").mask("99999-999");
+		$("#data_nascimento").mask("99/99/9999");
+		$("#telefone").mask("(99) 9999-9999");
+
+		$("#nomeConjuge").parent().hide();
+		$("#estadoCivil").change(function(){
+			var value = $(this).val();
+			if (value == "Casado") {
+				$("#nomeConjuge").parent().show();
+			} else {
+				$("#nomeConjuge").parent().hide();
+			}
+		});
+
+		$("#idDiretoria").live("change", function(){
+			var value = $("#idDiretoria").val(); 
+			
+			if (value == "") {
+				$("#idCurso").html('<option value="">-- Selecione uma Diretoria --</option>');
+				return;
+			} else {
+				$("#idCurso").html('<option value="">-- Selecione um Curso --</option>');
+				
+				var cursosAction = #{jsAction @OfertasEstagio.getCursosByDiretoria(':idDiretoria') /}
+				$.get(cursosAction({idDiretoria: value}), function(data) {
+				  $("#idCurso").append(data);
+				});
+			}
+		});
+	});
+</script>
+#{/set}
+
+
+*{"Tag que importa as mensagens de feedback do sistema"}*
+#{BoxesMensagensFeedback /}
+
+<h1 class="sepH_c">Preencher Ficha Visita</h1>
+
+#{form @Orientadores.cadastrarFicha()}
+<div id="formtabs">
+		<ul>
+		    <li><a class="passo1" href="#tabs-1" class="current">Preencher Ficha</a></li>
+		</ul>
+	<div id="tabs">
+		<div id="tabs-1">
+			<div class="formEl_b">
+			
+			</div>
+		</div>
+	</div>
+</div>
+#{/form}
