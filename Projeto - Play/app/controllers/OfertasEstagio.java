@@ -58,7 +58,12 @@ public class OfertasEstagio extends Controller {
 
 		if (validation.hasErrors()) {
 			flash.error("<strong>Atenção:</strong> Você deve preencher os campos corretamente!");
-			validation.keep();
+
+			renderArgs.put("idEmpresa", idEmpresa);
+			renderArgs.put("idDiretoria", idDiretoria);
+			renderArgs.put("idCurso", idCurso);
+			renderArgs.put("o", o);
+			
 			formCadastro();
 		} else {
 			try{
@@ -79,7 +84,12 @@ public class OfertasEstagio extends Controller {
 			} catch (Exception er) {
 				er.printStackTrace();
 				flash.error("<strong>Erro:</strong> " + er.getMessage());
+				
+				renderArgs.put("idEmpresa", idEmpresa);
+				renderArgs.put("idDiretoria", idDiretoria);
+				renderArgs.put("idCurso", idCurso);
 				renderArgs.put("o", o);
+
 				renderTemplate("OfertasEstagio/formCadastro.html");
 			}
 
@@ -161,24 +171,6 @@ public class OfertasEstagio extends Controller {
 		List<Habilidade> idiomas = new ArrayList<Habilidade>();
 		List<Habilidade> informatica = new ArrayList<Habilidade>();
 		List<Habilidade> outrosConhecimentos = new ArrayList<Habilidade>();
-		
-//		if (aluno.getHabilidades().isEmpty()) {
-//			List<Habilidade> habilidades = new ArrayList<Habilidade>();
-//			habilidades.add(new Habilidade("Inglês", "Intermediário", TipoHabilidade.IDIOMA));
-//			habilidades.add(new Habilidade("Francês", "Intermediário", TipoHabilidade.IDIOMA));
-//			habilidades.add(new Habilidade("Espanhol", "Básico", TipoHabilidade.IDIOMA));
-//			
-//			habilidades.add(new Habilidade("Word", "Intermediário", TipoHabilidade.INFORMATICA));
-//			habilidades.add(new Habilidade("Excel", "Intermediário", TipoHabilidade.INFORMATICA));
-//			habilidades.add(new Habilidade("BrOffice", "Intermediário", TipoHabilidade.INFORMATICA));
-//			habilidades.add(new Habilidade("Photoshop", "Intermediário", TipoHabilidade.INFORMATICA));
-//			
-//			habilidades.add(new Habilidade("Desenho à mão livre", "Intermediário", TipoHabilidade.OUTROS_CONHECIMENTOS));
-//			habilidades.add(new Habilidade("Culinária Oriental", "Básico", TipoHabilidade.OUTROS_CONHECIMENTOS));
-//			
-//			aluno.setHabilidades(habilidades);
-//			del.editarAluno(aluno);
-//		}
 		
 		for (Habilidade habilidade : aluno.getHabilidades()) {
 			switch (habilidade.getTipoHabilidade()) {

@@ -16,6 +16,7 @@ import br.edu.ifrn.beans.DiretoriaBeanRemote;
 import br.edu.ifrn.beans.EmpresaBeanRemote;
 import br.edu.ifrn.beans.EnderecoBeanRemote;
 import br.edu.ifrn.beans.EstagioBeanRemote;
+import br.edu.ifrn.beans.FichaVisitaBeanRemote;
 import br.edu.ifrn.beans.FuncionarioBeanRemote;
 import br.edu.ifrn.beans.InstituicaoEnsinoBeanRemote;
 import br.edu.ifrn.beans.OfertaEstagioBeanRemote;
@@ -91,6 +92,12 @@ public class ServiceLocator {
 			OfertaEstagioBeanRemote beanRemote = (OfertaEstagioBeanRemote) PortableRemoteObject.narrow(ref, OfertaEstagioBeanRemote.class);
 			return beanRemote;
 	}
+	
+	public FichaVisitaBeanRemote getFichaVisitaBean() throws ConnectionException {
+		Object ref = getService("FichaVisitaBean/remote");
+		FichaVisitaBeanRemote beanRemote = (FichaVisitaBeanRemote) PortableRemoteObject.narrow(ref, FichaVisitaBeanRemote.class);
+		return beanRemote;
+}
 	
 	private Object getService(String serviceId) throws ConnectionException{
 		if(cache.containsKey(serviceId)){
