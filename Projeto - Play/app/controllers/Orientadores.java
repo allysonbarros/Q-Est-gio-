@@ -94,5 +94,9 @@ public class Orientadores extends Controller {
 	    	formCadastro();
     	}
     }
+	
+	public static void preencherFichaVisita(){
+		render();
+	}
 
 }
